@@ -1,0 +1,23 @@
+Effect of inventor resident regions on normalized local-internal flows \label{slocalinternal}		
+		(1)
+VARIABLES	LABELS	Local-Internal
+		
+cgbangalore	Citing Region = Bangalore	-2.73***
+		(0.42)
+cgbeijing	Citing Region = Beijing	-1.92***
+		(0.42)
+cgboston	Citing Region = Boston	-0.22
+		(0.39)
+cgsanfrancisco	Citing Region = San Francisco	-0.88**
+		(0.39)
+cgaustin	Citing Region = Austin	-0.00
+		(0.39)
+cgtelaviv	Citing Region = Tel Aviv	-2.09***
+		(0.40)
+Constant	Constant	3.06***
+		(0.55)
+		
+Observations		84
+R-squared		0.60
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

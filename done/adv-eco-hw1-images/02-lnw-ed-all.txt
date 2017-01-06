@@ -1,0 +1,20 @@
+	(1)
+VARIABLES	lnw
+	
+ed	0.0809***
+	(0.00121)
+exp	0.0309***
+	(0.00111)
+exp2	-0.0487***
+	(0.00221)
+female	-0.213***
+	(0.00604)
+mar	0.0398***
+	(0.00633)
+Constant	1.626***
+	(0.0196)
+	
+Observations	20,042
+R-squared	0.305
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

@@ -1,0 +1,138 @@
+%mid-term.tex 
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{multirow,array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage[bottom]{footmisc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{stata}
+\usepackage{listings}
+\usepackage[a4paper]{geometry}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\onehalfspacing
+%\doublespacing
+\geometry{
+ total={160mm,247mm},
+ left=20mm,
+ top=25mm,
+}
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+	
+\setlength\parindent{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{LEIO MId Term}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Iyenggar}
+\newcommand\question[2]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}{ #2}\vspace{1em}\hrule\vspace{1em}}
+\begin{document}
+\title{Replication of \cite{Bhaskarabhatla2016}}
+\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
+
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Points of departure}
+1. While \cite{Bhaskarabhatla2016} indicate in footnote 3 that they found 16 brands with over 1\% market share in the 500gm market, my analysis shows that there are 28 such brands. I experimented with various permutations for definitions of the market, but it was not possible to exactly match the 16 mentioned in footnote 3 of \cite{Bhaskarabhatla2016}. 
+
+2. \cite{Bhaskarabhatla2016} mentions 116 brands in the dataset, however I find 115 using \verb|codebook namebrand|
+
+3. \cite{Bhaskarabhatla2016} mentions 23 brands in the dataset, however I find 24 using \verb|codebook state|
+
+4. Overall, my results are similar to \cite{Bhaskarabhatla2016} but with  slightly higher coefficient estimates for \verb|Regulated|
+
+\section{Regression Results}
+
+\begin{center}
+\begin{longtable}{p{0.35\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}}
+\multicolumn{5}{c}{\begin{large}Estimates of price per 500 mg for various dosages between Mar 2007 and Mar 2015 \label{I}\end{large}} \\ \hline
+ & (1) & (2) & (3) & (4) \\
+VARIABLES & Price per 500 mg & Price per 500 mg & Price per 500 mg & Price per 500 mg \\ \hline
+\endfirsthead
+
+\hline
+ & (1) & (2) & (3) & (4) \\
+VARIABLES & Price per 500 mg & Price per 500 mg & Price per 500 mg & Price per 500 mg \\ \hline
+\endhead
+
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} \\
+Regulated (= 1 if 500 mg) & 0.31*** & 0.33*** & 0.25*** & 0.27*** \\
+\vspace{2pt} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.03)\end{footnotesize} \\
+Regulated * Period 2 & 0.04*** & 0.07*** & 0.02*** & 0.06*** \\
+\vspace{2pt} & \begin{footnotesize}(0.00)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Regulated * Period 3 & 0.06*** & 0.07*** & 0.02* & 0.04*** \\
+\vspace{2pt} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Regulated * Period 4 & -0.06*** & -0.05*** & -0.05*** & -0.02 \\
+\vspace{2pt} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Higher Pack Size & -0.01 & -0.01 & -0.01 & -0.01 \\
+\vspace{2pt} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Slow Release & 0.39*** & 0.40*** & 0.33*** & 0.33*** \\
+\vspace{2pt} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Herfindahl-Hirschman Index & 0.00** & 0.00** & -0.00 & -0.00 \\
+\vspace{2pt} & \begin{footnotesize}(0.00)\end{footnotesize} & \begin{footnotesize}(0.00)\end{footnotesize} & \begin{footnotesize}(0.00)\end{footnotesize} & \begin{footnotesize}(0.00)\end{footnotesize} \\
+Large Brand &  & -0.01 &  & -0.01 \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(.)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(.)\end{footnotesize} \\
+Regulated * Large Brand &  & -0.03 &  & -0.03 \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Large Brand * Period 2 &  & 0.06*** &  & 0.05*** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Large Brand * Period 3 &  & 0.09*** &  & 0.08*** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Large Brand * Period 4 &  & 0.10*** &  & 0.10*** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Regulated * Period 2 * Large Brand &  & -0.03** &  & -0.02* \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Regulated * Period 3 * Large Brand , &  & - &  & - \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} \\
+Regulated * Period 4 * Large Brand , &  & - &  & - \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} \\
+Regulated * Slow Release &  &  & 0.05*** & 0.06*** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Period 2 * Slow Release &  &  & -0.01* & -0.00 \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Period 3 * Slow Release &  &  & -0.00 & 0.01 \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Period 4 * Slow Release &  &  & 0.02 & 0.03** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Regulated * Period 2 * Slow Release &  &  & 0.03*** & 0.02** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Regulated * Period 3 * Slow Release &  &  & 0.08*** & 0.06*** \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(0.01)\end{footnotesize} \\
+Regulated * Period 4 * Slow Release &  &  & 0.01 & -0.02 \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} \\
+Constant & 1.00*** & 1.00 & 1.05*** & 1.06 \\
+ & \begin{footnotesize}(0.01)\end{footnotesize} & \begin{footnotesize}(.)\end{footnotesize} & \begin{footnotesize}(0.02)\end{footnotesize} & \begin{footnotesize}(.)\end{footnotesize} \\
+\vspace{2pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} \\
+Observations & 202,928 & 202,928 & 202,928 & 202,928 \\
+ $R^2$ & 0.70 & 0.70 & 0.70 & 0.70 \\ \hline
+\multicolumn{5}{c}{\begin{footnotesize} Company-State clustered standard errors in parentheses\end{footnotesize}} \\
+\multicolumn{5}{c}{\begin{footnotesize} *** p$<$0.01, ** p$<$0.05, * p$<$0.1\end{footnotesize}} \\
+\end{longtable}
+\end{center}
+
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+
+\end{document}

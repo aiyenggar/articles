@@ -1,0 +1,23 @@
+Effect of inventor resident regions on normalized aggregate local flows \label{slocal}		
+		(1)
+VARIABLES	LABELS	Local Flows
+		
+cgbangalore	Citing Region = Bangalore	-15.61***
+		(0.66)
+cgbeijing	Citing Region = Beijing	-13.54***
+		(0.66)
+cgboston	Citing Region = Boston	-6.47***
+		(0.60)
+cgsanfrancisco	Citing Region = San Francisco	-3.73***
+		(0.60)
+cgaustin	Citing Region = Austin	-11.03***
+		(0.60)
+cgtelaviv	Citing Region = Tel Aviv	-12.77***
+		(0.62)
+Constant	Constant	17.00***
+		(0.86)
+		
+Observations		84
+R-squared		0.94
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

@@ -1,0 +1,12 @@
+	(1)
+VARIABLES	lnw
+	
+computer	0.288***
+	(0.00650)
+Constant	2.843***
+	(0.00387)
+	
+Observations	20,042
+R-squared	0.089
+Standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

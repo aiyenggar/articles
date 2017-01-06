@@ -1,0 +1,35 @@
+Effect of inventor resident regions on normalized aggregate local-external flows \label{localexternal}				
+		(1)	(2)	(3)
+VARIABLES	LABELS	Local-External	Local-External	Local-External
+				
+cgbangalore	Citing Region = Bangalore	-2.59***	-2.59***	-2.63***
+		(0.00)	(0.00)	(0.00)
+cgbeijing	Citing Region = Beijing	-1.18***	-1.18***	-1.21***
+		(0.00)	(0.00)	(0.00)
+cgboston	Citing Region = Boston	3.63***	3.63***	3.63***
+		(0.00)	(0.00)	(0.00)
+cgsanfrancisco	Citing Region = San Francisco	7.25***	7.25***	7.25***
+		(0.00)	(0.00)	(0.00)
+cgsanjose	Citing Region = San Jose	10.35***	10.34***	10.35***
+		(0.00)	(0.00)	(0.00)
+cgtelaviv	Citing Region = Tel Aviv	-0.15***	-0.15***	-0.17***
+		(0.00)	(0.00)	(0.00)
+ctbangalore	Cited Region = Bangalore		-0.02**	0.01**
+			(0.01)	(0.01)
+ctbeijing	Cited Region = Beijing		0.04***	0.04***
+			(0.01)	(0.01)
+ctboston	Cited Region = Boston		0.02***	0.01***
+			(0.00)	(0.00)
+ctsanfrancisco	Cited Region = San Francisco		0.01***	0.00**
+			(0.00)	(0.00)
+ctsanjose	Cited Region = San Jose		0.01***	0.01***
+			(0.00)	(0.00)
+cttelaviv	Cited Region = Tel Aviv		0.01**	0.01***
+			(0.00)	(0.00)
+Constant	Constant	2.83***	2.83***	3.75***
+		(0.00)	(0.00)	(0.01)
+				
+Observations		4,660,110	4,660,110	4,660,110
+R-squared		0.98	0.98	0.99
+Standard errors in parentheses				
+*** p<0.01, ** p<0.05, * p<0.1				

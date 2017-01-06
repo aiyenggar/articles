@@ -1,0 +1,23 @@
+Effect of inventor resident regions on normalized nonlocal-external flows \label{snonlocalexternal}		
+		(1)
+VARIABLES	LABELS	Non-Local-External
+		
+cgbangalore	Citing Region = Bangalore	13.44***
+		(1.60)
+cgbeijing	Citing Region = Beijing	9.79***
+		(1.60)
+cgboston	Citing Region = Boston	6.80***
+		(1.47)
+cgsanfrancisco	Citing Region = San Francisco	3.88**
+		(1.47)
+cgaustin	Citing Region = Austin	5.22***
+		(1.47)
+cgtelaviv	Citing Region = Tel Aviv	15.49***
+		(1.51)
+Constant	Constant	80.34***
+		(2.08)
+		
+Observations		84
+R-squared		0.72
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

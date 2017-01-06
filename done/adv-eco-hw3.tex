@@ -1,0 +1,98 @@
+% adv-eco-hw2.tex 
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{multirow,array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage[bottom]{footmisc}
+\graphicspath{ {adv-eco-hw3-images/} }
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{stata}
+\usepackage{listings}
+\usepackage[a4paper]{geometry}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{longtable}
+%\onehalfspacing
+%\doublespacing
+\geometry{
+ total={160mm,247mm},
+ left=25mm,
+ top=25mm,
+}
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+	
+\setlength\parindent{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{05-Advanced Econometrics HW3}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Iyenggar}
+\newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/adv-eco-hw3-images/}
+\newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
+\begin{document}
+\title{Solutions to Advanced Econometrics Homework 3\\Class Size and Scholastic Achievement}
+\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
+
+
+\maketitle
+\thispagestyle{empty}
+
+
+\begin{center}\LARGE{Question (a)}\end{center}
+
+\question{Assume that you knew nothing about Maimonides Rule.  Estimate equation (3) in the paper using Ordinary Least Squares (OLS). The equation posits a relationship between average test scores (class-level) and class size. Ideally, you might be interested in estimating equation (2) that posits a relationship between class size and individual test scores. However, no such data is available to estimate equation 2. Comment on the assumptions you need to make in order to get to equation (3) from equation (2).   Use the same specification as that used in Table II. }
+Since we are regressing log wages on years of education, this means that $\%\Delta(wi) = (100*b)*\Delta(Si)$. Therefore the  economic meaning of the slope coefficient b is that a unit change in number of years of education, leads to a 100*b\% increase in wages. That would have ideally been the case had Si been an exogenous regressor of ln wi. We discuss why that may not quite be the case in the following question. Table ~\ref{Ia} nevertheless presents the regression  results from this regression under model (1) where \verb|yeduc| shows a positive and significant effect on the logarithm of hourly wages
+\begin{lstlisting}
+reg lhwage yeduc
+outreg2 using  `imagepath'Ia.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+\newpage
+\begin{center}\LARGE{Question (b)}\end{center}
+\question{A worry in interpreting coefficients estimated using OLS is that there might be factors not included in the regression that are correlated with both class size and test scores. Invoking Maimonides rule you may be able to use school enrollment as an instrumental variable for class size. If class size is causally linked to test scores, then enrollment must be strongly related with test scores. Run a reduced form regression with test scores as the dependent variable and enrollment as one of the independent variables. Basically, populate Table III. Briefly discuss what you learn from this exercise. }
+Since we are regressing log wages on years of education, this means that $\%\Delta(wi) = (100*b)*\Delta(Si)$. Therefore the  economic meaning of the slope coefficient b is that a unit change in number of years of education, leads to a 100*b\% increase in wages. That would have ideally been the case had Si been an exogenous regressor of ln wi. We discuss why that may not quite be the case in the following question. Table ~\ref{Ia} nevertheless presents the regression  results from this regression under model (1) where \verb|yeduc| shows a positive and significant effect on the logarithm of hourly wages
+\begin{lstlisting}
+reg lhwage yeduc
+outreg2 using  `imagepath'Ia.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+\newpage
+\begin{center}\LARGE{Question (c)}\end{center}
+\question{Use enrollment >=40 as an IV to re-estimate equation (3) in the paper. Use a similar specification as that used in Table IV and Table V in the paper. Using your estimates, populate Tables IV and V. How do your results compare with that in part (a)?}
+Since we are regressing log wages on years of education, this means that $\%\Delta(wi) = (100*b)*\Delta(Si)$. Therefore the  economic meaning of the slope coefficient b is that a unit change in number of years of education, leads to a 100*b\% increase in wages. That would have ideally been the case had Si been an exogenous regressor of ln wi. We discuss why that may not quite be the case in the following question. Table ~\ref{Ia} nevertheless presents the regression  results from this regression under model (1) where \verb|yeduc| shows a positive and significant effect on the logarithm of hourly wages
+\begin{lstlisting}
+reg lhwage yeduc
+outreg2 using  `imagepath'Ia.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+\newpage
+\begin{center}\LARGE{Question (d)}\end{center}
+\question{A concern with using the IV approach to estimate the causal effect of class size on scholastic achievement is that we may not be able to generalize the effects to those schools not affected by the IV. Explain why.}
+Since we are regressing log wages on years of education, this means that $\%\Delta(wi) = (100*b)*\Delta(Si)$. Therefore the  economic meaning of the slope coefficient b is that a unit change in number of years of education, leads to a 100*b\% increase in wages. That would have ideally been the case had Si been an exogenous regressor of ln wi. We discuss why that may not quite be the case in the following question. Table ~\ref{Ia} nevertheless presents the regression  results from this regression under model (1) where \verb|yeduc| shows a positive and significant effect on the logarithm of hourly wages
+\begin{lstlisting}
+reg lhwage yeduc
+outreg2 using  `imagepath'Ia.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+
+\end{document}

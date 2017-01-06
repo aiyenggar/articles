@@ -1,0 +1,119 @@
+\documentclass{beamer}
+\usetheme{Singapore}
+\usepackage[round,sort]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,shapes.symbols,chains}
+\usepackage{adjustbox}
+
+\title{Strategy Content (B) - Term Paper}
+\subtitle{Heterogeniety in knowledge flows across locations}
+\author{Ashwin Iyenggar}
+\institute[Indian Institute of Management Bangalore] 
+{
+  Corporate Strategy and Policy\\
+  Indian Institute of Management Bangalore
+}
+\date{24 November, 2016}
+\subject{Patenting activity across locations}
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{Introduction}
+\subsection{Motivation}
+
+\begin{frame}{Research Question}{}
+\begin{itemize}
+\item<1->{How do  knowledge spillovers between locations vary by location?}
+\item<2->{How do knowledge spillovers between firms vary by location?}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Positioning in Literature}{}
+\begin{itemize}
+\item<1->{\cite{Jaffe1993} and \cite{Almeida1999} used a US context to claim knowledge spillovers in geographic locations, highlighting mobility of engineers as a potential mechanism}
+\item<2->{\cite{Zhao2006} suggested that MNCs generate patents from weak IPR countries by substituting the weak institutional environment with internal organization}
+\item<3->{\cite{Singh2007} suggested that knowledge spillovers differ between MNCs and host country firms, and that personnel flows seem to explain the mechanism}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Alternative Hypothesis}{}
+\begin{itemize}
+\item<1->{Increased patenting activity may not necessarily spillover to other local firms when the local ecosystem of firms is heterogenous}
+\item<2->{Knowledge spillover will be higher between MNC subsidiary and MNC headquarters}
+\end{itemize}
+\end{frame}
+
+\section{Methodology}
+\subsection{Variables}
+\begin{frame}{Unit of Analysis}{}
+\begin{itemize}
+\item<1->{Knowledge Flow : Citation-Location-Firm}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dependent Variable}{}
+\begin{itemize}
+\item<1->{Share of Knowledge Flows (for each year, measured by the number of flows between locations or between firms/total number of knowledge flows)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Independent Variable}{}
+\begin{itemize}
+\item<1->{Location Dummy to Indicate same of different location (Bangalore, Beijing, Israel, San Francisco, Boston and Austin are considered for this study)}
+\item<2->{Firm Dummy to Indicate same of different firm (based on patent assignee)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Control Variables}{}
+\begin{itemize}
+\item<1->{Number of MNC affiliated patent inventors, Stock of patents owned by MNC firms in operation, Patent class/sub-class}
+\item<2->{Year and Firm fixed effects}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dataset}{}
+\begin{itemize}
+\item<1->{PatentView.org data of USPTO patents from 1976}
+\item<2->{Filtered by region of originating patent}
+\end{itemize}
+\end{frame}
+
+\subsection{Issues}
+\begin{frame}{Alternative Explanations}{}
+\begin{itemize}
+\item<1->{Lower absorptive capacity in local firms vs. higher absorptive capacity in MNCs may lead to the skew toward MNCs patenting more}
+\item<2->{Liability of foreignness may force local firms to compete in different markets of different segments than MNCs}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Implications of Work}{}
+\begin{itemize}
+\item<1->{Would help to better understand the dynamics of spillovers in knowledge in the local context}
+\item<2->{May help inform policy makers and managers about ways to improve the spillover effects of human capital}
+\end{itemize}
+\end{frame}
+
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz}
+\bibliographystyle{apalike}
+
+\end{document}

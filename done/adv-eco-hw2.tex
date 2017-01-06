@@ -1,0 +1,326 @@
+% adv-eco-hw2.tex 
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{multirow,array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage[bottom]{footmisc}
+\graphicspath{ {adv-eco-hw2-images/} }
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{stata}
+\usepackage{listings}
+\usepackage[a4paper]{geometry}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{longtable}
+%\onehalfspacing
+%\doublespacing
+\geometry{
+ total={160mm,247mm},
+ left=25mm,
+ top=25mm,
+}
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+	
+\setlength\parindent{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{05-Advanced Econometrics HW2}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Iyenggar}
+\newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/adv-eco-hw2-images/}
+\newcommand\question[2]{\vspace{1em}\hrule\vspace{1em}\textbf{#1: #2}\vspace{1em}\hrule\vspace{1em}}
+\begin{document}
+\title{Solutions to Advanced Econometrics Homework 2}
+\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
+
+
+\maketitle
+\thispagestyle{empty}
+
+
+\begin{center}\LARGE{Question I (a)}\end{center}
+
+\question{I a(1)}{ Recall the wage-setting equation from the education model discussed in class: ln wi = ai+ bSi. Interpret the parameter b in this equation. }
+Since we are regressing log wages on years of education, this means that $\%\Delta(wi) = (100*b)*\Delta(Si)$. Therefore the  economic meaning of the slope coefficient b is that a unit change in number of years of education, leads to a 100*b\% increase in wages. That would have ideally been the case had Si been an exogenous regressor of ln wi. We discuss why that may not quite be the case in the following question. Table ~\ref{Ia} nevertheless presents the regression  results from this regression under model (1) where \verb|yeduc| shows a positive and significant effect on the logarithm of hourly wages
+\begin{lstlisting}
+reg lhwage yeduc
+outreg2 using  `imagepath'Ia.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+
+
+\question{I a(2)}{ Why might the coefficient on an OLS  regression of log wages on years of schooling not be a good estimate of b?}
+The first question we ask ourselves is if the model presented in the previous question is well specified. First, we note that since the model does not account for ability, it is therefore quite possible that the error term in the above specification could also embody the effects of ability. Since ability may reasonably be expected to directly affect the number of years of schooling (assuming that those with higher ability may also tend to have higher years of schooling), we now have the additional problem of endogenous regressor in number of years of schooling. Clearly, the issues of model misspecification and omitted variables both lead to a poor estimate for b in the previously specified wage setting equation. Identifying a good instrumental variable that is correlated with the regressor (number of years of schooling), but that is not believed to be directly correlated with log wages (except for the effect through the number of years of schooling) may help with isolating some variation in number of years of schooling that is unrelated to the log of wages.
+\newpage
+\begin{center}\LARGE{Question I (b)}\end{center}
+\question{I b}{2SLS and Instrument Variables.  State clearly the requirements for these to be good instruments? Explain briefly why you might think that these variables satisfy those two requirements.}
+
+\input{adv-eco-hw2-images/Ib.tex}
+
+Building on top of our discussion in the previous section, we identify the following requirements for a good instrumental variable.
+First, the instrumental variable should affect the endogenous regressor variable (in our case, the number of years of schooling)
+Second, the instrumental variable should itself not appear as a regressor in the structural equation. In other words, the instrumental variable should not be correlated with the error term of the structural equation.
+Third, the instrumental variable should demonstrate variance that may be taken to be as good as assigned randomly.
+We note that while we may test for the first condition through the correlation matrix, conditions two and three are not things that may be tested from the data. Instead these need to be borne out from theory and an understanding of phenomena.
+\par
+The question suggests that \verb|z62 - z72| may be used as instrumental variables. From Table ~\ref{Ib}, we note that with the exception of \verb|z62, z65, z71| all other z variables are significantly correlated with \verb|yeduc|. We therefore have support for our first requirement. As noted previously, the second and third requirements however are hard to prove with data. Here we choose to rely on our understanding of the phenomena. The YOB dummies \verb|d62 - d72| may themselves not be expected to be strongly correlated with earnings but it may be possible that the years of birth capture the stage of the business cycle at which people were hired, and therefore in someway determines the wages earned. A similar argument may be made for the program intensity of the INPRES program, where the argument may be that the well performing regions (as captured by the program intensity in the region) may have themselves determined the future earnings of its students. However, when multiplied the resulting value of the variables \verb|z62 - z72| are expected to be uncorrelated with earnings as they capture neither a business cycle effect nor a regional effect completely. Finally, the creation of the interaction term provides us with a wider range of values for the distribution of the instrumental variables, thereby strengthening our requirement 3, though not satisfying it completely. We therefore conclude that the variables \verb|z62 - z72| serve as strong instruments for the number of years of schooling in the structural equation where ln wages is modeled as a function of the number of years of schooling \footnote{Prof. Shailender Swaminathan had noted in class that researchers have in the past used the lack of correlation between the instrument and other independent and control variables as a possible alternative to demonstrate the strength of the instrumental variable in that it satisfies our condition 2. However, we find that our argument lends stronger support to the requirement than such a correlation table}.
+\begin{lstlisting}
+forvalues year=62/72 {
+	gen d`year'= (YOB == `year')
+	}
+forvalues year=62/72 {
+	gen z`year'= d`year' * prog_int
+	}
+estpost cor yeduc z*
+esttab . using `imagepath'Ib.tex, title(Correlation of years of education to interaction of YOB dummy and Program Intensity \label{Ib})  label replace
+\end{lstlisting}
+
+\question{I b(i)}{For control variables in our regressions, we will use number of children in 1971, year-of-birth dummies, and year-of-birth dummies interacted with number of children in 1971 ("interacted with" means "multiplied by")}
+Control Variables are \verb|ch71|, YOB dummies and the interaction of the two (generated using the Stata  xi command)
+ 
+\question{I b(ii)}{Calculate the 2SLS estimate of b}
+
+\question{I b(ii)(1)}{ First, use the instruments and control variables to predict years of education (i.e., run an OLS regression of years of education on the instruments and control variables, and form the predicted values of education from this regression). }
+\begin{lstlisting}
+xi: reg yeduc z* i.YOB*ch71
+predict yeduchat
+\end{lstlisting}
+
+\question{I b(ii)(2)}{Regress log hourly wages on this predicted value of years of education and the control variables. The coefficient on the predicted years of education is the 2SLS estimate of b. Compute and interpret the 2SLS estimate of b.}
+
+\begin{lstlisting}
+xi: reg lhwage yeduchat i.YOB*ch71
+outreg2 using  `imagepath'Ia.tex, ctitle(man2sls) drop (_*) tex(pretty frag) dec(4) append
+xi: ivregress 2sls lhwage (yeduc = z*) i.YOB*ch71
+outreg2 using  `imagepath'Ia.tex, title("Comparing Baseline, Manual 2SLS, ivreg 2sls Results") ctitle(2sls) drop (_*) tex(pretty frag) dec(4) append
+estat endog
+estat firststage
+estat overid
+\end{lstlisting}
+
+\begin{table}
+\caption{}
+\input{adv-eco-hw2-images/Ia.tex}
+\label{Ia}
+\end{table}
+Table ~\ref{Ia} shows the results of the 2SLS preformed in two stages by us in model 2, and that performed by the Stata command \verb|ivregress| in model 3. We note that the coefficient estimates on both are the same at 0.0962, implying that a unit change in number of years of schooling is associated with a 9.62\% increase in hourly wages.
+
+\question{I b(ii)(3)}{You are asked to write a short report on the costs versus benefits of the school construction program. What information/data might you need to write this report?}
+Our model here captures the wage related benefits to additional years of schooling. However, in order to write a report on the costs versus the benefits of schooling, we will need to consider a few other things. First, we need to consider the costs of the school construction program. We will need to understand at the level of the region, not only the program intensity but also the capital costs of running that program. It would additionally be useful to capture data on alternative uses of this capital and expected returns to society from such spend. Costs also are a function of time, but that might be making things much more complicated. Second, in our model above we have considered only the immediate value to education as perceived by wages earned. It may not be unimaginable to expect that a higher skilled workforce would have increasing returns to education through the creation of higher value jobs through innovation and entrepreneurship. Increased economic activity may eventually lead to higher tax collections, and that may offset the calculation of cost of executing the program. 
+
+\newpage
+\begin{center}\LARGE{Question II (a)}\end{center}
+\begin{lstlisting}
+cd /Users/aiyenggar/OneDrive/code/econometrics
+local imagepath /Users/aiyenggar/OneDrive/code/articles/adv-eco-hw2-images/
+use pollution_labels, clear
+
+local mainctrl dincome dunemp dmnfcg ddens dwhite dfeml dage65 dhs ///
+	dcoll durban dpoverty blt1080 blt2080 bltold80 dplumb vacant70 ///
+	vacant80 vacrnt70 downer drevenue dtaxprop depend deduc dwelfr ///
+	dhlth dhghwy
+
+local polyctrl white2 coll3  vacant2 taxprop3 pcthlth2 white3 unemp2 ///
+	vacant3 epend2 pcthlth3 femal2 unemp3 owner2 epend3 built102 ///
+	femal3 mnfcg2 owner3 pcteduc2 built103 age2  mnfcg3 plumb2 ///
+	pcteduc3 built202 pop2  age3  income2 plumb3 pcthghw2 built203 ///
+	pop3  hs2  income3 revenue2 pcthghw3 builold2 urban2 hs3  ///
+	poverty2 revenue3 pctwelf2 builold3 urban3 coll2  poverty3 ///
+	taxprop2 pctwelf3
+           
+local keepmain dgtsp  dincome dunemp dwhite  dpoverty                
+local keeppoly income3 builold2
+\end{lstlisting}
+
+\question{II a(1)}{Estimate the relationship between changes in air pollution and housing prices not adjusting for any control variables }
+\begin{lstlisting}
+reg dlhouse dgtsp
+outreg2 using  `imagepath'IIa.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+\begin{table}
+\caption{}
+\input{adv-eco-hw2-images/IIa.tex}
+\label{IIa}
+\end{table}
+
+\question{II a(2)}{Estimate the relationship between changes in air pollution and housing prices adjusting for the main effects of the control variables listed above }
+\begin{lstlisting}
+reg dlhouse dgtsp `mainctrl'
+outreg2 using  `imagepath'IIa.tex, ctitle(mainctrl) keep(`keepmain') tex(pretty frag) dec(4) append
+\end{lstlisting}
+
+\question{II a(3)}{Estimate the relationship between changes in air pollution and housing prices adjusting for the main effects and polynomials of the control variables included in the data set }
+\begin{lstlisting}
+reg dlhouse dgtsp `mainctrl' `polyctrl'
+outreg2 using  `imagepath'IIa.tex, ctitle(mainpoly) keep(`keepmain' `keeppoly') tex(pretty frag) dec(4) append
+\end{lstlisting}
+
+\question{II a(4)}{ What do your estimates imply and do they make sense? }
+Table ~\ref{IIa} shows the results of the regression for the three models above in models 1 - 3. Kindly note that Table ~\ref{IIa} as all future tables do not show the coefficient estimates for each of the variables in the model, but only a few indicative variables have been indicated. That data is made available in the associated log file aihw2.log that has also been submitted with this document. For the baseline model in Table ~\ref{IIa}, we note a small but significant positive coefficient estimate on \verb|dgtsp| in model 1 where no controls are exercised. However once either the main controls (model 2) or the main controls and polynomial controls are exercised, we note that the coefficient estimate on \verb|dgtsp| in models 2 and 3 become insignificant. This is hardly surprising since model may suffer from a misspecification, endogeneity or omitted variable problem.
+
+\question{II a(5)}{Describe the potential omitted variables biases.}
+The differences in economic indicators included in our previous model does not capture the underlying industrial and housing trends that may be behind the economic trends. It is imaginable that a variable as the nature of dominant technology might be highly correlated with the error term of the structural equation, thus implying an omitted variable bias. In this case the coefficient estimates on \verb|dgtsp| may not be reliable.
+ 
+\question{II a(6)}{Provide indirect evidence on this ? i.e., the association between at least observable measures of economic shocks (dincome, dunemp, dmnfcg, ddens, blt1080) and changes in air pollution.  }
+\begin{lstlisting}
+estpost cor dgtsp dincome dunemp dmnfcg ddens blt1080
+esttab . using `imagepath'IIa6.tex, title(Correlation of changes in pollution level to changes in economic indicators)  replace
+\end{lstlisting}
+\input{adv-eco-hw2-images/IIa6.tex}
+Table ~\ref{IIa6} depicts the correlations between the observable measures of economic shocks and the changes in air pollution. We note here that our main regressor \verb|dgtsp| is highly correlated with several of the economic indicators. This is a clear indication of the possibility of their being another variable, not included in our model that may be affecting the levels of air pollution as well as the economic indicators.
+
+\begin{center}\LARGE{Question II (b)}\end{center}
+\question{II b(1)}{To address the concern in part a), you might want to use federal EPA pollution regulation as a potential instrumental variable for pollution changes during the 1970s.}
+We will use \verb|tsp7576| as our instrumental variable for reasons depicted in the following questions.
+
+\question{II b(2)}{What are the assumptions required for 1975-1976 regulatory status (tsp7576) to be a valid instrument for pollution changes when the outcome of interest is housing price changes? }
+We primarily need the instrument \verb|tsp7576| to affect the endogenous regressor \verb|dgtsp| but not itself appear as an exogenous regressor in the structural equation where the dependent variable is \verb|dlhouse|. As depicted in Table ~\ref{IIb2} we notice that we have support for the first condition where the correlation is negative and significant. On the other hand, we notice a slightly positive and significant correlation with the dependent variable also. However, we continue with the use of \verb|tsp7576| as the instrumental variable on account of the exogenous nature of the regulation and the impact of this on counties that were on the treshold.
+\begin{lstlisting}
+estpost cor tsp7576 dlhouse dgtsp
+esttab . using `imagepath'IIb2.tex, title(Correlation of 1975-1976 regulatory status with changes in housing prices and pollution levels\label{IIb2})  replace
+\end{lstlisting}
+\input{adv-eco-hw2-images/IIb2.tex}
+
+\question{II b(3)}{Provide indirect evidence on the validity of instrument ? e.g., relationship between the observable measures of economic shocks and the regulatory status (tsp7576). }
+Table ~\ref{IIb3} refers to the correlation of the instrumental variable \verb|tsp7576| with observable measures of economic shocks and the regulator status. Clearly, we find that our instrumental variable is uncorrelated with any of these indicators, thereby strengthening its claim as an instrument. Given this, we argue that \verb|tsp7576| may be unlikely to be significantly correlated with the error term of the structural equation.
+
+\begin{lstlisting}
+estpost cor tsp7576 dincome dunemp dmnfcg ddens blt1080
+esttab . using `imagepath'IIb3.tex, title(Correlation of regulatory status to changes in economic indicators\label{IIb3})  replace
+\end{lstlisting}
+\input{adv-eco-hw2-images/IIb3.tex}
+
+\question{II b(4)}{ Interpret your findings. }
+Table ~\ref{IIb2} and Table ~\ref{IIb3} indicate that our instrumental variable \verb|tsp7576| is significantly correlated with the endogenous variable \verb|dgtsp| but uncorrelated with other economic indicators. We may therefore conclude that the instrumental variable \verb|tsp7576|  is not significantly correlated with the error term of the structural equation, and may therefore be used as an instrumental variable in this case.
+
+\begin{center}\LARGE{Question II (c)}\end{center}
+\question{II c(1)}{Report the "first-stage" regression of air pollution changes on regulatory status (tsp7576) and the "reduced-form" regression of housing price changes on regulatory status (tsp7576), using the same three specifications you used in part a).   }
+\begin{lstlisting}
+reg dgtsp tsp7576
+outreg2 using  `imagepath'IIc1f.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+reg dlhouse tsp7576
+outreg2 using  `imagepath'IIc1r.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+
+reg dgtsp tsp7576 `mainctrl'
+outreg2 using  `imagepath'IIc1f.tex, ctitle(mainctrl) keep(`keepmain') tex(pretty frag) dec(4) append
+reg dlhouse tsp7576 `mainctrl'
+outreg2 using  `imagepath'IIc1r.tex, ctitle(mainctrl) keep(`keepmain') tex(pretty frag) dec(4) append
+
+reg dgtsp tsp7576 `mainctrl' `polyctrl'
+outreg2 using  `imagepath'IIc1f.tex, title("First Stage Regression with Instrument as tsp7576") ctitle(mainpoly) keep(`keepmain' `keeppoly') tex(pretty frag) dec(4) append
+reg dlhouse tsp7576 `mainctrl' `polyctrl'
+outreg2 using  `imagepath'IIc1r.tex, title("Reduced Form Regression with Instrument as tsp7576") ctitle(mainpoly) keep(`keepmain' `keeppoly') tex(pretty frag) dec(4) append
+\end{lstlisting}
+
+\begin{table}
+\caption{}
+\input{adv-eco-hw2-images/IIc1f.tex}
+\label{IIc1f}
+\end{table}
+
+Table ~\ref{IIc1f} displays the selected results of the first stage regression for each of the three model specifications suggested. Table ~\ref{IIc1r} displays the selected results of the reduced form regression of \verb|dlhouse| on \verb|tsp7576| for each of the three model specifications suggested. 
+
+\question{II c(2)}{Interpret your findings }
+
+\begin{table}
+\caption{}
+\input{adv-eco-hw2-images/IIc1r.tex}
+\label{IIc1r}
+\end{table}
+
+In the first stage regression as shown in Table ~\ref{IIc1f}, we observe that the effect of the instrumental variable \verb|tsp7576| on \verb|dgtsp| is negative and significant in all the three models. This implies that that the regulation had a negative and significant effect on the pollution levels. We also observe that in models 1 and 2, other economic indicators are not statistically significant. This strengthens the case for \verb|tsp7576| as an instrumental variable in that most of the variance in  \verb|dgtsp| is captured by the instrumental variable.
+\par
+The results from the reduced form regressions are demonstrated in  Table ~\ref{IIc1r}
+
+\question{II c(3)}{How does two-stage least squares use these two equations? }
+In the structural equation, when the endogenous regressor is replaced by its specification from the first stage equation, we get an equation where the regressand is expressed as a function of the instrumental variables and other variables. It turns out that the coefficient estimate in 2SLS for the effect of years of schooling on wages is nothing but the ratio of the coefficient estimate of the instrumental variable in the reduced form regression to the coefficient estimate of the instrumental variable in the first stage regression. We verify that this is indeed the case for each of the three model specifications as follows in Table ~\ref{calc2sls}.
+\par
+\begin{center}
+\begin{longtable}{|p{0.6\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|}
+\hline&\textbf{baseline}&\textbf{mainctrl}&\textbf{mainpoly}\\\hline
+\endfirsthead
+\hline&\textbf{baseline}&\textbf{mainctrl}&\textbf{mainpoly}\\\hline
+\endhead
+
+Reduced Form \verb|tsp7576| coefficient estimate ($\alpha$, Table ~\ref{IIc1r})&0.0364&0.0230&0.0258\\\hline
+First Stage \verb|tsp7576| coefficient estimate ($\beta$, Table ~\ref{IIc1f})&-9.8540&-10.2397&-9.4187\\\hline
+$\alpha/\beta$&-0.0037&-0.0022&-0.0027\\\hline
+2SLS coefficient estimate for \verb|dgtsp| (Table ~\ref{IIa})&-0.0037&-0.0022&-0.0027\\\hline
+
+\caption {Calculating 2SLS Estimates from First Stage and Reduced Form Regressions}
+\label{calc2sls}\\
+\end{longtable}
+\end{center}
+
+\question{II c(4)}{Now estimate the effect of air pollution changes on housing price changes by two-stage least squares using the regulatory status indicator (tsp7576) as an instrument for the three specifications.  Interpret the results.}
+
+We use the Stata command \verb|ivregress 2sls| to perform the two stage least squares regression with instrumental variables for the sake of brevity. The results are presented in both Tables ~\ref{IIa} and ~\ref{IIc} to contrast the results of instrumenting with \verb|tsp7675| against no instrument (Table ~\ref{IIa}) and against instrumenting with \verb|tsp75| (Table ~\ref{IIc})
+
+\begin{lstlisting}
+ivregress 2sls dlhouse (dgtsp = tsp7576)
+outreg2 using  `imagepath'IIa.tex, ctitle(baseline) tex(pretty frag) dec(4) append
+outreg2 using  `imagepath'IIc.tex, ctitle(baseline) tex(pretty frag) dec(4) replace
+ivregress 2sls dlhouse (dgtsp = tsp7576) `mainctrl'
+outreg2 using  `imagepath'IIa.tex, ctitle(mainctrl) keep(`keepmain') tex(pretty frag) dec(4) append
+outreg2 using  `imagepath'IIc.tex, ctitle(mainctrl) keep(`keepmain')  tex(pretty frag) dec(4) append
+ivregress 2sls dlhouse (dgtsp = tsp7576) `mainctrl' `polyctrl'
+outreg2 using  `imagepath'IIa.tex, title("Simple Regression (models 1-3) vs Instrumenting with tsp7576 (models 4-6)") ctitle(mainpoly) keep(`keepmain' `keeppoly') tex(pretty frag) dec(4) append
+outreg2 using  `imagepath'IIc.tex,  ctitle(mainpoly) keep(`keepmain' `keeppoly') tex(pretty frag) dec(4) append
+estat endog
+estat firststage
+\end{lstlisting}
+
+We observe in Table ~\ref{IIa} that models 4, 5 and 6 all show negative and significant coefficient estimates for \verb|dgtsp|. This implies that housing prices are negatively correlated with change in pollution levels. This is indeed the result we would expect. However we also note that in models 1, 2, and 3 which did not use \verb|tsp7576| as an instrumental variable, the coefficient estimates for  \verb|dgtsp| were positive for each of the three models but significant only for model 1. As we have argued before, this model suffered from endogeneity and an omitted variable bias. We are confident, however about the robustness of the estimates in models 4, 5 and 6.
+
+\question{II c(5)}{Now do the same analysis using the 1975 regulatory status indicator (tsp75) as an instrumental variable. }
+We again use the Stata command \verb|ivregress 2sls| to perform the two stage least squares regression with \verb|tsp75| as the instrumental variable. The results of this 2sls regression for the three specifications have been juxtaposed along with that when \verb|tsp7576| was used as the instrumental variable in Table ~\ref{IIc}
+\begin{table}
+\caption{}
+\input{adv-eco-hw2-images/IIc.tex}
+\label{IIc}
+\end{table}
+
+\begin{lstlisting}
+ivregress 2sls dlhouse (dgtsp = tsp75)
+outreg2 using  `imagepath'IIc.tex, ctitle(baseline) tex(pretty frag) dec(4) append
+ivregress 2sls dlhouse (dgtsp = tsp75) `mainctrl'
+outreg2 using  `imagepath'IIc.tex, ctitle(mainctrl) keep(`keepmain') tex(pretty frag) dec(4) append
+ivregress 2sls dlhouse (dgtsp = tsp75) `mainctrl' `polyctrl'
+outreg2 using  `imagepath'IIc.tex,  title("Instrument is tsp7576 for models 1-3 and tsp75 for models 4-6") ctitle(mainpoly) keep(`keepmain' `keeppoly') tex(pretty frag) dec(4) append
+estat endog
+estat firststage
+\end{lstlisting}
+
+\question{II c(6)}{Compare the findings. }
+From Table ~\ref{IIc}, we observe that both instruments suggest similar results though the extent of the negative effect is marginally lower when \verb|tsp75| is used as the instrumental variable. This result is expected because \verb|tsp7576| captures both 1975 and 1976 EPA regulated counties whereas \verb|tsp75| only captures 1975 EPA regulated counties. Since the regulation would have naturally been enforced at a higher rate through 1976, we would expect a greater divergence between the house prices in highly polluted areas vis-a-vis less polluted areas.
+
+
+\begin{center}\LARGE{Question II (d)}\end{center}
+\question{II d(1)}{Provide a concise and coherent summary of your results.  }
+In order to understand the effect of air pollution on housing prices, we utilize an exogenous event (the 1975 federal clean air regulation) to disentangle the inherent endogeneity in modeling house prices as a function of air pollution levels and other economic indicators. We utilize the instrumental variable approach, where the instrumental variable used is the dummy indicating whether a county was regulated by the EPA in the year 1975 or in the years 1975 and 1976. Clearly this instrument has the qualities of of being correlated with the levels of air pollution but not directly correlated with housing prices. Table ~\ref{IIc} demonstrates our findings that pollution levels are indeed negatively correlated with house prices. Our results are robust even when main economic control variables are included, and when both main and polynomials of main economic indicators are used as control variables. Finally, we find that both \verb|tsp75| and \verb|tsp7576| serve as good instruments and yield similar results.
+
+\question{II d(2)}{Discuss the "credibility" of the research designs underlying the results. }
+As discussed above, we demonstrate that the instruments chosen satisfy the required conditions. Secondly we also demonstrate that our results are consistent across the three specifications and over the two instrumental variables used. Specifically we are able to ascertain a shift in pollution levels but not a shift in house prices because of the exogenous event that was the 1975 clean air regulation. With the data, as well as with the argument, we conclude that our results are robust.
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+
+\end{document}

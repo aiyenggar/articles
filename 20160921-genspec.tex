@@ -1,0 +1,141 @@
+%20160921-genspec.tex
+\documentclass[12pt]{article}
+\usepackage{times}
+\usepackage{amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{stata}
+\usepackage{listings}
+\usepackage[a4paper]{geometry}
+\geometry{
+ total={160mm,247mm},
+ left=25mm,
+ top=25mm,
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+	
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead{}
+\fancyfoot{}
+\lhead{Review: Generalist-Specialist Problem}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Ashwin Iyenggar (1521001)}
+
+\begin{document}
+\title{Review: Progress and Path Ahead in the Generalist Specialist Question}
+\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
+
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Summary}\label{S:Summary}
+todo 20160921: Write up the section on approaches tried, it will give me a good understanding of where I started and what I have attempted. And lessons to be gained might become clear.
+
+Second, I need to read the three articles referenced to pick up ideas on what might be a good problem to work on. Don't take forever to do this, and rough and dirty summary and quick reading would help.
+
+The objective of writing this article is take stock of the progress made on the generalist specialist project and confront the challenges that confront us.
+
+The context has been set to be that of an R\&D laboratory. We may need further details on why this is an appropriate setting for the question concerned, and what characterizes an R\&D laboratory in our simulation setting.
+
+The next question is about what the research question is. Is it about when a generalist performs better and when a specialist performs better? Why is it appropriate to study this problem at unit level? So we ask the question about the research question and about the level of analysis.
+
+Next we ask why the question is interesting to investigate. 
+
+Assuming that we know the research question and why it is important to investigate, and also what is our desired level of analysis, we focus on the question of why a simulation model has been chosen for the study.
+
+Given the above, an understanding of prior literature and a possible addition to the existing conversation has to be justified.
+
+\section{Approaches Tried}
+2016-03-07
+
+ How does the problem scale up to a team situation? Parallel vs Sequential search
+ Can we do: 1-specialist, 1-generalist, 1-specialist and 1-generalist comparison? Problem size has to remain same? How do you ensure a like to like comparison? One kind of team versus another type of team?
+ Implement: 1 specialist + 1 generalist search independently. Compare notes at the end of each time period. Choose the better one, and search again
+ Ensure in all you do, that the outcome is not baked into the assumptions or simulation setup
+ In prior art, uncertainty has been modelled as changing the entire dependency matrix at the end of 25 period. This amounts to changing all the laws of nature. Somewhat unrealistic. What is a more realistic way to model uncertainty?
+ TODO Implement GREEDY for multiple depth
+ Compare results where both generalist and specialist search is greedy (but over different depths) across K
+ Review \cite{Knudsen2014} \cite{Melero2015} \cite{Almirall2010}
+2016-02-29
+
+ Increase N experiment for larger N > 24, implying a larger n
+ Increase Depth for Specialist
+ To try to help out the specialist, keep k at moderate levels
+ How else can the situation be bettered for the specialist?
+ Multiple Specialists? Marginal Addition of Specialist vs Generalist?
+ Lower (per unit) cost of specialist? Where would this apply? Where not? Higher economies of specialist's knowledge?
+ What aspects of the real world are not being captured?
+ Can you reduce the generalist's search space to smaller than N?
+ Review the code for correctness
+
+ Choose log scale in the x-axis in the graphs so that the initial periods show up more prominently
+
+ Collect System Fitness Data at every attempted flip aka time period
+ Plot for a given N, given K, the mapping of fitness to timeperiod for each search algorithm
+ Could do a 3D graph with K added as another dimension (you will get a surface)
+ On a single run of a particular search, collect statistics at attemptedFlips = 200, 400, and so on
+ Run each of the 5 searches with the same landscape
+ Learn timeline charting from the Levinthal paper that Sai shared today
+ Set number of landscapes to 500
+ Think about intersecting curves and what they may mean
+
+ Debug the 3 basic search methods
+
+ Tested the neighbours for each of the three paths
+ Statistically limit Greedy searches to typical Steepest
+ Random + Steepest as an atomic operation. Accept only if better than existing configuration
+ Limit Greedy Attempted Flips so as to be able to compare Greedy and Steepest with similar resources
+ 1 Hamming Distance peak configuration as the starting point for a new search on the same configuration
+ Include memory
+ Simulate the real world
+ Reasons why or why not the current NK system does not model the real world
+ Review the steps on each path distance 1 and 2, Cumulative True and False, SearchMethod each of 3
+
+
+2015-09-02
+I was debugging the logs of each of 5 paths: greedy 1, greedy 2, steepest 1, steepest 2, randomthensteepest 2 (all assuming cumulative true)
+
+I figured out why randomthensteepest was returning low values. My terminating condition is if the consecutive iterations yield the same peak. However in a randomised first step, this is likely to be sub-optimal. I need to explore all random starting points before I conclude my search.
+
+That takes us to the interesting question of how does the organization know that it is at a global optimum? Maybe it never does, and keeps trying. If evolution were a basic law of life, then the ones at the global max are destined to walk down and those that are not are destined to walk somewhere up. That brings us to the interesting conundrum of whether to even try, when there is a non trivial chance that you are already at your peak. Maybe it is that the real peak is not the peak itself but the intensity of the journey undertaken.
+
+From notes of Aug 2015
+What has been done so far?
+Initially simulated NK model - Steepest, then Greedy. Then we looked at 1 and 2 Hamming Distance jumps. In three configurations - Steepest (1\&2), Greedy (1\&2), Random, then Steepest. What did you find? What were the two graphs that you had sent Sai last week?
+What was the question that came out: Why was Greedy having many more comparisons?
+We needed to try and model memory - by setting an initial state from a well known previous state
+
+What are we trying to do?
+Looking at how to optimally compose a team of generalists and specialists so as to maximise system fitness. Remember Sai spoke of the example of needing to climb down a fitness slope to be able to get to a higher peak (there is no path from a local max to a higher local max that does not go through a trough)
+
+
+From Jul 2015
+What is the problem? Understand better how a team should be constructed between generalists and specialists to maximise output
+Starting point: A team of one. How would a specialist approach a complex landscape? How would a generalist approach a complex landscape? What is the goal? To maximise output. Does the team exactly know what that means? No. Why use simulation? You can hypothesise on a few models, program some parameters and test how it works. Given some assumptions and a model, you can simulate situations and try and understand the outcomes
+
+Things to think about - what are the objectives of the model? What things does the specialist know? Particularly what does the specialist or generalist not know? What aspects of nature play out with or without his/her will? Clearly the team is making some assumptions in going forward with a strategy. Can you show that somethings come up naturally with or without the volition of the team members?
+
+I would like to focus the model on two things:
+a) What simplifications/approaches are the team members likely to take to explore the territory
+b) What natural laws play out no matter what
+
+\section{Summary of Issues}
+
+\section{Potential Extensions}
+
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+\end{document}

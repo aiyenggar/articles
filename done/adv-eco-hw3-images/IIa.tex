@@ -1,0 +1,33 @@
+\begin{center}
+\begin{tabular}{lcccccc}
+\multicolumn{7}{c}{\begin{large}Simple Regression (models 1-3) vs 2SLS Instrumenting with tsp7576 (models 4-6)\end{large}} \\ \hline
+ & (1) & (2) & (3) & (4) & (5) & (6) \\
+VARIABLES & baseline & mainctrl & mainpoly & baseline & mainctrl & mainpoly \\ \hline
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} \\
+dgtsp & 0.0010*** & 0.0002 & 0.0001 & -0.0037** & -0.0022** & -0.0027*** \\
+\vspace{4pt} & \begin{footnotesize}(0.0002)\end{footnotesize} & \begin{footnotesize}(0.0002)\end{footnotesize} & \begin{footnotesize}(0.0002)\end{footnotesize} & \begin{footnotesize}(0.0014)\end{footnotesize} & \begin{footnotesize}(0.0009)\end{footnotesize} & \begin{footnotesize}(0.0010)\end{footnotesize} \\
+dincome &  & 0.0001*** & 0.0001*** &  & 0.0001*** & 0.0001*** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.0000)\end{footnotesize} & \begin{footnotesize}(0.0000)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.0000)\end{footnotesize} & \begin{footnotesize}(0.0000)\end{footnotesize} \\
+dunemp &  & -0.8137*** & -1.7407*** &  & -0.8244*** & -1.9775*** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.2241)\end{footnotesize} & \begin{footnotesize}(0.4120)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.2441)\end{footnotesize} & \begin{footnotesize}(0.4617)\end{footnotesize} \\
+dwhite &  & -0.5759*** & -0.4610*** &  & -0.5547*** & -0.3770** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.0894)\end{footnotesize} & \begin{footnotesize}(0.1353)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.0977)\end{footnotesize} & \begin{footnotesize}(0.1520)\end{footnotesize} \\
+dpoverty &  & -0.6130*** & -0.9110*** &  & -0.6876*** & -0.8305** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.1604)\end{footnotesize} & \begin{footnotesize}(0.3455)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.1769)\end{footnotesize} & \begin{footnotesize}(0.3821)\end{footnotesize} \\
+downer &  & -0.0953 & -0.5217*** &  & -0.0946 & -0.4811** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.0895)\end{footnotesize} & \begin{footnotesize}(0.1847)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(0.0975)\end{footnotesize} & \begin{footnotesize}(0.2042)\end{footnotesize} \\
+owner2 &  &  & -5.2890*** &  &  & -4.8432*** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(1.5944)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(1.7654)\end{footnotesize} \\
+age2 &  &  & 51.6218*** &  &  & 52.4923*** \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(13.3330)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(14.7103)\end{footnotesize} \\
+poverty2 &  &  & -10.1501 &  &  & -9.3690 \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(6.4216)\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}(7.0886)\end{footnotesize} \\
+Constant & 0.2822*** & 0.2949*** & 0.3303** & 0.2453*** & 0.2295*** & 0.2771* \\
+ & \begin{footnotesize}(0.0057)\end{footnotesize} & \begin{footnotesize}(0.0595)\end{footnotesize} & \begin{footnotesize}(0.1439)\end{footnotesize} & \begin{footnotesize}(0.0129)\end{footnotesize} & \begin{footnotesize}(0.0691)\end{footnotesize} & \begin{footnotesize}(0.1598)\end{footnotesize} \\
+\vspace{4pt} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} & \begin{footnotesize}\end{footnotesize} \\
+Observations & 1,000 & 995 & 995 & 1,000 & 995 & 995 \\
+ $R^2$ & 0.0166 & 0.5534 & 0.6321 &  & 0.4548 & 0.5153 \\ \hline
+\multicolumn{7}{c}{\begin{footnotesize} Standard errors in parentheses\end{footnotesize}} \\
+\multicolumn{7}{c}{\begin{footnotesize} *** p$<$0.01, ** p$<$0.05, * p$<$0.1\end{footnotesize}} \\
+\end{tabular}
+\end{center}
