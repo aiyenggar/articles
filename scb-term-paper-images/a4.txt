@@ -1,0 +1,19 @@
+Effects of IPR strength and Localization of Inventions on Modularity\label{a4}						
+	(1)	(2)	(3)	(4)	(5)	(6)
+VARIABLES	log(modular)	log(modular)	log(modular)	log(modular)	log(modular)	log(modular)
+						
+inventorIpr	0.02		0.07***		0.05**	0.06***
+	(0.04)		(0.02)		(0.02)	(0.02)
+assigneeIpr		0.00	-0.06*		-0.03	0.01
+		(0.04)	(0.03)		(0.04)	(0.02)
+assigneeLocal				0.26***	0.23**	0.94**
+				(0.10)	(0.11)	(0.42)
+intrInviprLocal						-0.07
+						(0.05)
+Constant	0.99***	1.19***	1.13***	0.98***	0.90**	0.26
+	(0.36)	(0.33)	(0.35)	(0.05)	(0.39)	(0.30)
+						
+Observations	4,249,896	4,240,430	4,239,225	4,252,508	4,239,225	4,239,225
+R-squared	0.00	0.00	0.00	0.00	0.00	0.00
+Robust standard errors in parentheses						
+*** p<0.01, ** p<0.05, * p<0.1						
