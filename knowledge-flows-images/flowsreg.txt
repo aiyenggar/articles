@@ -1,0 +1,48 @@
+		(1)	(2)	(3)
+VARIABLES	LABELS	Citations Received	Citations Received	Citations Received
+				
+cit_made_localinternal	Local-Internal	0.00004***		
+		(0.00001)		
+cit_made_localexternal	Non-Local-External	0.00001**		
+		(0.00000)		
+cit_made_nonlocalinternal	Non-Local-Internal	-0.00001		
+		(0.00000)		
+cit_made_nonlocalexternal	cit_made_nonlocalexternal	-0.00000***		
+		(0.00000)		
+cit_made_other	Other	-0.00000**		
+		(0.00000)		
+lnpatents	Log Patents	0.05714*		
+		(0.03159)		
+lnpool	Log Patent Pool	0.60177***		
+		(0.04059)		
+d2002	d2002	0.32531***		
+		(0.08286)		
+d2003	d2003	1.20748***		
+		(0.07289)		
+d2004	d2004	1.58020***		
+		(0.07030)		
+d2005	d2005	2.15519***		
+		(0.06787)		
+d2006	d2006	2.60227***		
+		(0.06692)		
+d2007	d2007	3.13892***		
+		(0.06630)		
+d2008	d2008	3.28237***		
+		(0.06694)		
+d2009	d2009	3.59788***		
+		(0.06775)		
+d2010	d2010	3.96862***		
+		(0.06843)		
+d2011	d2011	4.28772***		
+		(0.06963)		
+d2012	d2012	4.53439***		
+		(0.07136)		
+Constant	Constant	-5.71206***	0.74962***	5.42898***
+		(0.35270)	(0.13670)	(0.16273)
+				
+Observations		1,284	1,284	1,284
+Number of regionid		107	107	107
+Region FE		No	No	No
+Year Dummy		Yes	Yes	Yes
+Standard errors in parentheses				
+*** p<0.01, ** p<0.05, * p<0.1				

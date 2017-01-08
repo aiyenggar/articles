@@ -1,0 +1,51 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{2}{c}}
+\caption{Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+                    &\multicolumn{1}{c}{Citations Received}&\multicolumn{1}{c}{Citations Received}\\
+\hline
+Citations Received  &                     &                     \\
+Citations Made to [Same Region, Same Assignee]&   0.0000304\sym{***}&    0.000213         \\
+                    &      (5.56)         &      (0.00)         \\
+[1em]
+Citations Made to [Same Region, Different Assignee]&  0.00000743\sym{*}  &   0.0000599         \\
+                    &      (2.37)         &      (0.00)         \\
+[1em]
+Citations Made to [Different Region, Same Assignee]&-0.000000348         &  0.00000249         \\
+                    &     (-0.09)         &      (0.00)         \\
+[1em]
+Citations Made to [Different Region, Different Assignee]& -0.00000296\sym{***}&   0.0000135         \\
+                    &     (-5.55)         &      (0.00)         \\
+[1em]
+Citations Made to [Other]& -0.00000169         &   0.0000469         \\
+                    &     (-1.54)         &      (0.01)         \\
+[1em]
+Log (Num Patents)   &      0.0132         &      -0.462         \\
+                    &      (0.60)         &     (-0.00)         \\
+[1em]
+Log (Patent Pool Size)&       0.642\sym{***}&       2.382         \\
+                    &     (19.36)         &      (0.01)         \\
+[1em]
+Constant            &      -5.636\sym{***}&      -41.82         \\
+                    &    (-23.45)         &         (.)         \\
+\hline
+ln\_r                &                     &                     \\
+Constant            &       0.390\sym{**} &                     \\
+                    &      (3.07)         &                     \\
+\hline
+ln\_s                &                     &                     \\
+Constant            &       4.448\sym{***}&                     \\
+                    &     (25.14)         &                     \\
+[1em]
+Year Dummy          &         Yes         &         Yes         \\
+[1em]
+Region Fixed Effects &          No         &         Yes         \\
+\hline
+Observations        &        2624         &        2624         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}
