@@ -1,28 +1,17 @@
+# Using reinforcement learning to a game of repeated matching
+# Modified from a version obtained from Phanish Puranam
+
 import random
 import numpy as np
-import matplotlib.pyplot as plt
-import csv # for excel output
+import csv 
 
-#CHOICE PROCESS
-def choose(attraction,t):
-    roulette=random.random() # this picks a random number between 0 and 1
-    #print roulette
-    if attraction[t]>roulette: # choices are made by comparing the random number to the agent's prior
-        choice= 0
+def choice(attraction,t):
+    retval=random.random() # this picks a random number between 0 and 1
+    if attraction[t]>retval: # compare to the agent's prior
+        retval= 0
     else:
-        choice= 1
-    return choice
-
-def t_by_t_plot(x, y, title, axe, fontsize=12):
-    '''
-    Plots period by period
-    '''
-    axe.plot(x, y, color='red')
-    ymin = np.min(y)
-    ymax = np.max(y)
-    axe.set(ylim=(ymin - 0.05*(ymax-ymin), ymax + 0.05*(ymax-ymin)))
-    axe.set_xlabel('t', fontsize=fontsize)
-    axe.set_title(title, fontsize=fontsize, fontweight="bold")    
+        retval= 1
+    return retval
 
 def learning(phi):
     if (phi < 0 or phi > 1):
@@ -48,10 +37,8 @@ def position(p):
         return "RC"
     return "R"
     
-#SIMULATION PARAMETERS
-T=100 #number of periods to simulate the model
-NP=1000 #number of pairs of agents
-#AGENT'S BELIEFS
+num_periods=100 #number of periods to simulate the model
+num_pairs=1000 #number of pairs of agents
 
 pAs=[0.5, 0.75, 0.95]
 pBs=[0.05, 0.5, 0.95]
@@ -65,35 +52,32 @@ for pB in pBs:
                 modelName="F["+position(pA)+"-"+learning(phiA)+"] U["+position(pB)+"-"+learning(phiB)+"]"
                 models.append([modelName, pA, phiA, pB, phiB])
 
-allResults = np.zeros((T,len(models)))
+allResults = np.zeros((num_periods,len(models)))
 iteration = 0
 for current in models:
     phi1 = current[2]
     phi2 = current[4]
-    attA=np.zeros((T+1,1))
-    attB=np.zeros((T+1,1))
-    attA[0] = current[1]
-    attB[0] = current[3]
-    
-    
-    #DEFINING RESULTS VECTORS (FOR STORAGE)
-    # we will produce per agent, one vector of length T and breadth=2 that reports average across NP pairs of agents per period and cumulative performance  
-    org_perf=np.zeros((T,NP)) # performance over time for each pair of agents (starts full of zeroes, and will be filled over time as the model runs)
-    org_cumperf=np.zeros((T,NP)) # cumulative performance over time for each pair of agents
-    result=np.zeros((T,3)) # this stores the aggregated results which we will show on graphs
+    prefA=np.zeros((num_periods+1,1))
+    prefB=np.zeros((num_periods+1,1))
+    prefA[0] = current[1]
+    prefB[0] = current[3]
+
+    org_perf=np.zeros((num_periods,num_pairs)) # fill zeors for all time
+    org_cumperf=np.zeros((num_periods,num_pairs)) # cumulative performance over time for each pair of agents
+    result=np.zeros((num_periods,3)) # this stores the aggregated results which we will show on graphs
            
-    #DEFINING PAYOFF SURFACE (MATCHING GAME)
+    #mapoff matrix
     R=np.zeros((2,2)) # 2 by 2 matrix full of zeroes
     R[0][0]=1 # Payoff = 1 when both agents chose 0
     R[1][1]=1 # Payoff = 1 when both agents chose 1
     
     
-    for a in range(NP): # for each pair of agent
+    for a in range(num_pairs): # for each pair of agent
        
-        for t in range(T): # for each period
-            choice1=choose(attA,t) # agent 1 makes a choice for period t
-            choice2=choose(attB,t) # agent 2 makes a choice for period t
-            payoff=R[choice1][choice2] # the pair gets a payoff for these choices
+        for t in range(num_periods): # for each period
+            choice1=choice(prefA,t) # agent 1 choice at t
+            choice2=choice(prefB,t) # agent 2 choice at t
+            payoff=R[choice1][choice2] 
             
             org_perf[t][a]=payoff # this payoff constitutes the org's performance at time t...
             # ... and contributes to the org's cumulative performance:
@@ -105,42 +89,29 @@ for current in models:
             # The 2 agents update their priors based on what the payoff was
             if payoff==1:
                 if choice1==0:
-                    attA[t+1]=attA[t]+phi1*(1-attA[t])
+                    prefA[t+1]=prefA[t]+phi1*(1-prefA[t])
                 else:
-                    attA[t+1]=attA[t]-phi1*attA[t]
+                    prefA[t+1]=prefA[t]-phi1*prefA[t]
                 if choice2==0:
-                    attB[t+1]=attB[t]+phi2*(1-attB[t])
+                    prefB[t+1]=prefB[t]+phi2*(1-prefB[t])
                 else:
-                    attB[t+1]=attB[t]-phi2*attB[t] 
+                    prefB[t+1]=prefB[t]-phi2*prefB[t] 
             if payoff==0:
                 if choice1==0:
-                    attA[t+1]=attA[t]-phi1*attA[t]
+                    prefA[t+1]=prefA[t]-phi1*prefA[t]
                 else:
-                    attA[t+1]=attA[t]+phi1*(1-attA[t])
+                    prefA[t+1]=prefA[t]+phi1*(1-prefA[t])
                 if choice2==0:
-                    attB[t+1]=attB[t]-phi2*attB[t]
+                    prefB[t+1]=prefB[t]-phi2*prefB[t]
                 else:
-                    attB[t+1]=attB[t]+phi2*(1-attB[t])
-              
-              
-    #PRODUCE RESULTS
+                    prefB[t+1]=prefB[t]+phi2*(1-prefB[t])
+
     
-    for t in range(T):
+    for t in range(num_periods):
         result[t][0]=t+1
-        result[t][1]=float(np.sum(org_perf[t,:]))/NP
-        result[t][2]=float(np.sum(org_cumperf[t,:]))/NP
+        result[t][1]=float(np.sum(org_perf[t,:]))/num_pairs
+        result[t][2]=float(np.sum(org_cumperf[t,:]))/num_pairs
         allResults[t][iteration] = result[t][1]
-        
-    
-#    plt.style.use('ggplot') # Setting the plotting style
-#    
-#    fig = plt.figure(figsize=(8.27, 11.69), dpi=100)
-#    ax1 = plt.subplot2grid((6,5),(0,1), colspan = 3)
-#    t_by_t_plot([x[0] for x in result], [x[1] for x in result], "Performance", ax1, fontsize=12)
-#    
-#    fig = plt.figure(figsize=(8.27, 11.69), dpi=100)
-#    ax1 = plt.subplot2grid((6,5),(0,1), colspan = 3)
-#    t_by_t_plot([x[0] for x in result], [x[2] for x in result], "Cumulative Performance", ax1, fontsize=12)
     
     iteration += 1
 
