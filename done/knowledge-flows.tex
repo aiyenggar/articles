@@ -14,8 +14,12 @@
 \usepackage{textcomp}
 \usepackage{stata}
 \usepackage{listings}
-\usepackage[a4paper]{geometry}
+\usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{verbatim}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -23,11 +27,7 @@
     urlcolor=cyan,
     citecolor=magenta,
 }
-\geometry{
- total={150mm,247mm},
- left=25mm,
- top=25mm,
-}
+
 \lstset{
 basicstyle=\ttfamily,
 columns=flexible,
@@ -42,24 +42,43 @@ breaklines=true
 \fancyhf{}
 \lhead{Heterogeneity in knowledge flows across regions}
 \rfoot{Page \thepage  \ of \pageref{LastPage}}
-\rhead{Iyenggar}
+\rhead{Iyenggar and Yayavaram}
 
 \begin{document}
 \title{Heterogeneity in knowledge flows across regions:\\  Investigating patterns and mechanisms}
-\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
-
+\author{Ashwin Iyenggar, Sai Yayavaram} 
 
 \maketitle
 \thispagestyle{empty}
 
 \begin{abstract}
-We analyze the pattern of knowledge flows by geographical region and by firm for seven prominent regions. We demonstrate that locations display significant heterogeneity with regard to the relative proportions of local and non-local knowledge flows, and within firm and across firm knowledge flows. Specific patterns idiosyncratic distribution of flows are identified by location and suggestions are made for furthering of theory on the causal contributors of knowledge flows.
+\noindent We analyze the pattern of knowledge flows by geographical region and by firm for seven prominent regions. We demonstrate that locations display significant heterogeneity with regard to the relative proportions of local and non-local knowledge flows, and within firm and across firm knowledge flows. Specific patterns idiosyncratic distribution of flows are identified by location and suggestions are made for furthering of theory on the causal contributors of knowledge flows.
 \end{abstract}
 
+\doublespacing
+
+\newpage
+
+\section{New Results}
+\begin{center}
+\begin{spacing}{0.9}
+\input{knowledge-flows-images/eflowsreg.tex}
+\end{spacing}
+\end{center}
+
+\begin{comment}
+\begin{landscape}
+\begin{center}
+\end{center}
+\end{landscape}
+\end{comment}
+
+\newpage
 \section{Introduction}\label{S:Introduction}
 The agglomeration characteristics of economic regions have been highlighted by scholars since long\citep{Marshall1890}. More recently, scholars have demonstrated through numerous studies that patent citations provide a paper trail of evidence for the existence the knowledge spillovers in economic regions \citep{Jaffe1993, Almeida1999},  the effects of inventor mobility (e.g., \cite{Almeida1999}), of Intellectual Property Rights regime of locations (e.g., \cite{Zhao2006}) and of the role of international geography (e.g., \cite{Singh2007}) on knowledge spillovers. Knowledge spillovers is observed in practice however, to be highly heterogenous across locations, firms and legal regimes. The question of the causal mechanisms leading to knowledge spillovers remains largely unresolved, despite the enormous progress made by prior scholars. In this article, we investigate the patterns of knowledge flow as evidenced by patent citations across geographic regions around the world and use our findings to ascertain plausible causal factors leading to the heterogeneity in knowledge flows.
 \\\\\
-Literature in the strategy area has highlighted the importance of innovation as a source of competitive advantage in firms. Scholars have highlighted that firms have tended to adopt two distinct strategies in seeking to capture greater advantages in knowledge flows: a) geographic clustering \citep{Porter2003}, and b) the globalization of R\&D \citep{Almeida1996}. Scholars have in the past conclusively demonstrated that the bay area in California  demonstrates strong  cluster characteristics in that there are strong flows of knowledge within and across firms from within the same geographical area. While the benefits to such geographical localization of knowledge flows \citep{Porter2003} has been celebrated as an important aspect of the superior economic performance of Silicon Valley, there has been little work that has explored the same for  emerging innovation regions of Bangalore, Beijing, Israel and Austin. In this article, we analyze the nature of knowledge flows at the level of the region in aggregate rather than focus on specific industries of technologies as have been done in past studies \citep{Lecocq2016}.  In order to understand if these emerging innovation regions are trending toward clustering \citep{Jaffe1993} or globalization or knowledge flows or both, we categorize all knowledge flows along two dimensions\footnote{I am grateful to Prof. Sai Yayavaram for having proposed this framework as being an appropriate one for analyzing patent flows. To him should go the credit for much of the ideation and structure of this project. I however, singly own the responsibility for errors and omissions}: a) as a relationship between the geographic region of the creator of the knowledge and the geographic region of the user of the knowledge, and b) as a relationship between the firms that create the knowledge (assignee of the cited patent) and those that use the knowledge (assignee of the citing patent). This classification allows us to see knowledge flows in four mutually exclusive but collectively exhaustive categories as illustrated in Table ~\ref{table:matrix}\\
+Literature in the strategy area has highlighted the importance of innovation as a source of competitive advantage in firms. Scholars have highlighted that firms have tended to adopt two distinct strategies in seeking to capture greater advantages in knowledge flows: a) geographic clustering \citep{Porter2003}, and b) the globalization of R\&D \citep{Almeida1996}. Scholars have in the past conclusively demonstrated that the bay area in California  demonstrates strong  cluster characteristics in that there are strong flows of knowledge within and across firms from within the same geographical area. While the benefits to such geographical localization of knowledge flows \citep{Porter2003} has been celebrated as an important aspect of the superior economic performance of Silicon Valley, there has been little work that has explored the same for  emerging innovation regions of Bangalore, Beijing, Israel and Austin. In this article, we analyze the nature of knowledge flows at the level of the region in aggregate rather than focus on specific industries of technologies as have been done in past studies \citep{Lecocq2016}.  In order to understand if these emerging innovation regions are trending toward clustering \citep{Jaffe1993} or globalization or knowledge flows or both, we categorize all knowledge flows along two dimensions: a) as a relationship between the geographic region of the creator of the knowledge and the geographic region of the user of the knowledge, and b) as a relationship between the firms that create the knowledge (assignee of the cited patent) and those that use the knowledge (assignee of the citing patent). This classification allows us to see knowledge flows in four mutually exclusive but collectively exhaustive categories as illustrated in Table ~\ref{table:matrix}\\
+
 
 \begin{table}
 \begin{centering}
@@ -197,117 +216,420 @@ We use the \verb|application.tsv| file to determine the year of application of t
 \end{figure}
 
 \section{Analysis of flows}\label{S:Analysis}
+
 Table ~\ref{table:selected-citations} captures the number of citing patent-inventor-assignee to cited patent-inventor-assignee flows that form the dataset on which further investigation is conducted. Starting with 23,825,110 entries, we drop duplicate citations between the same patents and the same regions. This leaves us with 5,820,864 entries. In determining if the citing patent assignee and the cited patent assignee match, we drop all those entries where assignee information is unavailable for either side. That leaves us with  5,058,782 entries. We similarly drop those entries where either location region is unknown. We do so because it would seem incorrect to conclude that two locations differ when one location is undefined. After this step, we have 4,661,422 entries in our data set where conclusions can be clearly made about whether the assignees match and if the locations match between citing patent inventors and cited patent inventors. With this dataset, we calculate the normalized scores in our 2x2, and two aggregate measures - the first for same location flows across assignees, and the second for same assignee flows across locations. All six scores are expressed in percentages rounded to the nearest integer. The results are plotted in linear scale and are evident in the following graphs.
+
 \newpage
 \section{Preliminary Results}
 Figure ~\ref{fig:SameRegionFlows} clearly indicates that the phenomenon of knowledge spillovers is strongly evident in the two California locations in our sample, and to a smaller extent in the extended Boston region. But clearly, the localization of knowledge spillovers is not observed in the three emerging country locations of Bangalore, Tel Aviv and Beijing. Figure {fig:SameRegionDiffAssigneeFlows} reiterates the gulf between the two California locations and the rest. On the other hand from Figure ~\ref{fig:SameAssigneeFlows}, we note that the Bangalore region has seen an increasing share of flows to non-local but internal flows. This maybe proof of an increasing amount of research being done in Bangalore by global multinationals for their corporate headquarters. It is also interesting to note that while Beijing and Bangalore are at a similar level (14 percent) in 2012 on this count, Bangalore has seen a steady increase while Beijing has somewhat stalled since 2005.
 \\\\
-Additionally, Figure ~\ref{fig:DiffRegionDiffAssigneeFlows} demonstrate the stark difference between Tel Aviv-Yafo and San Jose-Sunnyvale-Santa Clara, CA on the extent of non-local external flows. Tel Aviv-Yafo seems to be strongly integrated into the external knowledge network but not integrated much locally. Figure ~\ref{fig:DiffRegionSameAssigneeFlows} reiterates the Bangalore position as the outsourcing destination for global R\&D.
+
+Additionally, Figure ~\ref{fig:DiffRegionDiffAssigneeFlows} demonstrates the stark difference between Tel Aviv-Yafo and San Jose-Sunnyvale-Santa Clara, CA on the extent of non-local external flows. Tel Aviv-Yafo seems to be strongly integrated into the external knowledge network but not integrated much locally. Figure ~\ref{fig:DiffRegionSameAssigneeFlows} reiterates the Bangalore position as the outsourcing destination for global R\&D.
+
 \newpage
 \section{Main Results}
 
-\begin{table}
-\caption{Regression Results}
-\input{knowledge-flows-images/local.tex}
-\end{table}
+\section{Conclusion}
+We started this article attempting to understand some of the factors that may explain the heterogeneity in knowledge flows across regions. While we have yet to get there, we have in the process demonstrated strong support for both the existence of the heterogeneity in knowledge flows across regions, as well as identifying some patterns relative to certain locations. We found that the San Francisco and San Jose MSA regions have the highest proportion of local knowledge flows, while Tel Aviv has the least. We also found that most of the flows for Tel Aviv patents are from different firms in different locations. Bangalore flows were higher to same firms in other locations, and were low to other firms locally. This study throws open opportunities to investigate specific mechanisms that might be leading to such behavior. While scholars have look at IPR regime effects, cross-border effects, we could consider looking at interconnectedness, modularity, and technology dynamics as potential explanatory variables in order to contribute to theory building on knowledge flows across locations.
+\newpage
 
-\begin{table}
-\caption{Regression Results}
-\input{knowledge-flows-images/internal.tex}
-\end{table}
-
-\begin{table}
-\caption{Regression Results}
-\input{knowledge-flows-images/localinternal.tex}
-
-\end{table}
-
-\begin{table}
-\caption{Regression Results}
-\input{knowledge-flows-images/localexternal.tex}
-
-\end{table}
-
-\begin{table}
-\caption{Regression Results}
-\input{knowledge-flows-images/nonlocalinternal.tex}
-
-\end{table}
-
-\begin{table}
-\caption{Regression Results}
-\input{knowledge-flows-images/nonlocalexternal.tex}
-\end{table}
-
-We use inventor region dummy variables on an OLS regression on the normalized flows of knowledge to statistically substantiate the point we made graphically in our preliminary analysis. Tables ~\ref{local} to ~\ref{nonlocalexternal} capture the regression results corresponding to the six categories of flows we analyzed previously.
-\\\\
-At an aggregate level Table ~\ref{local} demonstrates that patents originating from the San Francisco and San Jose MSAs have a higher propensity for local knowledge flows. Bangalore, Beijing and Tel Aviv have the lowest local flows within the group, with Bangalore being the region with the lowest proportion of local flows.
-
-Table ~\ref{internal} presents the aggregate level effect of region on internal (within firm) flows.  Here Austin (our base dummy) seems to do the best, with Tel Aviv being the region with the least internal flow. Bangalore and Beijing have internal flows higher than the San Francisco and San Jose MSAs, presumably reflecting the impact of multinationals. This is adequately supported in Table ~\ref{nonlocalinternal} where both Beijing and Bangalore have the highest coefficient estimates (after Austin) for the effect on non-local internal flows.
 
 \section{Conclusion}
 We started this article attempting to understand some of the factors that may explain the heterogeneity in knowledge flows across regions. While we have yet to get there, we have in the process demonstrated strong support for both the existence of the heterogeneity in knowledge flows across regions, as well as identifying some patterns relative to certain locations. We found that the San Francisco and San Jose MSA regions have the highest proportion of local knowledge flows, while Tel Aviv has the least. We also found that most of the flows for Tel Aviv patents are from different firms in different locations. Bangalore flows were higher to same firms in other locations, and were low to other firms locally. This study throws open opportunities to investigate specific mechanisms that might be leading to such behavior. While scholars have look at IPR regime effects, crossborder effects, we could consider looking at interconnectedness, modularity, and technology dynamics as potential explanatory variables in order to contribute to theory building on knowledge flows across locations.
 \newpage
 
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{Austin}
-  \caption{Geographic Definition of Austin-Round Rock, TX}
-   \label{fig:Austin}
-\end{centering}
-\end{figure}
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{Bangalore}
-  \caption{Geographic Definition of Bangalore}
-   \label{fig:Bangalore}
-\end{centering}
-\end{figure}
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{Beijing}
-  \caption{Geographic Definition of Beijing}
-   \label{fig:Beijing}
-\end{centering}
-\end{figure}
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{Boston}
-  \caption{Geographic Definition of Boston-Cambridge-Newton, MA-NH}
-   \label{fig:Boston}
-\end{centering}
-\end{figure}
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{SanFrancisco}
-  \caption{Geographic Definition of San Francisco-Oakland-Hayward, CA}
-   \label{fig:SanFrancisco}
-\end{centering}
-\end{figure}
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{SanJose}
-  \caption{Geographic Definition of San Jose-Sunnyvale-Santa Clara, CA}
-   \label{fig:SanJose}
-\end{centering}
-\end{figure}
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{TelAviv}
-  \caption{Geographic Definition of Tel Aviv-Yafo}
-   \label{fig:TelAviv}
-\end{centering}
-\end{figure}
+\singlespacing
 
 
 \bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
 \bibliographystyle{apalike}
 
+\appendix
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{BangaloreNormalized}
+  \caption{Relative Flows by Region : Bangalore}
+  \label{fig:BangaloreNormalized}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{BeijingNormalized}
+  \caption{Relative Flows by Region : Beijing}
+  \label{fig:BeijingNormalized}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{TelAviv-YafoNormalized}
+  \caption{Relative Flows by Region : Tel Aviv-Yafo}
+  \label{fig:TelAviv-YafoNormalized}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{Boston-Cambridge-NewtonNormalized}
+  \caption{Relative Flows by Region : Boston-Cambridge-Newton}
+  \label{fig:Boston-Cambridge-NewtonNormalized}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{Austin-RoundRockNormalized}
+  \caption{Relative Flows by Region : Austin-Round Rock}
+    \label{fig:Austin-RoundRockNormalized}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{SanFrancisco-Oakland-HaywardNormalized}
+  \caption{Relative Flows by Region : San Francisco-Oakland-Hayward}
+  \label{fig:SanFrancisco-Oakland-HaywardNormalized}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{SanJose-Sunnyvale-SantaClaraNormalized}
+  \caption{Relative Flows by Region : San Jose-Sunnyvale-Santa Clara}
+  \label{fig:SanJose-Sunnyvale-SantaClaraNormalized}
+\end{centering}
+\end{figure}
+
+
+
+
 \end{document}
+% Formal document ends here. Future section contains old and unused, but potentially useful code
+
+%Unused code
+
+\begin{comment}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{2007top10}
+  \caption{Top Inventor Locations}
+  \label{fig:2007top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{2008top10}
+  \caption{Top Inventor Locations}
+  \label{fig:2008top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{2009top10}
+  \caption{Top Inventor Locations}
+  \label{fig:2009top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{2010top10}
+  \caption{Top Inventor Locations}
+  \label{fig:2010top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{2011top10}
+  \caption{Top Inventor Locations}
+  \label{fig:2011top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{2012top10}
+  \caption{Top Inventor Locations}
+  \label{fig:2012top10}
+\end{centering}
+\end{figure}
+
+
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{r32010top10}
+  \caption{Top Inventor Locations}
+  \label{fig:r32010top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{r32011top10}
+  \caption{Top Inventor Locations}
+  \label{fig:r32011top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{r32012top10}
+  \caption{Top Inventor Locations}
+  \label{fig:r32012top10}
+\end{centering}
+\end{figure}
+
+
+
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{r52010top10}
+  \caption{Top Inventor Locations}
+  \label{fig:r52010top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{r52011top10}
+  \caption{Top Inventor Locations}
+  \label{fig:r52011top10}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics{r52012top10}
+  \caption{Top Inventor Locations}
+  \label{fig:r52012top10}
+\end{centering}
+\end{figure}
+
+\end{comment}
+
+
+%Countries and their IPR Scores
+\being{comment}
+\begin{longtable}{|p{0.5\textwidth}|p{0.30\textwidth}|}
+\caption{Countries and their IPR scores \citep{Lesser2010}\label{long}}\\
+ 
+ \hline\textbf{Country}&\textbf{IPR Score}\\\hline
+ \endfirsthead
+ 
+ \hline\textbf{Country}&\textbf{IPR Score}\\\hline
+ \endhead
+ 
+ \hline
+ \endfoot
+ 
+ \hline
+ \endlastfoot
+Afghanistan& \\\hline
+Albania&4.7682 \\\hline
+Algeria&2.7608 \\\hline
+Angola&1.8734 \\\hline
+Anguilla& \\\hline
+Antigua and Barbuda& \\\hline
+Argentina&5.4684 \\\hline
+Armenia&4.4032 \\\hline
+Aruba& \\\hline
+Australia&11.1872 \\\hline
+Austria&9.4024 \\\hline
+Azerbaijan&3.1358 \\\hline
+Bahamas& \\\hline
+Bahrain&5.7736 \\\hline
+Bangladesh&2.3664 \\\hline
+Barbados& \\\hline
+Belarus&3.2344 \\\hline
+Belgium&9.6096 \\\hline
+Belize& \\\hline
+Benin& \\\hline
+Bermuda& \\\hline
+Bhutan&4.9300 \\\hline
+Bolivia&4.2752 \\\hline
+Bosnia and Herzegovina&2.9580 \\\hline
+Botswana&6.2666 \\\hline
+Brazil&5.2612 \\\hline
+British Virgin Islands& \\\hline
+Brunei Darussalam&5.4230 \\\hline
+Bulgaria&5.3598 \\\hline
+Burkina Faso&3.5496 \\\hline
+Burma& \\\hline
+Cambodia&1.9720 \\\hline
+Cameroon&2.1692 \\\hline
+Canada&11.1872 \\\hline
+Cayman Islands& \\\hline
+Central African Republic&1.9720 \\\hline
+Chad&1.5776 \\\hline
+Chile&9.2152 \\\hline
+China&6.1586 \\\hline
+Colombia&6.2572 \\\hline
+Congo&1.8734 \\\hline
+Cook Islands& \\\hline
+Costa Rica&6.8388 \\\hline
+Cote d'Ivoire&2.0706 \\\hline
+Croatia&5.8528 \\\hline
+Cuba& \\\hline
+Cyprus&7.2526 \\\hline
+Czech Republic&6.4444 \\\hline
+Democratic Republic of the Congo&3.8260 \\\hline
+Denmark&11.7788 \\\hline
+Djibouti& \\\hline
+Dominica& \\\hline
+Dominican Republic& \\\hline
+Ecuador&3.7822 \\\hline
+Egypt&2.7608 \\\hline
+El Salvador&3.3524 \\\hline
+Equatorial Guinea& \\\hline
+Estonia&9.1166 \\\hline
+Ethiopia&2.6622 \\\hline
+Fiji& \\\hline
+Finland&11.3844 \\\hline
+France&10.3984 \\\hline
+French Guiana&10.3984 \\\hline
+Gabon&2.8594 \\\hline
+Gambia&2.8594 \\\hline
+Georgia&4.9106 \\\hline
+Germany&10.4970 \\\hline
+Ghana&4.5904 \\\hline
+Greece&5.4878 \\\hline
+Greenland& \\\hline
+Guadeloupe& \\\hline
+Guam& \\\hline
+Guatemala&3.3524 \\\hline
+Guernsey& \\\hline
+Guinea&1.7748 \\\hline
+Guinea-Bissau& \\\hline
+Guyana&2.5636 \\\hline
+Haiti&1.7748 \\\hline
+Honduras&3.2100 \\\hline
+Hong Kong&8.0852 \\\hline
+Hungary&7.6376 \\\hline
+Iceland&10.1912 \\\hline
+India&4.0974 \\\hline
+Indonesia&4.5018 \\\hline
+Iran (Islamic Republic of)&1.7748 \\\hline
+Iraq&1.4790 \\\hline
+Ireland&9.6290 \\\hline
+Isle of Man& \\\hline
+Israel&8.6236 \\\hline
+Italy&6.8488 \\\hline
+Jamaica&2.9580 \\\hline
+Japan&10.2012 \\\hline
+Jersey& \\\hline
+Jordan&6.5430 \\\hline
+Kazakhstan&2.6622 \\\hline
+Kenya&3.7822 \\\hline
+Korea, Democratic Republic of& \\\hline
+Korea, Republic of&7.1640 \\\hline
+Kuwait&4.0426 \\\hline
+Kyrgyzstan&3.4864 \\\hline
+Lao People's Democratic Republic&1.9720 \\\hline
+Latvia&6.0500 \\\hline
+Lebanon&2.4650 \\\hline
+Lesotho& \\\hline
+Liberia&3.0566 \\\hline
+Libyan Arab Jamahiriya& \\\hline
+Liechtenstein& \\\hline
+Lithuania&7.4404 \\\hline
+Luxembourg&8.8302 \\\hline
+Macau& \\\hline
+Madagascar&2.9580 \\\hline
+Malawi&3.2538 \\\hline
+Malaysia&5.1820 \\\hline
+Mali&2.7608 \\\hline
+Malta& \\\hline
+Mauritania&2.4650 \\\hline
+Mauritius&5.3244 \\\hline
+Mexico&4.8668 \\\hline
+Monaco& \\\hline
+Mongolia&3.4072 \\\hline
+Montenegro& \\\hline
+Morocco&5.8628 \\\hline
+Mozambique&2.4650 \\\hline
+Namibia&4.4370 \\\hline
+Nepal&2.2678 \\\hline
+Netherlands Antilles&11.3844 \\\hline
+Netherlands&11.3844 \\\hline
+New Caledonia& \\\hline
+New Zealand&11.8774 \\\hline
+Nicaragua&5.0740 \\\hline
+Niger&2.8594 \\\hline
+Nigeria&3.2100 \\\hline
+Northern Mariana Islands& \\\hline
+Norway&10.1912 \\\hline
+Oman&7.0360 \\\hline
+Pakistan&4.1074 \\\hline
+Palau& \\\hline
+Palestine& \\\hline
+Panama&5.2164 \\\hline
+Papua New Guinea&2.0706 \\\hline
+Paraguay&3.6836 \\\hline
+Peru&5.3892 \\\hline
+Philippines&4.1074 \\\hline
+Poland&7.5390 \\\hline
+Portugal&8.3278 \\\hline
+Puerto Rico& \\\hline
+Qatar&7.6470 \\\hline
+Republic of Moldova&4.1218 \\\hline
+Reunion& \\\hline
+Romania&6.3558 \\\hline
+Russia&4.0332 \\\hline
+Saint Barthelemy& \\\hline
+Saint Kitts and Nevis& \\\hline
+Saint Lucia& \\\hline
+Saint Pierre and Miquelon& \\\hline
+San Marino& \\\hline
+Saudi Arabia&4.2398 \\\hline
+Senegal&2.9580 \\\hline
+Serbia&4.4470 \\\hline
+Seychelles& \\\hline
+Sierra Leone&2.1692 \\\hline
+Singapore&11.6802 \\\hline
+Slovakia&7.0460 \\\hline
+Slovenia&8.3716 \\\hline
+Solomon Islands& \\\hline
+South Africa&7.2432 \\\hline
+Spain&8.6236 \\\hline
+Sri Lanka&3.0566 \\\hline
+Sudan&1.4790 \\\hline
+Suriname&3.6482 \\\hline
+Svalbard& \\\hline
+Swaziland&4.2946 \\\hline
+Sweden&11.6802 \\\hline
+Switzerland&11.4830 \\\hline
+Syrian Arab Republic&3.5596 \\\hline
+Taiwan&7.2626 \\\hline
+Tajikistan&1.9720 \\\hline
+Thailand&4.0974 \\\hline
+The former Yugoslav Republic of Macedonia& \\\hline
+Togo&2.7608 \\\hline
+Trinidad and Tobago&5.1626 \\\hline
+Tunisia&5.8528 \\\hline
+Turkey&6.9474 \\\hline
+Turkmenistan& \\\hline
+Turks and Caicos Islands& \\\hline
+Uganda&2.4650 \\\hline
+Ukraine&3.7822 \\\hline
+United Arab Emirates&6.4090 \\\hline
+United Kingdom&10.2012 \\\hline
+United Republic of Tanzania&2.5636 \\\hline
+United States Virgin Islands&10.0040 \\\hline
+United States&10.0040 \\\hline
+Uruguay&8.2192 \\\hline
+Uzbekistan&3.6388 \\\hline
+Venezuela&3.6144 \\\hline
+Vietnam&4.2752 \\\hline
+Yemen&2.0706 \\\hline
+Zambia&2.9580 \\\hline
+Zimbabwe&2.9142 \\\hline
+\end{longtable}
+
+\end{comment}
