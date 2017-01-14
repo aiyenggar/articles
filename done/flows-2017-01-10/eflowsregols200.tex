@@ -1,0 +1,42 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{2}{c}}
+\caption{Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+                    &\multicolumn{1}{c}{Citations Received}&\multicolumn{1}{c}{Citations Received}\\
+\hline
+Citations Made to [Same Region, Same Assignee]&      -0.730\sym{*}  &      -0.743\sym{*}  \\
+                    &     (-2.13)         &     (-2.16)         \\
+[1em]
+Citations Made to [Same Region, Different Assignee]&       1.415\sym{***}&       1.419\sym{***}\\
+                    &      (8.14)         &      (8.17)         \\
+[1em]
+Citations Made to [Different Region, Same Assignee]&       6.870\sym{***}&       6.869\sym{***}\\
+                    &     (26.66)         &     (26.66)         \\
+[1em]
+Citations Made to [Different Region, Different Assignee]&       0.146\sym{***}&       0.146\sym{***}\\
+                    &      (4.78)         &      (4.77)         \\
+[1em]
+Citations Made to [Other]&       2.128\sym{***}&       2.129\sym{***}\\
+                    &     (23.22)         &     (23.23)         \\
+[1em]
+patents             &       1.411\sym{***}&       1.432\sym{***}\\
+                    &     (13.15)         &     (13.24)         \\
+[1em]
+Log (Patent Pool Size)&       691.1\sym{***}&       670.7\sym{***}\\
+                    &      (4.22)         &      (4.09)         \\
+[1em]
+Constant            &     -7361.8\sym{***}&     -6746.3\sym{***}\\
+                    &     (-5.21)         &     (-4.60)         \\
+[1em]
+Year Dummy          &         Yes         &         Yes         \\
+[1em]
+Region Fixed Effects  &          No         &         Yes         \\
+\hline
+Observations        &        2624         &        2624         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}

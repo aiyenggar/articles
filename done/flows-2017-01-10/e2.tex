@@ -1,0 +1,26 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Regression with Subclassification on Propensity Score (subclass)\label{e2}}
+\begin{tabular}{l*{1}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}\\
+            &\multicolumn{1}{c}{Birth Weight}\\
+\hline
+tobacco     &      -208.3\sym{***}\\
+            &    (-45.72)         \\
+[1em]
+ps31        &      -295.4\sym{***}\\
+            &    (-19.88)         \\
+[1em]
+subclass    &      -0.730\sym{**} \\
+            &     (-2.77)         \\
+[1em]
+\_cons      &      3473.0\sym{***}\\
+            &   (1226.87)         \\
+\hline
+\(N\)       &      139149         \\
+\hline\hline
+\multicolumn{2}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+\end{table}

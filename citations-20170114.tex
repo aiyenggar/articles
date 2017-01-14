@@ -49,45 +49,71 @@ breaklines=true
 \setlength\parindent{0pt}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Region based knowledge flows}
+\lhead{Region characteristics of patent citations}
 \rfoot{Page \thepage  \ of \pageref{LastPage}}
 \rhead{Iyenggar}
 \newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/flows-2017-01-10/}
 \newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
 \begin{document}
-\title{Updates:\\ Region characteristics of knowledge flows}
+\title{Updates:\\ Region characteristics of patent citations}
 \author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
 
 
 \maketitle
 \thispagestyle{empty}
 
-\section{Trial 1 (Basic model): Failed to converge }
+\section{Linear Regression}
 \begin{lstlisting}
-xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal ///
-		cit_made_nonlocalinternal cit_made_nonlocalexternal  cit_made_other ///
-		lnpatents lnpool d2002-d2012 ///
-		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200)
-eststo
-esttab using `reportdir'eflowsregt01.tex, ///
-		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
-		indicate("Year Dummy = d20*")  ///
-		label longtable replace
-// This regressions runs into > 500 iterations. While it does finally converge, I chose to kill it without completing
-
-xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal /// 
-		cit_made_nonlocalinternal cit_made_nonlocalexternal cit_made_other ///
-		lnpatents lnpool  d2002-d2012  ///
-		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200), i(regionid) fe
-
-eststo
-esttab using `reportdir'eflowsregt01.tex, ///
-		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
-		indicate("Year Dummy = d20*" "Region Fixed Effects = *region*")  ///
-		label longtable replace
-// The above regression ran several hours and did not converge. The most recent time I killed it after 19 iterations
+reg lncit_recd_total lncit_made_localinternal lncit_made_localexternal lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other lnpatents lnpool d2002-d2012 if (year>=2001 & year<=2012)
 \end{lstlisting}
-%\input{flows-2017-01-10/eflowsregt01.tex}
+
+The results are in Table ~\ref{reg01}
+
+\newpage
+\begin{table}
+\caption{Linear Regression Results}
+\input{flows-2017-01-10/reg01.tex}
+\end{table}
+
+\newpage
+\section{Negative Binomial Regression on All Data}
+\begin{lstlisting}
+xtnbreg cit_recd_total lncit_made_localinternal lncit_made_localexternal lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other lnpatents lnpool d2002-d2012 if (year>=2001 & year<=2012), i(regionid) fe
+
+note: 13214 groups (13214 obs) dropped because of only one obs per group
+note: 8390 groups (24742 obs) dropped because of all zero outcomes
+
+initial values not feasible
+\end{lstlisting}
+
+\newpage
+\section{Negative Binomial Regression with Average Citations > 50}
+\begin{lstlisting}
+
+local cutoff 50	
+xtnbreg cit_recd_total lncit_made_localinternal lncit_made_localexternal lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other lnpatents lnpool d2002-d2012 if (year>=2001 & year<=2012 & mean_patent_rate12 > `cutoff'), i(regionid) fe
+
+\end{lstlisting}
+The results are in Table ~\ref{xtnbreg01}
+\input{flows-2017-01-10/xtnbreg01}
+
+\begin{comment}
+%\newpage
+%\section{Trial 7 (OLS all independent and control variables, cutoff 200)}
+%\input{flows-2017-01-10/eflowsregols200.tex}
+
+\newpage
+\section{Trial 5 (log of all independent and control variables, cutoff 50)}
+\input{flows-2017-01-10/eflowsreg50t03.tex}
+
+\newpage
+\section{Trial 4 (log of all independent and control variables, cutoff 100)}
+\input{flows-2017-01-10/eflowsreg100t03.tex}
+
+\newpage
+\section{Trial 3 (log of all independent and control variables, cutoff 200)}
+\input{flows-2017-01-10/eflowsreg200t03.tex}
+
 
 
 \section{Trial 2 (patents instead of lnpatents): The model with fixed effects failed to converge}
@@ -117,52 +143,33 @@ esttab using `reportdir'eflowsregt02.tex, ///
 \input{flows-2017-01-10/eflowsregt02.tex}
 
 
-\section{Trial 3 (log of all independent and control variables): We have some results}
+\section{Trial 1 (Basic model): Failed to converge }
 \begin{lstlisting}
-
-gen lncit_made_localinternal=ln(1 + cit_made_localinternal)
-gen lncit_made_localexternal=ln(1 + cit_made_localexternal)
-gen lncit_made_nonlocalinternal=ln(1 + cit_made_nonlocalinternal)
-gen lncit_made_nonlocalexternal=ln(1 + cit_made_nonlocalexternal)
-gen lncit_made_local=ln(1+cit_made_local)
-gen lncit_made_internal=ln(1+cit_made_internal)
-gen lncit_made_other=ln(1 + cit_made_other)
-
-label variable lncit_made_localinternal "Log(Cit[Same Region, Same Assignee])"
-label variable lncit_made_localexternal "Log(Cit[Same Region, Different Assignee])"
-label variable lncit_made_nonlocalinternal "Log(Cit[Different Region, Same Assignee])"
-label variable lncit_made_nonlocalexternal "Log(Cit[Different Region, Different Assignee])"
-label variable lncit_made_local "Log(Cit[Same Region])"
-label variable lncit_made_internal "Log(Cit[Same Assignee])"
-label variable lncit_made_other "Log(Cit[Other])"
-
-xtnbreg cit_recd_total lncit_made_localinternal lncit_made_localexternal ///
-		lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other ///
+xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal ///
+		cit_made_nonlocalinternal cit_made_nonlocalexternal  cit_made_other ///
 		lnpatents lnpool d2002-d2012 ///
 		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200)
 eststo
-local reportdir /Users/aiyenggar/OneDrive/code/articles/flows-2017-01-10/
-estadd local fixed "No" , replace
-esttab using `reportdir'eflowsregt03.tex, ///
+esttab using `reportdir'eflowsregt01.tex, ///
 		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
-		indicate("Year Dummy = d20*") s(fixed N, label("Region Fixed effects")) ///
+		indicate("Year Dummy = d20*")  ///
 		label longtable replace
-		
-xtnbreg cit_recd_total lncit_made_localinternal lncit_made_localexternal ///
-		lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other ///
-		lnpatents lnpool d2002-d2012 ///
-		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200), i(regionid) fe 
+// This regressions runs into > 500 iterations. While it does finally converge, I chose to kill it without completing
+
+xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal /// 
+		cit_made_nonlocalinternal cit_made_nonlocalexternal cit_made_other ///
+		lnpatents lnpool  d2002-d2012  ///
+		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200), i(regionid) fe
+
 eststo
-estadd local fixed "Yes" , replace
-esttab using `reportdir'eflowsregt03.tex, ///
+esttab using `reportdir'eflowsregt01.tex, ///
 		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
-		indicate("Year Dummy = d20*")  s(fixed N, label("Region Fixed effects")) ///
-		label longtable replace	
-
+		indicate("Year Dummy = d20*" "Region Fixed Effects = *region*")  ///
+		label longtable replace
+// The above regression ran several hours and did not converge. The most recent time I killed it after 19 iterations
 \end{lstlisting}
-\input{flows-2017-01-10/eflowsregt03.tex}
-
-
+%\input{flows-2017-01-10/eflowsregt01.tex}
+\end{comment}
 
 \bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
 \bibliographystyle{apalike}
