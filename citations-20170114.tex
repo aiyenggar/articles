@@ -1,4 +1,4 @@
-% flows-2017-01-10.tex 
+% citations-20170114.tex 
 \documentclass[12pt]{article}
 \usepackage[a4paper]{geometry}
 
@@ -24,11 +24,12 @@
 \usepackage{longtable}
 \usepackage[normalem]{ulem}
 \usepackage{verbatim}
+\usepackage{pdflscape}
 
 %\onehalfspacing
 %\doublespacing
 
-\graphicspath{ {flows-2017-01-10/} }
+\graphicspath{ {citations-20170114/} }
 \geometry{
  total={160mm,247mm},
  left=25mm,
@@ -62,40 +63,21 @@ breaklines=true
 \maketitle
 \thispagestyle{empty}
 
-\section{Linear Regression}
+\section{Regression Results}
 \begin{lstlisting}
-reg lncit_recd_total lncit_made_localinternal lncit_made_localexternal lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other lnpatents lnpool d2002-d2012 if (year>=2001 & year<=2012)
 \end{lstlisting}
-
-The results are in Table ~\ref{reg01}
-
+The results are in Table ~\ref{model12}
+\begin{landscape}
+\begin{centering}
+\input{citations-20170114/model12.tex}
 \newpage
-\begin{table}
-\caption{Linear Regression Results}
-\input{flows-2017-01-10/reg01.tex}
-\end{table}
-
+\input{citations-20170114/model13.tex}
 \newpage
-\section{Negative Binomial Regression on All Data}
-\begin{lstlisting}
-xtnbreg cit_recd_total lncit_made_localinternal lncit_made_localexternal lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other lnpatents lnpool d2002-d2012 if (year>=2001 & year<=2012), i(regionid) fe
-
-note: 13214 groups (13214 obs) dropped because of only one obs per group
-note: 8390 groups (24742 obs) dropped because of all zero outcomes
-
-initial values not feasible
-\end{lstlisting}
-
+\input{citations-20170114/model24.tex}
 \newpage
-\section{Negative Binomial Regression with Average Citations > 50}
-\begin{lstlisting}
-
-local cutoff 50	
-xtnbreg cit_recd_total lncit_made_localinternal lncit_made_localexternal lncit_made_nonlocalinternal lncit_made_nonlocalexternal  lncit_made_other lnpatents lnpool d2002-d2012 if (year>=2001 & year<=2012 & mean_patent_rate12 > `cutoff'), i(regionid) fe
-
-\end{lstlisting}
-The results are in Table ~\ref{xtnbreg01}
-\input{flows-2017-01-10/xtnbreg01}
+\input{citations-20170114/model34.tex}
+\end{centering}
+\end{landscape}
 
 \begin{comment}
 %\newpage
