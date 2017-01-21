@@ -2,3 +2,11 @@
 *.aux
 *.log
 *.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.out
+*.pdf
+*.snm
+*.tex
+*.toc
