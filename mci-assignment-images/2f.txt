@@ -1,0 +1,20 @@
+		(1)	(2)
+VARIABLES	LABELS	Log(Temporary Employment)	Log(Temporary Employment)
+			
+mico	Implied contract	0.148**	0.132**
+		(0.057)	(0.063)
+lnannemp	Log(Non-Farm Employment)	1.552***	1.588**
+		(0.427)	(0.642)
+Constant	Constant	-14.012**	-14.480*
+		(5.517)	(8.277)
+			
+Observations		850	850
+R-squared		0.989	0.990
+Public policy dummy		Yes	Yes
+Good faith dummy		Yes	Yes
+State and year dummies		Yes	Yes
+State * time trends		Yes	Yes
+State * time2 trends		No	Yes
+Robust standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			
+Reference Year is 79, Reference State is 11 (ME)			

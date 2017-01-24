@@ -1,0 +1,26 @@
+		(1)
+VARIABLES	LABELS	Log(Temporary Employment)
+		
+admico_2	Law change t+2	-0.017
+		(0.052)
+admico_1	Law change t+1	-0.001
+		(0.058)
+admico0	Law change t0	0.108
+		(0.080)
+admico1	Law change t-1	0.147*
+		(0.085)
+admico2	Law change t-2	0.228**
+		(0.104)
+admico3	Law change t-3	0.144
+		(0.107)
+mico4	Implied contract law t-4 forward	0.196
+		(0.125)
+		
+Observations		850
+R-squared		0.989
+State and year dummies		Yes
+State * time trends		Yes
+State * time2 trends		No
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		
+Reference Year is 79, Reference State is 11 (ME)		

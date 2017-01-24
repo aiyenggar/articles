@@ -1,0 +1,17 @@
+Regression with Robust Cluster SE\label{2c}	
+	(1)
+VARIABLES	ln(temporary employment)
+	
+mico	0.4210
+	(0.3491)
+mppa	0.5706
+	(0.3877)
+mgfa	-0.1985
+	(0.5737)
+Constant	8.2248***
+	(0.3368)
+	
+Observations	850
+R-squared	0.0548
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

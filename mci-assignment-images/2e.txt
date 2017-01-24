@@ -1,0 +1,19 @@
+		(1)	(2)
+VARIABLES	LABELS	Log(Temporary Employment)	Log(Temporary Employment)
+			
+mico	Implied contract	0.096	0.137**
+		(0.099)	(0.062)
+mppa	Public policy	0.126	-0.023
+		(0.094)	(0.058)
+mgfa	Good faith	0.100	-0.079
+		(0.113)	(0.093)
+Constant	Constant	6.596***	6.117***
+		(0.099)	(0.068)
+			
+Observations		850	850
+R-squared		0.969	0.988
+State and year dummies		Yes	Yes
+State * time trends		No	Yes
+Robust standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			
+Reference Year is 79, Reference State is 11 (ME)			
