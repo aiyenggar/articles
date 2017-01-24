@@ -55,45 +55,60 @@ breaklines=true
 \maketitle
 \thispagestyle{empty}
 
+\setlength\parindent{0pt}
 
 \begin{center}\LARGE{Question 1 : \cite{Dinardo1997}}\end{center}
+\textbf{Does being able to work with a computer raise productivity and earnings? In an important paper, \cite{Krueger1993} included a measure indicating whether a worker uses computers at work in standard wage regressions. The paper\textquotesingle s Table II (page 38) contains the main results. The paper found a considerable wage differential for using computers as opposed to not using computers. this has been taken as evidence in favour of the view that introduction of new technologies improve productivity and wages. This question asks you to evaluate this claim. Open d\_p.dta, the dataset used in another study \citep{Dinardo1997}. This is based on pooled cross sections of the West German Qualification and Career Survey. Use \texttt{desc} and \texttt{tab} commands to understand the variables.}
 \question{1a. Find the difference in the mean log wage of computer users and non-computer users using the 1979 data}
-pre code answer
+
+Table ~\ref{1a} presents the results of a t-test on 1979 log wages between computer and non-computer users. We note that the mean log wages for computer users is 2.553225 and that for non computer users is 2.419198, yielding a difference = 0.1340268. This difference may also be obtained by regressing log wages on computer usage for the year 1979 as determined in Table ~\ref{1a1}
 
 \begin{lstlisting}
+estpost ttest lnw if year==1979, by(computer)
+esttab using `imagepath'1a.tex, title("T-test of log wages in 1979 by computer usage\label{1a}") mtitle("Mean Difference") se replace
+
+reg lnw computer if year==1979
+outreg2 using `imagepath'1a1.tex, title("Regression of log wages in 1979 on computer usage\label{1a1}") ctitle("Log Hourly Wage") tex(pretty frag) replace
 \end{lstlisting}
 
-post code answer
+\input{mci-assignment-images/1a.tex}
+\begin{table}
+\caption{}
+\input{mci-assignment-images/1a1.tex}
+\end{table}
 
 \newpage
 \question{1b. What are the assumptions under which this difference would be an unbiased estimate of the effect of computers on wages?}
-pre code answer
+We would need random assignment of computer and non computer users in the sample for the above to provide us with an unbiased estimate of the effect of computer usage on log wages. In other words we would require that none of the priors to assignment of computer usage or non-usage must result in a significant difference in average wages. Only if this were true would the coefficient on computer when regressing log wages on computer give us an unbiased estimate of the effect of computer usage on log wages.
 
-\begin{lstlisting}
-\end{lstlisting}
-
-post code answer
-
-\newpage
 \question{1c. Suppose a randomized trial was used to generate this data. This trial assigned some individuals computers and others not. How would you test if the randomization worded? Do a battery of tests to check this using 1979 data.}
-pre code answer
+Table ~\ref{1c} presents the results of a t-test of the all other variables by computer usage for the 1979 data. For randomization to have worked, we would have needed that none of the mean differences were statistically significant. However it turns out from Table ~\ref{1c} that almost all of the other variables demonstrate statistically significant differences between computer users and non-computer users. We may therefore conclude that computer usage is not randomly assigned in the 1979 data.
 
 \begin{lstlisting}
+estpost ttest german math school exp female married lnw sit pencil teleph calc hammer city civser father occ, by(computer)
+esttab using `imagepath'1c.tex, title("T-tests by computer usage\label{1c}") mtitle("Mean Difference") replace
 \end{lstlisting}
 
-post code answer
+\input{mci-assignment-images/1c.tex}
 
-\newpage
-\question{1d. Examining \cite{Krueger1993} table 2, how does the effect of computer usage on wages change when the regressions include nothing else (column 1 and 4) and when the regressions include years of education and other variables (columns 2 and 3, 5 and 6). What does this change tell you about the relation between the schooling of a worker and his or her computer use on the job? which computer coefficient is likely to be a better measure of the causal effect of computer skills?}
-pre code answer
+\question{1d. Examining \cite{Krueger1993} table 2, how does the effect of computer usage on wages change when the regressions include nothing else (column 1 and 4) and when the regressions include years of education and other variables (columns 2 and 3, 5 and 6). What does this change tell you about the relation between the schooling of a worker and his or her computer use on the job? Which computer coefficient is likely to be a better measure of the causal effect of computer skills?}
+Table 2 of \cite{Krueger1993} demonstrates across both the October 1984 and October 1989 samples that when years of education, experience, and other variables are added to the model, the effect of computer usage on log wages decreases. The drop in the coefficient estimate indicates that there may be unmeasured variables missing from our model, so that when other variables are added it is really the effect of the missing variable that is causing some of the effect to be taken away from the computer usage variable. Models (3) and (6) are likely to be a better measure of the causal effect of computer skills on log wages since it accounts for many more variables. However a true causal measure many still remain elusive in the absence of either random assignment or a natural experiment.
 
-\begin{lstlisting}
-\end{lstlisting}
-
-post code answer
-
-\newpage
 \question{1e. Using the 1985 data in d\_p.dta, run a regression similar to \cite{Krueger1993} table 2 (columns 1 and 2 only). Some variables \cite{Krueger1993} uses do not exist in the German data like race or veteran status. Ignore those variables unavailable. Show regression results in a table. Compare your results for Germany to the US results and comment on them.}
+Table ~\ref{1e} displays the OLS regression estimates of the effect of computer use on log wages for 1985 in the German data. The coefficient estimates and standard errors for the coefficients in Table ~\ref{1e} are strikingly similar to those in Table 2 in \cite{Krueger1993}. For example, the estimate is 0.155 in Table ~\ref{1e} while it is 0.170 in Table 2 in \cite{Krueger1993}. The signs on the coefficient estimate for the square of experience are both negative. Similarly for the coefficients on female, on married and on the interaction between female and married. Finally the $R^2$ value in \cite{Krueger1993} Table 2 is 0.446 while it is 0.308 in Table ~\ref{1e}. In summary, we may conclude that the coefficient estimates on the 1985 German data is quite similar to that on the US data in 1984.
+
+\begin{lstlisting}
+local imagepath /Users/aiyenggar/OneDrive/code/articles/mci-assignment-images/
+reg lnw computer school exp exp2 c.female##c.married if year==1985
+outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\label{1e}") ctitle("Log Hourly Wage") tex(pretty frag) replace
+\end{lstlisting}
+
+\begin{table}
+\caption{}
+\input{mci-assignment-images/1e.tex}
+\end{table}
+
+\question{1f. Use the entire dataset d\_p.dta - which contains a pooled cross-section from 1979 and 1985. Run the same regression as in 1e, but now include a dummy variable for year 1985 in addition to the other covariates and an interaction term between computer use and your dummy variable for 1985. Add your results in a new column to the table you prepared for 1e}
 pre code answer
 
 \begin{lstlisting}
@@ -101,7 +116,7 @@ pre code answer
 
 post code answer
 
-\newpage
+
 \question{1g. How can you perform a formal test of the hypothesis that the association between computer use and wages is the same in 1979 and 1985? clearly state your null and alternate hypothesis. Perform your test in \stata. What is the result of your test?}
 pre code answer
 
@@ -327,13 +342,15 @@ outreg2 using  `imagepath'2i.tex, keep(admico_2 admico_1 admico0 admico1 admico2
 
 \begin{comment}
 % esttab listing
-\input{adv-eco-hw4-images/a3.tex}
+\input{mci-assignment-images/1a.tex}
 
 % outreg2 listing
+
 \begin{table}
-\caption{Regression Results}
-\input{adv-eco-hw4-images/a2.tex}
+\caption{}
+\input{mci-assignment-images/1a1.tex}
 \end{table}
+
 
 % Code Listing
 

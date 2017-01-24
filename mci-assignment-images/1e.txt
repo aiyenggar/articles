@@ -1,0 +1,25 @@
+The effect of computer use on log wages\label{1e}	
+	(1)
+VARIABLES	Log Hourly Wage
+	
+computer	0.155***
+	(0.00990)
+school	0.0637***
+	(0.00161)
+exp	0.0363***
+	(0.00145)
+exp2	-0.0603***
+	(0.00301)
+female	-0.104***
+	(0.0136)
+married	0.114***
+	(0.0111)
+c.female#c.married	-0.127***
+	(0.0177)
+Constant	1.434***
+	(0.0255)
+	
+Observations	9,733
+R-squared	0.308
+Standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	
