@@ -17,6 +17,7 @@
 \usepackage{stata}
 \usepackage{verbatim}
 \usepackage{longtable}
+\usepackage{pdflscape}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -26,8 +27,10 @@
 }
 \geometry{
  total={150mm,247mm},
- left=25mm,
+ left=20mm,
  top=25mm,
+ right=20mm,
+ bottom=25mm
 }
 \lstset{
 basicstyle=\ttfamily,
@@ -93,14 +96,15 @@ esttab using `imagepath'1c.tex, title("T-tests by computer usage\label{1c}") mti
 
 \question{1d. Examining \cite{Krueger1993} table 2, how does the effect of computer usage on wages change when the regressions include nothing else (column 1 and 4) and when the regressions include years of education and other variables (columns 2 and 3, 5 and 6). What does this change tell you about the relation between the schooling of a worker and his or her computer use on the job? Which computer coefficient is likely to be a better measure of the causal effect of computer skills?}
 Table 2 of \cite{Krueger1993} demonstrates across both the October 1984 and October 1989 samples that when years of education, experience, and other variables are added to the model, the effect of computer usage on log wages decreases. The drop in the coefficient estimate indicates that there may be unmeasured variables missing from our model, so that when other variables are added it is really the effect of the missing variable that is causing some of the effect to be taken away from the computer usage variable. Models (3) and (6) are likely to be a better measure of the causal effect of computer skills on log wages since it accounts for many more variables. However a true causal measure many still remain elusive in the absence of either random assignment or a natural experiment.
-
+\newpage
 \question{1e. Using the 1985 data in d\_p.dta, run a regression similar to \cite{Krueger1993} table 2 (columns 1 and 2 only). Some variables \cite{Krueger1993} uses do not exist in the German data like race or veteran status. Ignore those variables unavailable. Show regression results in a table. Compare your results for Germany to the US results and comment on them.}
-Table ~\ref{1e} displays the OLS regression estimates of the effect of computer use on log wages for 1985 in the German data. The coefficient estimates and standard errors for the coefficients in Table ~\ref{1e} are strikingly similar to those in Table 2 in \cite{Krueger1993}. For example, the estimate is 0.155 in Table ~\ref{1e} while it is 0.170 in Table 2 in \cite{Krueger1993}. The signs on the coefficient estimate for the square of experience are both negative. Similarly for the coefficients on female, on married and on the interaction between female and married. Finally the $R^2$ value in \cite{Krueger1993} Table 2 is 0.446 while it is 0.308 in Table ~\ref{1e}. In summary, we may conclude that the coefficient estimates on the 1985 German data is quite similar to that on the US data in 1984.
+Column (1) of Table ~\ref{1e} displays the OLS regression estimates of the effect of computer use on log wages for 1985 in the German data. The coefficient estimates and standard errors for the coefficients in Table ~\ref{1e} are strikingly similar to those in Table 2 in \cite{Krueger1993}. For example, the estimate is 0.155 in Table ~\ref{1e} while it is 0.170 in Table 2 in \cite{Krueger1993}. The signs on the coefficient estimate for the square of experience are both negative. Similarly for the coefficients on female, on married and on the interaction between female and married. Finally the $R^2$ value in \cite{Krueger1993} Table 2 is 0.446 while it is 0.308 in Table ~\ref{1e}. In summary, we may conclude that the coefficient estimates on the 1985 German data is quite similar to that on the US data in 1984.
 
 \begin{lstlisting}
-local imagepath /Users/aiyenggar/OneDrive/code/articles/mci-assignment-images/
-reg lnw computer school exp exp2 c.female##c.married if year==1985
-outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\label{1e}") ctitle("Log Hourly Wage") tex(pretty frag) replace
+gen exp2=(exp^2)/100
+gen femmar=female*married
+reg lnw computer school exp exp2 female married femmar if year==1985
+outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\label{1e}") ctitle("Log Hourly Wage") nocons tex(pretty frag) replace
 \end{lstlisting}
 
 \begin{table}
@@ -109,57 +113,79 @@ outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\
 \end{table}
 
 \question{1f. Use the entire dataset d\_p.dta - which contains a pooled cross-section from 1979 and 1985. Run the same regression as in 1e, but now include a dummy variable for year 1985 in addition to the other covariates and an interaction term between computer use and your dummy variable for 1985. Add your results in a new column to the table you prepared for 1e}
-pre code answer
+The results of this regression have been added to Table ~\ref{1e} in column (2). We note that the coefficient of the dummy variable d1985 is positive and significant, suggesting therefore that there may be a year effect on wages in addition to those of computer usage, years in school and experience.
 
 \begin{lstlisting}
+gen d1985 = 1 if year==1985
+replace d1985 = 0 if missing(d1985)
+gen computer1985 = computer * d1985
+reg lnw computer school exp exp2 female married femmar d1985 computer1985
+outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\label{1e}") ctitle("Log Hourly Wage") nocons tex(pretty frag) append
 \end{lstlisting}
-
-post code answer
-
-
-\question{1g. How can you perform a formal test of the hypothesis that the association between computer use and wages is the same in 1979 and 1985? clearly state your null and alternate hypothesis. Perform your test in \stata. What is the result of your test?}
-pre code answer
-
-\begin{lstlisting}
-\end{lstlisting}
-
-post code answer
 
 \newpage
-\question{1h (I). Repeat your regressions from 1e for the 1979 data, but additionally include occupation fixed effects. Since there are numerous occupation categories and you may not want ot see a coefficient specific to each occupation, you can use the areg command (absorb option) to see a simplified output. Show regressions in a table. Type "help areg" or "man areg" to obtain help.}
-pre code answer
+\question{1g. How can you perform a formal test of the hypothesis that the association between computer use and wages is the same in 1979 and 1985? Clearly state your null and alternate hypothesis. Perform your test in \stata. What is the result of your test?}
+We can use the regression results in column (2) of Table ~\ref{1e} to perform a formal test of hypothesis of the association between computer use and wage between 1979 and 1985. Formally, consider the following model:\\\\
+lnw = $\beta_0 + \beta_1 * computer + \beta_2 * exp + \beta_3 * exp^2 + \beta_4 * female + \beta_5 * married + \beta_6 * female * married + \beta_7 * d1985 + \beta_8 * computer * d1985 $ \\\\
+Null Hypothesis $H_0: \beta_8  = 0$ \\ Alternate Hypothesis $H_a: \beta_8  \neq 0$\\
 
+From  Table ~\ref{1e} we fail to reject $H_0$ since the coefficient estimate $\hat{\beta_8}$ is not statistically significant at even the 10\%  significance level (the t statistic value is 1.25).
 \begin{lstlisting}
 \end{lstlisting}
 
-post code answer
 
 \newpage
+\question{1h (I). Repeat your regressions from 1e for the 1979 data, but additionally include occupation fixed effects. Since there are numerous occupation categories and you may not want to see a coefficient specific to each occupation, you can use the areg command (absorb option) to see a simplified output. Show regressions in a table. Type "help areg" or "man areg" to obtain help.}
+Column (1) of Table ~\ref{1hI} depicts the results for 1979 effects of computer usage after controlling for occupation effects.
+
+\begin{lstlisting}
+areg lnw computer school exp exp2 female married femmar if year==1979, absorb(occ)
+outreg2 using `imagepath'1hI.tex,  nocons tex(pretty frag) addtext(Occupation dummies, Yes, German and Math Score Dummies, No, Father Occupation Dummies, No) label replace
+\end{lstlisting}
+
+\begin{table}
+\caption{1979 effects of computer usage on log wages, with occupation controls}
+\input{mci-assignment-images/1hI.tex}
+\label{1hI}
+\end{table}
+
 \question{1h (II). German and math scores, referring to grades in German and Mathematics classes are indicators of ability. The variable father contains occupation code for the father. Use these three as additional variables in the regression for 1979 data, and show results in the same table as you produced for 1h (I), but in anew column. These variables only have few categories, so we can include separate dummies for each of these categories in the regression (use the i. operator).}
-pre code answer
+Column (2) of Table ~\ref{1hI} displays the results of this regression.
 
 \begin{lstlisting}
+xi: areg lnw computer school exp exp2 female married femmar i.german i.math i.father if year==1979, absorb(occ)
+outreg2 using `imagepath'1hI.tex,  drop(_*) nocons tex(pretty frag) addtext(Occupation dummies, Yes, German and Math Score Dummies, Yes, Father Occupation Dummies, Yes) label append
 \end{lstlisting}
 
-post code answer
 
 \newpage
 \question{1h (III). Other variables indicating what people do or use on their job are also available: whether they use a calculator or cash register (calc), a telephone (teleph), writing materials (the variable is called pencil), whether they work mostly while sitting (sit), or whether they use blue collar tools like a hammer, screw driver, drill (hammer) etc. Run separate regressions for 1979 and for 1985 where you include these variables one by one in the equation instead of the computer variables. Include again occupation dummies, grades, and family background variables into all of these regressions. Prepare two tables for 1979 and 1985 each. How do the results compare to the computer effects? Do you think these coefficients are associated with the causal effect of a particular skill on earnings? How do these results make you feel about the interpretation of the computer coefficient? How are the non-computer tools affected by this?}
-pre code answer
+The results for the 1979 data is provided in Table ~\ref{1hIIIa}. However the same model cannot be estimated for the 1985 data since the 1985 has missing values for \texttt{father, german, math}. This causes \stata to drop all observations. In Table ~\ref{1hIIIb}, I have provided the results by excluding the german and math scores and the father occupational dummies.
 
 \begin{lstlisting}
 \end{lstlisting}
 
-post code answer
+\newgeometry{left=1cm,bottom=2cm,right=1cm,top=2cm} 
+%\begin{landscape}
+\begin{center}
+\begin{table}
+\caption{1979 effects of tools used on log wages, with occupation controls}
+\input{mci-assignment-images/1hIIIa.tex}
+\label{1hIIIa}
+\end{table}
+\newpage
+\begin{table}
+\caption{1985 effects of tools used on log wages, with occupation controls}
+\input{mci-assignment-images/1hIIIb.tex}
+\label{1hIIIb}
+\end{table}
+\end{center}
+%\end{landscape}
 
+\restoregeometry 
 \newpage
 \question{1h (IV). Write up a conclusion based on your results. What have you learned about the causal effect of computers on wages?}
-pre code answer
-
-\begin{lstlisting}
-\end{lstlisting}
-
-post code answer
+Conclusion
 
 
 

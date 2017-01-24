@@ -1,17 +1,17 @@
-Basic Regression\label{2b}	
-	(1)
-VARIABLES	ln(temporary employment)
-	
-mico	0.4210***
-	(0.1333)
-mppa	0.5706***
-	(0.1350)
-mgfa	-0.1985
-	(0.1668)
-Constant	8.2248***
-	(0.1127)
-	
-Observations	850
-R-squared	0.0548
-Robust standard errors in parentheses	
-*** p<0.01, ** p<0.05, * p<0.1	
+Basic Regression\label{2b}		
+		(1)
+VARIABLES	LABELS	ln(temporary employment)
+		
+mico	Implied contract	0.4210***
+		(0.1333)
+mppa	Public policy	0.5706***
+		(0.1350)
+mgfa	Good faith	-0.1985
+		(0.1668)
+Constant	Constant	8.2248***
+		(0.1127)
+		
+Observations		850
+R-squared		0.0548
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

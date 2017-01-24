@@ -1,25 +1,27 @@
-The effect of computer use on log wages\label{1e}	
-	(1)
-VARIABLES	Log Hourly Wage
-	
-computer	0.155***
-	(0.00990)
-school	0.0637***
-	(0.00161)
-exp	0.0363***
-	(0.00145)
-exp2	-0.0603***
-	(0.00301)
-female	-0.104***
-	(0.0136)
-married	0.114***
-	(0.0111)
-c.female#c.married	-0.127***
-	(0.0177)
-Constant	1.434***
-	(0.0255)
-	
-Observations	9,733
-R-squared	0.308
-Standard errors in parentheses	
-*** p<0.01, ** p<0.05, * p<0.1	
+The effect of computer use on log wages\label{1e}			
+		(1)	(2)
+VARIABLES	LABELS	Log (Wage)	Log (Wage)
+			
+computer	Computer User (Dummy)	0.155***	0.124***
+		(0.00990)	(0.0145)
+school	Years of Schooling	0.0637***	0.0682***
+		(0.00161)	(0.00124)
+exp	Experience	0.0363***	0.0326***
+		(0.00145)	(0.00103)
+exp2	Experience Squared	-0.0603***	-0.0549***
+		(0.00301)	(0.00217)
+female	Female (Dummy)	-0.104***	-0.108***
+		(0.0136)	(0.00981)
+married	Married (Dummy)	0.114***	0.112***
+		(0.0111)	(0.00825)
+femmar	Female * Married (Dummy)	-0.127***	-0.130***
+		(0.0177)	(0.0130)
+d1985	1985 (Dummy)		0.208***
+			(0.00592)
+computer1985	Computer User * 1985 (Dummy)		0.0219
+			(0.0174)
+			
+Observations		9,733	18,638
+R-squared		0.308	0.343
+Standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			

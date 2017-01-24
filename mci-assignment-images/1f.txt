@@ -1,0 +1,22 @@
+	(1)
+VARIABLES	Log Hourly Wage
+	
+computer	0.0292*
+	(0.0150)
+school	0.0545***
+	(0.00282)
+exp	0.0292***
+	(0.00144)
+exp2	-0.0495***
+	(0.00305)
+female	-0.128***
+	(0.0153)
+married	0.101***
+	(0.0118)
+femmar	-0.101***
+	(0.0184)
+	
+Observations	8,905
+R-squared	0.400
+Standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

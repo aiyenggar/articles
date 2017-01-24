@@ -1,0 +1,33 @@
+		(1)	(2)	(3)	(4)	(5)
+VARIABLES	LABELS	Log (Wage)	Log (Wage)	Log (Wage)	Log (Wage)	Log (Wage)
+						
+calc	Calculator User (Dummy)	0.0350***				
+		(0.0114)				
+school	Years of Schooling	0.0503***	0.0487***	0.0492***	0.0498***	0.0499***
+		(0.00290)	(0.00290)	(0.00290)	(0.00290)	(0.00291)
+exp	Experience	0.0291***	0.0290***	0.0292***	0.0290***	0.0291***
+		(0.00144)	(0.00144)	(0.00144)	(0.00144)	(0.00144)
+exp2	Experience Squared	-0.0496***	-0.0495***	-0.0500***	-0.0496***	-0.0497***
+		(0.00305)	(0.00304)	(0.00304)	(0.00305)	(0.00305)
+female	Female (Dummy)	-0.130***	-0.131***	-0.131***	-0.134***	-0.130***
+		(0.0154)	(0.0153)	(0.0153)	(0.0154)	(0.0154)
+married	Married (Dummy)	0.0989***	0.0965***	0.0965***	0.0989***	0.0990***
+		(0.0118)	(0.0118)	(0.0118)	(0.0118)	(0.0118)
+femmar	Female * Married (Dummy)	-0.102***	-0.0973***	-0.0992***	-0.101***	-0.102***
+		(0.0183)	(0.0183)	(0.0183)	(0.0183)	(0.0183)
+teleph	Telephone User (Dummy)		0.0722***			
+			(0.0103)			
+pencil	Pencil User (Dummy)			0.0600***		
+				(0.0101)		
+sit	Sedantary Worker (Dummy)				0.0452***	
+					(0.0108)	
+hammer	Physical Tools User (Dummy)					-0.0347***
+						(0.0120)
+						
+Observations		8,905	8,905	8,905	8,905	8,905
+R-squared		0.405	0.408	0.407	0.406	0.405
+Occupation dummies		Yes	Yes	Yes	Yes	Yes
+German and Math Score Dummies		Yes	Yes	Yes	Yes	Yes
+Father Occupation Dummies		Yes	Yes	Yes	Yes	Yes
+Standard errors in parentheses						
+*** p<0.01, ** p<0.05, * p<0.1						

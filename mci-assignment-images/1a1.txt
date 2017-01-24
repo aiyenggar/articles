@@ -1,13 +1,13 @@
-Regression of log wages in 1979 on computer usage\label{1a1}	
-	(1)
-VARIABLES	Log Hourly Wage
-	
-computer	0.134***
-	(0.0170)
-Constant	2.419***
-	(0.00486)
-	
-Observations	8,905
-R-squared	0.007
-Standard errors in parentheses	
-*** p<0.01, ** p<0.05, * p<0.1	
+Regression of log wages in 1979 on computer usage\label{1a1}		
+		(1)
+VARIABLES	LABELS	Log (Wage)
+		
+computer	Computer User (Dummy)	0.134***
+		(0.0170)
+Constant	Constant	2.419***
+		(0.00486)
+		
+Observations		8,905
+R-squared		0.007
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		
