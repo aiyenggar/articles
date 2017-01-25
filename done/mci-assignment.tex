@@ -1,0 +1,390 @@
+% mci-assignment.tex 
+\documentclass[12pt]{article}
+\usepackage{amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\graphicspath{ {mci-assignment-images/} }
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{tabu}
+\usepackage{stata}
+\usepackage{verbatim}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+\geometry{
+ total={150mm,247mm},
+ left=20mm,
+ top=25mm,
+ right=20mm,
+ bottom=25mm
+}
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+%\setlength\parindent{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{MCI-Assignment}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Iyenggar}
+\newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/mci-assignment-images/}
+\newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
+\begin{document}
+\title{Methods in Causal Inference Course Assignment}
+\author{Questions assigned by: Prof. Vidhya Soundararajan\\ Solutions submitted by: Ashwin Iyenggar  (1521001)} 
+
+
+\maketitle
+\thispagestyle{empty}
+
+\setlength\parindent{0pt}
+
+\begin{center}\LARGE{Question 1 : \cite{Dinardo1997}}\end{center}
+\textbf{Does being able to work with a computer raise productivity and earnings? In an important paper, \cite{Krueger1993} included a measure indicating whether a worker uses computers at work in standard wage regressions. The paper\textquotesingle s Table II (page 38) contains the main results. The paper found a considerable wage differential for using computers as opposed to not using computers. this has been taken as evidence in favour of the view that introduction of new technologies improve productivity and wages. This question asks you to evaluate this claim. Open d\_p.dta, the dataset used in another study \citep{Dinardo1997}. This is based on pooled cross sections of the West German Qualification and Career Survey. Use \texttt{desc} and \texttt{tab} commands to understand the variables.}
+\question{1a. Find the difference in the mean log wage of computer users and non-computer users using the 1979 data}
+
+Table ~\ref{1a} presents the results of a t-test on 1979 log wages between computer and non-computer users. We note that the mean log wages for computer users is 2.553225 and that for non computer users is 2.419198, yielding a difference = 0.1340268. This difference may also be obtained by regressing log wages on computer usage for the year 1979 as determined in Table ~\ref{1a1}
+
+The instructions specified in the question have been executed in the following \stata \  \ code.\\
+\begin{lstlisting}
+estpost ttest lnw if year==1979, by(computer)
+esttab using `imagepath'1a.tex, title("T-test of log wages in 1979 by computer usage\label{1a}") mtitle("Mean Difference") se replace
+
+reg lnw computer if year==1979
+outreg2 using `imagepath'1a1.tex, title("Regression of log wages in 1979 on computer usage\label{1a1}") ctitle("Log Hourly Wage") tex(pretty frag) replace
+\end{lstlisting}
+
+\input{mci-assignment-images/1a.tex}
+\begin{table}
+\caption{}
+\input{mci-assignment-images/1a1.tex}
+\end{table}
+
+\newpage
+\question{1b. What are the assumptions under which this difference would be an unbiased estimate of the effect of computers on wages?}
+We would need random assignment of computer and non computer users in the sample for the above to provide us with an unbiased estimate of the effect of computer usage on log wages. In other words we would require that none of the priors to assignment of computer usage or non-usage must result in a significant difference in average wages. Only if this were true would the coefficient on computer when regressing log wages on computer give us an unbiased estimate of the effect of computer usage on log wages.
+
+\question{1c. Suppose a randomized trial was used to generate this data. This trial assigned some individuals computers and others not. How would you test if the randomization worded? Do a battery of tests to check this using 1979 data.}
+Table ~\ref{1c} presents the results of a t-test of the all other variables by computer usage for the 1979 data. For randomization to have worked, we would have needed that none of the mean differences were statistically significant. However it turns out from Table ~\ref{1c} that almost all of the other variables demonstrate statistically significant differences between computer users and non-computer users. We may therefore conclude that computer usage is not randomly assigned in the 1979 data.
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+estpost ttest german math school exp female married lnw sit pencil teleph calc hammer city civser father occ, by(computer)
+esttab using `imagepath'1c.tex, title("T-tests by computer usage\label{1c}") mtitle("Mean Difference") replace
+\end{lstlisting}
+
+\input{mci-assignment-images/1c.tex}
+
+\question{1d. Examining \cite{Krueger1993} table 2, how does the effect of computer usage on wages change when the regressions include nothing else (column 1 and 4) and when the regressions include years of education and other variables (columns 2 and 3, 5 and 6). What does this change tell you about the relation between the schooling of a worker and his or her computer use on the job? Which computer coefficient is likely to be a better measure of the causal effect of computer skills?}
+Table 2 of \cite{Krueger1993} demonstrates across both the October 1984 and October 1989 samples that when years of education, experience, and other variables are added to the model, the effect of computer usage on log wages decreases. The drop in the coefficient estimate indicates that there may be unmeasured variables missing from our model, so that when other variables are added it is really the effect of the missing variable that is causing some of the effect to be taken away from the computer usage variable. Models (3) and (6) are likely to be a better measure of the causal effect of computer skills on log wages since it accounts for many more variables. However a true causal measure many still remain elusive in the absence of either random assignment or a natural experiment.
+\newpage
+\question{1e. Using the 1985 data in d\_p.dta, run a regression similar to \cite{Krueger1993} table 2 (columns 1 and 2 only). Some variables \cite{Krueger1993} uses do not exist in the German data like race or veteran status. Ignore those variables unavailable. Show regression results in a table. Compare your results for Germany to the US results and comment on them.}
+Column (1) of Table ~\ref{1e} displays the OLS regression estimates of the effect of computer use on log wages for 1985 in the German data. The coefficient estimates and standard errors for the coefficients in Table ~\ref{1e} are strikingly similar to those in Table 2 in \cite{Krueger1993}. For example, the estimate is 0.155 in Table ~\ref{1e} while it is 0.170 in Table 2 in \cite{Krueger1993}. The signs on the coefficient estimate for the square of experience are both negative. Similarly for the coefficients on female, on married and on the interaction between female and married. Finally, the $R^2$ value in \cite{Krueger1993} Table 2 is 0.446 while it is 0.308 in Table ~\ref{1e}. In summary, we may conclude that the coefficient estimates on the 1985 German data is quite similar to that on the US data in 1984.
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+gen exp2=(exp^2)/100
+gen femmar=female*married
+reg lnw computer school exp exp2 female married femmar if year==1985
+outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\label{1e}") ctitle("Log Hourly Wage") nocons tex(pretty frag) replace
+\end{lstlisting}
+
+\begin{table}
+\caption{}
+\input{mci-assignment-images/1e.tex}
+\end{table}
+
+\question{1f. Use the entire dataset d\_p.dta - which contains a pooled cross-section from 1979 and 1985. Run the same regression as in 1e, but now include a dummy variable for year 1985 in addition to the other covariates and an interaction term between computer use and your dummy variable for 1985. Add your results in a new column to the table you prepared for 1e}
+The results of this regression have been added to Table ~\ref{1e} in column (2). We note that the coefficient of the dummy variable d1985 is positive and significant, suggesting therefore that there may be a year effect on wages in addition to those of computer usage, years in school and experience.
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+gen d1985 = 1 if year==1985
+replace d1985 = 0 if missing(d1985)
+gen computer1985 = computer * d1985
+reg lnw computer school exp exp2 female married femmar d1985 computer1985
+outreg2 using `imagepath'1e.tex, title("The effect of computer use on log wages\label{1e}") ctitle("Log Hourly Wage") nocons tex(pretty frag) append
+\end{lstlisting}
+
+\newpage
+\question{1g. How can you perform a formal test of the hypothesis that the association between computer use and wages is the same in 1979 and 1985? Clearly state your null and alternate hypothesis. Perform your test in \stata \ . What is the result of your test?}
+We can use the regression results in column (2) of Table ~\ref{1e} to perform a formal test of hypothesis of the association between computer use and wage between 1979 and 1985. Formally, consider the following model:\\\\
+lnw = $\beta_0 + \beta_1 * computer + \beta_2 * exp + \beta_3 * exp^2 + \beta_4 * female + \beta_5 * married + \beta_6 * female * married + \beta_7 * d1985 + \beta_8 * computer * d1985 $ \\\\
+Null Hypothesis $H_0: \beta_8  = 0$ \\ Alternate Hypothesis $H_a: \beta_8  \neq 0$\\
+
+From  Table ~\ref{1e} we fail to reject $H_0$ since the coefficient estimate $\hat{\beta_8}$ is not statistically significant at even the 10\%  significance level (the t statistic value is 1.25).
+
+\newpage
+\question{1h (I). Repeat your regressions from 1e for the 1979 data, but additionally include occupation fixed effects. Since there are numerous occupation categories and you may not want to see a coefficient specific to each occupation, you can use the areg command (absorb option) to see a simplified output. Show regressions in a table. Type "help areg" or "man areg" to obtain help.}
+Column (1) of Table ~\ref{1hI} depicts the results for 1979 effects of computer usage after controlling for occupation effects.
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+areg lnw computer school exp exp2 female married femmar if year==1979, absorb(occ)
+outreg2 using `imagepath'1hI.tex,  nocons tex(pretty frag) addtext(Occupation dummies, Yes, German and Math Score Dummies, No, Father Occupation Dummies, No) label replace
+\end{lstlisting}
+
+\begin{table}
+\caption{1979 effects of computer usage on log wages, with occupation controls}
+\input{mci-assignment-images/1hI.tex}
+\label{1hI}
+\end{table}
+
+\question{1h (II). German and math scores, referring to grades in German and Mathematics classes are indicators of ability. The variable father contains occupation code for the father. Use these three as additional variables in the regression for 1979 data, and show results in the same table as you produced for 1h (I), but in anew column. These variables only have few categories, so we can include separate dummies for each of these categories in the regression (use the i. operator).}
+Column (2) of Table ~\ref{1hI} displays the results of this regression.
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+xi: areg lnw computer school exp exp2 female married femmar i.german i.math i.father if year==1979, absorb(occ)
+outreg2 using `imagepath'1hI.tex,  drop(_*) nocons tex(pretty frag) addtext(Occupation dummies, Yes, German and Math Score Dummies, Yes, Father Occupation Dummies, Yes) label append
+\end{lstlisting}
+
+
+\newpage
+\question{1h (III). Other variables indicating what people do or use on their job are also available: whether they use a calculator or cash register (calc), a telephone (teleph), writing materials (the variable is called pencil), whether they work mostly while sitting (sit), or whether they use blue collar tools like a hammer, screw driver, drill (hammer) etc. Run separate regressions for 1979 and for 1985 where you include these variables one by one in the equation instead of the computer variables. Include again occupation dummies, grades, and family background variables into all of these regressions. Prepare two tables for 1979 and 1985 each. How do the results compare to the computer effects? Do you think these coefficients are associated with the causal effect of a particular skill on earnings? How do these results make you feel about the interpretation of the computer coefficient? How are the non-computer tools affected by this?}
+The results for the 1979 data is provided in Table ~\ref{1hIIIa}. However the same model cannot be estimated for the 1985 data since the 1985 has missing values for \texttt{father, german, math}. This causes \stata \  to drop all observations. In Table ~\ref{1hIIIb}, I have provided the results by excluding the german and math scores and the father occupational dummies.
+
+\newgeometry{left=1cm,bottom=2cm,right=1cm,top=2cm} 
+%\begin{landscape}
+\begin{center}
+\begin{table}
+\caption{1979 effects of tools used on log wages, with occupation controls}
+\input{mci-assignment-images/1hIIIa.tex}
+\label{1hIIIa}
+\end{table}
+\newpage
+\begin{table}
+\caption{1985 effects of tools used on log wages, with occupation controls}
+\input{mci-assignment-images/1hIIIb.tex}
+\label{1hIIIb}
+\end{table}
+\end{center}
+%\end{landscape}
+
+\restoregeometry 
+\newpage
+\question{1h (IV). Write up a conclusion based on your results. What have you learned about the causal effect of computers on wages?}
+From the evidence from Table ~\ref{1hIIIa} and Table ~\ref{1hIIIb} it is clear that our current identification strategy is unable to yield a causal inference of the role of computer usage on wages since if we were to accept that we must also accept the rather absurd conclusion that using writing instruments such as pencils also lead to a higher wage. This conundrum is clarified by an understanding that high wage earners are also likely to be higher users of writing instruments, of computers and telephones. Clearly the causality of ability and skill to wages is not captured by our identification strategy here. Presumably there may be some impact of the usage of computers on wages earned but a causal inference may only be able to be made with random assignment of persons to computer usage and computer non-usage, and with a solid identification strategy backing it. With this study however, we are unable to make any specific causal conclusions of the role played by computer usage on increasing wages.
+
+
+
+% ----------------------------------------------------------------------------------------------------
+
+\newpage
+\begin{center}\LARGE{Question 2 : \cite{Autor2003}}\end{center}
+\textbf{One of the most common research designs encountered in public policy research is the one with many treated and control groups and many time periods. In a federalist system such as India or the USA, a common situation is for a group of states to pass a policy of interest while another of states either do not pass the policy or adopt the policy only with a lag relative to the other states. One such policy in the United States is the exception to employment at will. Originating in the 19th century, employment at will doctrine states that US firms can fire workers for a just cause or a no cause, at employer\textquotesingle s whim or will, and without warning. But some state level courts in the US have allowed exceptions to the employment at will doctrine leading to law suits for unjust dismissal. \cite{Autor2003} was interested in wheter this fear of law suits made firms hire temporary workers through an intermediary agency. Hiring temp workers would make firing costless and simpler because the firm is not directly employing the services of workers and cannot be implicated because of stoppage of their services.\\\\In the question below, we will examine some interesting aspects of this paper and understand the multi-periods and multi-group difference-in-difference estimators (more generally fixed effects estimator). In the paper, there are three policy variables indicating if there was a court ruling providing an exception to employment at will doctrine, in each state \textquotesingle s\textquotesingle \ in each year \textquotesingle t\textquotesingle . $y_{st}$, the outcome variable is the log of temporary workers in state \textquotesingle s\textquotesingle \ and year  \textquotesingle t\textquotesingle .}
+
+\newpage
+\question{2a. Let\textquotesingle s begin by understanding the nature of the date and three policy variables. Open autotempworkers.dta, the dataset used in the study. Use the \texttt{desc} command to examine the variables in the dataset. use the following commands to take a peek at how the data is set up.\\\\
+\texttt{ sort state year\\list state abbrev year mico mppa mgfa thsemp, sepby(state)\\tab1 mico mppa mgfa\\\\} Describe very briefly in words how the three key policy variables (mico, mppa, and mgfa) are coded (that is, what does 0 mean and 1 mean for each). Please skim through section I of the paper to intuitively understand the meaning of the three policies namely the implicit contract exception (mico), the public policy exception (mppa), the implied covenant of good faith and fair dealing (mgfa). Appendix Table A1 has details on the court cases used for analysis. You do not have to understand the details of any of these to do this assignment, but just understand the idea of what the policy does.}
+
+
+\noindent \texttt{mico} is coded 1 for every year from the first year in which an implicit contract exception was adopted in a given state, and coded 0 for all years prior to which the first implicit contract exception was adopted. \\\\
+\texttt{mppa} is similarly coded 0 for all years prior to which a public policy exception was first adopted in a state, and coded 1 for all years from the year in which a public policy exception was adopted in a state for the first time.\\\\
+\texttt{mgfa}, on similar lines is coded 0 for all years prior to which the implied covenant of good faith and fair dealing was first adopted, and coded 1 for all years since (including the year of adoption).\\
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+desc
+sort state year
+list state abbrev year mico mppa mgfa thsemp, sepby(state)
+tab1 mico mppa mgfa
+\end{lstlisting}
+
+\newpage
+\question{2b. Run a regression of the lob of temporary help employment (log thsemp) on all the three policy variables and a constant term, using the standard \textquotesingle robust \textquotesingle \ option to get robust standard errors. Taking your results at face value, what would you conclude about the impact of these three types of policies on temporary help employment? Why would this be a biased estimator for the true causal effects of these policies?}
+
+\noindent Table ~\ref{2b} presents the results of this basic regression. If one were to take the results in Table ~\ref{2b} at face value (as suggested by the question), one would conclude that both Implied contract (\texttt{mico}) and Public policy (\texttt{mppa}) have a positive and significant effect on the log of temporary employment. The size of the effect on total temporary employment indicated is 42\% and 57\% for the adoption implicit contract exception and public policy exception respectively. The results in Table ~\ref{2b} also suggests that the effect of adoption of the implied covenant of good faith and fair dealing (\texttt{mgfa}) has a negative and statistically insignificant effect on ln (temporary employment).\\\\
+The estimates in Table ~\ref{2b} may be both biased and have a higher variance. The bias may arise because of an incorrect specification that ignores potential endogeneity in the identification. Potential missing variable bias may be corrected with an appropriate quasi experimental setup where the researcher exploits the change in policy across states at various points of time. Additionally,  state level effects, year level effects and time trends are not controlled for that may lead to higher standard errors of the estimates. It is possible that different states have different starting dispositions that might affect the level of temporary workers. \\
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+gen lnthsemp=ln(thsemp)
+reg lnthsemp mico mppa mgfa, robust
+outreg2 using  `imagepath'2b.tex, title("Basic Regression\label{2b}") ctitle("ln(temporary employment)") tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+
+\begin{table}
+\caption{}
+\input{mci-assignment-images/2b.tex}
+\end{table}
+
+\newpage
+\question{2c. Run the same regression but compute \textquotesingle cluster robust \textquotesingle \ standard errors, using the option \textquotesingle cluster(state) \textquotesingle \ which allows for arbitrary correlation of the error term across years within the same state. Compare the standard errors you get from this approach relative to the one above. Why do you think your estimate of the precision of your estimates changed so much? Use cluster robust standard errors for the remainder of this question.}
+
+
+\noindent Table ~\ref{2c} presents the results of this basic regression with clustered standard errors. We learn from theory that standard errors of coefficient estimates are crucial in determining the statistical significance of the result, and in determining the outcomes of the hypothesis testing. In simpler words, the standard error determines how accurate the estimates are. In observing the standard error of the estimates in Table ~\ref{2c}, we observe that the standard error values are higher than those in Table ~\ref{2b}. The higher standard error values in Table ~\ref{2c} suggest that the effects of the three policy variables are all not significant. The reason for the significant differences in standard errors is that it may have been quite likely that observations from different states had different variances in the values of temporary workers - violating the iid  (identically independently distributed) assumption. While robust standard errors control for heteroskedasticity in the distribution of log temporary workers in the sample as a whole , adjusting for clustering based on state allows for all observations within a state to be clustered so that similar effects that affect a given state may be considered state by state. Having adjusted for state level effects, the aggregate standard errors are found to be higher. This may imply that the distribution across states (when state effect is not clustered) may have been more uniform, but that there was higher variance within states. When clustered standard effects were applied, the independently distributed assumption was applied only across states and not within it, and we therefore received a higher standard error indicating the higher within state variance in log temporary workers.
+\begin{table}
+\caption{Regression Results}
+\input{mci-assignment-images/2c.tex}
+\end{table}
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+reg lnthsemp mico mppa mgfa, robust cluster(state)
+outreg2 using  `imagepath'2c.tex, title("Regression with Robust Cluster SE\label{2c}") ctitle("ln(temporary employment)") tex(pretty frag) dec(4) replace
+\end{lstlisting}
+
+\newpage
+\question{2d. Run two regressions with the same variables as b and c, but include in addition: (i) year dummy variables only, and (ii) state dummy variables only. Explain what sources of bias are being controlled for in each regression i and ii.}
+
+\noindent Table ~\ref{2d} presents the results for the two models including the year dummies and state dummies respectively. The model with year dummies controls for bias in estimates due to any events that affected all observations in a certain year but not others. The model with state dummies controls for bias in estimates due to any state specific effects that does not affect observations in other states. The resulting estimates are expected to be controlled for bias from such year or state effects, and therefore a truer estimation of the real effect of the policy variables.
+
+
+\input{mci-assignment-images/2d.tex}
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+levelsof state, local(lstate)
+foreach ls of local lstate {
+	gen dstate`ls' = 1 if state==`ls'
+	replace dstate`ls' = 0 if missing(dstate`ls')
+}
+
+levelsof year, local(lyear)
+foreach ly of local lyear {
+	gen dyear`ly' = 1 if year==`ly'
+	replace dyear`ly' = 0 if missing(dyear`ly')
+}
+
+eststo clear
+reg lnthsemp mico mppa mgfa dyear80-dyear95, robust cluster(state)
+estadd local Model "Year Dummies"
+est store model1
+reg lnthsemp mico mppa mgfa dstate12-dstate95, robust cluster(state)
+estadd local Model "State Dummies"
+est store model2
+esttab model1 model2 using `imagepath'2d.tex, title("Regression with Year and State Controls\label{2d}") longtable se not drop(d*) scalars("Model") addn("Reference Year is 79 for Year Dummies Model" "Reference State is 11 (ME) for State Dummies Model") replace
+\end{lstlisting}
+
+
+
+\newpage
+\question{2e. Replicate columns (7) and (8) of table 3 in the \cite{Autor2003}. Describe an omitted factor that might lead to bias in the specification in column (7) but would not in column (8) i.e., what sources of bias does adding state speciific trends to the model control for? Hint: to create variables for state specific time trends, crate a variable gen t=year-78, and then use a command like xi i.state i.year i.state*t. You might want to use the \textquotesingle list \textquotesingle \ command to look at the data to be sure you understand what this variable looks like. }
+
+\noindent Table ~\ref{2e} replicates the results in columns (7) and (8) of Table 3 in \cite{Autor2003}. \\\\The specification without controlling for state * time trend (column 1 in Table ~\ref{2e}) could potentially be biased due to missing the effect of time within the state. While state dummies controlled for state level effects, and year dummies controlled for year effects, there may have still been a time varying state effect which would not have been previously captured. By including the state * time trend variables, the effects of time within a state are controlled for. This leaves us with a much better estimate for the causal effect of the policy intervention on lag wages.
+ 
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+gen age=year-78
+foreach var of varlist dstate* {
+  gen tt`var' = `var'*age
+}
+local imagepath /Users/aiyenggar/OneDrive/code/articles/mci-assignment-images/
+reg lnthsemp mico mppa mgfa dyear80-dyear95 dstate12-dstate95, robust cluster(state)
+outreg2 using  `imagepath'2e.tex, drop (dyear* dstate* tt*) tex(pretty frag) dec(3) addtext(State and year dummies, Yes, State * time trends, No) addn("Reference Year is 79, Reference State is 11 (ME)") label replace
+
+reg lnthsemp mico mppa mgfa dyear80-dyear95 dstate12-dstate95 ttdstate12-ttdstate95, robust cluster(state)
+outreg2 using  `imagepath'2e.tex, drop (dyear* dstate* ttdstate*) tex(pretty frag) dec(3) addtext(State and year dummies, Yes, State * time trends, Yes) label append
+\end{lstlisting}
+
+\begin{table}
+\caption{The Estimated Impact of Common Law Exceptions to Employment at Will on THS Employment, 1979-95}
+\input{mci-assignment-images/2e.tex}
+\label{2e}
+\end{table}
+
+\newpage
+\question{2f. Replicate columns 1 in table 5. Explain the purpose of columns (1) through (4) in table 5, which includes log non-farm employment (log anneemp) as an additional explanatory variable. What is the author trying to convince you of, by showing that the results are robust with the addition of non-farm employment as an additional variable?}
+\noindent Table ~\ref{2f} replicates the results in columns (1) and (2) of table 5 in \cite{Autor2003}. By adding a control for the total non-farm employment, the author demonstrates that his results are robust to the trends in the broader job market. In other words, having controlled for the total number of new jobs created the effects of the policy measures on temporary employment may no longer be assumed to have been due just to the effect of the larger job market.
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+gen lnannemp = ln(annemp)
+label variable lnannemp "Log(Non-Farm Employment)"
+
+foreach var of varlist dstate* {
+  gen tt2`var' = `var'*age*age
+}
+local imagepath /Users/aiyenggar/OneDrive/code/articles/mci-assignment-images/
+reg lnthsemp mico lnannemp mppa mgfa dyear80-dyear95 dstate12-dstate95 ttdstate12-ttdstate95, robust cluster(state)
+outreg2 using  `imagepath'2f.tex, drop (mppa mgfa dyear* dstate* tt*) tex(pretty frag) dec(3) addtext(State and year dummies, Yes, State * time trends, Yes, State * time2 trends, No) addn("Reference Year is 79, Reference State is 11 (ME)") label replace
+
+reg lnthsemp mico lnannemp mppa mgfa dyear80-dyear95 dstate12-dstate95 ttdstate12-ttdstate95 tt2dstate12-tt2dstate95, robust cluster(state)
+outreg2 using  `imagepath'2f.tex, drop (mppa mgfa dyear* dstate* tt*) tex(pretty frag) dec(3) addtext(State and year dummies, Yes, State * time trends, Yes, State * time2 trends, Yes) label append
+\end{lstlisting}
+
+\begin{table}
+\caption{The Estimated Impact of Common Law Exceptions to Employment at Will on THS Employment, 1979-95, Controlling for State Demographics}
+\input{mci-assignment-images/2f.tex}
+\label{2f}
+\end{table}
+
+\newpage
+\question{2g. In table 5, what is the purpose of including region by year dummy variables? Why doesn't the author include state by year dummies? }
+\noindent Table 5 in \cite{Autor2003} is intended at demonstrating the effects of implied contract exception to employment at will to temporary employment numbers, controlling for demographics. One reason for including region by year dummy variables for such may be that the demographic data may have either been collected at a regional level, or because several states in a region may share similar demographic patterns.  However from the data it does not seem like the above are the reasons. I suppose, therefore that the reason they author chose the region by year dummies so as to give up fewer degrees of freedom and improve the significance of his results given the sample size of 850.
+
+\newpage
+\question{2h. Is column 7 in table 5 devoid of bias of all kinds? Why or why not? }
+\noindent It may be very hard to argue against the results in column 7 of table 5 in \cite{Autor2003} as the author has controlled for region, year, state and time trend effects. \cite{Autor2003} has very cleverly exploited the time variation in policy enforcement to lay out  a strong causal inference of implied contract on the creation of temporary jobs. While it may be hard to make the claim that column 7 of table 5 in \cite{Autor2003} is devoid of all bias, the results are definitely believable and robust having been controlled for all variable one can imagine.
+
+\newpage
+\question{2i. Replicate column (2) of Table 7 using the leads and lags variables already created for you in the data set (e.g., admico 2 is a two year lead of the implicit contract exception policy whereas admico2 is a two year lag; and mico4 is a dummy that switches on 4 years or more after policy, etc.). The main takeaway from this table is that future policy variables are not significantly affecting current temporary help employment but only that the current and lagged (past) policy variables are affecting current temporary employment. Why was it important for the author to show this, and how does this result strengthen the claim of causality in the paper?}
+
+\noindent Table ~\ref{2i} replicates the results in column (2) of table 7 in \cite{Autor2003}.  The reason the author demonstrates the effect of lagged and leading policy variables is to strengthen the claim for the causality being argued for. Table 7 clearly suggests that only lagged policy variables affect the outcome, and this makes his case hard to argue with.\\
+
+The instructions specified in the question have been executed in the following \stata \  code.\\
+\begin{lstlisting}
+local imagepath /Users/aiyenggar/OneDrive/code/articles/mci-assignment-images/
+label variable admico_2 "Law change t+2"
+label variable admico_1 "Law change t+1"
+label variable admico0 "Law change t0"
+label variable admico1 "Law change t-1"
+label variable admico2 "Law change t-2"
+label variable admico3 "Law change t-3"
+label variable mico4 "Implied contract law t-4 forward"
+reg lnthsemp lnannemp admico* mico4 admppa* mppa4 admgfa* mgfa4 dyear80-dyear95 dstate12-dstate95 ttdstate12-ttdstate95, robust cluster(state)
+outreg2 using  `imagepath'2i.tex, keep(admico_2 admico_1 admico0 admico1 admico2 admico3 mico4) tex(pretty frag) dec(3) addtext(State and year dummies, Yes, State * time trends, Yes, State * time2 trends, No) addn("Reference Year is 79, Reference State is 11 (ME)") nocon label replace
+\end{lstlisting}
+
+\begin{table}
+\caption{The Estimated Impact of Common Law Exceptions to Employment at Will on THS Employment, 1979-95, Controlling for State Demographics}
+\input{mci-assignment-images/2i.tex}
+\label{2i}
+\end{table}
+
+
+\newpage
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+
+\end{document}
+
+\begin{comment}
+% esttab listing
+\input{mci-assignment-images/1a.tex}
+
+% outreg2 listing
+
+\begin{table}
+\caption{}
+\input{mci-assignment-images/1a1.tex}
+\end{table}
+
+
+% Code Listing
+
+\end{comment}

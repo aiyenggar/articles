@@ -1,0 +1,201 @@
+% citations-20170114.tex 
+\documentclass[12pt]{article}
+\usepackage[a4paper]{geometry}
+
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{multirow,array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage[bottom]{footmisc}
+
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{stata}
+\usepackage{listings}
+
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{pdflscape}
+
+%\onehalfspacing
+%\doublespacing
+
+\graphicspath{ {citations-20170114/} }
+\geometry{
+ total={160mm,247mm},
+ left=25mm,
+ top=25mm,
+}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+	
+\setlength\parindent{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Region characteristics of patent citations}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Iyenggar}
+\newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/flows-2017-01-10/}
+\newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
+\begin{document}
+\title{Updates:\\ Region characteristics of patent citations}
+\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
+
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Regression Results}
+\begin{lstlisting}
+\end{lstlisting}
+The results are in Table ~\ref{model12}
+\begin{landscape}
+\begin{centering}
+\input{citations-20170114/model12.tex}
+\newpage
+\input{citations-20170114/model13.tex}
+\newpage
+\input{citations-20170114/model24.tex}
+\newpage
+\input{citations-20170114/model34.tex}
+\end{centering}
+\end{landscape}
+
+\begin{comment}
+%\newpage
+%\section{Trial 7 (OLS all independent and control variables, cutoff 200)}
+%\input{flows-2017-01-10/eflowsregols200.tex}
+
+\newpage
+\section{Trial 5 (log of all independent and control variables, cutoff 50)}
+\input{flows-2017-01-10/eflowsreg50t03.tex}
+
+\newpage
+\section{Trial 4 (log of all independent and control variables, cutoff 100)}
+\input{flows-2017-01-10/eflowsreg100t03.tex}
+
+\newpage
+\section{Trial 3 (log of all independent and control variables, cutoff 200)}
+\input{flows-2017-01-10/eflowsreg200t03.tex}
+
+
+
+\section{Trial 2 (patents instead of lnpatents): The model with fixed effects failed to converge}
+\begin{lstlisting}
+xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal ///
+		cit_made_nonlocalinternal cit_made_nonlocalexternal  cit_made_other ///
+		patents lnpool d2002-d2012 ///
+		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200)
+eststo
+esttab using `reportdir'eflowsregt02.tex, ///
+		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
+		indicate("Year Dummy = d20*")  ///
+		label longtable replace
+		
+xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal /// 
+		cit_made_nonlocalinternal cit_made_nonlocalexternal cit_made_other ///
+		lnpatents lnpool  d2002-d2012  ///
+		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200), i(regionid) fe
+// The above regression did not converge after 79 iterations, and was killed	
+eststo
+esttab using `reportdir'eflowsregt02.tex, ///
+		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
+		indicate("Year Dummy = d20*" "Region Fixed Effects = *region*")  ///
+		label longtable replace
+// The above regression did not converge even after 43 iterations. Killed it
+\end{lstlisting}
+\input{flows-2017-01-10/eflowsregt02.tex}
+
+
+\section{Trial 1 (Basic model): Failed to converge }
+\begin{lstlisting}
+xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal ///
+		cit_made_nonlocalinternal cit_made_nonlocalexternal  cit_made_other ///
+		lnpatents lnpool d2002-d2012 ///
+		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200)
+eststo
+esttab using `reportdir'eflowsregt01.tex, ///
+		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
+		indicate("Year Dummy = d20*")  ///
+		label longtable replace
+// This regressions runs into > 500 iterations. While it does finally converge, I chose to kill it without completing
+
+xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal /// 
+		cit_made_nonlocalinternal cit_made_nonlocalexternal cit_made_other ///
+		lnpatents lnpool  d2002-d2012  ///
+		if (!missing(mean_patent_rate12) & mean_patent_rate12 > 200), i(regionid) fe
+
+eststo
+esttab using `reportdir'eflowsregt01.tex, ///
+		title("Effect of Geographic Distribution of Citations Made on Citations Received \label{eflowsreg}") ///
+		indicate("Year Dummy = d20*" "Region Fixed Effects = *region*")  ///
+		label longtable replace
+// The above regression ran several hours and did not converge. The most recent time I killed it after 19 iterations
+\end{lstlisting}
+%\input{flows-2017-01-10/eflowsregt01.tex}
+\end{comment}
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+
+\end{document}
+
+\begin{comment}
+
+\begin{center}\LARGE{Question (a)}\end{center}
+\question{Under what conditions can one identify the causal effect of maternal smoking by comparing the unadjusted mean difference in birth weight of infants between smoking and non-smoking mothers?  Under the assumption that maternal smoking is randomly assigned, estimate its impact on birth weight.  Provide evidence for or against the assumption that maternal smoking is randomly assigned.}
+
+\textbf{Conditions for comparing unadjusted means}\\
+Let us consider a situation where maternal smoking were assigned randomly not conditional upon any other observable variables (like physical characteristics of the mother or known habits). Under this condition, we would expect the treatment and control group to be similar on all respects other than on maternal smoking habits. It may thus be reasonable to compare the unadjusted mean of the difference in birth weight of infants between smoking and non-smoking mothers to determine the causal effects of maternal smoking on infant birth weight. Therefore, the answer to the first part of the question is that we would need \uline{random assignment of maternal smoking during pregnancy that is unconditional} on any other observable variables.\\
+
+\textbf{Estimation of impact}\\
+I demonstrate the impact of maternal smoking on birthweight under assumption of random assignment of maternal smoking in two ways. Table ~\ref{a1} shows the result of a t-test on birthweight between smoking and non-smoking mothers. The results indicate that there is a statistically significant difference of 257.6 grams in birthweight between children born to smoking mothers and those born to non-smoking mothers.\\ Table ~\ref{a2} is the output from regressing birthweight on mother smoking status, and this suggests the same result as the t-test in Table ~\ref{a1} i.e., indicating an average drop in birthweight of 257.6 grams for smoking mothers as compared to the non-smoking mothers in the sample.\\
+
+\input{flows-2017-01-10/a1.tex}
+
+\begin{table}
+\caption{Regression Results}
+\input{flows-2017-01-10/a2.tex}
+\end{table}
+
+\textbf{Evidence against random assignment}
+
+If maternal smoking were randomly assigned, then we would expect that there would be no significant differences between treatment and control on most (if not all) observable parameters of interest (in this case for the birth of the child). Intuitively, it is clear that maternal smoking during pregnancy may not be independent of the state of pregnancy (some mothers may decide to give up smoking so as to not hurt the foetus), or of socio-economic and racial characteristics of the parents. Empirically though, this may be demonstrated by comparing the mean values of various observable characteristics between the treatment and control group. Table ~\ref{a3} provides the results of t-tests on several observable variables\footnote{I am grateful to Prof. Shailender Swaminathan to have pointed out this method in class, correcting my previous misconception of looking at variable correlations as the appropriate method to determine this} between smoking and non-smoking mothers. While the list in Table ~\ref{a3} is not exhaustive on the observable characteristics, it is clear that smoking and non-smoking mothers vary distinctly on most observable characteristics. This is therefore sufficient to demonstrate that maternal smoking is \uline{not randomly assigned}. \\
+ 
+\input{flows-2017-01-10/a3.tex}
+
+The \stata \ code   for this question is as below
+\begin{lstlisting}
+use smoking_labels, clear
+local imagepath /Users/anu/OneDrive/code/articles/flows-2017-01-10/
+
+estpost ttest dbirwt, by(tobacco)
+esttab using `imagepath'a1.tex, title("T-test for birth weight by maternal smoking status\label{a1}") mtitle("tobacco") replace
+
+reg dbirwt tobacco, vce(robust)
+outreg2 using  `imagepath'a2.tex, title("Maternal Smoking Effects on Birthweight\label{a2}") ctitle("Random Assignment") tex(pretty frag) dec(4) replace
+
+
+estpost ttest dmage dmeduc dmar dlivord mblack fblack alcohol tripre0 tripre1 tripre2 tripre3, by(tobacco)
+esttab using `imagepath'a3.tex, title("T-tests by Maternal Smoking Status\label{a3}") mtitle("Mean Difference") replace
+\end{lstlisting}
+\end{comment}
