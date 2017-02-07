@@ -1,0 +1,75 @@
+% citations-20170114.tex 
+\documentclass[12pt]{article}
+\usepackage[a4paper]{geometry}
+
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{multirow,array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage[bottom]{footmisc}
+
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{stata}
+\usepackage{listings}
+
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{pdflscape}
+
+%\onehalfspacing
+%\doublespacing
+
+\graphicspath{ {etig-term-paper-presentation-images/} }
+\geometry{
+ total={160mm,247mm},
+ left=25mm,
+ top=25mm,
+}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+	
+\setlength\parindent{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{The effect of inventor mobility on  invention complexity}
+\rfoot{Page \thepage  \ of \pageref{LastPage}}
+\rhead{Iyenggar}
+\newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/etig-term-paper-presentation-images/}
+\newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
+\begin{document}
+\title{The effect of inventor mobility on  invention complexity}
+\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
+
+\maketitle
+\thispagestyle{empty}
+
+\section{Regression Results}
+\begin{table}
+\caption{Regression Results}
+\input{etig-term-paper-presentation-images/Ia.tex}
+\end{table}
+
+\bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
+\bibliographystyle{apalike}
+
+
+\end{document}
