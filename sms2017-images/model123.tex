@@ -1,0 +1,35 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\caption{Effect of Geographic Distribution of Citations Made on Citations Received \label{model123}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{Citations Received}&\multicolumn{1}{c}{Citations Received}&\multicolumn{1}{c}{Citations Received}\\
+\hline
+Citations Received&                  &                  &                  \\
+Share Citations Made[Same Region, Same Assignee]&   -0.169         &   -0.104         &   -0.134         \\
+                &  (0.218)         &  (0.623)         &  (0.454)         \\
+Share Citations Made[Same Region, Different Assignee]&   -0.149         &   -0.191         &  -0.0919         \\
+                &  (0.215)         &  (0.458)         &  (0.468)         \\
+Share Citations Made[Different Region, Same Assignee]&    0.217\sym{*}  &    0.266\sym{*}  &    0.348\sym{**} \\
+                &  (0.012)         &  (0.037)         &  (0.004)         \\
+Share Citations Made[Different Region, Different Assignee]&  0.00828         &   0.0315         &   0.0179         \\
+                &  (0.789)         &  (0.499)         &  (0.661)         \\
+Log(Total Citations Made)&   0.0180\sym{***}&   0.0198\sym{***}&   0.0134\sym{*}  \\
+                &  (0.000)         &  (0.001)         &  (0.014)         \\
+Log (Num Patents)&    0.785\sym{***}&    0.811\sym{***}&    0.830\sym{***}\\
+                &  (0.000)         &  (0.000)         &  (0.000)         \\
+Log (Patent Pool Size)&   -0.111\sym{***}&   -0.227\sym{***}&  -0.0944\sym{***}\\
+                &  (0.000)         &  (0.000)         &  (0.000)         \\
+Constant        &  -0.0711         &    0.673\sym{***}&   -0.500\sym{***}\\
+                &  (0.487)         &  (0.000)         &  (0.000)         \\
+\hline
+Observations    &     9241         &     3885         &     5356         \\
+Groups          &     1314         &      529         &      785         \\
+Sample          &All Locations (UC)         &US Locations (UC)         &Non-US Locations (UC)         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{4}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}
