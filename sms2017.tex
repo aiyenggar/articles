@@ -52,30 +52,132 @@ breaklines=true
 \fancyhf{}
 \lhead{Heterogeneity in knowledge flows across regions}
 \rfoot{Page \thepage  \ of \pageref{LastPage}}
-\rhead{Iyenggar}
+\rhead{Iyenggar and Yayavaram}
 \newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/sms2017-images/}
 \newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
 \begin{document}
 \title{Heterogeneity in knowledge flows across regions:\\ Investigating patterns and mechanisms}
-\author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
-
+\author{Ashwin Iyenggar and Sai Yayavaram} 
 
 \maketitle
 \thispagestyle{empty}
+\begin{abstract}
+\noindent We analyze the pattern of knowledge flows by geographical region and by firm for seven prominent regions. We demonstrate that locations display significant heterogeneity with regard to the relative proportions of local and non-local knowledge flows, and within firm and across firm knowledge flows. Specific patterns idiosyncratic distribution of flows are identified by location and suggestions are made for furthering of theory on the causal contributors of knowledge flows.
+\end{abstract}
 
-\section{Regression Results}
-\begin{lstlisting}
-\end{lstlisting}
-The results are in Table ~\ref{model123}
+\section{Introduction}
+Long recognized that clusters and agglomeration economies play an important role in fostering innovationAgglomeration economies arise due to (Krugman, 1991)labour pooling advantages economies of specialization of local suppliersknowledge spilloversResearch QuestionHow do different types of knowledge flows in a region affect the quality of inventions originating in that region?
+
+
+\section{Effects of knowledge flows on quality of inventions}
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=0.6\textwidth]{2x2}
+  \caption{2x2}
+  \label{fig:2x2}
+\end{centering}
+\end{figure}
+Same Region, Same Assignee
+Competence building
+Local search on both dimensions
+(within firm and within region)
+Same Region, Different Assignee
+Knowledge spillovers
+Local search on one dimension (within region)
+Different Region, Same Assignee
+Benefits of geographic diversification
+Local search on one dimension (within firm)
+Different Region, Same Assignee
+High exploration, global pipeline
+Excessive exploration?
+(Outside firm and outside region)
+
+Theoretically, it is not clear:what is the net effect of each type of knowledge flow?which type of flow will have the largest effect?
+
+\section{Data and Measures}
+Metropolitan Statistical Areas (MSA) from the US censusUrban areas for world wide locations from Natural Earth DataPatent data from USPTO/ PatentsViewSample: All unique regions from MSA-Urban Areas (3013)Sample: Citations made by applicantsSample: Years 2001 - 2012
+Unit of Analysis: Region-YearDependent Variable: Total Citations Received (till 2015) by patents belonging to Region-YearIndependent Variables: Share of Citations Made toSame Region, Same AssigneeSame Region, Different AssigneeDifferent Region, Same AssigneeDifferent Region, Same AssigneeControls: Log (citations made total), Log (number of patents in Region-Year), Log (patent pool size in Region-Year), percentage of patents in Region-Year in each HJT technology subcategory (Hall, Jaffe \& Trajtenberg 2001)
+
+\section{Classification of Citations Made}
+\subsection{Knowledge Flows to Same Region, Same Assignee}
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{SMSSameRegionSameAssigneeFlows}
+  \caption{Flows within regions and within assignees}
+  \label{fig:SMSSameRegionSameAssigneeFlows}
+\end{centering}
+\end{figure}
+
+
+
+
+\subsection{Knowledge Flows to Same Region, Different Assignee}
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{SMSSameRegionDiffAssigneeFlows}
+  \caption{Flows within regions and across assignees}
+  \label{fig:SMSSameRegionDiffAssigneeFlows}
+\end{centering}
+\end{figure}
+
+\subsection{Knowledge Flows to Different Region, Same Assignee}
+
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{SMSDiffRegionSameAssigneeFlows}
+  \caption{Flows across regions and within assignees}
+  \label{fig:SMSDiffRegionSameAssigneeFlows}
+\end{centering}
+\end{figure}
+
+\subsection{Knowledge Flows to Different Region, Different Assignee}
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=\textwidth]{SMSDiffRegionDiffAssigneeFlows}
+  \caption{Flows across regions and across assignees}
+  \label{fig:SMSDiffRegionDiffAssigneeFlows}
+\end{centering}
+\end{figure}
+
+\section{Results}
 \begin{landscape}
+\begin{centering}
+\input{sms2017-images/model131415.tex}
+\end{centering}
+\end{landscape}
+
+\section{Discussion}
+Preliminary findingsNo evidence that local knowledge spillovers lead to higher quality inventionsBuilding on knowledge from outside the firm and outside the region improves invention qualityLimitationsUsing patent data to measure knowledge flowsDefinition of regions (any systematic biases in identifying regions can create biases in measures of within and outside region knowledge flows)
+Future workAnalysis at level of firm-year rather than region-yearLook at the additional dimension of technology (within and outside technological domain)Other measures of invention outcomes (e.g., breakthrough inventions)Why don?t local knowledge spillovers have any effect on invention quality? 
+
+\begin{comment}
+\begin{landscape}
+\section{Fixed Effects Results}
 \begin{centering}
 \input{sms2017-images/model123.tex}
 \newpage
-\input{sms2017-images/model152.tex}
+\input{sms2017-images/model131415.tex}
+\newpage
+\input{sms2017-images/model192021.tex}
+\newpage
+\input{sms2017-images/model252627.tex}
 \end{centering}
 \end{landscape}
 
 
+
+\begin{landscape}
+\section{Random Effects Results}
+\begin{centering}
+\input{sms2017-images/model101112.tex}
+\newpage
+\input{sms2017-images/model161718.tex}
+\newpage
+\input{sms2017-images/model222324.tex}
+\newpage
+\input{sms2017-images/model282930.tex}
+\end{centering}
+\end{landscape}
 
 \begin{figure}
   \begin{subfigure}[b]{\textwidth}
@@ -163,7 +265,6 @@ The results are in Table ~\ref{model123}
 \end{figure}
 
 
-\begin{comment}
 %\newpage
 %\section{Trial 7 (OLS all independent and control variables, cutoff 200)}
 %\input{flows-2017-01-10/eflowsregols200.tex}
