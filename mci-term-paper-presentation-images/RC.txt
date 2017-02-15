@@ -1,0 +1,24 @@
+Regional Mobility of Inventors and Productivity of Inventors				
+		(1)	(2)	(3)
+VARIABLES	LABELS	Productivity	Productivity	Productivity
+				
+regionchange	Moved Region (MR)	1.5328***	0.8679***	0.5668***
+		(0.2967)	(0.1278)	(0.0851)
+inventor_pool	Prior Patents of Inventor (PPI)		0.0866***	0.0740***
+			(0.0065)	(0.0019)
+team_highest_noninventor	Prior Patents of Team (PPT)		0.0004*	0.0005***
+			(0.0002)	(0.0002)
+intr_regchg_invpool	MR x PPI			0.0335***
+				(0.0078)
+intr_regchg_teampool	MR x PPT			-0.0006***
+				(0.0002)
+Constant	Constant	1.7242***	1.7335***	1.7487***
+		(0.1644)	(0.0746)	(0.0848)
+				
+Observations		3,981,822	3,440,812	3,440,812
+R-squared		0.0292	0.3001	0.3096
+Year FE		Yes	Yes	Yes
+Technology FE		Yes	Yes	Yes
+Clustered SE		Country	Country	Country
+Robust standard errors in parentheses				
+*** p<0.01, ** p<0.05, * p<0.1				
