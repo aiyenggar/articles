@@ -26,6 +26,8 @@
 \usepackage{verbatim}
 \usepackage{pdflscape}
 \usepackage{subcaption} 
+\usepackage{hyperref}
+
 %\onehalfspacing
 %\doublespacing
 
@@ -34,6 +36,14 @@
  total={160mm,247mm},
  left=25mm,
  top=25mm,
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=magenta,
 }
 
 \lstset{
@@ -62,97 +72,103 @@ breaklines=true
 \maketitle
 \thispagestyle{empty}
 \begin{abstract}
-\noindent We analyze the pattern of knowledge flows by geographical region and by firm for seven prominent regions. We demonstrate that locations display significant heterogeneity with regard to the relative proportions of local and non-local knowledge flows, and within firm and across firm knowledge flows. Specific patterns idiosyncratic distribution of flows are identified by location and suggestions are made for furthering of theory on the causal contributors of knowledge flows.
+\noindent Using patent citations as measures of knowledge flows, we explore if the different types of knowledge flows in a region affects the quality of the inventions originating in that region. Using a consistent definition of urban centers for all locations worldwide, we find that local knowledge flows do not seem to impact inventive quality. 
 \end{abstract}
 
-\section{Introduction}
-Long recognized that clusters and agglomeration economies play an important role in fostering innovationAgglomeration economies arise due to (Krugman, 1991)labour pooling advantages economies of specialization of local suppliersknowledge spilloversResearch QuestionHow do different types of knowledge flows in a region affect the quality of inventions originating in that region?
+\section*{Introduction}
+Scholars of economics and strategy have for long recognized that clusters and agglomeration economies play an important role in fostering innovation \citep{Marshall1890, Porter1990}. Agglomeration economies arise due to labour pooling advantages, economies of specialization of local suppliers, or knowledge spillovers \citep{Krugman1991}. Patent citations have traditionally been used as a  measure of knowledge flows \citep{Jaffe1993} although recent work raises questions about the efficacy of using patent citations as a measure of knowledge flows \citep{Arora2017}. 
+\\\\
+Several studies have, however used patent citations to demonstrate that knowledge flows are localized \citep{Jaffe1993, Almeida1999, Alcacer2006a}. Regions, however vary in their inventive output \citep{Agrawal2014}. Prior theory does not guide us about how the nature of knowledge flows in a region may affect the quality of the innovations generated in the region. In the current article we use patent citation data for patents applied for between 2001 and 2012 to empirically estimate this relationship. 
+\\\\
+The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently. We then describe our data and methods in the next section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions.
 
-
-\section{Effects of knowledge flows on quality of inventions}
 \begin{figure}[h]
 \begin{centering}
   \includegraphics[width=0.6\textwidth]{2x2}
-  \caption{2x2}
+  \caption{Categorizing inventions by matching inventor regions and assignees}
   \label{fig:2x2}
 \end{centering}
 \end{figure}
-Same Region, Same Assignee
-Competence building
-Local search on both dimensions
-(within firm and within region)
-Same Region, Different Assignee
-Knowledge spillovers
-Local search on one dimension (within region)
-Different Region, Same Assignee
-Benefits of geographic diversification
-Local search on one dimension (within firm)
-Different Region, Same Assignee
-High exploration, global pipeline
-Excessive exploration?
-(Outside firm and outside region)
 
-Theoretically, it is not clear:what is the net effect of each type of knowledge flow?which type of flow will have the largest effect?
-
-\section{Data and Measures}
-Metropolitan Statistical Areas (MSA) from the US censusUrban areas for world wide locations from Natural Earth DataPatent data from USPTO/ PatentsViewSample: All unique regions from MSA-Urban Areas (3013)Sample: Citations made by applicantsSample: Years 2001 - 2012
-Unit of Analysis: Region-YearDependent Variable: Total Citations Received (till 2015) by patents belonging to Region-YearIndependent Variables: Share of Citations Made toSame Region, Same AssigneeSame Region, Different AssigneeDifferent Region, Same AssigneeDifferent Region, Same AssigneeControls: Log (citations made total), Log (number of patents in Region-Year), Log (patent pool size in Region-Year), percentage of patents in Region-Year in each HJT technology subcategory (Hall, Jaffe \& Trajtenberg 2001)
-
-\section{Classification of Citations Made}
-\subsection{Knowledge Flows to Same Region, Same Assignee}
+\section*{Effects of knowledge flows on quality of inventions}
+We categorize all knowledge flows along two dimensions:  first, whether the knowledge flows among inventors are geographically localized or not, and second, whether the knowledge flows are within the boundary of the firm or not. This classification allows us to see knowledge flows in four mutually exclusive, but collectively exhaustive categories as illustrated in Figure ~\ref{fig:2x2}. 
+\\\\
+The top left quadrant, labelled an "Independent Research Center" captures those that reflect competence building. Since the knowledge flows both locally and within the firm, this may be seen to represent local search on two dimensions (within firm and within region).  Figure ~\ref{fig:SMSSameRegionSameAssigneeFlows} depicts the normalized knowledge flows for this category across time for five regions. 
+\\\\
 \begin{figure}[h]
 \begin{centering}
-  \includegraphics[width=\textwidth]{SMSSameRegionSameAssigneeFlows}
+  \includegraphics[width=0.75\textwidth]{SMSSameRegionSameAssigneeFlows}
   \caption{Flows within regions and within assignees}
   \label{fig:SMSSameRegionSameAssigneeFlows}
 \end{centering}
 \end{figure}
 
-
-
-
-\subsection{Knowledge Flows to Same Region, Different Assignee}
 \begin{figure}[h]
 \begin{centering}
-  \includegraphics[width=\textwidth]{SMSSameRegionDiffAssigneeFlows}
+  \includegraphics[width=0.75\textwidth]{SMSSameRegionDiffAssigneeFlows}
   \caption{Flows within regions and across assignees}
   \label{fig:SMSSameRegionDiffAssigneeFlows}
 \end{centering}
 \end{figure}
-
-\subsection{Knowledge Flows to Different Region, Same Assignee}
-
+The quadrant on the bottom left, labelled "Cluster" captures knowledge spillovers. Here firms may be seen as performing local search on one dimension (within regions) but not the other (within firms). Figure ~\ref{fig:SMSSameRegionDiffAssigneeFlows} depicts the normalized knowledge flows for this category across time for five regions.
+\\\\
+The quadrant on the top right, labelled as "Geographic Diversification" captures local search on the dimension of the firm (across geographies) but not across regions. Figure ~\ref{fig:SMSDiffRegionSameAssigneeFlows} depicts the normalized knowledge flows for this category across time for five regions.
+\\\\
 \begin{figure}[h]
 \begin{centering}
-  \includegraphics[width=\textwidth]{SMSDiffRegionSameAssigneeFlows}
+  \includegraphics[width=0.75\textwidth]{SMSDiffRegionSameAssigneeFlows}
   \caption{Flows across regions and within assignees}
   \label{fig:SMSDiffRegionSameAssigneeFlows}
 \end{centering}
 \end{figure}
 
-\subsection{Knowledge Flows to Different Region, Different Assignee}
 \begin{figure}[h]
 \begin{centering}
-  \includegraphics[width=\textwidth]{SMSDiffRegionDiffAssigneeFlows}
+  \includegraphics[width=0.75\textwidth]{SMSDiffRegionDiffAssigneeFlows}
   \caption{Flows across regions and across assignees}
   \label{fig:SMSDiffRegionDiffAssigneeFlows}
 \end{centering}
 \end{figure}
 
-\section{Results}
+Finally, the bottom right quadrant labelled "Diffusion" captures high exploration and the development of a global pipeline. Figure ~\ref{fig:SMSDiffRegionDiffAssigneeFlows} depicts the normalized knowledge flows for this category across time for five regions.
+\\\\
+Within the context of this framework, we ask what is the net effect of each type of knowledge flow, and which type of flow will have the largest effect. Since theory does not provide us with an answer, we draw on the patent citations data to provides us some direction. 
+
+
+\section*{Data and Measures}
+
+We use patent citations data from the USPTO as provided by patentsview.org. Additionally to map inventors to regions, we use urban centers data for world wide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data}.  While it has been common to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the United States, an equivalent measure is unavailable for the rest of the world. For comparability and consistency, we choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions.
+\\\\
+Our unit of analysis is the region-year. In order that we are consistent with our objective of measuring only applicant cited patents as flows of knowledge, we restrict ourselves to those patents categorized as 'cited by applicant'. This decision has the additional effect of limiting our period of analysis to citing patents applied for after the year 2000. We restrict our sample to patents applied for between 2001 - 2012, but citations received till 2015.
+\\\\
+Our dependent variable is the  total count of self citations received (till 2015) by patents belonging to region-year. Self citations are patent citations where the assignee id on both the citing patent and the cited patent are identical. Our independent variables are the share of citations made to each of the four categories in our defined framework: those to a) Same Region, Same Assignee, b) Same Region, Different Assignee, c) Different Region, Same Assignee, and d) Different Region, Same Assignee.
+\\\\
+We control for Log (citations made total), Log (number of patents in Region-Year), Log (patent pool size in Region-Year), percentage of patents in region-year in each technology subcategory defined in \cite{Hall2001}
+
+\section*{Results}
+The preliminary results from our analysis are presented in Table ~\ref{model131415}. Model 1 reports the results for all regions worldwide, while Model 2 and Model 3 report results for US locations and non-US locations respectively. We find across the three models, that local knowledge flows do not seem to have a significant impact on the quality of inventions as measured by the number of self-citations received. 
 \begin{landscape}
 \begin{centering}
 \input{sms2017-images/model131415.tex}
 \end{centering}
 \end{landscape}
 
-\section{Discussion}
-Preliminary findingsNo evidence that local knowledge spillovers lead to higher quality inventionsBuilding on knowledge from outside the firm and outside the region improves invention qualityLimitationsUsing patent data to measure knowledge flowsDefinition of regions (any systematic biases in identifying regions can create biases in measures of within and outside region knowledge flows)
-Future workAnalysis at level of firm-year rather than region-yearLook at the additional dimension of technology (within and outside technological domain)Other measures of invention outcomes (e.g., breakthrough inventions)Why don?t local knowledge spillovers have any effect on invention quality? 
+\section*{Discussion}
+Our preliminary findings in Table ~\ref{model131415} suggest no evidence that local knowledge spillovers lead to higher quality inventions. On the other hand, building on knowledge from outside the firm and outside the region seems to improves invention quality
+
+\section*{Limitations}
+While has been popular in the literature, as \cite{Arora2017} point out, using patent citations as a measure knowledge flows may be subject to error. Our definition of regions is dependent on the latitude/longitude assignment in the patentsview.org data and on the urban centers definition in the \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data}. Any systematic biases in the definition of regions can create biases in measures of within and outside region knowledge flows. 
+
+
+\section*{Conclusion}
+While still at a preliminary stage, our analysis seem to suggest that local knowledge flows as measured by patent citations may not have a significant effect on the quality of innovation produced in a region. A potential extension of the study could be to analyze at level of firm-year rather than region-year. We could additionally look at the additional dimension of technology (within and outside technological domain) in addition to those of within/outside region and within/outside firm. This may provide us a more nuanced understanding of the factors affecting innovation quality. Future studies could potentially examine other measures of invention outcomes such as breakthrough inventions. Finally, while our work suggests that local knowledge spillovers do not effect invention quality, it is not quite as clear why this may be the case and the mechanisms that underlie such an effect. We hope that our current work spurs further research in this direction.  
+
+
+
 
 \begin{comment}
 \begin{landscape}
-\section{Fixed Effects Results}
+\section*{Fixed Effects Results}
 \begin{centering}
 \input{sms2017-images/model123.tex}
 \newpage
@@ -167,7 +183,7 @@ Future workAnalysis at level of firm-year rather than region-yearLook at the a
 
 
 \begin{landscape}
-\section{Random Effects Results}
+\section*{Random Effects Results}
 \begin{centering}
 \input{sms2017-images/model101112.tex}
 \newpage
@@ -266,24 +282,24 @@ Future workAnalysis at level of firm-year rather than region-yearLook at the a
 
 
 %\newpage
-%\section{Trial 7 (OLS all independent and control variables, cutoff 200)}
+%\section*{Trial 7 (OLS all independent and control variables, cutoff 200)}
 %\input{flows-2017-01-10/eflowsregols200.tex}
 
 \newpage
-\section{Trial 5 (log of all independent and control variables, cutoff 50)}
+\section*{Trial 5 (log of all independent and control variables, cutoff 50)}
 \input{flows-2017-01-10/eflowsreg50t03.tex}
 
 \newpage
-\section{Trial 4 (log of all independent and control variables, cutoff 100)}
+\section*{Trial 4 (log of all independent and control variables, cutoff 100)}
 \input{flows-2017-01-10/eflowsreg100t03.tex}
 
 \newpage
-\section{Trial 3 (log of all independent and control variables, cutoff 200)}
+\section*{Trial 3 (log of all independent and control variables, cutoff 200)}
 \input{flows-2017-01-10/eflowsreg200t03.tex}
 
 
 
-\section{Trial 2 (patents instead of lnpatents): The model with fixed effects failed to converge}
+\section*{Trial 2 (patents instead of lnpatents): The model with fixed effects failed to converge}
 \begin{lstlisting}
 xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal ///
 		cit_made_nonlocalinternal cit_made_nonlocalexternal  cit_made_other ///
@@ -310,7 +326,7 @@ esttab using `reportdir'eflowsregt02.tex, ///
 \input{flows-2017-01-10/eflowsregt02.tex}
 
 
-\section{Trial 1 (Basic model): Failed to converge }
+\section*{Trial 1 (Basic model): Failed to converge }
 \begin{lstlisting}
 xtnbreg cit_recd_total cit_made_localinternal cit_made_localexternal ///
 		cit_made_nonlocalinternal cit_made_nonlocalexternal  cit_made_other ///
@@ -343,44 +359,3 @@ esttab using `reportdir'eflowsregt01.tex, ///
 
 
 \end{document}
-
-\begin{comment}
-
-\begin{center}\LARGE{Question (a)}\end{center}
-\question{Under what conditions can one identify the causal effect of maternal smoking by comparing the unadjusted mean difference in birth weight of infants between smoking and non-smoking mothers?  Under the assumption that maternal smoking is randomly assigned, estimate its impact on birth weight.  Provide evidence for or against the assumption that maternal smoking is randomly assigned.}
-
-\textbf{Conditions for comparing unadjusted means}\\
-Let us consider a situation where maternal smoking were assigned randomly not conditional upon any other observable variables (like physical characteristics of the mother or known habits). Under this condition, we would expect the treatment and control group to be similar on all respects other than on maternal smoking habits. It may thus be reasonable to compare the unadjusted mean of the difference in birth weight of infants between smoking and non-smoking mothers to determine the causal effects of maternal smoking on infant birth weight. Therefore, the answer to the first part of the question is that we would need \uline{random assignment of maternal smoking during pregnancy that is unconditional} on any other observable variables.\\
-
-\textbf{Estimation of impact}\\
-I demonstrate the impact of maternal smoking on birthweight under assumption of random assignment of maternal smoking in two ways. Table ~\ref{a1} shows the result of a t-test on birthweight between smoking and non-smoking mothers. The results indicate that there is a statistically significant difference of 257.6 grams in birthweight between children born to smoking mothers and those born to non-smoking mothers.\\ Table ~\ref{a2} is the output from regressing birthweight on mother smoking status, and this suggests the same result as the t-test in Table ~\ref{a1} i.e., indicating an average drop in birthweight of 257.6 grams for smoking mothers as compared to the non-smoking mothers in the sample.\\
-
-\input{flows-2017-01-10/a1.tex}
-
-\begin{table}
-\caption{Regression Results}
-\input{flows-2017-01-10/a2.tex}
-\end{table}
-
-\textbf{Evidence against random assignment}
-
-If maternal smoking were randomly assigned, then we would expect that there would be no significant differences between treatment and control on most (if not all) observable parameters of interest (in this case for the birth of the child). Intuitively, it is clear that maternal smoking during pregnancy may not be independent of the state of pregnancy (some mothers may decide to give up smoking so as to not hurt the foetus), or of socio-economic and racial characteristics of the parents. Empirically though, this may be demonstrated by comparing the mean values of various observable characteristics between the treatment and control group. Table ~\ref{a3} provides the results of t-tests on several observable variables\footnote{I am grateful to Prof. Shailender Swaminathan to have pointed out this method in class, correcting my previous misconception of looking at variable correlations as the appropriate method to determine this} between smoking and non-smoking mothers. While the list in Table ~\ref{a3} is not exhaustive on the observable characteristics, it is clear that smoking and non-smoking mothers vary distinctly on most observable characteristics. This is therefore sufficient to demonstrate that maternal smoking is \uline{not randomly assigned}. \\
- 
-\input{flows-2017-01-10/a3.tex}
-
-The \stata \ code   for this question is as below
-\begin{lstlisting}
-use smoking_labels, clear
-local imagepath /Users/anu/OneDrive/code/articles/flows-2017-01-10/
-
-estpost ttest dbirwt, by(tobacco)
-esttab using `imagepath'a1.tex, title("T-test for birth weight by maternal smoking status\label{a1}") mtitle("tobacco") replace
-
-reg dbirwt tobacco, vce(robust)
-outreg2 using  `imagepath'a2.tex, title("Maternal Smoking Effects on Birthweight\label{a2}") ctitle("Random Assignment") tex(pretty frag) dec(4) replace
-
-
-estpost ttest dmage dmeduc dmar dlivord mblack fblack alcohol tripre0 tripre1 tripre2 tripre3, by(tobacco)
-esttab using `imagepath'a3.tex, title("T-tests by Maternal Smoking Status\label{a3}") mtitle("Mean Difference") replace
-\end{lstlisting}
-\end{comment}
