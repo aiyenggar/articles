@@ -1,6 +1,7 @@
 % sms2017.tex 
-\documentclass[12pt]{article}
-\usepackage[a4paper]{geometry}
+\documentclass[10pt,letterpaper]{article}
+\usepackage{mathptmx}
+\usepackage[margin=1in]{geometry}
 
 \usepackage{amsmath,amssymb,latexsym}
 \usepackage[round,sort]{natbib}
@@ -32,11 +33,6 @@
 %\doublespacing
 
 \graphicspath{ {sms2017-images/} }
-\geometry{
- total={160mm,247mm},
- left=25mm,
- top=25mm,
-}
 
 \hypersetup{
     colorlinks=true,
@@ -62,12 +58,13 @@ breaklines=true
 \fancyhf{}
 \lhead{Heterogeneity in knowledge flows across regions}
 \rfoot{Page \thepage  \ of \pageref{LastPage}}
-\rhead{Iyenggar and Yayavaram}
+%\rhead{Iyenggar and Yayavaram}
 \newcommand\imgpath{/Users/aiyenggar/OneDrive/code/articles/sms2017-images/}
 \newcommand\question[1]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}\vspace{1em}\hrule\vspace{1em}}
 \begin{document}
 \title{Heterogeneity in knowledge flows across regions:\\ Investigating patterns and mechanisms}
-\author{Ashwin Iyenggar and Sai Yayavaram} 
+%\author{Ashwin Iyenggar and Sai Yayavaram} 
+\date{\vspace{-5ex}}
 
 \maketitle
 \thispagestyle{empty}
@@ -80,7 +77,7 @@ Scholars of economics and strategy have for long recognized that clusters and ag
 \\\\
 Several studies have, however used patent citations to demonstrate that knowledge flows are localized \citep{Jaffe1993, Almeida1999, Alcacer2006a}. Regions, however vary in their inventive output \citep{Agrawal2014}. Prior theory does not guide us about how the nature of knowledge flows in a region may affect the quality of the innovations generated in the region. In the current article we use patent citation data for patents applied for between 2001 and 2012 to empirically estimate this relationship. 
 \\\\
-The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently. We then describe our data and methods in the next section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions.
+The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently. We then describe our data and methods in the following section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions for further research.
 
 \begin{figure}[h]
 \begin{centering}
@@ -91,13 +88,13 @@ The rest of the paper is organized as follows. The next section defines a framew
 \end{figure}
 
 \section*{Effects of knowledge flows on quality of inventions}
-We categorize all knowledge flows along two dimensions:  first, whether the knowledge flows among inventors are geographically localized or not, and second, whether the knowledge flows are within the boundary of the firm or not. This classification allows us to see knowledge flows in four mutually exclusive, but collectively exhaustive categories as illustrated in Figure ~\ref{fig:2x2}. 
+We categorize all knowledge flows along two dimensions:  first, whether the knowledge flows among inventors are local to a geographical region or not, and second, whether knowledge flows are within the boundary of the firm or not. This classification allows us to analyze knowledge flows in four mutually exclusive, but collectively exhaustive categories as illustrated in Figure ~\ref{fig:2x2}. 
 \\\\
-The top left quadrant, labelled an "Independent Research Center" captures those that reflect competence building. Since the knowledge flows both locally and within the firm, this may be seen to represent local search on two dimensions (within firm and within region).  Figure ~\ref{fig:SMSSameRegionSameAssigneeFlows} depicts the normalized knowledge flows for this category across time for five regions. 
+The top left quadrant, labelled an "Independent Research Center" captures those knowledge flows that reflect competence building. Since these knowledge flows  are both local and within the firm, this may be seen to represent local search on two dimensions (within firm and within region).  Figure ~\ref{fig:SMSSameRegionSameAssigneeFlows} depicts the normalized knowledge flows for this category across time for five regions. We note that San Jose and Boston both report a higher proportion of knowledge flows within the same firm in the same region, while Bangalore and Tel Aviv-Yafo have the lowest proportion (fewer than 1\%) of their citations to the same firm within the same region.
 \\\\
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.75\textwidth]{SMSSameRegionSameAssigneeFlows}
+  \includegraphics[width=0.90\textwidth]{SMSSameRegionSameAssigneeFlows}
   \caption{Flows within regions and within assignees}
   \label{fig:SMSSameRegionSameAssigneeFlows}
 \end{centering}
@@ -105,7 +102,7 @@ The top left quadrant, labelled an "Independent Research Center" captures those 
 
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.75\textwidth]{SMSSameRegionDiffAssigneeFlows}
+  \includegraphics[width=0.90\textwidth]{SMSSameRegionDiffAssigneeFlows}
   \caption{Flows within regions and across assignees}
   \label{fig:SMSSameRegionDiffAssigneeFlows}
 \end{centering}
@@ -116,7 +113,7 @@ The quadrant on the top right, labelled as "Geographic Diversification" captures
 \\\\
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.75\textwidth]{SMSDiffRegionSameAssigneeFlows}
+  \includegraphics[width=0.90\textwidth]{SMSDiffRegionSameAssigneeFlows}
   \caption{Flows across regions and within assignees}
   \label{fig:SMSDiffRegionSameAssigneeFlows}
 \end{centering}
@@ -124,7 +121,7 @@ The quadrant on the top right, labelled as "Geographic Diversification" captures
 
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.75\textwidth]{SMSDiffRegionDiffAssigneeFlows}
+  \includegraphics[width=0.90\textwidth]{SMSDiffRegionDiffAssigneeFlows}
   \caption{Flows across regions and across assignees}
   \label{fig:SMSDiffRegionDiffAssigneeFlows}
 \end{centering}
