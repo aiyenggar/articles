@@ -130,16 +130,21 @@ Finally, the literature of weak and strong IPR suggests that teams within weak I
 I derive all patents data for this study from patentsview.org. The dataset considered is for all USPTO patents filed in the period 1976 to 2015. For country definitions, I use the resources provided by \href{http://thematicmapping.org/downloads/world_borders.php}{Thematic Mapping}. To map location data of inventors to regions, I use urban centers data for worldwide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} that uses remote sensing data to determine urban agglomerations (a process developed in \cite{Schneider2003}).  While it has been common practice to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the U.S., an equivalent measure is unavailable for the rest of the world. For comparability and consistency, I choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions both within U.S. and outside U.S. Sample region definitions are depicted in Figure ~\ref{fig:SanJose} and ~\ref{fig:Bangalore} in the appendix. 
 
 \subsection{Unit of Analysis}
-The unit of analysis for this study is the \verb|inventor| - \verb|year|
+The unit of analysis for this study is the \verb|inventor| - \verb|year|. For each inventor-year, I capture if the inventor moved in that year. As was previously discussed, the nature of our data is that we do not have data for years in which inventors did not patent. However for the years for which patents were applied for, we identify if there was a movement or not.
 
 \subsection{Dependent Variable}
-My primary dependent variable is the productivity of an inventor in a year. 
+My primary dependent variable is the productivity of an inventor in a year.  I measure productivity by the number of patents invented by the inventor in the year and in two years succeeding that year. The dependent variable may be zero, or 1 or a value higher depending on the inventive productivity of the inventor.
 
 \subsection{Explanatory Variables}
-Primary Explanatory Variable: Mobility of innovators (Between-Region Mobility, Between-Country Mobility) I  determine mobility in a year for an inventor by examining the region (or country) of the previous patent to that of the current patent.\par
+I use two primary explanatory variables - between-region mobility, and between-country mobility.  For each inventor-year,  I  determine mobility for the inventor in that year by comparing the region  of the previous patent to that of the current patent. If the region has not changed, I mark between-region mobility to zero for that inventor-year. Else between-region mobility is marked as one for that inventor-year.\par
 
-Moderating Variables: Prior patents of inventor (PPI), Prior patents of team (PPT)
-Control Variables: Technology subcategories,  Year effects
+Similarly, to determine between-country mobility for an inventor-year,  I  compare the country  of the previous patent to that of the current patent. If the country has not changed, I mark between-country mobility to zero for that inventor-year. Else between-country mobility is marked as one for that inventor-year.\par
+
+I define two additional moderating variables. Prior patents of inventor (PPI) is intended to capture the inventor specific aspects and is computed by adding up the number of patents granted to the invented up to but not including the patents granted in the current year. Prior patents of team (PPT) is intended to capture the team specific aspects affecting inventor productivity. It is computed by summing up the number of patents granted to the most prolific of the inventors within the team (not including the focal inventor).
+
+\subsection{Control Variables and Fixed Effects}
+I use the technology classification defined by  \cite{Hall2001} to control for various technology subcategories. All models also include  year dummies so as to account for any year specific effects. Depending on the model run, we cluster standard errors at the region level, the country level or the technology subclass level.
+
 \subsubsection{Citations Made}
 My primary explanatory variables are the four counts of Citations Made along the two dimensions of same/different region and same/different assignee
 While most patents have multiple inventors, and some patents also have multiple assignees, my question requires us to associate a single location to the inventor of a patent, and a single location for the assignee of the patent. For the inventor location, I tabulate the count of each of the regions that each inventor is a resident of at the time of the filing of the patent application. In doing so, I treat all inventors equally and allocate the most frequently occurring location as the location of the inventor for that patent. In case of a tie, I assign the location of the first inventor (given by the sequence number of the inventor on the patent) as the location of the inventor of the patent. 
