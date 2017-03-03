@@ -72,7 +72,7 @@ There has been a long and illustrious scholarly tradition highlighting the agglo
 
 The innovation policy of emerging countries is influenced with the expectation that the presence of multinational R\&D will create value adding spillover effects. Productivity of inventors may  provide a richer proxy for value adding innovation. A better understanding of the effects of inventor mobility may therefore help to inform innovation policy. Additionally, work on this line may help to inform managerial decisions about how to organize R\&D teams around the world. Current theory seems to suggest both a positive effect due to knowledge spillovers \citep{Almeida1999} as well as a negative effect due to variation in IPR enforcement ability \citep{Zhao2006}. I therefore propose  the current empirical study to help determine an  answer to this question that is not completely explained by theory.
 
-The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently in terms of knowledge flows. We then describe our data and methods in the following section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions for further research.
+The rest of the paper is organized as follows. The next section explores the motivation of the current study. Hypotheses based on extant literature are then presented. I then describe the data and methods. The preliminary results are then presented, followed by a discussion of the results. I conclude with next steps and open questions for further research.
 
 \section{Motivation}
 I motivate this study by demonstrating two broad patterns.  First, as Figure ~\ref{fig:countrymoves} suggests,  there has been increased mobility of inventors across countries over the years. Not only is the incidence of across-country mobility higher, but there is heterogeneity in the extent across countries and regions. Figure ~\ref{fig:regionmoves} furthers this aspect by depicting the trend in across-region mobility of inventors. Second, Table ~\ref{sumstat} suggests that about 6\% of inventors moved  and only about 2\% of inventors moved country. 
@@ -133,27 +133,18 @@ I derive all patents data for this study from patentsview.org. The dataset consi
 The unit of analysis for this study is the \verb|inventor| - \verb|year|. For each inventor-year, I capture if the inventor moved in that year. As was previously discussed, the nature of our data is that we do not have data for years in which inventors did not patent. However for the years for which patents were applied for, we identify if there was a movement or not.
 
 \subsection{Dependent Variable}
-My primary dependent variable is the productivity of an inventor in a year.  I measure productivity by the number of patents invented by the inventor in the year and in two years succeeding that year. The dependent variable may be zero, or 1 or a value higher depending on the inventive productivity of the inventor.
+My primary dependent variable is the productivity of an inventor in a year.  I measure \texttt{productivity} by the number of patents invented by the inventor in the year and in two years succeeding that year. The dependent variable may be zero, or 1 or a value higher depending on the inventive productivity of the inventor.
 
 \subsection{Explanatory Variables}
-I use two primary explanatory variables - between-region mobility, and between-country mobility.  For each inventor-year,  I  determine mobility for the inventor in that year by comparing the region  of the previous patent to that of the current patent. If the region has not changed, I mark between-region mobility to zero for that inventor-year. Else between-region mobility is marked as one for that inventor-year.\par
+I use two primary explanatory variables - \texttt{between-region} mobility, and \texttt{between-country} mobility.  For each inventor-year,  I  determine mobility for the inventor in that year by comparing the region  of the previous patent to that of the current patent. If the region has not changed, I mark between-region mobility to zero for that inventor-year. Else \texttt{between-region} mobility is marked as one for that inventor-year.\par
 
-Similarly, to determine between-country mobility for an inventor-year,  I  compare the country  of the previous patent to that of the current patent. If the country has not changed, I mark between-country mobility to zero for that inventor-year. Else between-country mobility is marked as one for that inventor-year.\par
+Similarly, to determine \texttt{between-country} mobility for an inventor-year,  I  compare the country  of the previous patent to that of the current patent. If the country has not changed, I mark \texttt{between-country} mobility to zero for that inventor-year. Else \texttt{between-country} mobility is marked as one for that inventor-year.\par
 
-I define two additional moderating variables. Prior patents of inventor (PPI) is intended to capture the inventor specific aspects and is computed by adding up the number of patents granted to the invented up to but not including the patents granted in the current year. Prior patents of team (PPT) is intended to capture the team specific aspects affecting inventor productivity. It is computed by summing up the number of patents granted to the most prolific of the inventors within the team (not including the focal inventor).
+I define two additional explanatory variables. \par
+\texttt{Prior patents of inventor} (PPI) is intended to capture the inventor specific aspects and is computed by adding up the number of patents granted to the invented up to but not including the patents granted in the current year. \texttt{Prior patents of team} (PPT) is intended to capture the team specific aspects affecting inventor productivity. It is computed by summing up the number of patents granted to the most prolific of the inventors within the team (not including the focal inventor).
 
 \subsection{Control Variables and Fixed Effects}
 I use the technology classification defined by  \cite{Hall2001} to control for various technology subcategories. All models also include  year dummies so as to account for any year specific effects. Depending on the model run, we cluster standard errors at the region level, the country level or the technology subclass level.
-
-\subsubsection{Citations Made}
-My primary explanatory variables are the four counts of Citations Made along the two dimensions of same/different region and same/different assignee
-While most patents have multiple inventors, and some patents also have multiple assignees, my question requires us to associate a single location to the inventor of a patent, and a single location for the assignee of the patent. For the inventor location, I tabulate the count of each of the regions that each inventor is a resident of at the time of the filing of the patent application. In doing so, I treat all inventors equally and allocate the most frequently occurring location as the location of the inventor for that patent. In case of a tie, I assign the location of the first inventor (given by the sequence number of the inventor on the patent) as the location of the inventor of the patent. 
-
-For the assignee location, I treat multiple assignees as having been granted separate patents. I do this since the number of patents with multiple assignees is small, and so as to not lose potentially valuable information.
-
-\subsection{Control Variables}
-\subsubsection{Size of the patent pool, and Number of patents generated in a region - year}
-Since the priors of the region may themselves explain the extent of citations received, I control for both the number of patents generated that year, as well as the aggregate pool of patents invented within that region. The reason both variables are logged is because of the exponential nature of the estimation method used.
 
 \section{Results}
 \begin{table}
@@ -167,16 +158,17 @@ Since the priors of the region may themselves explain the extent of citations re
 \input{mci-term-paper-images/RT.tex}
 \label{RT}
 \end{table}
-The preliminary results from our analysis are presented in Table~\ref{model123}. Model 1 reports the results for all regions worldwide, while Model 2 and Model 3 report results for U.S. locations and non-U.S. locations respectively. Across the three models we find that local knowledge flows within the firm do not seem to have a significant impact on the quality of inventions as measured by the number of citations received. This result is robust to using non-self citations as the dependent variable as presented in Table~\ref{model192021}. \par
-\subsection{Spillover Effects}
-Table ~\ref{RR} presents the preliminary results from my regression. The first model uses year dummies but does not include region fixed effects, while the second includes both. As evident, the effects do not seem stable and much empirical work will be needed to determine the right identification method. A couple of approaches that are planned to be tried are to look at controlling for technology class, as regions may vary widely on this aspect. As indicated at the outset, the empirical aspect of this article remains work in progress.
+The preliminary results from our analysis are presented in Table~\ref{RR},  Table~\ref{RT}, Table~\ref{CC},  Table~\ref{CT}. Additional results for robustness are provided in the appendix in Table~\ref{RC},  Table~\ref{RC}. In each of the tables, Model 1 provides the baseline regression results without secondary explanatory variables; Model 2 provides the results with the primary and secondary explanatory variables but without interaction effects. Model 3 provides the fully specified model with the primary explanatory variable, secondary explanatory variables and interaction effects. \par
+
+We find that both \texttt{between-region} and \texttt{between-country} are statistically significantly correlated with inventor productivity. This holds across all specifications. The  signs on the coefficient estimates are maintained across specifications, thus indicating that the effects may be stable. Additionally we note that the interaction effect is positive with the priors of the inventor, and negative with the priors of the team.
+
+Overall, we find support in line with each of the three hypotheses proposed. However, due to missing data as well as due to the identification strategy employed, concerns of reverse causality and bias exist. In order to mitigate some of these concerns, I propose two additional dimensions to consider: complexity of inventions, and IPR regime. I discuss them in the following session, but leave the empirical operationalization to future work.
+
 \begin{table}
 \caption{Regression Results}
 \input{mci-term-paper-images/CC.tex}
 \label{CC}
 \end{table}
-
-
 
 \begin{table}
 \caption{Regression Results}
@@ -186,7 +178,7 @@ Table ~\ref{RR} presents the preliminary results from my regression. The first m
 
 \section{Extensions to identify causality}
 \subsection{Complexity}
-I construct my measure of complexity based interactions between the different patent sub-classes. Since each of the interactions between patent sub-classes may introduce a new interaction, I model interactions on a binomial function. Specifically, when \verb|subclass| represents the number of distinct patent sub-classes, I define  \verb|interaction(subclass)| as follows:
+Since patents vary even within technology subclasses, I suggest an additional measure of complexity to capture additional variation in the data. I construct my measure of complexity based interactions between the different patent sub-classes. Since each of the interactions between patent sub-classes may introduce a new interaction, I model interactions on a binomial function. Specifically, when \verb|subclass| represents the number of distinct patent sub-classes, I define  \verb|interaction(subclass)| as follows:
 
 \begin{displaymath}
    interaction(subclass) = \left\{
@@ -210,21 +202,15 @@ Using the principles above, I therefore develop the following definition of comp
 By the definition above, a patent that cites no patents (and hence has $subclass_{\text{cited}} = 0$) but is itself assigned to 4 sub-classes (and hence has $subclass_{\text{patent}} = 4$) will have a raw Complexity score of $\frac{1}{\binom{4}{2}} = 0.16$. If the patent itself had been assigned onto to 2 sub-classes, the raw complexity score would have been just 1. Therefore, the more the number of patent sub-classes a patent is assigned to, the lower its complexity score (by a square term). A similar but inverse relationship would hold for sub-classes arising out of cited patents. Here, I take a set union of patent sub-classes assigned to each cited patent, and use that count to determine the value of the \verb|interaction| function.
 
 \subsection{IPR Classification}
-For the IPR Scores, I rely on the scores generated by \cite{Lesser2010}. 
-\cite{Zhao2006} has argued  that multinational enterprises may benefit from conducting R\&D in countries with weak IPR protection by  making up for the weaker IPR protection through better internal organization.
-Scholars \citep{Yayavaram2008, Baldwin2015}, have argued that increased interaction with a larger number of components creates organizational impediments to an increase in reusability of prior work. In the presence of a stronger differential in the IPR environments between inventing locations, \cite{Zhao2006} suggests that organizational mechanisms may stand to counter the treat posed by weaker property rights. In a similar vein, I argue that a differential in the IPR rights environment creates the organizational response to increase complexity of the inventions shared across country and IPR boundaries. 
+\cite{Zhao2006} has argued  that multinational enterprises may benefit from conducting R\&D in countries with weak IPR protection by  making up for the weaker IPR protection through better internal organization. An alternative specification may therefore be to include IPR score to capture shifts in the data. Scholars \citep{Yayavaram2008, Baldwin2015}, have argued that increased interaction with a larger number of components creates organizational impediments to an increase in reusability of prior work. In the presence of a stronger differential in the IPR environments between inventing locations, \cite{Zhao2006} suggests that organizational mechanisms may stand to counter the treat posed by weaker property rights. In a similar vein, I argue that a differential in the IPR rights environment creates the organizational response to increase complexity of the inventions shared across country and IPR boundaries. This may help capture an exogenous variation that may help identify the mobility-productivity relationship.
 
-A review of the academic literature surrounding the construction of IPR indexes indicated that there were several, as was also evident in \cite{Zhao2006} constructing a composite measure for the purposes of her article. \cite{Lesser2010} provides an alternative, composite scoring system that includes the following components: protectable subject matter, membership in convention, enforcement, administration and duration of protection. I have therefore used the scores generated by \cite{Lesser2010} for the purposes of this study. The extensive table of IPR scores has not been presented here to adhere to the page restriction, but can be made available on request. The listing has several countries for which scores have not been provided. However none of the top patenting nations were among them, and I therefore chose to go along with this scale.
+A review of the academic literature surrounding the construction of IPR indexes indicated that there were several, as was also evident in \cite{Zhao2006} constructing a composite measure for the purposes of her article. \cite{Lesser2010} provides an alternative, composite scoring system that includes the following components: protectable subject matter, membership in convention, enforcement, administration and duration of protection. I have therefore used the scores generated by \cite{Lesser2010} for the purposes of this study. The extensive table of IPR scores has not been presented here, but can be made available on request. The listing has several countries for which scores have not been provided. However none of the top patenting nations were among them, and I therefore chose to go along with this scale.
 
 \section{Limitations and Looking Ahead}
-Direction of Causality
-Underestimation bias of mobility - effects
-Mechanism by which mobility affects productivity - other explanations
-Alternative measures of productivity
-I started this study attempting to understand if I could bring three mechanisms to bear together in explaining the heterogeneity in knowledge flows across regions. While there seems to be theoretical promise to exploring this question, this was a study too big to have been completed within the constraints of a term. Specifically, the endeavor has exposed me to the challenges to demonstrating empirically driven work with the objective of building theory. I intend to continue to pursue this further and integrate the IPR level data and complexity data to the flows. In addition, I plan to explore the prospect of controlling for technology classes, and see if that may lead to a strong result.  
+I started this study attempting to understand if inventor mobility affects inventor productivity. While there seems to be theoretical promise to exploring this question, this was a study too big to have been completed within the constraints of a term. Specifically, the endeavor has exposed me to the challenges to demonstrating causal effects in empirical analysis. Primary among the causes of concern are the direction of causality, and the underestimation bias of mobility - effects. The mechanism by which mobility affects productivity has been left out of the current study. Addiitonally alternative measures of productivity could also be considered. However the main contribution of the currents study may be to demonstrate a strong case for mobility and its effect on productivity.  I intend to continue to pursue this further and integrate the IPR level data and complexity data and pursue an argument toward a stronger causal effect of mobility on productivity.
 
-\section*{Conclusion}
-While still at a preliminary stage, our analysis seem to suggest that local knowledge flows as measured by patent citations may not have a significant effect on the quality of inventions produced in a region. This casts a doubt on the widely accepted idea that local knowledge spillovers are an important source of agglomeration economies. A potential extension of the study could be to conduct empirical analysis at the level of firm-year rather than at the region-year. We could additionally look at the additional dimension of technology (within and outside technological domain, \cite{Rosenkopf2001}) in addition to those of within/outside region and within/outside firm. This may provide us with a more nuanced understanding of the factors affecting invention quality. Future studies could potentially examine other measures of invention outcomes such as breakthrough inventions. Finally, while our work suggests that local knowledge spillovers do not affect invention quality, it is not quite as clear why this may be the case. We hope that our current work spurs further research in this direction.
+\section{Conclusion}
+While still at a preliminary stage, my analysis seem to suggest that inventor mobility  has a significant effect on the productivity of inventors produced. Future studies could  examine other measures of invention outcomes so as to identify a causal effect. I hope however that the current work spurs has created enough interest to further research in this direction.
 
 
 \section*{Acknowledgements}
