@@ -1,0 +1,37 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\caption{IPR Strength and Mobility of Inventors on Complexity of Inventions \label{model2a2b2c}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}\\
+\hline
+moved region    &    0.847\sym{***}&  -0.0635         &    0.270\sym{***}\\
+                &  (0.000)         &  (0.559)         &  (0.000)         \\
+moved country   &    1.824\sym{***}&    2.385\sym{***}&    1.255\sym{***}\\
+                &  (0.000)         &  (0.000)         &  (0.000)         \\
+IPR index       &  -0.0257\sym{***}&   0.0773\sym{***}&                  \\
+                &  (0.000)         &  (0.000)         &                  \\
+moved region * IPR index&  -0.0530\sym{***}&   0.0322\sym{**} &                  \\
+                &  (0.000)         &  (0.003)         &                  \\
+moved country * IPR index&   -0.110\sym{***}&   -0.189\sym{***}&                  \\
+                &  (0.000)         &  (0.000)         &                  \\
+strong IPR      &                  &                  &    0.473\sym{***}\\
+                &                  &                  &  (0.000)         \\
+moved region * strong IPR&                  &                  &  -0.0130         \\
+                &                  &                  &  (0.744)         \\
+moved country * strong IPR&                  &                  &   -0.833\sym{***}\\
+                &                  &                  &  (0.000)         \\
+\hline
+Observations    &  5280190         &  5280190         &  5280190         \\
+$R^2$              &    0.009         &    0.145         &    0.146         \\
+Clusters         &  579,806         &  579,806         &  579,806         \\
+Clustered SE       &Region Assignee         &Region Assignee         &Region Assignee         \\
+Year Dummies            &       No         &      Yes         &      Yes         \\
+Sample          &  All Obs         &  All Obs         &  All Obs         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{4}{l}{\footnotesize None of the models include fixed effects, or technology subcategory controls}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}

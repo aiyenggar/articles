@@ -1,0 +1,43 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\caption{Using 9/11 Shock to Estimate the effect of Mobility of Inventors on Invention Complexity \label{model7a7b7c}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}\\
+\hline
+moved region    &    0.227\sym{***}&   0.0227         &    0.314\sym{***}\\
+                &  (0.000)         &  (0.165)         &  (0.000)         \\
+moved country   &    0.151\sym{***}&    0.227\sym{***}&   0.0604         \\
+                &  (0.000)         &  (0.000)         &  (0.057)         \\
+strong IPR      &   -0.254\sym{***}&                  &   -0.297\sym{***}\\
+                &  (0.000)         &                  &  (0.000)         \\
+moved region * strong IPR&  -0.0541\sym{**} &                  &  -0.0808\sym{***}\\
+                &  (0.006)         &                  &  (0.000)         \\
+moved country * strong IPR&  -0.0544         &                  &  -0.0774\sym{*}  \\
+                &  (0.071)         &                  &  (0.013)         \\
+moved region * tech complexity&-0.000520         &    0.100\sym{***}&  -0.0117         \\
+                &  (0.971)         &  (0.000)         &  (0.566)         \\
+moved country * tech complexity&   0.0219         &  -0.0444         &   0.0392         \\
+                &  (0.242)         &  (0.141)         &  (0.092)         \\
+inventor-tech class& 1.78e-08\sym{**} & 3.78e-08\sym{***}&-9.05e-09         \\
+                &  (0.001)         &  (0.000)         &  (0.273)         \\
+9/11 Shock      &   -0.121\sym{***}&   -0.119\sym{***}&   -0.130\sym{***}\\
+                &  (0.000)         &  (0.000)         &  (0.000)         \\
+moved region * 9/11&   0.0423\sym{***}&    0.146\sym{***}&  -0.0140         \\
+                &  (0.000)         &  (0.000)         &  (0.368)         \\
+moved country * 9/11&    0.127\sym{***}&   0.0453         &    0.203\sym{***}\\
+                &  (0.000)         &  (0.111)         &  (0.000)         \\
+\hline
+Observations    &  1578946         &   796535         &   782411         \\
+r2              &    0.065         &    0.068         &    0.072         \\
+N\_clust         &  223,041         &  124,376         &   98,799         \\
+Sample          &  All Obs         &US Inventions         &Non-US Inventions         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{4}{l}{\footnotesize Standard Errors are clustered at the region-assignee level}\\
+\multicolumn{4}{l}{\footnotesize All models include year dummies and NBER technology subcategory dummies}\\
+\multicolumn{4}{l}{\footnotesize Control for inventor-technology subcategory included}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}
