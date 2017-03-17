@@ -45,13 +45,17 @@ breaklines=true
 \setlength\parindent{0pt}
 \pagestyle{fancy}
 \fancyhf{}
+
 \lhead{Does inventor mobility affect complexity of inventors\textquotesingle \ inventions?}
+
 \rfoot{Page \thepage  \ of \pageref{LastPage}}
 \rhead{Iyenggar}
 \newcommand\question[2]{\vspace{1em}\hrule\vspace{1em}\textbf{#1}{ #2}\vspace{1em}\hrule\vspace{1em}}
 
 \begin{document}
+
 \title{\LARGE Does inventor mobility affect complexity of inventors\textquotesingle \ inventions?\\ \Large \textit{Economics of Technology, Innovation and Growth} \\course term paper}
+
 \author{Ashwin Iyenggar  (1521001) \\ ashwin.iyenggar15@iimb.ernet.in} 
 \large
 
@@ -74,6 +78,7 @@ The innovation policy of emerging countries is influenced with the expectation t
 
 The rest of the paper is organized as follows. The next section explores the motivation of the current study. Hypotheses based on extant literature are then presented. I then describe the data and methods. The preliminary results are then presented, followed by a discussion of the results. I conclude with next steps and open questions for further research.
 
+
 \section{Preliminary Analysis}
 I motivate this study by demonstrating two broad patterns.  First, as Figure ~\ref{fig:countrymoves} suggests,  there has been increased mobility of inventors across countries over the years. Not only is the incidence of across-country mobility higher, but there is heterogeneity in the extent across countries and regions. Figure ~\ref{fig:regionmoves} furthers this aspect by depicting the trend in across-region mobility of inventors. Second, Table ~\ref{sumstat} suggests that about 6\% of inventors moved  and only about 2\% of inventors moved country. 
 
@@ -92,6 +97,7 @@ The literature on agglomeration economies and knowledge spillovers suggest that 
 
 Finally, the literature of weak and strong IPR suggests that teams within weak IPR locations are likely to integrate their knowledge within global organizations, thus leading to a lower standalone inventive output. I therefore propose hypothesis 3 as follows:\par
 \begin{hypothesis}{\\Hypothesis 3: The effect in Hypothesis 1 is moderated negatively by the strength of the prior pool of inventions by the inventing team}\end{hypothesis}
+
 
 \section{Method}
 \subsection{Complexity}
@@ -128,11 +134,13 @@ A review of the academic literature surrounding the construction of IPR indexes 
 
 I derive all patents data for this study from patentsview.org. The dataset considered is for all USPTO patents filed in the period 1976 to 2015. For country definitions, I use the resources provided by \href{http://thematicmapping.org/downloads/world_borders.php}{Thematic Mapping}. To map location data of inventors to regions, I use urban centers data for worldwide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} that uses remote sensing data to determine urban agglomerations (a process developed in \cite{Schneider2003}).  While it has been common practice to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the U.S., an equivalent measure is unavailable for the rest of the world. For comparability and consistency, I choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions both within U.S. and outside U.S. Sample region definitions are depicted in Figure ~\ref{fig:SanJose} and ~\ref{fig:Bangalore}. 
 
+
 \subsection{Unit of Analysis}
 The unit of analysis for this study is the \verb|inventor| - \verb|year|. For each inventor-year, I capture if the inventor moved in that year. As was previously discussed, the nature of our data is that we do not have data for years in which inventors did not patent. However for the years for which patents were applied for, we identify if there was a movement or not.
 
 \subsection{Dependent Variable}
 My primary dependent variable is the productivity of an inventor in a year.  I measure \texttt{productivity} by the number of patents invented by the inventor in the year and in two years succeeding that year. The dependent variable may be zero, or 1 or a value higher depending on the inventive productivity of the inventor.
+
 
 \subsection{Explanatory Variables}
 I use two primary explanatory variables - \texttt{between-region} mobility, and \texttt{between-country} mobility.  For each inventor-year,  I  determine mobility for the inventor in that year by comparing the region  of the previous patent to that of the current patent. If the region has not changed, I mark between-region mobility to zero for that inventor-year. Else \texttt{between-region} mobility is marked as one for that inventor-year.\par
@@ -146,6 +154,7 @@ I define two additional explanatory variables. \par
 I use the technology classification defined by  \cite{Hall2001} to control for various technology subcategories. All models also include  year dummies so as to account for any year specific effects. Depending on the model run, we cluster standard errors at the region level, the country level or the technology subclass level.
 \newpage
 \section{Results}
+
 The preliminary results from our analysis are presented in Table~\ref{RR},  Table~\ref{RT}, Table~\ref{CC},  Table~\ref{CT}. Additional results for robustness are provided in the appendix in Table~\ref{RC},  Table~\ref{RC}. In each of the tables, Model 1 provides the baseline regression results without secondary explanatory variables; Model 2 provides the results with the primary and secondary explanatory variables but without interaction effects. Model 3 provides the fully specified model with the primary explanatory variable, secondary explanatory variables and interaction effects. \par
 
 We find that both \texttt{between-region} and \texttt{between-country} are statistically significantly correlated with inventor productivity. This holds across all specifications. The  signs on the coefficient estimates are maintained across specifications, thus indicating that the effects may be stable. Additionally we note that the interaction effect is positive with the priors of the inventor, and negative with the priors of the team.
@@ -154,6 +163,7 @@ Overall, we find support in line with each of the three hypotheses proposed. How
 
 
 \section{Extensions to identify causality}
+
 
 \section{Limitations and Looking Ahead}
 I started this study attempting to understand if inventor mobility affects inventor productivity. While there seems to be theoretical promise to exploring this question, this was a study too big to have been completed within the constraints of a term. Specifically, the endeavor has exposed me to the challenges to demonstrating causal effects in empirical analysis. Primary among the causes of concern are the direction of causality, and the underestimation bias of mobility - effects. The mechanism by which mobility affects productivity has been left out of the current study. Addiitonally alternative measures of productivity could also be considered. However the main contribution of the currents study may be to demonstrate a strong case for mobility and its effect on productivity.  I intend to continue to pursue this further and integrate the IPR level data and complexity data and pursue an argument toward a stronger causal effect of mobility on productivity.
@@ -170,6 +180,7 @@ I am also grateful to Sai Yayavaram for having introduced me to the literature o
 \newpage
 \bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz} 
 \bibliographystyle{apalike}
+
 
 \appendix
 \singlespacing
@@ -190,6 +201,7 @@ I am also grateful to Sai Yayavaram for having introduced me to the literature o
    \label{fig:Bangalore}
 \end{centering}
 \end{figure}
+
 \newpage
 
 \begin{figure}[h!]
@@ -287,5 +299,6 @@ team pool proxy& 27.901 & 112.154  & 6875208\\
 \input{etig-term-paper-presentation-images/model7a7b7c.tex}
 \newpage
 \input{etig-term-paper-presentation-images/model8a8b8c.tex}
+
 
 \end{document}
