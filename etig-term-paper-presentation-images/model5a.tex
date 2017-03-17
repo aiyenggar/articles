@@ -1,0 +1,46 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{1}{c}}
+\caption{Extent of Regional Mobility of Inventors on Invention Complexity \label{model5a}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}\\
+                &\multicolumn{1}{c}{log(complexity)}\\
+\hline
+moved region    &  -0.0334         \\
+                &  (0.287)         \\
+moved country   &    1.089\sym{***}\\
+                &  (0.000)         \\
+strong IPR      &    0.407\sym{***}\\
+                &  (0.000)         \\
+moved region * strong IPR&   0.0503         \\
+                &  (0.103)         \\
+moved country * strong IPR&   -0.727\sym{***}\\
+                &  (0.000)         \\
+moved region * tech complexity&    0.148\sym{***}\\
+                &  (0.000)         \\
+moved country * tech complexity&  -0.0181         \\
+                &  (0.389)         \\
+region moves = 1&  -0.0236\sym{***}\\
+                &  (0.000)         \\
+region moves = 2&   0.0167         \\
+                &  (0.058)         \\
+3 <= region moves <= 5&   0.0517\sym{***}\\
+                &  (0.000)         \\
+6 <= region moves <= 8&    0.120\sym{***}\\
+                &  (0.000)         \\
+region moves >= 9&    0.488\sym{***}\\
+                &  (0.000)         \\
+\hline
+Observations    &  5245466         \\
+$R^2$              &    0.170         \\
+Clusters         &  575,441         \\
+Clustered SE       &Region Assignee         \\
+Year Dummies            &      Yes         \\
+Technology Controls            &      Yes         \\
+Sample          &  All Obs         \\
+\hline\hline
+\multicolumn{2}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{2}{l}{\footnotesize None of the models include fixed effects}\\
+\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}

@@ -1,0 +1,166 @@
+%**************************************************************************
+%*
+%*  Paper: ``INSTRUCTIONS FOR AUTHORS OF LATEX (Poster) ABSTRACTS''
+%*
+%*  Publication: 2017 Winter Simulation Conference Author Kit
+%*
+%*  Filename: wsc17poster.tex
+%*
+%*  Date: January 30, 2017   Time:  5:30 PM
+%*
+%*  Word Processing System: TeXnicCenter and MiKTeX
+%*
+%*
+%*  All files need the following
+\input{wsc17style.tex}     % download from author kit.  Style files for wsc formatting
+
+\documentclass{wscposterproc}
+\usepackage{latexsym}
+%\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{mathptmx}
+
+%
+%****************************************************************************
+% AUTHOR: You may want to use some of these packages. (Optional)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+%****************************************************************************
+
+
+%
+%****************************************************************************
+% AUTHOR: If you do not wish to use hyperlinks, then just comment
+% out the hyperref usepackage commands below.
+
+%% This version of the command is used if you use pdflatex. In this case you
+%% cannot use ps or eps files for graphics, but pdf, jpeg, png etc are fine.
+
+\usepackage[pdftex,colorlinks=true,urlcolor=blue,citecolor=black,anchorcolor=black,linkcolor=black]{hyperref}
+
+%% The next versions of the hyperref command are used if you adopt the
+%% traditional latex-dvips-ps2pdf route in generating your pdf file. In
+%% this case you can use ps or eps files for graphics, but not pdf, jpeg, png etc.
+%% If you are using WinEdt or PCTeX, then use the following. If you are using
+%% Y&Y TeX then replace "dvips" with "dvipsone"
+
+%%\usepackage[dvips,colorlinks=true,urlcolor=blue,citecolor=black,%
+%% anchorcolor=black,linkcolor=black]{hyperref}
+%****************************************************************************
+
+
+
+%****************************************************************************
+% AUTHOR: You may need to use the following command to adjust the space on the title page
+% to properly list all authors.
+% Please use: 2.5in for 1 row of authors, 3.75in [default] for 2 rows of authors
+%\setlength{\titlevboxsize}{2.5in}  % 2.5in for 1 row of authors, 3.75in for 2 rows of authors
+%****************************************************************************
+
+
+%
+%****************************************************************************
+%*
+%* AUTHOR: YOUR CALL!  Document-specific macros can come here.
+%*
+%****************************************************************************
+
+
+%#########################################################
+%*
+%*  The Document.
+%*
+\begin{document}
+
+%***************************************************************************
+% AUTHOR: AUTHOR NAMES GO HERE
+% FORMAT AUTHORS NAMES Like: Author1, Author2 and Author3 (last names)
+%
+%		You need to change the author listing below!
+%               Please list ALL authors using last name only, separate by a comma except
+%               for the last author, separate with "and"
+%
+% These names will be used from the 2nd page on - thus for one page abstracts this can stay as it is.
+% DON'T REMOVE THIS LINE!
+%
+\WSCpagesetup{LastName1, LastName2, and LastNameLastAuthor}
+
+% AUTHOR: Enter the title, all letters in upper case
+\title{INSTRUCTIONS FOR AUTHORS OF POSTER ABSTRACTS USING \LaTeX}
+
+% AUTHOR: Enter the author(s) of the poster abstract
+\author{Wai Kin Victor Chan\\[12pt]
+Department of Industrial and Systems Engineering\\
+Rensselaer Polytechnic Institute\\
+110 8th St.\\
+Troy, NY 12180, USA
+}
+
+\maketitle
+
+
+\section*{ABSTRACT}
+
+This set of instructions for producing an extended abstract for a poster presentation at the 2017 Winter Simulation Conference (WSC) with \LaTeX\ also serves as a sample file that you can edit to produce your submission. Please follow the guidelines herein when preparing your poster abstract. Failure to do so may result in a poster being rejected, returned for appropriate revision, or edited without your knowledge.
+
+%\begin{center}
+\section{INTRODUCTION}
+%\end{center}
+This paper provides instructions for the preparation of an extended abstract for a poster presentation at the 2017 Winter Simulation Conference (WSC) using \LaTeX. There is a companion paper that provides instructions for the preparation of extended abstracts using Microsoft Word.
+
+\textbf{The easiest way to write an abstract using \LaTeX\ that complies with the
+requirements is to edit the source file, {\tt wsc17poster.tex,} for this document.}
+The style of this document is based on the special paper class file {\tt wscposterproc} which is selected by using {\tt $\backslash$documentclass\{wscposterproc\}}.
+
+An author kit is available online via the  \href{http://www.wintersim.org}%
+{conference website} \cite{WSC}.
+The author kit includes this \LaTeX\ document and its Microsoft Word companion.
+
+This document was typeset using {\tt pdflatex}, which allows you to use certain
+graphics file types that are not allowed using the outdated {\tt latex-dvips-ps2pdf} route.
+
+\section{LENGTH AND CONTENTS OF EXTENDED ABSTRACTS}
+%\end{center}
+The extended abstract will be strictly limited to a maximum  of 2 pages. The first page of the extended abstract will be formatted the same as a proceedings paper. The title will appear in BOLD UPPERCASE text. The title is followed by the author names and affiliations.
+
+Each extended abstract will have a one paragraph abstract that will be limited to 150 words. This one paragraph abstract will also appear in the final program for the 2017 Winter Simulation Conference. Following the abstract, the content of the extended abstract may be broken down into one or more numbered sections with appropriate section titles.
+
+Finally, if appropriate, the extended abstract may have a references section that appears at the end of the document. The references section is not numbered. The references section is included in the two page limit for the extended abstract. Due to space limitations, extended abstracts will not include author biographies.
+
+\section{FORMAT OF EXTENDED ABSTRACTS}
+
+The general format of the extended abstracts will follow the same formatting requirements as WSC proceedings papers for all of the required elements (title, author information, abstract, section titles, paragraphs, equations, figures, tables, references, etc.) For specific formatting instructions for each of these items, please refer to the appropriate MS Word or Latex instructions/sample papers available from the WSC Author Kit on the WSC website \url{http://www.wintersim.org}~\cite{WSC}.
+
+\section{GETTING HELP}
+If you need help in preparing your paper, contact the proceedings editors. You can reach the entire team by writing to our unified point of contact at \href{mailto://wsc17proceedings@gmail.com}{wsc17proceedings@gmail.com}.
+
+You may also reach us individually using the contact information below.
+
+\vspace{6pt}
+
+\noindent Wai Kin Victor Chan\\
+Rensselaer Polytechnic Institute\\
+Email: \href{mailto://wsc17chan@gmail.com}{wsc17chan@gmail.com}\\
+\\
+Andrea D'Ambrogio\\
+University of Rome Tor Vergata\\
+Email: \href{mailto://wsc17dambrogio@gmail.com}{wsc17dambrogio@gmail.com}\\
+\\
+Gregory Zacharewicz\\
+University de Bordeaux - Bat A31\\
+Email: \href{mailto://wsc17zacharewicz@gmail.com}{wsc17zacharewicz@gmail.com}\\
+\\
+Navonil Mustafee\\
+University of Exeter\\
+Email: \href{mailto://wsc17mustafee@gmail.com}{wsc17mustafee@gmail.com}\\
+\\
+% Please don't exchange the bibliographystyle style
+\bibliographystyle{wsc}
+% AUTHOR: Include your bib file here
+\bibliography{demobib}
+
+\end{document}
+

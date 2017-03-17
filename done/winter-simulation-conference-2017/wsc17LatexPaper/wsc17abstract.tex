@@ -1,0 +1,117 @@
+%**************************************************************************
+%*
+%*  Paper: ``INSTRUCTIONS FOR AUTHORS OF LATEX ABSTRACT-ONLY SUBMISSIONS''
+%*
+%*  Publication: 2017 Winter Simulation Conference Author Kit
+%*
+%*  Filename: wsc17abstract.tex
+%*
+%*  Date: January 30, 2017   Time:  5:30 PM
+%*
+%*  Word Processing System: TeXnicCenter and MiKTeX
+%*
+%*
+%*  All files need the following
+\input{wsc17style.tex}     % download from author kit.  Style files for wsc formatting
+
+\documentclass{wscposterproc}
+\usepackage{latexsym}
+%\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{mathptmx}
+
+%
+%****************************************************************************
+% AUTHOR: You may want to use some of these packages. (Optional)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+%****************************************************************************
+
+
+%
+%****************************************************************************
+% AUTHOR: If you do not wish to use hyperlinks, then just comment
+% out the hyperref usepackage commands below.
+
+%% This version of the command is used if you use pdflatex. In this case you
+%% cannot use ps or eps files for graphics, but pdf, jpeg, png etc are fine.
+
+\usepackage[pdftex,colorlinks=true,urlcolor=blue,citecolor=black,anchorcolor=black,linkcolor=black]{hyperref}
+
+%% The next versions of the hyperref command are used if you adopt the
+%% traditional latex-dvips-ps2pdf route in generating your pdf file. In
+%% this case you can use ps or eps files for graphics, but not pdf, jpeg, png etc.
+%% If you are using WinEdt or PCTeX, then use the following. If you are using
+%% Y&Y TeX then replace "dvips" with "dvipsone"
+
+%%\usepackage[dvips,colorlinks=true,urlcolor=blue,citecolor=black,%
+%% anchorcolor=black,linkcolor=black]{hyperref}
+%****************************************************************************
+
+
+
+%****************************************************************************
+% AUTHOR: You may need to use the following command to adjust the space on the title page
+% to properly list all authors.
+% Please use: 2.5in for 1 row of authors, 3.75in [default] for 2 rows of authors
+%\setlength{\titlevboxsize}{2.5in}  % 2.5in for 1 row of authors, 3.75in for 2 rows of authors
+%****************************************************************************
+
+
+%
+%****************************************************************************
+%*
+%* AUTHOR: YOUR CALL!  Document-specific macros can come here.
+%*
+%****************************************************************************
+
+
+%#########################################################
+%*
+%*  The Document.
+%*
+\begin{document}
+
+%***************************************************************************
+% AUTHOR: AUTHOR NAMES GO HERE
+% FORMAT AUTHORS NAMES Like: Author1, Author2 and Author3 (last names)
+%
+%		You need to change the author listing below!
+%               Please list ALL authors using last name only, separate by a comma except
+%               for the last author, separate with "and"
+%
+% These names will be used from the 2nd page on - thus for one page abstracts this can stay as it is.
+% DON'T REMOVE THIS LINE!
+%
+\WSCpagesetup{LastName1, LastName2, and LastNameLastAuthor}
+
+% AUTHOR: Enter the title, all letters in upper case
+\title{INSTRUCTIONS FOR AUTHORS OF ABSTRACT-ONLY SUBMISSIONS USING \LaTeX}
+
+% AUTHOR: Enter the author(s) of the abstract
+\author{Author 1 Name\\[12pt]
+Author 1 Company/University\\
+Author 1 Address\\
+City, State ZIP, Country\\
+% Multiple authors are entered as follows.
+% You may also need to adjust the titlevbox size in the preamble - search for titlevboxsize
+\and
+Author 2 Name\\[12pt]
+Author 2 Company/University\\
+Author 2 Address\\
+City, State ZIP, Country\\
+}
+
+\maketitle
+
+
+\section*{ABSTRACT}
+
+The whole abstract should be in one paragraph and is strictly limited to 150 words. The general format of the abstracts will follow the same formatting requirements as WSC proceedings papers for all of the required elements (title, author information, running head, margins, etc.). The title will appear in \textbf{BOLD UPPERCASE} text. The title is followed by the author names and affiliations. For specific formatting instructions for each of these items, please refer to the appropriate MS Word or Latex instructions/sample papers available from the WSC Author Kit on the WSC website \href{http://www.wintersim.org}{http://www.wintersim.org}. This one paragraph abstract will not appear in the final program. Please follow the guidelines herein when preparing your abstract. Failure to do so may result in an abstract being rejected, returned for appropriate revision, or edited without your knowledge.
+
+
+\end{document}
+
