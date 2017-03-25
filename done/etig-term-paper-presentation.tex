@@ -16,7 +16,7 @@
   Corporate Strategy and Policy\\
   Indian Institute of Management Bangalore
 }
-\date{06 February, 2017}
+\date{10 March, 2017}
 \subject{The effect of inventor mobility on  invention complexity\\ETIG Course Term Paper}
 
 % \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
@@ -39,37 +39,52 @@
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
+\section{Motivation}
 
-\section{Introduction}
-\begin{frame}{Prior Literature}{Variation in the mobility of inventors across regions}
-\begin{itemize}
-\item{\cite{Almeida1999} suggested that interfirm mobility of engineers influences the local transfer of knowledge.}
-\item{\cite{Ge2016} interpret the higher levels of mobility in silicon valley as the outcome of targeted retention of human capital.}
-\item{Unanswered is if the variation in inventor mobility can also explain the variation in complexity of future inventions.}
-\end{itemize}
+\begin{frame}{Mobility Trends}
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=0.7\textwidth]{countrymoves}
+  \caption{Country moves by year}
+   \label{fig:countrymoves}
+\end{centering}
+\end{figure}
 \end{frame}
+
+\begin{frame}{Mobility Trends}
+\begin{figure}[h]
+\begin{centering}
+  \includegraphics[width=0.7\textwidth]{regionmoves}
+  \caption{Region moves by year}
+   \label{fig:regionmoves}
+\end{centering}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Mobility Trends}
+%------- Begin LaTeX code -------%
+
+\begin{table}[htbp]\centering \caption{Summary statistics \label{sumstat}}
+\begin{tabular}{l c c  c}\hline\hline
+\multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
+ & \textbf{Std. Dev.} & \textbf{N}\\ \hline
+moved region & 0.08 & 0.271  & 8537410\\
+moved country & 0.029 & 0.166  & 8537410\\
+log(complexity) & -1.004 & 2.383  & 7957162\\
+inventor pool & 8.542 & 46.674  & 8537410\\
+team pool proxy& 27.901 & 112.154  & 6875208\\
+\hline
+\end{tabular}
+\end{table}
+%------- End LaTeX code -------%
+
+\end{frame}
+
+
 
 \begin{frame}{Research Question}{}
 \begin{itemize}
 \item{What is the relationship between the movement of some inventors into or out of a region and the average complexity of inventions from those inventors?}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Relevance of Answering the Research Question}{}
-\begin{itemize}
-\item{Received wisdom earlier was that firms would have a greater incentive to keep  highly dependent technology developed in weaker IPR countries secret \citep{Cohen2000}.}
-\item{However  \cite{Zhao2006} has argued  that multinational enterprises may benefit from conducting R\&D in countries with weak IPR protection by  making up for the weaker IPR protection through better internal organization.}
-\item{The anecdotal increase in the mobility of employees at the weak IPR subsidiaries raises a potential paradox.}
-\item{If increased mobility of employees influences transfer of knowledge \citep{Almeida1999}, should we expect higher complex inventions from inventors in those teams into which other inventors have moved in?}
-\item{The answer to this question is not completely explained by theory}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Managerial and Policy Implications}{}
-\begin{itemize}
-\item{The innovation policy of emerging countries is influenced with the expectation that the presence of multinational R\&D will create value adding spillover effects.}
-\item{Complexity of innovation provides a richer proxy for value adding innovation, and effects of inventor mobility may inform innovation policy}
-\item{Current work may inform managerial decisions about how to organize R\&D teams around the world}
 \end{itemize}
 \end{frame}
 
@@ -82,15 +97,67 @@
 \end{frame}
 
 
+
 \section{Data and Method}
+\begin{frame}{Geographic Mapping}{San Jose}
+\begin{figure}[h!]
+\begin{centering}
+  \includegraphics[width=0.7\textwidth]{SanJose}
+  \caption{Geographic Definition of San Jose, CA}
+   \label{fig:SanJose}
+\end{centering}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Geographic Mapping}{Bangalore}
+\begin{figure}[h!]
+\begin{centering}
+  \includegraphics[width=0.7\textwidth]{Bangalore}
+  \caption{Geographic Definition of Bangalore}
+   \label{fig:Bangalore}
+\end{centering}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Complexity and Technology Classes}
+\begin{table}[htbp]\centering \caption{Most complex technology subclasses in 2010 \label{sumstat}}
+\begin{tabular}{l c c  c}\hline\hline
+\multicolumn{1}{c}{\textbf{id}} & \textbf{Avg Complexity} & \textbf{Technology} \\ \hline
+32	&6.691109	&Surgery \& Med Inst.\\
+25	&6.583521	&Electronic business methods and software\\24	&6.361433	&Information Storage\\22	&5.941292	&Computer Hardware \& Software\\21	&5.627072	&Communications\\
+\hline
+\end{tabular}
+\end{table}
+\end{frame}		
+
+\begin{frame}{Complexity and Technology Classes}		\begin{table}[htbp]\centering \caption{Least complex technology subclasses in 2010 \label{sumstat}}
+\begin{tabular}{l c c  c}\hline\hline
+\multicolumn{1}{c}{\textbf{id}} & \textbf{Avg Complexity} & \textbf{Technology} \\ \hline
+11	&2.533947	&Agriculture,Food,Textiles\\33	&3.468262	&Genetics\\66	&3.488879	&Heating\\52	&3.518574	&Metal Working\\63	&3.661588	&Apparel \& Textile\\53	&3.667615	&Motors \& Engines + Parts\\55	&3.712974	&Transportation\\
+\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
 \begin{frame}{Methodology}{}
 \begin{itemize}
 \item{Data Source: Patents from USPTO, source: patentsview.org}
+\item{Data Source: Regions using Remote Sensing Data, source: naturalearthdata.com}
 \item{Unit of Analysis: Inventor-Year}
-\item{Dependent Variable: Complexity of innovation}
+\item{Dependent Variable: log(Complexity of Invention)}
 \item{Primary Explanatory Variable: Mobility of innovators (Between-Region Mobility, Between-Country Mobility)}
-\item{Moderating Variable: IPR Score }
-\item{Control Variables: Technology classes, Firm effects, Year effects}
+\item{Moderating Variable: IPR Strength }
+\item{Control Variables: Technology classes, Region-Firm (Assignee) effects, Year effects}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Addressing Potential Issues}{}
+\begin{itemize}
+\item{Direction of Causality}
+\item{Alternative measures of complexity }
+\item{Cluster Standard Errors at Region - Assignee}
+\item{Control for Inventor - Technology Class}
+\item{IPR measures - Ginarte Park Index}
 \end{itemize}
 \end{frame}
 
@@ -98,16 +165,16 @@
 
 \end{frame}
 
-\begin{frame}{Potential Issues}{}
+\section{Future Work}
+\begin{frame}{Limitations and Future Work}{}
 \begin{itemize}
-\item{Direction of Causality}
-\item{Underestimation bias of mobility - effects}
-\item{Mechanism by which mobility affects complexity - other explanations}
-\item{Alternative measures of complexity }
+\item{Causal forces in determining mobility effects on invention complexity - Learnings from 9/11 shock}
+\item{Explore alternate identification measures for causality}
+\item{Estimate the extent of under reporting of mobility, consider alternative sources as linkedin}
+\item{Industry specific studies with relevant IPR scores}
+\item{Alternate measures of complexity}
 \end{itemize}
 \end{frame}
-
-
 
 \bibliography{/Users/aiyenggar/OneDrive/code/bibliography/ae,/Users/aiyenggar/OneDrive/code/bibliography/fj,/Users/aiyenggar/OneDrive/code/bibliography/ko,/Users/aiyenggar/OneDrive/code/bibliography/pt,/Users/aiyenggar/OneDrive/code/bibliography/uz}
 \bibliographystyle{apalike}
