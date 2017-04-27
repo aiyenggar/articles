@@ -1,0 +1,26 @@
+Distribution of Citations Made on Total Citations Received (FE Models)  \label{model123},,,,
+,(1),(2),(3),
+,Citations Received,Citations Received,Citations Received,
+Citations Received,,,,
+"Share Citations Made[Same Region,  Same Assignee]",,-0.169,-0.104,-0.134
+,(0.218),(0.623),(0.454),
+"Share Citations Made[Same Region,  Different Assignee]",,-0.149,-0.191,-0.0919
+,(0.215),(0.458),(0.468),
+"Share Citations Made[Different Region,  Same Assignee]",,0.217*,0.266*,0.348**
+,(0.012),(0.037),(0.004),
+"Share Citations Made[Different Region,  Different Assignee]",,0.00828,0.0315,0.0179
+,(0.789),(0.499),(0.661),
+Log(Total Citations Made),0.0180***,0.0198***,0.0134*,
+,(0.000),(0.001),(0.014),
+Log (Num Patents),0.785***,0.811***,0.830***,
+,(0.000),(0.000),(0.000),
+Log (Patent Pool Size),-0.111***,-0.227***,-0.0944***,
+,(0.000),(0.000),(0.000),
+Constant,-0.0711,0.673***,-0.500***,
+,(0.487),(0.000),(0.000),
+Observations,9241,3885,5356,
+Groups,1314,529,785,
+Sample,All Locations (UC),US Locations (UC),Non-US Locations (UC),
+p-values in parentheses,,,,
+"=""All models include region fixed effects"," year dummies and technology subcategory controls""",,,
+"=""* p<0.05", ** p<0.01," *** p<0.001""",,
