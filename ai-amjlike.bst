@@ -250,6 +250,9 @@ FUNCTION {space.word}
  % Here are the language-specific definitions for explicit words.
  % Each function has a name bbl.xxx where xxx is the English word.
  % The language selected here is ENGLISH
+FUNCTION {bbl.presented}
+{ "Paper presented at the"}
+
 FUNCTION {bbl.and}
 { "\&"}
 
@@ -299,7 +302,7 @@ FUNCTION {bbl.mthesis}
 { "Master's thesis" }
 
 FUNCTION {bbl.phdthesis}
-{ "Ph.D. thesis" }
+{ "Unpublished doctoral dissertation" }
 
 FUNCTION {bbl.first}
 { "First" }
@@ -665,6 +668,9 @@ FUNCTION {n.dashify}
   while$
 }
 
+FUNCTION {phrase.presented}
+{ bbl.presented capitalize " " * }
+
 FUNCTION {word.in}
 { bbl.in capitalize
   ":" *
@@ -881,6 +887,18 @@ FUNCTION {format.chapter.pages}
       pages empty$
         'skip$
         { ", " * format.pages * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.presented.ed.conference}
+{ booktitle empty$
+    { "" }
+    { editor empty$
+        { phrase.presented booktitle * }
+        { phrase.presented format.in.editors * ", " *
+          booktitle * }
       if$
     }
   if$
@@ -1105,10 +1123,10 @@ FUNCTION {inproceedings}
   author format.key output
   format.date "year" output.check
   date.block
-  format.title "title" output.check
+  format.title emphasize "title" output.check
   new.sentence
   crossref missing$
-    { format.in.ed.booktitle "booktitle" output.check
+    { format.presented.ed.conference  "booktitle" output.check
       publisher empty$
         { organization output
           address output
@@ -1180,12 +1198,11 @@ FUNCTION {phdthesis}
   author format.key output
   format.date "year" output.check
   date.block
-  format.btitle "title" output.check
+  format.btitle emphasize "title" output.check
   new.sentence
   bbl.phdthesis format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.note output
   fin.entry
 }
 
@@ -1211,7 +1228,7 @@ FUNCTION {techreport}
   author format.key output
   format.date "year" output.check
   date.block
-  format.title "title" output.check
+  format.title emphasize "title" output.check
   new.sentence
   format.tr.number output.nonnull
   institution "institution" output.check
