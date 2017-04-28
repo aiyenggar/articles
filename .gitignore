@@ -8,3 +8,6 @@
 *.out
 *.snm
 *.toc
+*.dbj
+*.ttt
+*.fff
