@@ -1,0 +1,301 @@
+%qeprep.tex
+\documentclass[12pt,letterpaper]{article}
+\usepackage{mathptmx}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{setspace}
+\doublespacing
+  
+\usepackage{amssymb,latexsym}
+\usepackage[round,sort,longnamesfirst]{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\graphicspath{ {qeprep/} }
+
+% Bold Table and Figure captions
+\usepackage{caption}
+\captionsetup{figurename=FIGURE}
+\captionsetup{tablename=TABLE}
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+  
+% Turns off all section numbering
+\setcounter{secnumdepth}{0} 
+
+  % Places all tables at end of document and creates AOM-style table-here placeholders
+  \usepackage[nolists]{endfloat} % Places all figures and charts at end of manuscript and adds 'insert table x about here' lines.
+  \renewcommand{\figureplace}{
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \figurename \ \thepostfig\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+  \renewcommand{\tableplace}{%
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \tablename \ \theposttbl\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+
+  \usepackage{titlesec}
+   \titleformat{\title}
+       {\filcenter\normalfont\bfseries\uppercase}{\thetitle}{1em}{}
+  \titleformat{\section}
+    {\filcenter\normalfont\bfseries\uppercase}{\thesection}{1em}{}
+  \titleformat{\subsection}
+    {\normalfont\bfseries}{\thesubsection}{1em}{}
+  \titleformat{\subsubsection}[runin]
+   {\normalfont\bfseries\slshape}{\thesubsubsection}{1em}{\hspace*{\parindent}}
+       
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tabu}
+\usepackage{titling}
+\usepackage{titlesec}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=cyan,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+\usepackage{etoolbox}
+
+\makeatletter
+
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+
+\fancypagestyle{plain}{
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhf{}
+}	
+
+
+\begin{document}
+\setlength{\droptitle}{-5em}
+\title{Preparation notes for Strategy comprehensive exam}
+\date{\vspace{-12ex}}
+\maketitle
+
+\begin{comment}
+\begin{abstract} 
+\normalsize 
+\end{abstract}
+{\textbf{Keywords:} \\\indent }
+\end{comment}
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{Preparation notes for Strategy comprehensive exam}
+\rhead{\thepage}
+\lhead{1521001}
+
+\section{Phenomena}
+
+\subsection{Cognition}
+\subsubsection{Process Theories}
+
+\subsection{Decision Making}
+\subsubsection{Process Theories}
+
+\subsection{Innovation}
+\subsubsection{Process Theories}
+\subsection{Content Theories}
+
+\subsection{Entrepreneurship}
+\subsubsection{Process Theories}
+\subsection{Content Theories}
+
+\subsection{Strategy Formulation}
+\subsubsection{Process Theories}
+
+\subsection{Strategic Change}
+\subsubsection{Process Theories}
+
+\subsection{Inter-organizational Strategy}
+Maybe this is not different from Alliances and Vertical Integration. Check this
+\subsubsection{Process Theories}
+
+\subsection{Diversification}
+
+\subsection{Acquisitions}
+
+\subsection{Divestitures}
+
+\subsection{Vertical Integration}
+
+\subsection{Alliances}
+
+\subsection{International Strategy}
+
+\subsection{Emerging Economy Strategy}
+
+\subsection{Organization Knowledge}
+
+\subsection{Organization Learning}
+
+\subsection{Human Capital}
+
+\subsection{Competitive Dynamics}
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Content Theories}
+\subsection{Industrial Organization Economics}
+
+\subsection{Resource Based View}
+
+\subsection{Dynamic Capabilities}
+
+\subsection{Evolutionary Perspectives}
+
+\subsection{Transaction Cost Economics}
+
+\subsection{Institutional Perspectives}
+
+\subsection{Network Theory}
+
+\subsection{Complexity Theory}
+
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Process Theories}
+
+
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Classics}
+\subsection{A Behavioral Theory of the Firm}
+\subsection{The Theory of the Growth of the Firm}
+\subsection{The External Control of Organizations}
+\subsection{Managing the Resource Allocation Process}
+\subsection{Strategy and Structure}
+\subsection{Strategy, Structure and Process}
+\subsection{The Concept of Corporate Strategy}
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{International Business}
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Industrial Organization}
+This entire course is on theories that help define the boundaries and the structure and conduct of firms.
+\subsection{Transaction Cost Economics}
+\subsection{Information Economics}
+\subsection{Agency Theory}
+\subsection{Property Rights Theory}
+\subsection{New Institutional Economics}
+\subsection{Implications to Managerial Decision Making}
+
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Economics of Innovation}
+\subsection{The History and the Philosophy of Economic Growth}
+\subsection{Economic History and Innovation}
+\subsection{Methods in Studying Innovation}
+\subsection{Institutions and Innovation}
+\subsection{Diffusion of Innovation}
+\subsection{Firm Effects in Innovation Research}
+\subsection{Appropriating Value from Innovation}
+
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Strategic Networks and Alliances}
+
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\section{Methodological Critique}
+
+
+%--------------------------------------------------
+\newpage
+%--------------------------------------------------
+
+\begin{comment}
+\section{Acknowledgements}
+I am heavily indebted to Abhoy Ojha for having set the bar for this paper high. I am indeed the biggest beneficiary of the expectation of as full a paper as possible. My ability to do this work was also contributed to by Sai Yayavaram, who introduced me in June 2015 to the wonderful world of computational modeling, and to Phanish Puranam who helped me with thinking about simple agent based models for modeling organizational phenomena. All mistakes made here are completely mine. 
+\end{comment}
+
+\newpage
+\begin{singlespace}
+\bibliography{/Users/anu/code/bibliography/aiyenggar} 
+\bibliographystyle{ai-amjlike}
+\end{singlespace}
+
+\begin{comment}
+\newpage
+\appendix
+\begin{singlespace}
+\section{APPENDIX A: Simulation Code}
+\lstinputlisting{amjlike/matchingEmbeddedAgency.py}
+\end{singlespace}
+
+\begin{hypothesis}
+{Hypothesis 1a: When the institutional field is open to influence, slow learning adversarial agents will raise overall performance higher than slow learning agents with a neutral orientation\\}
+\end{hypothesis}
+
+\begin{hypothesis}
+{Hypothesis 2a: For the same initial outcome preferences,  the overall performance score varies curvilinearly with difference in the rates of learning of the agent and the institutional field\\}
+\end{hypothesis}
+
+\end{comment}
+
+\end{document}
