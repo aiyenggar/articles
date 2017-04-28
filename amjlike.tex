@@ -65,6 +65,30 @@
     urlcolor=cyan,
     citecolor=blue,
 }
+\usepackage{etoolbox}
+
+\makeatletter
+
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+
 \lstset{
 basicstyle=\ttfamily,
 columns=flexible,
@@ -104,13 +128,12 @@ We apply a formal model to understand the effects of the relative learning rates
 \begin{center}
 \textbf{Embedded Agency in Institutional Fields: Developing Theory from a Matching Game}
 \end{center}
-Our understanding of  institutional phenomena has come a long way since \cite{Selznick1957} made the observation that organizations adopted new goals suited to existing structures  instead of changing the structures that may have outlived their utility. 
+Our understanding of  institutional phenomena has come a long way since \citep{Puranam2001} made the observation that organizations adopted new goals suited to existing structures  instead of changing the structures that may have outlived their utility. 
 
-The rest of this article is organized as follows. In the following section, we summarize the key constructs and definitions in institutional theory that we build upon in this article. We then present the assumptions and the formal definitions for the model. A subset of our initial results from the computer simulations of the model are then presented in the following section. We propose hypotheses on the dynamics of embedded agency and their institutional fields based on our findings from our computer simulation. We conclude with a call for continuing this path for theory development, and for empirical studies to use the theoretical frames developed here for both conceptual synthesis and empirical validity of the hypotheses proposed. The Python code used for this modeling work is provided in the appendix section.\cite{Wan2011}
+The rest of this article is organized as follows. In the following section, we summarize the key constructs and definitions in institutional theory that we build upon in this article. We then present the assumptions and the formal definitions for the model. A subset of our initial results from the computer simulations of the model are then presented in the following section. We propose hypotheses on the dynamics of embedded agency and their institutional fields based on our findings from our computer simulation. We conclude with a call for continuing this path for theory development, and for empirical studies to use the theoretical frames developed here for both conceptual synthesis and empirical validity of the hypotheses proposed. The Python code used for this modeling work is provided in the appendix section.
 
 \section{Background}
-Prior to describing our formal model, we discuss here some of the salient constructs within institutional theory that provide both the motivation as well as the vocabulary appropriate to our discussion. \cite{Scott1995} visualized institutional fields as a community of organizations that partakes of a common meaning system and whose participants interact more frequently and fatefully with one another than with actors outside the field. This definition is similar to that of \cite{Dimaggio1983} who defined institutional fields as those organizations that in the aggregate constitute a recognized area of institutional life: key suppliers, resource and product consumers, regulatory agencies, and other organizations that produce similar services or products. \cite{Wan2011}
-
+Prior to describing our formal model, we discuss here some of the salient constructs within institutional theory that provide both the motivation as well as the vocabulary appropriate to our discussion. \cite{Chakravarthy2002} visualized institutional fields as a community of organizations that partakes of a common meaning system and whose participants interact more frequently and fatefully with one another than with actors outside the field. This definition is similar to that of \cite{Schumpeter1934} who defined institutional fields as those organizations that in the aggregate constitute a recognized area of institutional life: key suppliers, resource and product consumers, regulatory agencies, and other organizations that produce similar services or products. 
 \section{Model}
 
 We develop a simple model consisting of two players who participate in a repeated game of matching \footnote{I am grateful to Phanish Puranam for having introduced me to this model of reinforcement learning during a workshop at the Indian Institute of Science on 16th December, 2016. His definitions and code have been extensively reused in this work.}. Our study will assume the two players to be the institutional field (F), and the embedded agent (A). In each time period each of the players can make one of two decision choices 0 or 1. At the start of the game, the institutional field F choses choice 0 with probability $p_{0,F}^0$ and choice 1 with probability $1 - p_{0,F}^0$. Similarly, at the start of the game, the embedded agent A choses choice 0 with probability $p_{0,A}^0$ and choice 1 with probability $1 - p_{0,A}^0$. When the choices of the institutional field F and embedded agent A match in a time period, they each get a payoff of 1 in that period. Otherwise they each get a payoff of 0. The payoffs are captured by the matrix in Table ~\ref{payoffmatrix}
@@ -129,6 +152,9 @@ $choice_A(t) = 1$&$[payoff_F(t),payoff_A(t)]=[0,0]$&$[payoff_F(t),payoff_A(t)]=[
 
 \end{centering}
 \end{table} 
+
+\cite{Kwan2001,Schumpeter1934,Chakravarthy2002,Magerman2011,Economist2007PracticallyIrrelevant,Puranam2001,Cohen2000}
+
 
 To help improve the intuition in the analysis, we define a few categories. For the learning rate $\phi$, we define three categories: Slow ($\phi <= 0.05$), Medium ($0.05 < \phi <= 0.3$) and Fast  ($0.3 < \phi <= 0.7$). In the models to follow, we additionally assume that agents may have learning rates of Slow, Medium and Fast, while Fields may have learning rates of Slow and Medium. The determination is made building on the assumption that the institutional field may learn at a rate no faster than that of any of its constituent embedded agents. $choice(t)$ is either 0 or 1 for each player, with 0 being picked with a probability of $p_{t,F}^0$ by the field F and 0 being picked with a probability of $p_{t,A}^0$ by the agent A. We now define the following categories to assist in referring to prior probabilities of player choice. 
 
@@ -170,21 +196,8 @@ The formal computational modeling approach to theorizing organizational phenomen
 
 
 \section{Conclusion}
-We started out attempting to improve our understanding of the mechanisms behind the embedded agent - institutional field engagement. We captured the dynamics of the embedded agent - institutional field relationship as a function of their relative learning rates over repeated encounters in a game of matching. Despite focusing on a sub-set of potential states, we were able to demonstrate multiple situations where seemingly counter-intuitive priors lead to better outcomes. Our work here contributes to a nuanced and deeper understanding of the dynamics of the embedded agent - institutional field relationship, and a potential mechanism by  which changes in this setting may affect organizational outcomes.  \cite{Zhao2006}
-\cite{Abrahamson1996}
-\cite{Alcacer2006a,Alcacer2006b}
-\cite{Alcacer2016b}
-\cite{Alcacer2016a}
-\cite{Allison1999}
-\cite{Barnard1938}
-\cite{Bower1970}
-\cite{Clark2008}
-\cite{Winter1995}
-\cite{Puranam2001}
-\cite{Bresnahan2010}
-\cite{Arora2017,Branstetter2006,Farre-Mensa2017,Hall2001a,Williams2013}
-\cite{Rockett2010}
-\cite{Magerman2011}
+We started out attempting to improve our understanding of the mechanisms behind the embedded agent - institutional field engagement. We captured the dynamics of the embedded agent - institutional field relationship as a function of their relative learning rates over repeated encounters in a game of matching. Despite focusing on a sub-set of potential states, we were able to demonstrate multiple situations where seemingly counter-intuitive priors lead to better outcomes. Our work here contributes to a nuanced and deeper understanding of the dynamics of the embedded agent - institutional field relationship, and a potential mechanism by  which changes in this setting may affect organizational outcomes.  
+
 \begin{comment}
 \section{Acknowledgements}
 I am heavily indebted to Abhoy Ojha for having set the bar for this paper high. I am indeed the biggest beneficiary of the expectation of as full a paper as possible. My ability to do this work was also contributed to by Sai Yayavaram, who introduced me in June 2015 to the wonderful world of computational modeling, and to Phanish Puranam who helped me with thinking about simple agent based models for modeling organizational phenomena. All mistakes made here are completely mine. 

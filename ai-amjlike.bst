@@ -574,7 +574,7 @@ FUNCTION {format.note}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$
+    { title "u" change.case$ "t" change.case$
     }
   if$
 }
@@ -729,7 +729,7 @@ FUNCTION {format.date}
 }
 
 FUNCTION {format.btitle}
-{ title
+{ format.title
 }
 
 FUNCTION {tie.or.space.connect}
@@ -927,7 +927,7 @@ FUNCTION {format.chapter.pages}
       chapter tie.or.space.connect
       pages empty$
         'skip$
-        { ", " * format.pages * }
+        { ": " * format.pages * }
       if$
     }
   if$
@@ -1146,7 +1146,7 @@ FUNCTION {incollection}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      format.chapter.pages output.colon
+      format.chapter.pages output
       format.edition output
     }
     { format.incoll.inproc.crossref output.nonnull
@@ -1223,7 +1223,7 @@ FUNCTION {mastersthesis}
 
 FUNCTION {misc}
 { output.bibitem
-  format.authors output
+  format.authors emphasize output
   author format.key output
   format.date "year" output.check
   date.block
