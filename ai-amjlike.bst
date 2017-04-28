@@ -138,6 +138,13 @@ FUNCTION {output.nonnull.colon}
   s
 }
 
+FUNCTION {output.colon}
+{ duplicate$ empty$
+    'pop$
+    'output.nonnull.colon
+  if$
+}
+
 FUNCTION {output.check}
 { 't :=
   duplicate$ empty$
@@ -260,16 +267,16 @@ FUNCTION {bbl.etal}
 { "et~al." }
 
 FUNCTION {bbl.editors}
-{ "eds." }
+{ "Eds." }
 
 FUNCTION {bbl.editor}
-{ "ed." }
+{ "Ed." }
 
 FUNCTION {bbl.edby}
-{ "edited by" }
+{ "Edited by" }
 
 FUNCTION {bbl.edition}
-{ "ed." }
+{ "Ed." }
 
 FUNCTION {bbl.volume}
 { "vol." }
@@ -287,7 +294,7 @@ FUNCTION {bbl.in}
 { "in" }
 
 FUNCTION {bbl.pages}
-{ "pp." }
+{ "" } % aiyenggar removed pp.
 
 FUNCTION {bbl.page}
 { "p." }
@@ -470,8 +477,43 @@ FUNCTION {format.names}
     }
   while$
 }
+
 FUNCTION {format.names.ed}
-{ format.names }
+{ 's :=
+  #1 'nameptr :=
+  s num.names$ 'numnames :=
+  numnames 'namesleft :=
+    { namesleft #0 > }
+    { s nameptr
+      "{vv~}{f.}{ ll}{, jj}" format.name$
+    't :=
+      nameptr #1 > 
+        {    
+          namesleft #1 > 
+            { ", " * t * }
+            {    
+              "," *
+              s nameptr "{ll}" format.name$ duplicate$ "others" =
+                { 't := } 
+                { pop$ }
+              if$  
+              t "others" =
+                {    
+                  " " * bbl.etal *
+                }    
+                { " " * bbl.and * " " * t * } % aiyenggar
+              if$  
+            }    
+          if$  
+        }    
+        't   
+      if$  
+      nameptr #1 + 'nameptr :=
+      namesleft #1 - 'namesleft :=
+    }    
+  while$
+}
+
 FUNCTION {format.key}
 { empty$
     { key field.or.null }
@@ -673,7 +715,6 @@ FUNCTION {phrase.presented}
 
 FUNCTION {word.in}
 { bbl.in capitalize
-  ":" *
   " " * }
 
 FUNCTION {format.date}
@@ -970,16 +1011,16 @@ FUNCTION {format.publisher}
   address empty$ publisher empty$ and
     'skip$
     {
-      publisher empty$
-        { address empty$
+      address empty$
+        { publisher empty$
           'skip$
-          { address * }
+          { publisher * }
           if$
         }
-        { publisher *
-          address empty$
+        { address *
+          publisher empty$
             'skip$
-            { ", " * address * }
+            { ": " * publisher * }
           if$
         }
       if$
@@ -1103,16 +1144,17 @@ FUNCTION {incollection}
   new.sentence
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
-      format.publisher
       format.bvolume output
       format.number.series output
-      format.chapter.pages output
+      format.chapter.pages output.colon
       format.edition output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
     }
   if$
+  new.sentence
+  format.publisher
   format.note output
   fin.entry
 }
