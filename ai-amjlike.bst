@@ -552,7 +552,12 @@ FUNCTION {format.in.editors}
   if$
 }
 
-FUNCTION {format.note}
+FUNCTION {format.note} %aiyenggar
+{
+    { "" }
+}
+
+FUNCTION {format.note.old} %aiyenggar
 {
  note empty$
     { "" }
