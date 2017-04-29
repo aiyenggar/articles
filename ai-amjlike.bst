@@ -554,7 +554,7 @@ FUNCTION {format.in.editors}
 
 FUNCTION {format.note} %aiyenggar
 {
-    { "" }
+    "" 
 }
 
 FUNCTION {format.note.old} %aiyenggar
