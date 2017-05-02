@@ -552,12 +552,12 @@ FUNCTION {format.in.editors}
   if$
 }
 
-FUNCTION {format.note} %aiyenggar
+FUNCTION {format.note.null} %aiyenggar
 {
     "" 
 }
 
-FUNCTION {format.note.old} %aiyenggar
+FUNCTION {format.note} %aiyenggar
 {
  note empty$
     { "" }
@@ -1051,7 +1051,7 @@ FUNCTION {article}
       format.pages output
     }
   if$
-  format.note output
+  format.note.null output
   fin.entry
 }
 
