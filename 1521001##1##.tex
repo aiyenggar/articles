@@ -113,11 +113,11 @@ breaklines=true
 
 \begin{abstract} 
 \normalsize 
-We apply a formal model to understand the effects of the relative learning rates of embedded agents and the institutional field on organizational outcomes. 
+
 \end{abstract}
 
 
-{\textbf{Keywords:} \\\indent Embedded Agency}
+{\textbf{Keywords:} \\\indent }
 
 \newpage
 \pagestyle{fancy}
@@ -126,53 +126,35 @@ We apply a formal model to understand the effects of the relative learning rates
 \rhead{\thepage}
 
 \begin{center}
-\textbf{Title: Sub-title}
+\textbf{Inducing Strategic Initiatives at a Startup Firm:\\Understanding the Role of the Co-founding Team}
 \end{center}
-Our understanding of  institutional phenomena has come a long way since \cite{Selznick1957} made the observation that organizations adopted new goals suited to existing structures  instead of changing the structures that may have outlived their utility. 
 
-The rest of this article is organized as follows. 
-
-\section{Background}
- \cite{Scott1995} visualized institutional fields as a community of organizations that partakes of a common meaning system and whose participants interact more frequently and fatefully with one another than with actors outside the field. 
- 
-\section{Model}
-
-We develop a simple model consisting of two players who participate in a repeated game of matching \footnote{I am grateful to Phanish Puranam for having introduced me to this model of reinforcement learning during a workshop at the Indian Institute of Science on 16th December, 2016. His definitions and code have been extensively reused in this work.}. The payoffs are captured by the matrix in Table ~\ref{payoffmatrix}
+In the form of a detailed literature review, describe the \cite{Lovas2000} model and compare it to prior models of \cite{Burgelman?} and \cite{Bower?}. Highlight the key aspects of the framework, how it is different and what salient aspects stand out that you then build on top of in this article. Suggest why you think \cite{Lovas2000} model is appropriate. Draw out a table Table ~\ref{payoffmatrix} that compares the various theories and their assumptions, traditions, and recommendations.
 
 \begin{table}
 \begin{centering}
-\caption {Payoff Matrix}
+\caption {Comparison}
 \label{payoffmatrix}
 {\tabulinesep=1.4mm
-\begin{tabu}{|c|c|c|}
+\begin{tabu}{|c|c|c|c|}
 \hline
-&$choice_F(t) = 0$&$choice_F(t) = 1$\\\hline
-$choice_A(t) = 0$&$[payoff_F(t),payoff_A(t)]=[1,1]$&$[payoff_F(t),payoff_A(t)]=[0,0]$\\\hline
-$choice_A(t) = 1$&$[payoff_F(t),payoff_A(t)]=[0,0]$&$[payoff_F(t),payoff_A(t)]=[1,1]$\\\hline
+          & Bower Model & Burgelman Model & Lovas and Ghoshal Model \\\hline       Tradition & Theta & Beta  & God \\\hline        Assumptions & Alpha & Hexa  & None \\\hline        Recommendations & Rationalist & Behavioral & Prgamatist \\\hline 
 \end{tabu}}
 
 \end{centering}
 \end{table} 
 
-To help improve the intuition in the analysis, we define a few categories. 
+\section{Theory}
+You also need to bring in literature discussing the phenomenon (startup firm strategy). Maybe look up strategy entrepreneurship journal.
 
-\subsection{Field Start Position}
-The Field Start Position is a characterization of the choice preference of the institutional field at the start of the interaction. 
-\subsubsection{The third level section}
-We do so since the scale is symmetric across the Center (C), any initial mapping of Left (L) and Left of Center (LC) can be mapped onto an equivalent Right (R) or Right of Center (RC) configuration. 
+\subsection{The \cite{Lovas2000} Model}
+either redraw or paste the picture
+\subsection{Variation, Selection, Retention}
+Bring in the model here.
 
-\begin{figure}[h]
-\begin{centering}
-  \caption{}
-  \includegraphics[width=\textwidth]{frcmedium3a}
-  \label{fig:3a}
-\end{centering}
-\end{figure}
+This should lead to the research question in the form of a gap in the current literature. Describe the question, and why it is important to study it (what additional insight will it provide, what policy/strategic implications will it have).
 
-\section{Discussion}
-Having laid out the formal model and having described the assumptions and classifications made in the previous section, we now consider if the model described above is a reasonable abstraction of the phenomenon that we wish to theorize upon. 
-
-\section{Interpretation of Model Results}
+Develop hypotheses. Use theoretical arguments to lay out an interesting conundrum and then attempt to answer that in the form of propositions.
 \subsection{On the topic of the general hypotheses}
  Figure ~\ref{fig:3a} lays out the average score charts for four agent-field combinations while enforcing the field to start in Right of Center (this is the same as saying $p_{0,F}^0 = 0.75$). 
 \subsubsection{Leading into H1a}
@@ -189,29 +171,15 @@ This trend is confirmed further in Figure ~\ref{fig:3a} where the learning rates
 {Hypothesis 2a: For the same initial outcome preferences,  the overall performance score varies curvilinearly with difference in the rates of learning of the agent and the institutional field\\}
 \end{hypothesis}
 
+\section{Method}
+Then describe an empirical setting in the form of a quasi-experimental setup where this will be examined.
+
 \section{Limitations and Future Work}
-The formal computational modeling approach to theorizing organizational phenomena comes across as being both valuable and challenging simultaneously. 
+Suggest how this study may help inform the literatures that it is drawing from, and the interesting research avenues it will open up. Discuss level of generalizability.
 
-
-\section{Conclusion}
-We started out attempting to improve our understanding of the mechanisms behind the embedded agent - institutional field engagement. 
-
-\begin{comment}
-\section{Acknowledgements}
-All mistakes made here are completely mine. 
-\end{comment}
-
-\newpage
 \begin{singlespace}
 \bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
 \bibliographystyle{ai-amjlike}
-\end{singlespace}
-
-\newpage
-\appendix
-\begin{singlespace}
-\section{APPENDIX A: Simulation Code}
-\lstinputlisting{qe1/matchingEmbeddedAgency.py}
 \end{singlespace}
 
 \end{document}
