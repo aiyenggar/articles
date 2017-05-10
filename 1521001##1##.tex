@@ -10,7 +10,7 @@
 \usepackage[round,sort]{natbib}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{graphicx}
+\usepackage{graphicx,multirow}
 \graphicspath{ {qe1/} }
 
 % Bold Table and Figure captions
@@ -138,7 +138,14 @@ In the form of a detailed literature review, describe the \cite{Lovas2000} model
 {\tabulinesep=1.4mm
 \begin{tabu}{|c|c|c|c|}
 \hline
-          & Bower Model & Burgelman Model & Lovas and Ghoshal Model \\\hline       Tradition & Theta & Beta  & God \\\hline        Assumptions & Alpha & Hexa  & None \\\hline        Recommendations & Rationalist & Behavioral & Prgamatist \\\hline 
+          & Bower Model & Burgelman Model & Lovas and Ghoshal Model \\
+\hline   
+    Tradition & Theta & Beta  & God \\
+\hline    
+    Assumptions & Alpha & Hexa  & None \\
+\hline    
+    Recommendations & Rationalist & Behavioral & Prgamatist \\
+\hline 
 \end{tabu}}
 
 \end{centering}
@@ -178,6 +185,7 @@ Then describe an empirical setting in the form of a quasi-experimental setup whe
 Suggest how this study may help inform the literatures that it is drawing from, and the interesting research avenues it will open up. Discuss level of generalizability.
 
 \begin{singlespace}
+\renewcommand{\refname}{REFERENCES}
 \bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
 \bibliographystyle{ai-amjlike}
 \end{singlespace}
