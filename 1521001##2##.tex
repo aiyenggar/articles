@@ -3,6 +3,11 @@
 \usepackage{mathptmx}
 \usepackage[margin=1in]{geometry}
 
+\usepackage{tabularx}  % for 'tabularx' environment and 'X' column type
+\usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
+\usepackage{booktabs}  % for \toprule, \midrule, and \bottomrule macros 
+
 \usepackage{setspace}
 \singlespacing
   
@@ -107,7 +112,7 @@ breaklines=true
 
 
 \begin{document}
-\title{Organizational Learning and Human Capital: Similarities and Tensions}
+\title{Organizational Learning and Human Capital: Similarities, Tensions and a Research Proposal}
 \date{}
 \maketitle
 
@@ -126,9 +131,57 @@ We apply a formal model to understand the effects of the relative learning rates
 \rhead{\thepage}
 
 \begin{center}
-\textbf{Title: Sub-title}
+\textbf{Organizational Learning and Human Capital: Similarities, Tensions and a Research Proposal}
 \end{center}
 
+\begin{table}
+\begin{centering}
+\caption {Comparison}
+\label{qe2a}
+{\tabulinesep=1.4mm
+\begin{tabu}{|c|c|c|c|}
+\hline
+          & Bower Model & Burgelman Model & Lovas and Ghoshal Model \\
+\hline   
+    Tradition & Theta & Beta  & God \\
+\hline    
+    Assumptions & Alpha & Hexa  & None \\
+\hline    
+    Recommendations & Rationalist & Behavioral & Prgamatist \\
+\hline 
+\end{tabu}}
+
+\end{centering}
+\end{table} 
+
+\begin{table}[h]
+\renewcommand\arraystretch{2.5} % provide a bit taller rows
+\centering
+\caption{Firm Profit Effects from Organizational Learning - Human Capital Matrix}
+\label{qe2b}
+\begin{tabularx}{\textwidth}{@{} c c |c |c| } % use 'Y' for first column
+%\toprule
+
+&\multicolumn{1}{c}{}&\multicolumn{2}{c}{\textbf{Organizational Learning}}\\[-2ex]
+&\multicolumn{1}{c}{}
+&\multicolumn{1}{c}{Explorative}&\multicolumn{1}{c}{Exploitative}\\\cline{3-4}
+\multirow{4}{*}{\rotatebox{90}{\textbf{Human Capital (HC)}}}
+&\multirow{2}{*}{General HC}&\textbf{$\uparrow$ Schumpeterian Rent}&\textbf{$\uparrow$ Ricardian Rent}\\
+&&\textbf{$\downarrow$ Rents to human capital}&\textbf{$\downarrow$ Rents to human capital}\\\cline{3-4}
+&\multirow{2}{*}{Firm Specific HC}&\textbf{$\uparrow$ Schumpeterian Rent}&\textbf{$\uparrow$ Ricardian Rent}\\
+&&\textbf{$\uparrow$ No rents to human capital}&\textbf{$\uparrow$ No rents to human capital}\\\cline{3-4}
+
+%\bottomrule
+\end{tabularx}
+
+%&\multicolumn{1}{c}{}&\multicolumn{2}{c}{\textbf{Organizational Learning}}\\[-2ex]
+%&\multicolumn{1}{c}{}
+%&\multicolumn{1}{c}{Explorative}&\multicolumn{1}{c}{Exploitative}\\\cline{3-4}
+%\multirow{2}{*}{\rotatebox{90}{\textbf{Human Capital (HC)}}}
+%&General HC&\textbf{+ Schumpeterian Rent \newline - Rents captured by human capital}&\textbf{+ Ricardian Rent, - Rents captured by human capital}\\\cline{3-4}
+%&Firm Specific HC&2&2\\\cline{3-4}
+
+\end{table}
 
 \section{Research Proposal}
 \subsection{Research Question}
