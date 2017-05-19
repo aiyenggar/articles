@@ -1,0 +1,34 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\caption{Negative binomial regression analysis of invention quality (non-self citations received) \label{model192021}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
+                &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+\hline
+Share Citations Made[Same Region, Same Assignee]&   -0.232         &   -0.183         &   -0.316         \\
+                &  (0.105)         &  (0.392)         &  (0.123)         \\
+Share Citations Made[Same Region, Different Assignee]&   0.0391         &   0.0945         &   0.0505         \\
+                &  (0.733)         &  (0.721)         &  (0.699)         \\
+Share Citations Made[Different Region, Same Assignee]&    0.195  &    0.263  &    0.174         \\
+                &  (0.035)         &  (0.041)         &  (0.212)         \\
+Share Citations Made[Different Region, Different Assignee]&  0.00989         &   0.0203         &  0.00983         \\
+                &  (0.762)         &  (0.675)         &  (0.826)         \\
+Log (Total Citations Made)&   0.0150&   0.0139  &   0.0107         \\
+                &  (0.000)         &  (0.023)         &  (0.075)         \\
+Log (Num Patents)&    0.772&    0.795&    0.828\\
+                &  (0.000)         &  (0.000)         &  (0.000)         \\
+Log (Patent Pool Size)&  -0.0453  &   -0.108 &  -0.0685  \\
+                &  (0.039)         &  (0.006)         &  (0.017)         \\
+\hline
+Observations    &     8879         &     3732         &     5147         \\
+Groups          &     1199         &      478         &      721         \\
+Sample&All &U.S. &Non-U.S. \\
+          &Locations &Locations&Locations \\
+\hline\hline
+\multicolumn{4}{l}{\small \textit{p}-values in parentheses}\\
+\multicolumn{4}{l}{\small All models include region fixed effects, year dummies and technology subcategory controls}\\
+\end{longtable}
+}
