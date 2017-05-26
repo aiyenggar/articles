@@ -144,11 +144,12 @@ breaklines=true
 \item Lead into the research question about how it is unclear what effect local knowledge spillovers should have vis-a-vis MNC/subsidiary and other potential factors
 \end{itemize}
 
-Scholars of economics and strategy have for long recognized that clusters and agglomeration economies play an important role in fostering innovation \citep{Marshall1890, Porter1990}. Agglomeration economies arise due to labor pooling advantages, economies of specialization of local suppliers, and knowledge spillovers \citep{Porter1990, Krugman1991a}. In this study, we\footnote{This paper is the outcome of the joint work by Sai Yayavaram and me, and while the changes since the version submitted to the Strategic Management Society 2017 Conference (for reference, this version has also provided with the current paper) are my own, I have used the plural ``we'' throughout this paper to preserve continuity with the previous version and compatibility with future versions that was/going to be jointly authored.} examine how the nature of knowledge spillovers or flows in a region affect the quality of the inventions generated in the region.\par
+Scholars of economics and strategy have for long recognized that clusters and agglomeration economies play an important role in fostering innovation \citep{Marshall1890, Porter1990}. Agglomeration economies arise due to labor pooling advantages, economies of specialization of local suppliers, and knowledge spillovers \citep{Porter1990, Krugman1991a}. In this study, we\footnote{This paper is the outcome of the joint work by Sai Yayavaram and me. While the changes since the version submitted to the Strategic Management Society 2017 Conference (this version has also provided with the current paper for reference) are my own, I have used the plural ``we'' throughout this paper to preserve continuity with the previous version and compatibility with future versions that was/going to be jointly authored.} examine how the nature of knowledge spillovers or flows in a region affect the quality of the inventions generated in the region.\par
 Several studies have used patent citations to demonstrate that knowledge flows are localized \citep*{Jaffe1993, Almeida1999, Alcacer2006a}. Regions, however vary in their inventive output \citep*{Agrawal2014} and the nature of knowledge flows in a region may be one source of this variation within regions. In this study we use citation data of patents applied for between 2001 and 2012 to empirically estimate the relationship between knowledge flows of a region and quality of inventions from that region. \par
 The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently in terms of knowledge flows. We then describe our data and methods in the following section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions for further research.
 
-\section*{Effects of knowledge flows on quality of inventions}
+\section*{Theory and Hypotheses}
+\subsection*{Effects of knowledge flows on quality of inventions}
 \begin{itemize}
 \item Justify why the 2x2 classification is appropriate. Discuss the four quadrants in more detail, say by including examples and statistics
 \end{itemize}
@@ -204,17 +205,69 @@ Finally, the bottom right quadrant labelled ``Diffusion" captures high explorati
 
 As can be seen from the preceding discussion, prior theory suggests both positive and negative effects for each of these four categories of knowledge flows and it is not clear what the net effect will be on invention quality. This also suggests that prior theory does not provide guidance on which category of knowledge flows will have the highest effect on invention quality.  Since theory does not provide us with an answer, we rely on empirical analysis to inform us on the net effect of each category of knowledge flow on invention quality and which category has the highest effect on invention quality. \par
 
-\section*{Data and Measures}
+
+\subsubsection{Creating sustainable competitive advantages}
+Organization learning literature suggests that specialized knowledge is routinized over time. As the dependence on FSHC reduces due to routinization of knowledge and the associated causal ambiguity arising out of tacit knowledge, the appropriability of rents by highly knowledgable workers reduces. Therefore managers intending to increase rents from exploration may chose a strategy where the rents from innovation are appropriated by highly skilled workers in the short run, but rents accrue to the firm as knowledge present in highly knowledgable workers is transformed into organizational routines. This leads me to my first hypothesis.\\
+
+\begin{hypothesis}
+{Hypothesis 1: Long term rent generating capacity of firms from exploration is characterized by an increase in costs due to appropriation by highly knowledgable employees initially, and a decrease in such costs later.
+\\}
+\end{hypothesis}
+
+\subsubsection{Improving operational performance}
+Given a certain organizational strategy (exploration or exploitation), the main lever by which managers may improve firm profits is by reducing costs due to appropriation by highly knowledgable workers. Managers intending to improve short term operational performance may do by reducing the extent of FSHC employed in the firm. This leads me to my second hypothesis.\\
+
+\begin{hypothesis}
+{Hypothesis 2: Given a certain organizational learning strategy for a firm, the short term profit performance in firms varies inversely with the extent of FSHC employed in the firm\\}
+\end{hypothesis}
+
+\section*{Research Design}
+Fill out text here
+\begin{itemize}
+\item correlation table
+\item descriptive statistics - region wise, country wise, technology class wise, time wise
+\item fixed and random effects, hussman
+\item tests for endogeneity
+\item table with variable names and descriptions and definitions (see \cite{Funk2014})
+\item add generous footnotes
+\item diagram for the hypothesised relationships
+\end{itemize}
+\section*{Data and Methods}
 
 We use patent citations data from the U.S. Patent Office (USPTO) as provided by patentsview.org. The USPTO provides information on assignee, the location of inventors, and year of patent application. We use this information to identify which patents belong to which region in a given year. Since there can be more than one inventor on a patent, a patent can belong to more than one region. We compare the assignee and inventor location of each patent with each assignee and inventor of each backward citation  to identify the category of knowledge flow (e.g., same assignee, different location) indicated by the backward citation. Additionally, to map location data of inventors from USPTO to regions, we use urban centers data for worldwide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} that uses remote sensing data to determine urban agglomerations (a process developed in \citet*{Schneider2003}).  While it has been common practice to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the U.S., an equivalent measure is unavailable for the rest of the world. For comparability and consistency, we choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions both within U.S. and outside U.S. \par
 Our unit of analysis is the region-year. To be consistent with our objective of measuring knowledge flows, we restrict ourselves to those citations categorized as \textquotesingle cited by applicant\textquotesingle \ and leave out those categorized as \textquotesingle cited by examiner\textquotesingle \ because the latter may not represent knowledge flows. This decision has the additional effect of limiting our period of analysis to citing patents applied for after the year 2000 since the data on which citations were added by examiners is available for patents from only 2001 onwards. We restrict our sample to patents applied for between 2001 - 2012, but citations received till 2015. \par
-Our primary dependent variable is the  total count of citations received (till 2015) by patents belonging to a region-year. For robustness, we also report results for total non-self citations received as the dependent variable. Our independent variables are the percentage of backward citations made to each of the four categories in our defined framework: those to a) same region, same assignee, b) same region, different assignee, c) different region, same assignee, and d) different region, same assignee. \par
+\subsection{Dependent Variable}
+Our primary dependent variable is the  total count of citations received (till 2015) by patents belonging to a region-year. For robustness, we also report results for total non-self citations received as the dependent variable. 
+
+\subsection{Independent Variables}
+Our independent variables are the percentage of backward citations made to each of the four categories in our defined framework: those to a) same region, same assignee, b) same region, different assignee, c) different region, same assignee, and d) different region, same assignee. \par
+\subsubsection{Percentage of backward citations made to same region and same assignee}
+Write some text here. Include some mathematics here.
+\subsubsection{Percentage of backward citations made to same region and different assignee}
+Write some text here
+\subsubsection{Percentage of backward citations made to different region and same assignee}
+Write some text here
+\subsubsection{Percentage of backward citations made to different region and different assignee}
+Write some text here
+
+\subsection{Control Variables}
 We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we used negative binomial regression analysis with fixed effects. \par
+
+\section*{Model Estimation}
+Some text followed by mathematical formula estimated
 
 \section*{Results}
 The preliminary results from our analysis are presented in Table~\ref{model123}. Model 1 reports the results for all regions worldwide, while Model 2 and Model 3 report results for U.S. locations and non-U.S. locations respectively. Across the three models we find that local knowledge flows within the firm do not seem to have a significant impact on the quality of inventions as measured by the number of citations received. This result is robust to using non-self citations as the dependent variable as presented in Table~\ref{model192021}. \par
 Our preliminary findings in Table~\ref{model123} suggest no evidence that local knowledge spillovers (i.e., same region, different assignee) lead to higher quality inventions.  One possible explanation for the lack of evidence for local knowledge spillovers may be to suggest U.S. specific effects. However as the results in model 2 of Table~\ref{model123} suggest, the trend is confirmed in a U.S.-only sample. It seems therefore that the implication for the lack of effect of localized knowledge flows on invention quality is robust to regional or country sampling. \par
 The effect of non-local knowledge flows however is less clear. While geographic diversification is seen to benefit all regions (Table~\ref{model123}), the effect is not statistically significant for non-U.S. locations (Table~\ref{model192021}). This may suggest that there are regional, and potentially country effects that may be able to explain the phenomenon better. Finally, building on knowledge from outside the firm and outside the region does not seem to improve invention quality.\par
+\subsection{Robustness Checks}
+
+\section*{Discussion}
+Lookup other articles to determine what points need to be made here.
+\subsection{On topic 1}
+Text here
+\subsection{On topic 2}
+More text here
 
 \section*{Limitations}
 While the use of patent citations as a measure of knowledge flows has been popular in the literature, this may nevertheless be subject to error \citep*{Arora2017a}. Our definition of regions is dependent on the latitude/longitude assignment in the patentsview.org data and on the urban centers definition in the \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data}. Any systematic biases in the definition of regions can create biases in measures of within region and across region knowledge flows. \par
