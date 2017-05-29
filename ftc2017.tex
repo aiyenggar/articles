@@ -1,7 +1,7 @@
 %ftc2017.tex
 \documentclass[12pt,letterpaper]{article}
 \usepackage{mathptmx}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.85in]{geometry}
 
 \usepackage{tabularx, longtable}  % for 'tabularx' environment and 'X' column type
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
@@ -29,34 +29,7 @@
 % Turns off all section numbering
 \setcounter{secnumdepth}{0} 
 
-  % Places all tables at end of document and creates AOM-style table-here placeholders
-  \usepackage[nolists]{endfloat} % Places all figures and charts at end of manuscript and adds 'insert table x about here' lines.
-  \renewcommand{\figureplace}{
-    \begin{center}
-    \begin{singlespace}
-    ------------------------------------\\
-    Insert \figurename \ \thepostfig\ about here.\\
-    ------------------------------------
-    \end{singlespace}
-    \end{center}}
-  \renewcommand{\tableplace}{%
-    \begin{center}
-    \begin{singlespace}
-    ------------------------------------\\
-    Insert \tablename \ \theposttbl\ about here.\\
-    ------------------------------------
-    \end{singlespace}
-    \end{center}}
 
-  \usepackage{titlesec}
-   \titleformat{\title}
-       {\filcenter\normalfont\bfseries\uppercase}{\thetitle}{1em}{}
-  \titleformat{\section}
-    {\filcenter\normalfont\bfseries\uppercase}{\thesection}{1em}{}
-  \titleformat{\subsection}
-    {\normalfont\bfseries}{\thesubsection}{1em}{}
-  \titleformat{\subsubsection}[runin]
-   {\normalfont\bfseries\slshape}{\thesubsubsection}{1em}{\hspace*{\parindent}}
        
 \usepackage{tabu}
 \usepackage{textcomp}
@@ -113,8 +86,8 @@ breaklines=true
 
 
 \begin{document}
-\title{Theorizing blockchain technology as general purpose technology: Implications for firm level strategy}
-\date{}
+\title{Can incumbent financial firms strengthen their competitive position in response to blockchain technology?}
+\date{\vspace{-10ex}}
 \maketitle
 \thispagestyle{empty}
 \renewcommand{\abstractname}{\normalsize ABSTRACT}
@@ -126,7 +99,6 @@ I build on the general purpose technology literature in economics and the platfo
 
 {\textbf{Keywords:} \\\indent Capabilities, Complementarity, Firm level strategy, General Purpose Technology}
 
-\newpage
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{GPTs and the Exploration-Exploitation Tradeoff}
