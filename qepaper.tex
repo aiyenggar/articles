@@ -3,7 +3,7 @@
 \usepackage{mathptmx}
 \usepackage[margin=1in]{geometry}
 
-\usepackage{tabularx, longtable}  % for 'tabularx' environment and 'X' column type
+\usepackage{tabularx, longtable, pdflscape, adjustbox}  % for 'tabularx' environment and 'X' column type
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
 \usepackage{booktabs}  % for \toprule, \midrule, and \bottomrule macros 
@@ -232,6 +232,54 @@ Given a certain organizational strategy (exploration or exploitation), the main 
 
 \section*{Research Design}
 Fill out text here
+
+%\scriptsize
+\singlespacing
+\begin{center}
+\begin{table}[htbp]\centering \caption{Correlation Table\label{corrtable}}
+\begin{adjustbox}{angle=90}
+\begin{tabular}{l  c  c  c  c  c  c  c  c  c  c }
+
+\hline
+\multicolumn{1}{c}{Variables} &1&2&3&4&5&6&7&8&9&10\\ \hline
+1. Citations Received&1.00\\
+2. Non-Self Citations Received&0.99&1.00\\
+3. Self Citations Received&0.68&0.60&1.00\\
+4. Share Citations Made[Same Region, Same Assignee]&0.04&0.03&0.06&1.00\\
+5. Share Citations Made[Same Region, Different Assignee]&0.13&0.12&0.13&0.09&1.00\\
+6. Share Citations Made[Different Region, Same Assignee]&-0.01&-0.02&0.00&0.14&-0.03&1.00\\
+7. Share Citations Made[Different Region, Different Assignee]&0.06&0.06&0.05&-0.10&-0.03&-0.12&1.00\\
+8. Log(Total Citations Made)&0.16&0.13&0.27&0.08&0.10&0.08&0.09&1.00\\
+9. Log (Num Patents)&0.31&0.29&0.26&0.12&0.18&0.03&0.21&0.68&1.00\\
+10. Log (Patent Pool Size)&0.27&0.25&0.23&0.14&0.19&0.02&0.09&0.69&0.86&1.00\\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\end{center}
+
+
+\begin{table}[htbp]\centering \caption{Summary Statistics \label{sumstat}}
+\begin{tabular}{l c c  c}\hline\hline
+\multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
+ & \textbf{Std. Dev.} & \textbf{N}\\ \hline
+Citations Received & 241.719 & 2063.915  & 57456\\
+Non-Self Citations Received & 123.856 & 1147.495  & 57456\\
+Self Citations Received & 36.581 & 360.104  & 57456\\
+Share Citations Made[Same Region, Same Assignee] & 0.042 & 0.087  & 24324\\
+Share Citations Made[Same Region, Different Assignee] & 0.015 & 0.05  & 24324\\
+Share Citations Made[Different Region, Same Assignee] & 0.069 & 0.119  & 24324\\
+Share Citations Made[Different Region, Different Assignee] & 0.444 & 0.258  & 24324\\
+Log (Total Citations Made) & 3.55 & 2.237  & 24324\\
+Log (Num Patents) & 2.263 & 1.94  & 57456\\
+Log (Patent Pool Size) & 4.59 & 2.373  & 54716\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\normalsize
+\doublespacing
+
 \begin{itemize}
 \item correlation table
 \item descriptive statistics - region wise, country wise, technology class wise, time wise
@@ -291,8 +339,11 @@ While still at a preliminary stage, our analysis seem to suggest that local know
 \bibliographystyle{ai-amjlike}
 \newpage
 %\normalsize
+\singlespacing
+\scriptsize
 \input{qepaper/model123.tex}
 \newpage
 \input{qepaper/model192021.tex}
-
+\newpage
+\input{qepaper/ae.model123192021.tex}
 \end{document}
