@@ -153,7 +153,7 @@ breaklines=true
 \item patent citations are only the tools, so while you should bring this up, it should be only to claim legitimacy for this method and draw on prior work that though not without controversy, patent citations have been used as a measure of knowledge flows. And any conclusions that you will draw from this study will have to be limited to the extent that this is as evidenced by patent citations. For robustness you could do  applicant cited patents, examiner cited patents, and applicant+examiner cited patents. As well as the time period wise, with a 5 year window to receive citations (prior work has used this)
 \end{itemize}
 
-Scholars of economics and strategy have for long recognized that clusters and agglomeration economies play an important role in fostering innovation \citep{Marshall1890, Porter1990}. Agglomeration economies arise due to labor pooling advantages, economies of specialization of local suppliers, and knowledge spillovers \citep{Porter1990, Krugman1991a}. In this study, we\footnote{This paper is the outcome of the joint work by Sai Yayavaram and me. While the changes since the version submitted to the Strategic Management Society 2017 Conference (this version has also provided with the current paper for reference) are my own, I have used the plural ``we'' throughout this paper to preserve continuity with the previous version and compatibility with future versions that was/going to be jointly authored.} examine how the nature of knowledge spillovers or flows in a region affect the quality of the inventions generated in the region.\par
+Scholars of economics and strategy have for long recognized that clusters and agglomeration economies play an important role in fostering innovation \citep{Marshall1890, Porter1990}. Agglomeration economies arise due to labor pooling advantages, economies of specialization of local suppliers, and knowledge spillovers \citep{Porter1990, Krugman1991a}. In this study, we\footnote{This paper is the outcome of the joint work by my co-author and me. While the changes since the version submitted to a conference in February 2017 (sms2017.pdf, provided as supplementary material) are my own, I have used the plural ``we'' throughout this paper to preserve continuity with the previous version and compatibility with future versions that are going to be jointly authored.} examine how the nature of knowledge spillovers or flows in a region affect the quality of the inventions generated in the region.\par
 Several studies have used patent citations to demonstrate that knowledge flows are localized \citep*{Jaffe1993, Almeida1999, Alcacer2006a}. Regions, however vary in their inventive output \citep*{Agrawal2014b} and the nature of knowledge flows in a region may be one source of this variation within regions. In this study we use citation data of patents applied for between 2001 and 2012 to empirically estimate the relationship between knowledge flows of a region and quality of inventions from that region. \par
 The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently in terms of knowledge flows. We then describe our data and methods in the following section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions for further research.
 
@@ -233,38 +233,42 @@ Given a certain organizational strategy (exploration or exploitation), the main 
 \section*{Research Design}
 Fill out text here
 
-%\scriptsize
-\singlespacing
+
 \begin{center}
-\begin{table}[htbp]\centering \caption{Correlation Table\label{corrtable}}
-\begin{adjustbox}{angle=90}
+\begin{table}[htbp]\centering \caption{Correlation Table for Dataset of Applicant \& Examiner Citations \label{ae.corrtable}}
+\scriptsize
+\singlespacing
+\begin{adjustbox}{angle=0}
 \begin{tabular}{l  c  c  c  c  c  c  c  c  c  c }
 
 \hline
 \multicolumn{1}{c}{Variables} &1&2&3&4&5&6&7&8&9&10\\ \hline
-1. Citations Received&1.00\\
-2. Non-Self Citations Received&0.99&1.00\\
-3. Self Citations Received&0.68&0.60&1.00\\
-4. Share Citations Made[Same Region, Same Assignee]&0.04&0.03&0.06&1.00\\
-5. Share Citations Made[Same Region, Different Assignee]&0.13&0.12&0.13&0.09&1.00\\
-6. Share Citations Made[Different Region, Same Assignee]&-0.01&-0.02&0.00&0.14&-0.03&1.00\\
-7. Share Citations Made[Different Region, Different Assignee]&0.06&0.06&0.05&-0.10&-0.03&-0.12&1.00\\
-8. Log(Total Citations Made)&0.16&0.13&0.27&0.08&0.10&0.08&0.09&1.00\\
-9. Log (Num Patents)&0.31&0.29&0.26&0.12&0.18&0.03&0.21&0.68&1.00\\
-10. Log (Patent Pool Size)&0.27&0.25&0.23&0.14&0.19&0.02&0.09&0.69&0.86&1.00\\ \hline
+1. Total Citations Received&1.00\\
+2. Non-Self Citations Received&0.98&1.00\\
+3. Self Citations Received&0.88&0.78&1.00\\
+4. Share Citations Made[Same Region, Same Assignee]&0.05&0.04&0.06&1.00\\
+5. Share Citations Made[Same Region, Different Assignee]&0.11&0.11&0.09&0.04&1.00\\
+6. Share Citations Made[Different Region, Same Assignee]&0.00&-0.01&0.03&0.20&-0.03&1.00\\
+7. Share Citations Made[Different Region, Different Assignee]&0.05&0.05&0.03&-0.22&-0.05&-0.24&1.00\\
+8. Log (Total Citations Made)&0.39&0.36&0.36&0.10&0.07&0.10&0.15&1.00\\
+9. Log (Num Patents)&0.31&0.29&0.27&0.12&0.14&0.04&0.18&0.83&1.00\\
+10. Log (Patent Pool Size)&0.27&0.25&0.24&0.17&0.14&0.06&0.06&0.76&0.86&1.00\\ \hline
 \end{tabular}
 \end{adjustbox}
 \end{table}
 \end{center}
 
 
-\begin{table}[htbp]\centering \caption{Summary Statistics \label{sumstat}}
+
+\begin{table}[htbp]\centering \caption{Summary Statistics for Dataset of Applicant \& Examiner Citations\label{ae.sumstat}}
+\scriptsize
+\singlespacing
 \begin{tabular}{l c c  c}\hline\hline
 \multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
  & \textbf{Std. Dev.} & \textbf{N}\\ \hline
-Citations Received & 241.719 & 2063.915  & 57456\\
-Non-Self Citations Received & 123.856 & 1147.495  & 57456\\
-Self Citations Received & 36.581 & 360.104  & 57456\\
+Total Citations Received & 241.719 & 2063.915  & 57456\\
+Non-Self Citations Received& 123.856 & 1147.495  & 57456\\
+Self Citations Received& 36.581 & 360.104  & 57456\\
 Share Citations Made[Same Region, Same Assignee] & 0.042 & 0.087  & 24324\\
 Share Citations Made[Same Region, Different Assignee] & 0.015 & 0.05  & 24324\\
 Share Citations Made[Different Region, Same Assignee] & 0.069 & 0.119  & 24324\\
@@ -273,6 +277,44 @@ Log (Total Citations Made) & 3.55 & 2.237  & 24324\\
 Log (Num Patents) & 2.263 & 1.94  & 57456\\
 Log (Patent Pool Size) & 4.59 & 2.373  & 54716\\
 \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]\centering \caption{Regression Analysis of Invention Quality for Applicant \& Examiner Citations \label{ae.model123192021}}
+\scriptsize
+\singlespacing
+\begin{tabular}{l*{6}{c}} \hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
+                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+\hline
+Share Citations Made[Same Region, Same Assignee]&    0.211&    0.179&    0.254&    0.826&    0.899&    0.831\\
+                &  (0.014)&  (0.128)&  (0.036)&  (0.000)&  (0.000)&  (0.000)\\
+Share Citations Made[Same Region, Different Assignee]&   -0.393&   -0.471&  -0.0458&    0.816&    0.809&    0.811\\
+                &  (0.010)&  (0.041)&  (0.808)&  (0.000)&  (0.003)&  (0.000)\\
+Share Citations Made[Different Region, Same Assignee]&    0.244&    0.282&    0.326&    0.673&    0.655&    0.678\\
+                &  (0.000)&  (0.002)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Share Citations Made[Different Region, Different Assignee]&  0.00301&   0.0243&    0.101&    0.820&    0.934&    0.802\\
+                &  (0.932)&  (0.649)&  (0.036)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Total Citations Made)&    0.241&    0.193&    0.240&    0.180&    0.126&    0.214\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Num Patents)&    0.570&    0.662&    0.612&    0.634&    0.701&    0.620\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Patent Pool Size)&   -0.125&   -0.272&  -0.0931&  -0.0783&   -0.128&  -0.0734\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Constant        &  -0.0147&    0.753&   -0.273&   -1.008&   -0.889&   -1.029\\
+                &  (0.777)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+\hline
+Observations    &    16111&     6449&     9662&    15701&     6324&     9377\\
+Groups          &     1776&      617&     1159&     1654&      587&     1067\\
+Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
+          &Locations &Locations&Locations&Locations &Locations&Locations \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{7}{l}{\footnotesize All regressions use negative binomial estimation on the region-year panel}\\
+\multicolumn{7}{l}{\footnotesize Citations received are counted up to and including the fifth annual anniversary of a patent application}\\
+\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
 \end{tabular}
 \end{table}
 
@@ -319,6 +361,216 @@ Our preliminary findings in Table~\ref{model123} suggest no evidence that local 
 The effect of non-local knowledge flows however is less clear. While geographic diversification is seen to benefit all regions (Table~\ref{model123}), the effect is not statistically significant for non-U.S. locations (Table~\ref{model192021}). This may suggest that there are regional, and potentially country effects that may be able to explain the phenomenon better. Finally, building on knowledge from outside the firm and outside the region does not seem to improve invention quality.\par
 \subsection{Robustness Checks}
 
+
+
+
+
+\begin{center}
+\begin{table}[htbp]\centering \caption{Correlation Table for Dataset of Examiner Citations Only \label{e.corrtable}}
+\scriptsize
+\singlespacing
+\begin{adjustbox}{angle=0}
+\begin{tabular}{l  c  c  c  c  c  c  c  c  c  c }
+
+\hline
+\multicolumn{1}{c}{Variables} &1&2&3&4&5&6&7&8&9&10\\ \hline
+1. Total Citations Received&1.00\\
+2. Non-Self Citations Received&0.99&1.00\\
+3. Self Citations Received&0.91&0.88&1.00\\
+4. Share Citations Made[Same Region, Same Assignee]&0.04&0.03&0.06&1.00\\
+5. Share Citations Made[Same Region, Different Assignee]&0.11&0.11&0.11&0.03&1.00\\
+6. Share Citations Made[Different Region, Same Assignee]&-0.00&-0.01&0.02&0.23&-0.03&1.00\\
+7. Share Citations Made[Different Region, Different Assignee]&0.05&0.05&0.04&-0.22&-0.05&-0.22&1.00\\
+8. Log (Total Citations Made)&0.37&0.34&0.40&0.09&0.07&0.08&0.17&1.00\\
+9. Log (Num Patents)&0.29&0.27&0.30&0.12&0.14&0.05&0.17&0.84&1.00\\
+10. Log (Patent Pool Size)&0.25&0.23&0.26&0.17&0.13&0.05&0.06&0.75&0.86&1.00\\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\end{center}
+
+
+
+\begin{table}[htbp]\centering \caption{Summary Statistics for Dataset of Examiner Citations Only \label{e.sumstat}}
+\scriptsize
+\singlespacing
+\begin{tabular}{l c c  c}\hline\hline
+\multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
+ & \textbf{Std. Dev.} & \textbf{N}\\ \hline
+Total Citations Received & 169.117 & 1518.954  & 57456\\
+Non-Self Citations Received& 91.528 & 916.089  & 57456\\
+Self Citations Received& 21.64 & 188.776  & 57456\\
+Share Citations Made[Same Region, Same Assignee] & 0.042 & 0.086  & 23757\\
+Share Citations Made[Same Region, Different Assignee] & 0.014 & 0.049  & 23757\\
+Share Citations Made[Different Region, Same Assignee] & 0.061 & 0.111  & 23757\\
+Share Citations Made[Different Region, Different Assignee] & 0.447 & 0.261  & 23757\\
+Log (Total Citations Made) & 3.378 & 2.147  & 23757\\
+Log (Num Patents) & 2.263 & 1.94  & 57456\\
+Log (Patent Pool Size) & 4.59 & 2.373  & 54716\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]\centering \caption{Regression Analysis of Invention Quality for Examiner Citations Only \label{e.model123192021}}
+\scriptsize
+\singlespacing
+\begin{tabular}{l*{6}{c}} \hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
+                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+\hline
+Share Citations Made[Same Region, Same Assignee]&    0.289&    0.151&    0.437&    0.929&    0.981&    0.925\\
+                &  (0.000)&  (0.168)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Share Citations Made[Same Region, Different Assignee]&    0.279&  -0.0690&    0.510&    1.278&    0.765&    1.358\\
+                &  (0.059)&  (0.756)&  (0.009)&  (0.000)&  (0.009)&  (0.000)\\
+Share Citations Made[Different Region, Same Assignee]&    0.169&   0.0516&    0.270&    0.662&    0.446&    0.777\\
+                &  (0.007)&  (0.571)&  (0.002)&  (0.000)&  (0.000)&  (0.000)\\
+Share Citations Made[Different Region, Different Assignee]&   0.0489&   0.0463&    0.135&    0.961&    1.100&    0.907\\
+                &  (0.156)&  (0.346)&  (0.005)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Total Citations Made)&    0.377&    0.331&    0.395&    0.410&    0.367&    0.430\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Num Patents)&    0.479&    0.552&    0.500&    0.433&    0.483&    0.448\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Patent Pool Size)&   -0.112&   -0.236&   -0.113&  -0.0856&   -0.141&  -0.0999\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Constant        &    0.409&    1.230&    0.169&   -0.688&   -0.441&   -0.688\\
+                &  (0.000)&  (0.000)&  (0.010)&  (0.000)&  (0.001)&  (0.000)\\
+\hline
+Observations    &    15760&     6362&     9398&    15345&     6225&     9120\\
+Groups          &     1738&      611&     1127&     1619&      581&     1038\\
+Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
+          &Locations &Locations&Locations&Locations &Locations&Locations \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{7}{l}{\footnotesize All regressions use negative binomial estimation on the region-year panel}\\
+\multicolumn{7}{l}{\footnotesize Citations received are counted up to and including the fifth annual anniversary of a patent application}\\
+\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
+\end{tabular}
+\end{table}
+
+
+
+\begin{center}
+\begin{table}[htbp]\centering \caption{Correlation Table for Dataset of Applicant Citations Only \label{a.corrtable}}
+\scriptsize
+\singlespacing
+\begin{adjustbox}{angle=0}
+\begin{tabular}{l  c  c  c  c  c  c  c  c  c  c }
+
+\hline
+\multicolumn{1}{c}{Variables} &1&2&3&4&5&6&7&8&9&10\\ \hline
+1. Total Citations Received&1.00\\
+2. Non-Self Citations Received&0.95&1.00\\
+3. Self Citations Received&0.93&0.78&1.00\\
+4. Share Citations Made[Same Region, Same Assignee]&0.03&0.02&0.04&1.00\\
+5. Share Citations Made[Same Region, Different Assignee]&0.08&0.09&0.06&0.01&1.00\\
+6. Share Citations Made[Different Region, Same Assignee]&-0.01&-0.03&0.01&0.12&-0.07&1.00\\
+7. Share Citations Made[Different Region, Different Assignee]&0.05&0.06&0.02&-0.29&-0.07&-0.35&1.00\\
+8. Log (Total Citations Made)&0.38&0.37&0.33&0.07&0.08&0.10&0.05&1.00\\
+9. Log (Num Patents)&0.24&0.25&0.18&0.05&0.11&-0.02&0.18&0.72&1.00\\
+10. Log (Patent Pool Size)&0.21&0.22&0.16&0.11&0.11&-0.01&0.05&0.69&0.86&1.00\\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\end{center}
+
+
+
+\begin{table}[htbp]\centering \caption{Summary Statistics for Dataset of Applicant Citations Only \label{a.sumstat}}
+\scriptsize
+\singlespacing
+\begin{tabular}{l c c  c}\hline\hline
+\multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
+ & \textbf{Std. Dev.} & \textbf{N}\\ \hline
+Total Citations Received & 72.602 & 818.182  & 57456\\
+Non-Self Citations Received& 32.328 & 348.87  & 57456\\
+Self Citations Received& 14.942 & 227.598  & 57456\\
+Share Citations Made[Same Region, Same Assignee] & 0.056 & 0.114  & 10243\\
+Share Citations Made[Same Region, Different Assignee] & 0.021 & 0.064  & 10243\\
+Share Citations Made[Different Region, Same Assignee] & 0.109 & 0.165  & 10243\\
+Share Citations Made[Different Region, Different Assignee] & 0.431 & 0.28  & 10243\\
+Log (Total Citations Made) & 3.374 & 2.186  & 10243\\
+Log (Num Patents) & 2.263 & 1.94  & 57456\\
+Log (Patent Pool Size) & 4.59 & 2.373  & 54716\\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]\centering \caption{Regression Analysis of Invention Quality for Applicant Citations Only \label{a.model123192021}}
+\scriptsize
+\singlespacing
+\begin{tabular}{l*{6}{c}} \hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
+                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+\hline
+Share Citations Made[Same Region, Same Assignee]&   -0.125&   -0.150&  -0.0872&   -0.256&   -0.302&   -0.240\\
+                &  (0.184)&  (0.290)&  (0.490)&  (0.017)&  (0.065)&  (0.100)\\
+Share Citations Made[Same Region, Different Assignee]&   -0.229&   -0.281&  -0.0944&    0.252&    0.222&    0.253\\
+                &  (0.116)&  (0.245)&  (0.599)&  (0.097)&  (0.393)&  (0.187)\\
+Share Citations Made[Different Region, Same Assignee]&    0.114&    0.217&   0.0820&   0.0375&    0.109&  -0.0360\\
+                &  (0.080)&  (0.023)&  (0.364)&  (0.622)&  (0.326)&  (0.733)\\
+Share Citations Made[Different Region, Different Assignee]&  -0.0703&  -0.0400&  -0.0725&  -0.0220&   0.0199&  -0.0546\\
+                &  (0.107)&  (0.535)&  (0.221)&  (0.647)&  (0.782)&  (0.405)\\
+Log (Total Citations Made)&   0.0556&   0.0464&   0.0596&   0.0378&   0.0210&   0.0423\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.030)&  (0.000)\\
+Log (Num Patents)&    0.712&    0.780&    0.700&    0.720&    0.768&    0.743\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Patent Pool Size)&  -0.0436&   -0.153&  0.00211&   0.0188&  -0.0287&-0.0000276\\
+                &  (0.075)&  (0.000)&  (0.950)&  (0.509)&  (0.542)&  (0.999)\\
+Constant        &   -2.621&   -2.141&   -2.944&   -3.255&   -2.997&   -3.380\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+\hline
+Observations    &     7275&     3434&     3841&     7080&     3357&     3723\\
+Groups          &     1095&      483&      612&     1019&      454&      565\\
+Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
+          &Locations &Locations&Locations&Locations &Locations&Locations \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{7}{l}{\footnotesize All regressions use negative binomial estimation on the region-year panel}\\
+\multicolumn{7}{l}{\footnotesize Citations received are counted up to and including the fifth annual anniversary of a patent application}\\
+\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]\centering \caption{Regression Analysis of Invention Quality* for Applicant Citations Only \label{ainf.model123192021}}
+\scriptsize
+\singlespacing
+\begin{tabular}{l*{6}{c}} \hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
+                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+\hline
+Share Citations Made[Same Region, Same Assignee]&   -0.169         &   -0.104         &   -0.134&-0.232         &   -0.183         &   -0.316 \\
+                &   (0.218)         &  (0.623)         &  (0.454)&   (0.105)         &  (0.392)         &  (0.123) \\
+Share Citations Made[Same Region, Different Assignee]&    -0.149         &   -0.191         &  -0.0919&    0.0391         &   0.0945         &   0.0505 \\
+                &   (0.215)         &  (0.458)         &  (0.468) &   (0.733)         &  (0.721)         &  (0.699) \\
+Share Citations Made[Different Region, Same Assignee]&     0.217  &    0.266  &    0.348&    0.195  &    0.263  &    0.174 \\
+                &(0.012)         &  (0.037)         &  (0.004) &   (0.035)         &  (0.041)         &  (0.212)\\
+Share Citations Made[Different Region, Different Assignee]&  0.00828         &   0.0315         &   0.0179&   0.00989         &   0.0203         &  0.00983  \\
+                &  (0.789)         &  (0.499)         &  (0.661)&    (0.762)         &  (0.675)         &  (0.826)         \\
+Log (Total Citations Made)&    0.0180&   0.0198&   0.0134&     0.0150&   0.0139  &   0.0107 \\
+                &   (0.000)         &  (0.001)         &  (0.014)&   (0.000)         &  (0.023)         &  (0.075) \\
+Log (Num Patents)&     0.785&    0.811&    0.830&        0.772&    0.795&    0.828\\
+                &  (0.000)         &  (0.000)         &  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Patent Pool Size)&  -0.111&   -0.227&  -0.0944&    -0.0453  &   -0.108 &  -0.0685\\
+                &  (0.075)&  (0.000)&  (0.950)&   (0.039)         &  (0.006)         &  (0.017) \\
+\hline
+Observations    &    9241&3885&5356&          8879         &     3732         &     5147\\
+Groups          &     1314&529&785&1199         &      478         &      721\\
+Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
+          &Locations &Locations&Locations&Locations &Locations&Locations \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{7}{l}{\footnotesize All regressions use negative binomial estimation on the region-year panel}\\
+\multicolumn{7}{l}{\footnotesize * Citations received are counted all the way to end 2016 for which data is available}\\
+\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
+\end{tabular}
+\end{table}
+
+
 \section*{Discussion}
 Lookup other articles to determine what points need to be made here.
 \subsection{On topic 1}
@@ -339,17 +591,5 @@ While still at a preliminary stage, our analysis seem to suggest that local know
 \bibliographystyle{ai-amjlike}
 \newpage
 %\normalsize
-\singlespacing
-\scriptsize
-
-\input{qepaper/ae.model123192021.tex}
-\input{qepaper/e.model123192021.tex}
-\newpage
-\input{qepaper/a.model123192021.tex}
-
-\newpage
-
-\input{qepaper/model123.tex}
-\input{qepaper/model192021.tex}
 
 \end{document}
