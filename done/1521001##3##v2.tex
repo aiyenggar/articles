@@ -1,0 +1,175 @@
+%1521001##3##v2.tex
+\documentclass[12pt,letterpaper]{article}
+\usepackage{mathptmx}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{setspace}
+\singlespacing
+  
+\usepackage{amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx,multirow}
+\graphicspath{ {qe3/} }
+
+% Bold Table and Figure captions
+\usepackage{caption}
+\captionsetup{figurename=FIGURE}
+\captionsetup{tablename=TABLE}
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+  
+% Turns off all section numbering
+\setcounter{secnumdepth}{0} 
+
+  % Places all tables at end of document and creates AOM-style table-here placeholders
+  \usepackage[nolists]{endfloat} % Places all figures and charts at end of manuscript and adds 'insert table x about here' lines.
+  \renewcommand{\figureplace}{
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \figurename \ \thepostfig\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+  \renewcommand{\tableplace}{%
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \tablename \ \theposttbl\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+
+  \usepackage{titlesec}
+   \titleformat{\title}
+       {\filcenter\normalfont\bfseries\uppercase}{\thetitle}{1em}{}
+  \titleformat{\section}
+    {\filcenter\normalfont\bfseries\uppercase}{\thesection}{1em}{}
+  \titleformat{\subsection}
+    {\normalfont\bfseries}{\thesubsection}{1em}{}
+  \titleformat{\subsubsection}[runin]
+   {\normalfont\bfseries\slshape}{\thesubsubsection}{1em}{\hspace*{\parindent}}
+       
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tabu}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=cyan,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+\usepackage{etoolbox}
+
+\makeatletter
+
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+
+\fancypagestyle{plain}{
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhf{}
+}	
+
+
+\begin{document}
+\title{Knowledge Based View\textquotesingle s Critique of Transaction Cost Economics and a Research Proposal}
+\date{}
+\maketitle
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{KBV critique of TCE}
+\rhead{\thepage}
+
+While Transaction Cost Economics (TCE) has provided the most influential explanation for why firms exist \citep{Coase1937, Williamson1975, Williamson1979}, scholars in the management discipline have argued for an alternate explanation building on the Knowledge Based View (KBV) of the firm \citep{Conner1996}. Building on the notion of the firm as an organization of knowledge assets, scholars in the KBV tradition have argued that firms exist because they are more efficient at gathering, processing and deploying knowledge than markets are. 
+
+
+\section{Critique of TCE}
+The KBV critique of TCE rests  on reversing the TCE assumption of opportunism. TCE assumes that individuals within firms are both boundedly rational and opportunistic. The assumption of opportunism leads to the expectation of ex-post haggling and holdup  in the event that underlying conditions change. KBV scholars, on the other hand accept that individuals within firms are boundedly rational, but reject the assumption that individuals are opportunistic. By assuming that individuals are not given to opportunism, \cite{Demsetz1991} argued that the vertical boundaries of firms could be explained by the conditions under which knowledge was transferred between the firm and its customer (in contrast to the prevailing TCE explanations).
+
+Relaxing the opportunism assumption allows firms to be viewed as cultural entities \citep{Madhok1996}, and as those embodying highly specific and tacit knowledge \cite{Kogut1996}. This construction allows for firms to be seen as being able to cooperate and coordinate through shared contexts \cite{Kogut1996, Malmgren1961}. This tradition therefore suggest that firms exist because they provide an alternate and efficient mechanism for coordination of knowledge assets that is outside the market mechanism, and one that is not provided by the market mechanism.
+
+Scholars in this tradition have also criticized the TCE explanation for the boundary of the firm, suggesting  that knowledge in firms are embedded in routines and capabilities \citep{Kogut1993} that are intangible and slowly changing. Since such tacit and intangible assets may not be easily traded, firms must exist for reasons beyond the failure of market mechanisms as suggested by TCE. 
+
+KBV also challenges the assumption of the perfect working of the market mechanism for knowledge \citep{Hayek1945}, and suggests alternatively that firms exist so as to produce and utilize knowledge more productively than can be within the market system \cite{Grant1996b}.  \cite{Conner1996} suggest that knowledge substitution and flexibility are both more efficient under a hierarchy than under the market mechanism. The firm is more efficient than the market mechanism because  those with less information (less specialized) may be directed by those with greater information  \citep{Demsetz1991} . 
+
+In summary, by viewing the firm as an institution for integrating and transforming knowledge (including tacit knowledge) into goods and services, KBV provides the framework for alternate explanations for the boundaries of the firm that go beyond the transaction cost basis of firm boundary definition under TCE. 
+
+\section{Explaining Vertical Integration}
+KBV can therefore explain vertical integration decisions of firms without resorting to the economizing argument suggested by TCE. First, knowledge is known to provide increasing returns to scale due to the near-zero marginal cost to production of knowledge. Therefore viewing firms as knowledge processing institutions allows for explaining vertical integration decisions as being due to quality enhancing characteristics of knowledge. Second, KBV can explain integration decisions as those that create scope economies. When Google acquired YouTube, the video hosting business was not adjacent to other activities in Google\textquotesingle s activity chain. However, YouTube helped Google create a suite of applications that mutually improved scope economies and drove an even higher volume of advertising traffic into Google. Third, when firms are framed as knowledge creating institutions, vertical integration decisions of firms may also be explained as being driven by talent acquisition. Acqui-hiring, where firms are acquired not for products or intangible assets, but for their human capital is explained by KBV but cannot be explained by explanations using contractual hazards. Finally, KBV can explain vertical integration decisions when performed to build capability in related but not adjacent stages in the activity chain. Facebook\textquotesingle s acquisition of WhatsApp may be seen as capability enhancing, but not as a cost economizing firm scope decision. In summary, KBV therefore provides explanations for vertical integration decisions that are independent of contracting hazards.
+
+\section{Research Proposal}
+
+\subsection{Theory}
+Multinational firms that want to stay innovative are faced with the following conundrum. The availability of high quality R\&D talent in countries with weak intellectual property rights (IPR) laws is both an opportunity as well as a threat. On the one hand, scholars have recognized that availability of high quality human capital is a critical aspect of ensuring competitive innovation outcomes. On the other hand, multinational firms are concerned about the leakage  and loss of key intellectual property to competitors weakening their competitive positioning. In this study, I reflect on this problem from the lens of Transaction Cost Economics (TCE) and the Knowledge Based View (KBV) of the firm and suggest that the two theories suggest conflicting governance modes for the multinational firm.
+
+\subsubsection{TCE prediction for geographical diversification of R\&D}
+The weak IPR regime in host countries, would suggest potential contracting hazards and ex-post hold ups for the multinational firm. Lower labor and input costs, on the other hand would suggest that multinational firms could still gain from contracting with firms in weak IPR countries. Internalizing R\&D teams in weak IPR countries would prove to be more burdensome given the length of time it may take to get a verdict from the judicial system in those counties. In order to limit the damage due to the poor regulatory environment, TCE would suggest that multinational firms leverage the market mechanism rather than the hierarchy. This leads to my first hypothesis.\\
+
+\begin{hypothesis}
+{Hypothesis 1: [TCE would suggest that] Firms that wish to tap into R\&D talent pool in weak IPR nations will do so by contracting it out to third party firms \\}
+\end{hypothesis}
+
+By contracting out R\&D to third party firms in weak IPR nations, firms would expect to both minimize transaction costs as well as potential hazards from dealing with a difficult legal system. I next consider how KBV would predict firm decision for the same question.
+
+\subsubsection{KBV prediction for geographical diversification of R\&D}
+Since KBV suggests that knowledge is partly tacit, it would follow that any intellectual property developed in weak IPR nations may not be easily lost to competition. Additionally, KBV suggests that organizational knowledge is embedded in capabilities and routines. Multinational firms will therefore organize themselves in ways that allow them to capture the gains from geographical diversification of R\&D but not allow easy leakage of key intellectual property. They may do this by distributing critical parts of the R\&D process to locations in strong IPR nations. By distributing R\&D tasks across geographical centers, multinational firms may find it possible to both leverage highly skilled talent pools at weak IPR locations without compromising on hazards due to intellectual property loss. This leads to my second hypothesis. \\
+
+\begin{hypothesis}
+{Hypothesis 2: [KBV would suggest that] Firms that wish to tap into R\&D talent pool in weak IPR nations will do so by adopting internal organization structures that limit hazards from leakage of intellectual property\\}
+\end{hypothesis}
+
+We notice that H1 and H2 suggest conflicting outcomes for exactly the same phenomenon. As explained above, this arises due to the different assumptions about the nature of individuals workings at firms. While TCE assumes opportunism, and therefore that employees in weak IPR nations may take their knowledge elsewhere and diminish the multinational firm\textquotesingle s competitive position, KBV suggests that the multinational firm will exploit the tacit nature of knowledge and the intangible and slow changing nature of routines to exploit opportunities to build a globalized R\&D pipeline.
+
+\subsection{Data and Method}
+The above study may be subjected to empirical analysis by exploring the geographical diversification of R\&D decisions of multinational firms over a long period of time. Measures of R\&D spend at various geographical units of multinational firms may be considered as a measure of R\&D activity. Countries and locations may then be mapped onto their associated IPR scores. Controlling for industry, technology and year, we estimate if multinational R\&D is correlated with total amount of in-house R\&D performed in weak IPR nations vis-a-vis that outsourced to third parties.
+
+\subsection{Results}
+I expect to find, along the lines of \cite{Zhao2006} that multinational firms use internal organization to counter hazards from doing R\&D in weak IPR countries, and that internalizing R\&D is more prominent than outsourcing R\&D. This would lend support to KBV explanations for firm boundaries and in turn question the strong opportunism assumption made in TCE.
+
+\section{Summary}
+In this paper, I have briefly reviewed the critique of TCE from scholars in the KBV tradition. After having argued that KBV does provide an alternative to TCE in explaining vertical integration decisions of firms, I propose a study where the two theories suggest ostensibly opposite outcomes for firm scope decision. However, building on the strength of the KBV arguments and from prior research from \cite{Zhao2006}, I suggest that one would expect the KBV view to hold in this empirical context.
+
+
+\begin{singlespace}
+\renewcommand{\refname}{REFERENCES}
+\bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
+\bibliographystyle{ai-amjlike}
+\end{singlespace}
+
+\end{document}
