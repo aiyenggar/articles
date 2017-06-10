@@ -1,0 +1,36 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\caption{Technology Complexity and Mobility of Inventors on Invention Complexity \label{model4a4b4c}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}\\
+\hline
+moved region    &    0.172\sym{***}&    0.183\sym{***}&    0.210         \\
+                &  (0.000)         &  (0.000)         &  (0.055)         \\
+moved country   &    1.213\sym{***}&    0.305\sym{***}&   0.0599         \\
+                &  (0.000)         &  (0.000)         &  (0.700)         \\
+strong IPR      &    0.408\sym{***}&                  &                  \\
+                &  (0.000)         &                  &                  \\
+moved region * strong IPR&   0.0192         &                  &                  \\
+                &  (0.590)         &                  &                  \\
+moved country * strong IPR&   -0.813\sym{***}&                  &                  \\
+                &  (0.000)         &                  &                  \\
+moved region * tech complexity&    0.149\sym{***}&    0.250\sym{***}&   0.0448         \\
+                &  (0.000)         &  (0.000)         &  (0.734)         \\
+moved country * tech complexity&  0.00195         &   -0.123\sym{***}&    0.566\sym{**} \\
+                &  (0.927)         &  (0.000)         &  (0.002)         \\
+\hline
+Observations    &  5245466         &  2599718         &    32095         \\
+$R^2$              &    0.169         &    0.251         &    0.124         \\
+Clusters         &  575,441         &  323,620         &    4,647         \\
+Clustered SE       &Region Assignee         &Region Assignee         &Region Assignee         \\
+Year Dummies            &      Yes         &      Yes         &      Yes         \\
+Technology Controls            &      Yes         &      Yes         &      Yes         \\
+Sample          &  All Obs         &US inventions         &Indian inventions         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{4}{l}{\footnotesize None of the models include fixed effects}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}
