@@ -76,6 +76,8 @@
 }
 
 \usepackage{etoolbox}
+\usepackage{blindtext}
+\usepackage{draftwatermark}
 
 \makeatletter
 
@@ -115,6 +117,7 @@ breaklines=true
 }	
 
 \begin{document}
+\SetWatermarkText{Draft}
 \setlength{\droptitle}{-5em}
 \title{\textbf{\large Heterogeneity in Knowledge Flows of Regions: Impact on Invention Quality}}
 \date{\vspace{-12ex}}
@@ -473,92 +476,19 @@ Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
 \end{table}
 
 
-Table ~\ref{a.corrtable} displays the correlation of our primary variables in the dataset of applicant only citations. Summary statistics for the variables in the dataset of applicant only citations is provided in Table ~\ref{a.sumstat}.
+Table ~\ref{a.tcorrtable} displays the correlation of our primary variables in the dataset of applicant only citations. Summary statistics for the variables in the dataset of applicant only citations is provided in Table ~\ref{a.tsumstat}.
 
-\begin{center}
-\begin{table}[htbp]\centering \caption{Correlation Table for Dataset of Applicant Only Citations  \label{a.corrtable}}
-\scriptsize
-\singlespacing
-\begin{adjustbox}{angle=0}
-\begin{tabular}{l  c  c  c  c  c  c  c  c  c  c }
-
-\hline
-\multicolumn{1}{c}{Variables} &1&2&3&4&5&6&7&8&9&10\\ \hline
-1. Total Citations Received&1.00\\
-2. Non-Self Citations Received&0.95&1.00\\
-3. Self Citations Received&0.93&0.78&1.00\\
-4. Share Citations Made[Same Region, Same Assignee]&0.03&0.02&0.04&1.00\\
-5. Share Citations Made[Same Region, Different Assignee]&0.08&0.09&0.06&0.01&1.00\\
-6. Share Citations Made[Different Region, Same Assignee]&-0.01&-0.03&0.01&0.12&-0.07&1.00\\
-7. Share Citations Made[Different Region, Different Assignee]&0.05&0.06&0.02&-0.29&-0.07&-0.35&1.00\\
-8. Log (Total Citations Made)&0.38&0.37&0.33&0.07&0.08&0.10&0.05&1.00\\
-9. Log (Num Patents)&0.24&0.25&0.18&0.05&0.11&-0.02&0.18&0.72&1.00\\
-10. Log (Patent Pool Size)&0.21&0.22&0.16&0.11&0.11&-0.01&0.05&0.69&0.86&1.00\\ \hline
-\end{tabular}
-\end{adjustbox}
-\end{table}
-\end{center}
+\input{qepaper/a.tcorrelation.tex}
+\input{qepaper/a.tsummary.tex}
 
 
-
-\begin{table}[htbp]\centering \caption{Summary Statistics for Dataset of Applicant Only Citations  \label{a.sumstat}}
-\scriptsize
-\singlespacing
-\begin{tabular}{l c c  c}\hline\hline
-\multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
- & \textbf{Std. Dev.} & \textbf{N}\\ \hline
-Total Citations Received & 72.602 & 818.182  & 57456\\
-Non-Self Citations Received& 32.328 & 348.87  & 57456\\
-Self Citations Received& 14.942 & 227.598  & 57456\\
-Share Citations Made[Same Region, Same Assignee] & 0.056 & 0.114  & 10243\\
-Share Citations Made[Same Region, Different Assignee] & 0.021 & 0.064  & 10243\\
-Share Citations Made[Different Region, Same Assignee] & 0.109 & 0.165  & 10243\\
-Share Citations Made[Different Region, Different Assignee] & 0.431 & 0.28  & 10243\\
-Log (Total Citations Made) & 3.374 & 2.186  & 10243\\
-Log (Num Patents) & 2.263 & 1.94  & 57456\\
-Log (Patent Pool Size) & 4.59 & 2.373  & 54716\\\hline
-\end{tabular}
-\end{table}
+\input{qepaper/a.ncorrelation.tex}
+\input{qepaper/a.nsummary.tex}
 
 The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{a.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{ae.model123192021} on the dataset with applicant and examiner citations. \par
 
-\begin{table}[htbp]\centering \caption{Regression Analysis of Invention Quality for Applicant Only Citations  \label{a.model123192021}}
-\scriptsize
-\singlespacing
-\begin{tabular}{l*{6}{c}} \hline
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
-                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
-                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
-\hline
-Share Citations Made[Same Region, Same Assignee]&   -0.125&   -0.150&  -0.0872&   -0.256&   -0.302&   -0.240\\
-                &  (0.184)&  (0.290)&  (0.490)&  (0.017)&  (0.065)&  (0.100)\\
-Share Citations Made[Same Region, Different Assignee]&   -0.229&   -0.281&  -0.0944&    0.252&    0.222&    0.253\\
-                &  (0.116)&  (0.245)&  (0.599)&  (0.097)&  (0.393)&  (0.187)\\
-Share Citations Made[Different Region, Same Assignee]&    0.114&    0.217&   0.0820&   0.0375&    0.109&  -0.0360\\
-                &  (0.080)&  (0.023)&  (0.364)&  (0.622)&  (0.326)&  (0.733)\\
-Share Citations Made[Different Region, Different Assignee]&  -0.0703&  -0.0400&  -0.0725&  -0.0220&   0.0199&  -0.0546\\
-                &  (0.107)&  (0.535)&  (0.221)&  (0.647)&  (0.782)&  (0.405)\\
-Log (Total Citations Made)&   0.0556&   0.0464&   0.0596&   0.0378&   0.0210&   0.0423\\
-                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.030)&  (0.000)\\
-Log (Num Patents)&    0.712&    0.780&    0.700&    0.720&    0.768&    0.743\\
-                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
-Log (Patent Pool Size)&  -0.0436&   -0.153&  0.00211&   0.0188&  -0.0287&-0.0000276\\
-                &  (0.075)&  (0.000)&  (0.950)&  (0.509)&  (0.542)&  (0.999)\\
-Constant        &   -2.621&   -2.141&   -2.944&   -3.255&   -2.997&   -3.380\\
-                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
-\hline
-Observations    &     7275&     3434&     3841&     7080&     3357&     3723\\
-Groups          &     1095&      483&      612&     1019&      454&      565\\
-Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
-          &Locations &Locations&Locations&Locations &Locations&Locations \\
-\hline\hline
-\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
-\multicolumn{7}{l}{\footnotesize All regressions use negative binomial estimation on the region-year panel}\\
-\multicolumn{7}{l}{\footnotesize Citations received are counted up to and including the fifth annual anniversary of a patent application}\\
-\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
-\end{tabular}
-\end{table}
+\input{qepaper/a.model123192021.tex}
+
 
 The additional results from our analysis for the dataset of applicant only cited patents with citations received counted till 2015 are presented in Table~\ref{ainf.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. Interestingly here, we note that results between the two dependent variable measures are not particularly different. However, these set of measures seem to suggest different effects to that observed in Table~\ref{a.model123192021} on the dataset with applicant only citations but where citations were counted until the fifth annual anniversary of the patent filing date. This suggests that we may need to investigate the time effect on citations more closely. \par
 
