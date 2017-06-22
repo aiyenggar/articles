@@ -120,7 +120,7 @@
 \end{itemize}
 \end{frame}
 
-\section{Theory}
+\section{Theory and Hypotheses}
 \begin{frame}{Invention quality at the independent research center}{}
 \begin{figure}[h]
 \centering
@@ -132,7 +132,10 @@ comment/.style={rectangle, inner sep= 5pt, text width=4cm, node distance=0.25cm,
 force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, text badly centered, minimum height=1.2cm, font=\bfseries\footnotesize\sffamily}]
 \node [force] (quality) {Invention Quality};
 \node [force, left=1cm of quality] (share) {Share of same region, same firm knowledge flows};
+
 \draw[->] (share) edge node{-} (quality);
+\node [comment, below=0.25 of quality] (comment) {(+) Specialization\\
+(-) Lack of Related Variety};
 \end{tikzpicture}
 \end{adjustbox}
 \caption{Hypothesized relationship of knowledge flows within an independent research center on invention quality}
@@ -151,6 +154,8 @@ comment/.style={rectangle, inner sep= 5pt, text width=4cm, node distance=0.25cm,
 force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, text badly centered, minimum height=1.2cm, font=\bfseries\footnotesize\sffamily}]
 \node [force] (quality) {Invention Quality};
 \node [force, left=1cm of quality] (share) {Share of same region, different firm knowledge flows};
+\node [comment, below=0.25 of quality] (comment) {(+/-) Marshallian Externalities\\
+(+/-) Jacobs Externalities \\ (-) Incremental Innovation \citep{Schumpeter1942}};
 \draw[->] (share) edge node{+ / -} (quality);
 \end{tikzpicture}
 \end{adjustbox}
@@ -170,6 +175,8 @@ comment/.style={rectangle, inner sep= 5pt, text width=4cm, node distance=0.25cm,
 force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, text badly centered, minimum height=1.2cm, font=\bfseries\footnotesize\sffamily}]
 \node [force] (quality) {Invention Quality};
 \node [force, left=1cm of quality] (share) {Share of different region, same firm knowledge flows};
+\node [comment, below=0.25 of quality] (comment) {(+) Agglomeration Benefits\\
+(+) Complementary Assets};
 \draw[->] (share) edge node{+} (quality);
 \end{tikzpicture}
 \end{adjustbox}
@@ -189,6 +196,8 @@ comment/.style={rectangle, inner sep= 5pt, text width=4cm, node distance=0.25cm,
 force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, text badly centered, minimum height=1.2cm, font=\bfseries\footnotesize\sffamily}]
 \node [force] (quality) {Invention Quality};
 \node [force, left=1cm of quality] (share) {Share of different region, different firm knowledge flows};
+\node [comment, below=0.25 of quality] (comment) {(+/-) Social proximity\\
+(+/-) Complexity of search };
 \draw[-] (share) edge node{X} (quality);
 \end{tikzpicture}
 \end{adjustbox}
