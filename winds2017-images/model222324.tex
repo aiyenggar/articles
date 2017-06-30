@@ -1,0 +1,33 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\caption{Distribution of Citations Made on Non-Self Citations Received (RE Models) \label{model222324}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{Non-Self Citations}&\multicolumn{1}{c}{Non-Self Citations}&\multicolumn{1}{c}{Non-Self Citations}\\
+\hline
+Non-Self Citations&                  &                  &                  \\
+Share Citations Made[Same Region, Same Assignee]&   -0.161         &  -0.0662         &   -0.294         \\
+                &  (0.180)         &  (0.709)         &  (0.093)         \\
+Share Citations Made[Same Region, Different Assignee]&   0.0763         &  -0.0266         &   0.0948         \\
+                &  (0.438)         &  (0.909)         &  (0.389)         \\
+Share Citations Made[Different Region, Same Assignee]&    0.182\sym{*}  &    0.169         &    0.179         \\
+                &  (0.025)         &  (0.126)         &  (0.152)         \\
+Share Citations Made[Different Region, Different Assignee]&   0.0235         &  0.00623         &   0.0279         \\
+                &  (0.433)         &  (0.888)         &  (0.493)         \\
+Log(Total Citations Made)&   0.0217\sym{***}&   0.0154\sym{**} &   0.0189\sym{***}\\
+                &  (0.000)         &  (0.004)         &  (0.000)         \\
+Log (Num Patents)&    0.807\sym{***}&    0.824\sym{***}&    0.890\sym{***}\\
+                &  (0.000)         &  (0.000)         &  (0.000)         \\
+Log (Patent Pool Size)&   0.0650\sym{***}&   0.0554         &  0.00359         \\
+                &  (0.000)         &  (0.073)         &  (0.864)         \\
+\hline
+Observations    &    10133         &     4025         &     6108         \\
+Groups          &     1845         &      602         &     1243         \\
+Sample          &All Locations (UC)         &US Locations (UC)         &Non-US Locations (UC)         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{4}{l}{\footnotesize All models include region random effects with year dummies and technology subcategory controls}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}
