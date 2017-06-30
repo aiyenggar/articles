@@ -1,8 +1,9 @@
 % winds2017.tex 
-\documentclass[parskip=full,10pt,letterpaper]{article}
+\documentclass[parskip=full,11pt,letterpaper]{article}
 \usepackage{mathptmx}
 \usepackage[margin=1in]{geometry}
 
+\usepackage{adjustbox} 
 \usepackage{amsmath,amssymb,latexsym}
 \usepackage[round,sort]{natbib}
 \usepackage{multirow,array}
@@ -31,7 +32,7 @@
 \usepackage{titling}
 \usepackage{titlesec}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.8em}
+\setlength{\parskip}{0.4em}
 \setlength{\bibsep}{0.2pt}
 
 \titleformat*{\section}{\large\bfseries}
@@ -43,12 +44,34 @@
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    filecolor=black,      
-    urlcolor=blue,
+    linkcolor=magenta,
+    filecolor=cyan,      
+    urlcolor=cyan,
     citecolor=blue,
 }
 
+\usepackage{etoolbox}
+\makeatletter
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+  
 \lstset{
 basicstyle=\ttfamily,
 columns=flexible,
@@ -76,13 +99,13 @@ breaklines=true
 
 \maketitle
 \thispagestyle{empty}
-\renewcommand{\abstractname}{\large Abstract}
+\renewcommand{\abstractname}{\large ABSTRACT}
 \begin{abstract}
 \normalsize
 \noindent Using patent citations as measures of knowledge flows, we explore if the different types of knowledge flows in a region affect the quality of inventions originating in that region. We leverage a database of worldwide urban centers  obtained from remote sensing data and find that  local knowledge flows  do not seem to impact the inventive quality of regions. However, knowledge flows within the firm across regions seem to have a positive effect on invention quality.
 \end{abstract}
 
-\section*{Introduction}
+\section*{INTRODUCTION}
 Scholars of economics and strategy have for long recognized that clusters and agglomeration economies play an important role in fostering innovation \citep{Marshall1890, Porter1990}. Agglomeration economies arise due to labor pooling advantages, economies of specialization of local suppliers, and knowledge spillovers \citep{Porter1990, Krugman1991a}. In this study, we examine how the nature of knowledge spillovers or flows in a region affect the quality of the inventions generated in the region.\par
 Several studies have used patent citations to demonstrate that knowledge flows are localized \citep*{Jaffe1993, Almeida1999, Alcacer2006a}. Regions, however vary in their inventive output \citep*{Agrawal2014b} and the nature of knowledge flows in a region may be one source of this variation within regions. In this study we use citation data of patents applied for between 2001 and 2012 to empirically estimate the relationship between knowledge flows of a region and quality of inventions from that region. \par
 The rest of the paper is organized as follows. The next section defines a framework to classify knowledge flows in a region and motivates our work by demonstrating how different regions fare differently in terms of knowledge flows. We then describe our data and methods in the following section. Our preliminary results are then presented, followed by a discussion of the results. We conclude with next steps and open questions for further research.
@@ -104,7 +127,7 @@ The top left quadrant, labelled an "Independent Research Center" captures those 
 
 \begin{figure}[h]
 \begin{centering}
-  \includegraphics[width=0.90\textwidth]{SMSSameRegionSameAssigneeFlows}
+  \includegraphics[width=0.80\textwidth]{SMSSameRegionSameAssigneeFlows}
   \caption{Knowledge flows within regions and within assignees}
   \label{fig:SMSSameRegionSameAssigneeFlows}
 \end{centering}
@@ -112,7 +135,7 @@ The top left quadrant, labelled an "Independent Research Center" captures those 
 
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.90\textwidth]{SMSSameRegionDiffAssigneeFlows}
+  \includegraphics[width=0.80\textwidth]{SMSSameRegionDiffAssigneeFlows}
   \caption{Knowledge flows within regions and across assignees}
   \label{fig:SMSSameRegionDiffAssigneeFlows}
 \end{centering}
@@ -120,7 +143,7 @@ The top left quadrant, labelled an "Independent Research Center" captures those 
 The quadrant on the bottom left, labelled "Cluster" captures knowledge spillovers within a region. Here firms may be seen as performing local search on one dimension (within regions) but not the other (within firms). Figure~\ref{fig:SMSSameRegionDiffAssigneeFlows} depicts the knowledge flows for this category across time for the same five regions. San Jose clearly stands out from the rest, suggesting a higher amount of across firm flows of knowledge in Silicon Valley, a result consistent with several prior studies. \par
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.90\textwidth]{SMSDiffRegionSameAssigneeFlows}
+  \includegraphics[width=0.80\textwidth]{SMSDiffRegionSameAssigneeFlows}
   \caption{Knowledge flows across regions and within assignees}
   \label{fig:SMSDiffRegionSameAssigneeFlows}
 \end{centering}
@@ -130,7 +153,7 @@ The quadrant on the top right, labelled as "Geographic Diversification" captures
 
 \begin{figure}[h!]
 \begin{centering}
-  \includegraphics[width=0.90\textwidth]{SMSDiffRegionDiffAssigneeFlows}
+  \includegraphics[width=0.80\textwidth]{SMSDiffRegionDiffAssigneeFlows}
   \caption{Knowledge flows across regions and across assignees}
   \label{fig:SMSDiffRegionDiffAssigneeFlows}
 \end{centering}
@@ -140,154 +163,33 @@ Finally, the bottom right quadrant labelled "Diffusion" captures high exploratio
 
 As can be seen from the preceding discussion, prior theory suggests both positive and negative effects for each of these four categories of knowledge flows and it is not clear what the net effect will be on invention quality. This also suggests that prior theory does not provide guidance on which category of knowledge flows will have the highest effect on invention quality.  Since theory does not provide us with an answer, we rely on empirical analysis to inform us on the net effect of each category of knowledge flow on invention quality and which category has the highest effect on invention quality. \par
 
-\section*{Data and Measures}
+\section*{DATA AND MEASURES}
 
 We use patent citations data from the U.S. Patent Office (USPTO) as provided by patentsview.org. The USPTO provides information on assignee, the location of inventors, and year of patent application. We use this information to identify which patents belong to which region in a given year. Since there can be more than one inventor on a patent, a patent can belong to more than one region. We compare the assignee and inventor location of each patent with each assignee and inventor of each backward citation  to identify the category of knowledge flow (e.g., same assignee, different location) indicated by the backward citation. Additionally, to map location data of inventors from USPTO to regions, we use urban centers data for worldwide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} that uses remote sensing data to determine urban agglomerations (a process developed in \citet*{Schneider2003}).  While it has been common practice to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the U.S., an equivalent measure is unavailable for the rest of the world. For comparability and consistency, we choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions both within U.S. and outside U.S. \par
-Our unit of analysis is the region-year. To be consistent with our objective of measuring knowledge flows, we restrict ourselves to those citations categorized as \textquotesingle cited by applicant\textquotesingle \ and leave out those categorized as \textquotesingle cited by examiner\textquotesingle \ because the latter may not represent knowledge flows. This decision has the additional effect of limiting our period of analysis to citing patents applied for after the year 2000 since the data on which citations were added by examiners is available for patents from only 2001 onwards. We restrict our sample to patents applied for between 2001 - 2012, but citations received till 2015. \par
-Our primary dependent variable is the  total count of citations received (till 2015) by patents belonging to a region-year. For robustness, we also report results for total non-self citations received as the dependent variable. Our independent variables are the percentage of backward citations made to each of the four categories in our defined framework: those to a) same region, same assignee, b) same region, different assignee, c) different region, same assignee, and d) different region, same assignee. \par
-We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we used negative binomial regression analysis with fixed effects. \par
+Our unit of analysis is the region-year. To be consistent with our objective of measuring knowledge flows, we restrict ourselves to those citations categorized as \textquotesingle cited by applicant\textquotesingle \ and leave out those categorized as \textquotesingle cited by examiner\textquotesingle \ because the latter may not represent knowledge flows. This decision has the additional effect of limiting our period of analysis to citing patents applied for after the year 2000 since the data on which citations were added by examiners is available for patents from only 2001 onwards. We restrict our sample to patents applied for between 2001 - 2012, but citations received till 7 March 2017. \par
+Our primary dependent variable is the  total count of citations received (till 7 March 2017) by patents belonging to a region-year. For robustness, we also report results for total non-self citations received as the dependent variable. Our independent variables are the percentage of backward citations made to each of the four categories in our defined framework: those to a) same region, same assignee, b) same region, different assignee, c) different region, same assignee, and d) different region, same assignee. \par
+We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we used negative binomial regression analysis with fixed effects.
 
-\section*{Results}
-The preliminary results from our analysis are presented in Table~\ref{model123}. Model 1 reports the results for all regions worldwide, while Model 2 and Model 3 report results for U.S. locations and non-U.S. locations respectively. Across the three models we find that local knowledge flows within the firm do not seem to have a significant impact on the quality of inventions as measured by the number of citations received. This result is robust to using non-self citations as the dependent variable as presented in Table~\ref{model192021}. \par
-Our preliminary findings in Table~\ref{model123} suggest no evidence that local knowledge spillovers (i.e., same region, different assignee) lead to higher quality inventions.  One possible explanation for the lack of evidence for local knowledge spillovers may be to suggest U.S. specific effects. However as the results in model 2 of Table~\ref{model123} suggest, the trend is confirmed in a U.S.-only sample. It seems therefore that the implication for the lack of effect of localized knowledge flows on invention quality is robust to regional or country sampling. \par
-The effect of non-local knowledge flows however is less clear. While geographic diversification is seen to benefit all regions (Table~\ref{model123}), the effect is not statistically significant for non-U.S. locations (Table~\ref{model192021}). This may suggest that there are regional, and potentially country effects that may be able to explain the phenomenon better. Finally, building on knowledge from outside the firm and outside the region does not seem to improve invention quality.\par
+\section*{RESULTS}
+The preliminary results from our analysis are presented in Table~\ref{a.model123192021}. Model 1 reports the results for all regions worldwide, while model 2 and model 3 report results for U.S. locations and non-U.S. locations respectively. Across the three models we find that local knowledge flows within the firm do not seem to have a significant impact on the quality of inventions as measured by the number of citations received. This result is robust to using non-self citations as the dependent variable in models 4, 5 and 6 as presented in Table~\ref{a.model123192021}. \par
+Our preliminary findings in Table~\ref{a.model123192021} suggest no evidence that local knowledge spillovers (i.e., same region, different assignee) lead to higher quality inventions.  One possible explanation for the lack of evidence for local knowledge spillovers may be to suggest U.S. specific effects. However as the results in model 2 of Table~\ref{a.model123192021} suggest, the trend is confirmed in a U.S.-only sample. It seems therefore that the implication for the lack of effect of localized knowledge flows on invention quality is robust to regional or country sampling. \par
+The effect of non-local knowledge flows however is less clear. While geographic diversification is seen to benefit all regions (Table~\ref{a.model123192021}), the effect is not statistically significant for non-U.S. locations and when non-self citations are used as the dependent variable. This may suggest that there are regional, and potentially country effects that may be able to explain the phenomenon better. Finally, building on knowledge from outside the firm and outside the region does not seem to improve invention quality.\par
 
-\section*{Limitations}
+\section*{LIMITATIONS}
 While the use of patent citations as a measure of knowledge flows has been popular in the literature, this may nevertheless be subject to error \citep*{Arora2017a}. Our definition of regions is dependent on the latitude/longitude assignment in the patentsview.org data and on the urban centers definition in the \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data}. Any systematic biases in the definition of regions can create biases in measures of within region and across region knowledge flows. \par
 
-\section*{Conclusion}
+\section*{CONCLUSION}
 While still at a preliminary stage, our analysis seem to suggest that local knowledge flows as measured by patent citations may not have a significant effect on the quality of inventions produced in a region. This casts a doubt on the widely accepted idea that local knowledge spillovers are an important source of agglomeration economies. A potential extension of the study could be to conduct empirical analysis at the level of firm-year rather than at the region-year. We could additionally look at the additional dimension of technology (within and outside technological domain, \cite{Rosenkopf2001}) in addition to those of within/outside region and within/outside firm. This may provide us with a more nuanced understanding of the factors affecting invention quality. Future studies could potentially examine other measures of invention outcomes such as breakthrough inventions. Finally, while our work suggests that local knowledge spillovers do not affect invention quality, it is not quite as clear why this may be the case. We hope that our current work spurs further research in this direction.  
 
-%\onehalfspacing
 \singlespacing
+\small
 \renewcommand{\refname}{REFERENCES}
 \bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
 \bibliographystyle{ai-amjlike}
-\newpage
-\small
-\input{winds2017-images/model123.tex}
-\input{winds2017-images/model192021.tex}
+
+
+\scriptsize
+\input{winds2017-images/a.model123192021.tex}
 
 \end{document}
-
-
-
-
-
-
-
-
-\begin{comment}
-\begin{landscape}
-\section*{Fixed Effects Results}
-\begin{centering}
-\input{winds2017-images/model123.tex}
-\newpage
-\input{winds2017-images/model131415.tex}
-\newpage
-\input{winds2017-images/model192021.tex}
-\newpage
-\input{winds2017-images/model252627.tex}
-\end{centering}
-\end{landscape}
-
-\begin{landscape}
-\section*{Random Effects Results}
-\begin{centering}
-\input{winds2017-images/model101112.tex}
-\newpage
-\input{winds2017-images/model161718.tex}
-\newpage
-\input{winds2017-images/model222324.tex}
-\newpage
-\input{winds2017-images/model282930.tex}
-\end{centering}
-\end{landscape}
-
-\begin{figure}
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{UCSameRegionFlows}
-    \caption{Urban Centers Data}
-    \label{fig:UCSameRegionFlows}
-  \end{subfigure}
-  
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{SameRegionFlows}
-    \caption{MSA-Urban Centers Data with Missing Regions Filled from location.tsv}
-    \label{fig:SameRegionFlows}
-  \end{subfigure}
-\end{figure}
-
-
-\begin{figure}
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{UCSameAssigneeFlows}
-    \caption{Urban Centers Data}
-    \label{fig:UCSameAssigneeFlows}
-  \end{subfigure}
-  
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{SameAssigneeFlows}
-    \caption{MSA-Urban Centers Data with Missing Regions Filled from location.tsv}
-    \label{fig:SameAssigneeFlows}
-  \end{subfigure}
-\end{figure}
-
-\begin{figure}
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{UCSameRegionSameAssigneeFlows}
-    \caption{Urban Centers Data}
-    \label{fig:UCSameRegionSameAssigneeFlows}
-  \end{subfigure}
-  
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{SameRegionSameAssigneeFlows}
-    \caption{MSA-Urban Centers Data with Missing Regions Filled from location.tsv}
-    \label{fig:SameRegionSameAssigneeFlows}
-  \end{subfigure}
-\end{figure}
-
-\begin{figure}
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{UCSameRegionDiffAssigneeFlows}
-    \caption{Urban Centers Data}
-    \label{fig:UCSameRegionDiffAssigneeFlows}
-  \end{subfigure}
-  
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{SameRegionDiffAssigneeFlows}
-    \caption{MSA-Urban Centers Data with Missing Regions Filled from location.tsv}
-    \label{fig:SameRegionDiffAssigneeFlows}
-  \end{subfigure}
-\end{figure}
-
-\begin{figure}
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{UCDiffRegionSameAssigneeFlows}
-    \caption{Urban Centers Data}
-    \label{fig:UCDiffRegionSameAssigneeFlows}
-  \end{subfigure}
-  
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{DiffRegionSameAssigneeFlows}
-    \caption{MSA-Urban Centers Data with Missing Regions Filled from location.tsv}
-    \label{fig:DiffRegionSameAssigneeFlows}
-  \end{subfigure}
-\end{figure}
-
-\begin{figure}
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{UCDiffRegionDiffAssigneeFlows}
-    \caption{Urban Centers Data}
-    \label{fig:UCDiffRegionDiffAssigneeFlows}
-  \end{subfigure}
-  
-  \begin{subfigure}[b]{\textwidth}
-    \includegraphics[width=\textwidth]{DiffRegionDiffAssigneeFlows}
-    \caption{MSA-Urban Centers Data with Missing Regions Filled from location.tsv}
-    \label{fig:DiffRegionDiffAssigneeFlows}
-  \end{subfigure}
-\end{figure}
-\end{comment}
-
 
