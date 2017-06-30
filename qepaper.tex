@@ -2,7 +2,7 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage{mathptmx}
 \usepackage[margin=1in]{geometry}
-
+\usepackage[titletoc,title]{appendix}
 \usepackage{tabularx, longtable, pdflscape, adjustbox}  % for 'tabularx' environment and 'X' column type
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
@@ -262,32 +262,17 @@ For any given region-year, we would therefore have the sum of each of the four i
 \subsection{Control Variables}
 We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we use negative binomial regression analysis with fixed effects. \par
 
-Table ~\ref{ae.tcorrelation} displays the correlation of our primary variables in the dataset of applicant and examiner citations. Summary statistics for the variables in the dataset of applicant and examiner citations is provided in Table ~\ref{ae.tsummary}. Similar statistics for the applicant only citations dataset and the examiner only citations dataset have been provided in the section on additional results.
 
-\input{qepaper/a.e.o.t.n.tcorrelation.tex}
-\input{qepaper/a.e.o.t.n.tsummary.tex}
-
-
-\input{qepaper/a.e.o.t.n.ncorrelation.tex}
-\input{qepaper/a.e.o.t.n.nsummary.tex}
-
-
-
-\section*{Results}
-The preliminary results from our analysis for the dataset of applicant and examiner cited patents are presented in Table~\ref{ae.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The initial observation is that results seem to vary depending on the chosen dependent variable, though the signs of the coefficients are the same. Across the models we find that knowledge flows under cluster and geographical diversification have a significant impact on the quality of inventions as measured by the number of citations received. However, the differences in the results between the two dependent variables suggests that there is an underlying effect that the current model is not capturing. \par
-Let us set aside the inconsistency in results between the two measures of the dependent variable, and just focus on the results for total citations received. H1 suggested a negative effect for within firm, within region flows on invention quality. The results however suggest a positive effect and significant effect in models 1 and 3. H1 is therefore not supported. H2a and H2b suggested that potentially opposite claims for higher cluster knowledge flows. The results are mixed across the samples, suggesting perhaps that different effects are at play under different conditions. H3 predicted a positive effect for the globalized diversification driven knowledge flows. The results here are consistent with our hypotheses, across all models and across datasets. Finally, we had predicted a non-effect for the diffusion knowledge flow on invention performance. Again the results for the total citations received dependent variable hold.  \par
-
-\input{qepaper/a.e.o.t.n.model123192021.tex}
 
 \subsection{Additional Results}
-Table ~\ref{e.corrtable} displays the correlation of our primary variables in the dataset of examiner only citations. Summary statistics for the variables in the dataset of examiner only citations is provided in Table ~\ref{e.sumstat}.
+Table ~\ref{e.tcorrelation} displays the correlation of our primary variables in the dataset of examiner only citations. Summary statistics for the variables in the dataset of examiner only citations is provided in Table ~\ref{e.tcorrelation}.
 
 \input{qepaper/e.tcorrelation.tex}
-\input{qepaper/e.tsummary.tex}
+%\input{qepaper/e.tsummary.tex}
 
 
 \input{qepaper/e.ncorrelation.tex}
-\input{qepaper/e.nsummary.tex}
+%\input{qepaper/e.nsummary.tex}
 
 The additional results from our analysis for the dataset of examiner only cited patents are presented in Table~\ref{e.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{ae.model123192021} on the dataset with applicant and examiner citations. \par
 
@@ -298,67 +283,16 @@ The additional results from our analysis for the dataset of examiner only cited 
 Table ~\ref{a.tcorrelation} displays the correlation of our primary variables in the dataset of applicant only citations. Summary statistics for the variables in the dataset of applicant only citations is provided in Table ~\ref{a.tsummary}.
 
 \input{qepaper/a.tcorrelation.tex}
-\input{qepaper/a.tsummary.tex}
+%\input{qepaper/a.tsummary.tex}
 
 
 \input{qepaper/a.ncorrelation.tex}
-\input{qepaper/a.nsummary.tex}
+%\input{qepaper/a.nsummary.tex}
 
 The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{a.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n..model123192021} on the dataset with applicant and examiner citations. \par
 
 \input{qepaper/a.model123192021.tex}
 
-
-\input{qepaper/o.tcorrelation.tex}
-\input{qepaper/o.tsummary.tex}
-
-
-\input{qepaper/o.ncorrelation.tex}
-\input{qepaper/o.nsummary.tex}
-
-The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{o.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n..model123192021} on the dataset with applicant and examiner citations. \par
-
-\input{qepaper/o.model123192021.tex}
-
-
-
-The additional results from our analysis for the dataset of applicant only cited patents with citations received counted till 2015 are presented in Table~\ref{ainf.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. Interestingly here, we note that results between the two dependent variable measures are not particularly different. However, these set of measures seem to suggest different effects to that observed in Table~\ref{a.model123192021} on the dataset with applicant only citations but where citations were counted until the fifth annual anniversary of the patent filing date. This suggests that we may need to investigate the time effect on citations more closely. \par
-
-\begin{table}[htbp]\centering \caption{Regression Analysis of Invention Quality* for Applicant Only Citations (from Feb 2017) \label{ainf.model123192021}}
-\scriptsize
-\singlespacing
-\begin{tabular}{l*{6}{c}} \hline
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
-                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
-                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
-\hline
-Share Citations Made[Same Region, Same Assignee]&   -0.169         &   -0.104         &   -0.134&-0.232         &   -0.183         &   -0.316 \\
-                &   (0.218)         &  (0.623)         &  (0.454)&   (0.105)         &  (0.392)         &  (0.123) \\
-Share Citations Made[Same Region, Different Assignee]&    -0.149         &   -0.191         &  -0.0919&    0.0391         &   0.0945         &   0.0505 \\
-                &   (0.215)         &  (0.458)         &  (0.468) &   (0.733)         &  (0.721)         &  (0.699) \\
-Share Citations Made[Different Region, Same Assignee]&     0.217  &    0.266  &    0.348&    0.195  &    0.263  &    0.174 \\
-                &(0.012)         &  (0.037)         &  (0.004) &   (0.035)         &  (0.041)         &  (0.212)\\
-Share Citations Made[Different Region, Different Assignee]&  0.00828         &   0.0315         &   0.0179&   0.00989         &   0.0203         &  0.00983  \\
-                &  (0.789)         &  (0.499)         &  (0.661)&    (0.762)         &  (0.675)         &  (0.826)         \\
-Log (Total Citations Made)&    0.0180&   0.0198&   0.0134&     0.0150&   0.0139  &   0.0107 \\
-                &   (0.000)         &  (0.001)         &  (0.014)&   (0.000)         &  (0.023)         &  (0.075) \\
-Log (Num Patents)&     0.785&    0.811&    0.830&        0.772&    0.795&    0.828\\
-                &  (0.000)         &  (0.000)         &  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
-Log (Patent Pool Size)&  -0.111&   -0.227&  -0.0944&    -0.0453  &   -0.108 &  -0.0685\\
-                &  (0.075)&  (0.000)&  (0.950)&   (0.039)         &  (0.006)         &  (0.017) \\
-\hline
-Observations    &    9241&3885&5356&          8879         &     3732         &     5147\\
-Groups          &     1314&529&785&1199         &      478         &      721\\
-Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
-          &Locations &Locations&Locations&Locations &Locations&Locations \\
-\hline\hline
-\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
-\multicolumn{7}{l}{\footnotesize All regressions use negative binomial estimation on the region-year panel}\\
-\multicolumn{7}{l}{\footnotesize * Citations received are counted all the way to end 2016 for which data is available}\\
-\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
-\end{tabular}
-\end{table}
 
 
 \section*{Discussion}
@@ -381,5 +315,40 @@ While still at a preliminary stage, our analysis seem to suggest that knowledge 
 \bibliographystyle{ai-amjlike}
 \newpage
 %\normalsize
+
+\appendix
+%\counterwithin{table}{section}
+%\setcounter{table}{0}
+%\renewcommand\thetable{A\arabic{table}}
+
+\section{ADDITIONAL RESULTS}
+
+\input{qepaper/o.tcorrelation.tex}
+%\input{qepaper/o.tsummary.tex}
+
+
+\input{qepaper/o.ncorrelation.tex}
+%\input{qepaper/o.nsummary.tex}
+
+The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{o.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n..model123192021} on the dataset with applicant and examiner citations. \par
+
+\input{qepaper/o.model123192021.tex}
+
+Table ~\ref{a.e.o.t.n.tcorrelation} displays the correlation of our primary variables in the dataset of applicant and examiner citations. Summary statistics for the variables in the dataset of applicant and examiner citations is provided in Table ~\ref{a.e.o.t.n.tcorrelation}. Similar statistics for the applicant only citations dataset and the examiner only citations dataset have been provided in the section on additional results.
+
+\input{qepaper/a.e.o.t.n.tcorrelation.tex}
+%\input{qepaper/a.e.o.t.n.tsummary.tex}
+
+
+\input{qepaper/a.e.o.t.n.ncorrelation.tex}
+%\input{qepaper/a.e.o.t.n.nsummary.tex}
+
+
+
+\section*{Results}
+The preliminary results from our analysis for the dataset of applicant and examiner cited patents are presented in Table~\ref{ae.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The initial observation is that results seem to vary depending on the chosen dependent variable, though the signs of the coefficients are the same. Across the models we find that knowledge flows under cluster and geographical diversification have a significant impact on the quality of inventions as measured by the number of citations received. However, the differences in the results between the two dependent variables suggests that there is an underlying effect that the current model is not capturing. \par
+Let us set aside the inconsistency in results between the two measures of the dependent variable, and just focus on the results for total citations received. H1 suggested a negative effect for within firm, within region flows on invention quality. The results however suggest a positive effect and significant effect in models 1 and 3. H1 is therefore not supported. H2a and H2b suggested that potentially opposite claims for higher cluster knowledge flows. The results are mixed across the samples, suggesting perhaps that different effects are at play under different conditions. H3 predicted a positive effect for the globalized diversification driven knowledge flows. The results here are consistent with our hypotheses, across all models and across datasets. Finally, we had predicted a non-effect for the diffusion knowledge flow on invention performance. Again the results for the total citations received dependent variable hold.  \par
+
+\input{qepaper/a.e.o.t.n.model123192021.tex}
 
 \end{document}

@@ -1,14 +1,20 @@
 \begin{table}[htbp]\centering
-\caption{NB Regression Analysis of Invention Quality for Examiner Citations Only (Distance Calculated) \label{e.model123192021}}
-\scriptsize
-\singlespacing
+\caption{Negative binomial regression analysis of invention quality for examiner citations \label{e.model123192021}}
+\small
+\onehalfspacing
+\begin{adjustbox}{angle=90}
 \begin{tabular}{l*{6}{c}}
 \hline\hline
                 &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+ \multirow{3}{*}{Dependent Variable} &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
                 &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
                  &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
-\hline
+                 \hline
+ \multirow{2}{*}{Sample}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}\\       
+  &\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}\\       
+                 \hline
+ \multirow{2}{*}{Sample}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}\\       
+  &\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}\\    \hline
 Share Citations Made[Same Region, Different Assignee]&   -0.555&   -0.987&   -0.114&   -0.364&   -0.570&  -0.0850\\
                 &  (0.010)&  (0.001)&  (0.716)&  (0.114)&  (0.060)&  (0.803)\\
 Share Citations Made[Different Region, Same Assignee]&   -0.466&   -0.582&   -0.290&   -0.497&   -0.389&   -0.453\\
@@ -26,9 +32,10 @@ Constant        &    1.200&    2.443&    0.821&    0.913&    2.067&    0.607\\
 \hline
 Observations    &    16464&     6246&    10218&    16410&     6244&    10166\\
 Groups          &     1839&      596&     1243&     1820&      595&     1225\\
-Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
-          &Locations &Locations&Locations&Locations &Locations&Locations \\\hline\hline
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Reference category is Share Citations Made[Same Region, Same Assignee]}\\
 \multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
 \multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
 \end{tabular}
+\end{adjustbox}
 \end{table}

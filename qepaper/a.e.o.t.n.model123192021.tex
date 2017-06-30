@@ -1,13 +1,17 @@
 \begin{table}[htbp]\centering
-\caption{NB Regression Analysis of Invention Quality for all Citations \label{a.e.o.t.n.model123192021}}
-\scriptsize
-\singlespacing
+\caption{Negative binomial regression analysis of invention quality for all citations \label{a.e.o.t.n.model123192021}}
+\small
+\onehalfspacing
+\begin{adjustbox}{angle=90}
 \begin{tabular}{l*{6}{c}}
 \hline\hline
                 &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
+ \multirow{3}{*}{Dependent Variable} &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
                 &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
                  &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+                 \hline
+ \multirow{2}{*}{Sample}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}\\       
+  &\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}\\           
 \hline
 Share Citations Made[Same Region, Different Assignee]&   -0.516&   0.0657&   -1.308&   -0.604&    0.189&   -1.419\\
                 &  (0.054)&  (0.859)&  (0.001)&  (0.028)&  (0.617)&  (0.000)\\
@@ -26,9 +30,10 @@ Constant        &    0.470&    1.314&    0.568&    0.501&    1.002&    0.588\\
 \hline
 Observations    &    17166&     6373&    10793&    17120&     6371&    10749\\
 Groups          &     1929&      601&     1328&     1914&      600&     1314\\
-Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
-          &Locations &Locations&Locations&Locations &Locations&Locations \\\hline\hline
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Reference category is Share Citations Made[Same Region, Same Assignee]}\\
 \multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
 \multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
 \end{tabular}
+\end{adjustbox}
 \end{table}
