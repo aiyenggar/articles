@@ -1,0 +1,18 @@
+  % Places all tables at end of document and creates AOM-style table-here placeholders
+  \usepackage[nolists]{endfloat} % Places all figures and charts at end of manuscript and adds 'insert table x about here' lines.
+  \renewcommand{\figureplace}{
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \figurename \ \thepostfig\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+  \renewcommand{\tableplace}{%
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \tablename \ \theposttbl\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}

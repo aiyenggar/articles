@@ -3,7 +3,7 @@
 \usepackage{mathptmx}
 \usepackage[margin=1in]{geometry}
 \usepackage[titletoc,title]{appendix}
-\usepackage{tabularx, longtable, pdflscape, adjustbox}  % for 'tabularx' environment and 'X' column type
+\usepackage{tabularx, longtable, pdflscape, rotating, adjustbox}  % for 'tabularx' environment and 'X' column type
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
 \usepackage{booktabs}  % for \toprule, \midrule, and \bottomrule macros 
@@ -31,25 +31,6 @@
 \setcounter{secnumdepth}{0} 
 
 \usepackage{titling}
-
-  % Places all tables at end of document and creates AOM-style table-here placeholders
-  \usepackage[nolists]{endfloat} % Places all figures and charts at end of manuscript and adds 'insert table x about here' lines.
-  \renewcommand{\figureplace}{
-    \begin{center}
-    \begin{singlespace}
-    ------------------------------------\\
-    Insert \figurename \ \thepostfig\ about here.\\
-    ------------------------------------
-    \end{singlespace}
-    \end{center}}
-  \renewcommand{\tableplace}{%
-    \begin{center}
-    \begin{singlespace}
-    ------------------------------------\\
-    Insert \tablename \ \theposttbl\ about here.\\
-    ------------------------------------
-    \end{singlespace}
-    \end{center}}
 
   \usepackage{titlesec}
    \titleformat{\title}
@@ -256,7 +237,7 @@ We restrict our sample to patents applied for between 2001 - 2012, but citations
 Our primary dependent variable is the  total count of citations received by patents belonging to a region-year. However, for all models we also report results for total non-self citations received as the dependent variable. Citations are counted as those received up to the last date to which we have data. 
 
 \subsection{Independent Variables}
-Building on the framework depicted in Figure ~\ref{fig:2x2}, our independent variables are the percentage of backward citations made to each of the four categories: those to a) same region, same assignee, b) same region, different assignee, c) different region, same assignee, and d) different region, different assignee. \par
+Building on the framework depicted in Figure~\ref{fig:2x2}, our independent variables are the percentage of backward citations made to each of the four categories: those to a) same region, same assignee, b) same region, different assignee, c) different region, same assignee, and d) different region, different assignee. \par
 \subsubsection{Share of backward citations made to same region and same assignee}
 We compute this variable as follows. For each region, for each year, we compute the ratio of the total number of backward citations made to same region and same assignee in that year to the total number of backward citations made in that year.
 \subsubsection{Share of backward citations made to same region and different assignee}
@@ -269,9 +250,9 @@ We compute this variable as follows. For each region, for each year, we compute 
 For any given region-year, we would therefore have the sum of each of the four independent variables to add to 1 (one). We compute the match on region and assignee as follows. For region, we consider the location of each inventor dyad in the citing patent - cited patent record. So if the citing patent had 3 inventors, and the cited patent had 4 inventors, we would consider 12 unique dyads, and how their location as recorded in the patent database matched up. If both inventors\textquotesingle \ urban center region (based on  matched \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} definition of urban centers), the knowledge flow would be classified as being within region. If any of the inventors\textquotesingle \ did not fall within the urban centers definition, then those inventor locations falling within 50 kilometres of each other would be classified as being from the same region, and others classified as being from a different region. We used a full match on the assignee id (as provided by the patentsview.org database) as the basis for determining if the assignees on the citing and cited patents were the same or not.
 
 \subsection{Control Variables}
-We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we use negative binomial regression analysis with fixed effects. \par
+We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region from 1976 (which is where we have data from) up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we use negative binomial regression analysis with fixed effects. \par
 
-Table ~\ref{a.tcorrelation} displays the correlation coefficients and summary statistics of our primary variables in the dataset of applicant  citations. Table ~\ref{e.tcorrelation} displays the correlation coefficients and summary statistics of our primary variables in the dataset of examiner  citations. The appendix provides similar statistics for the dataset of other citations (Table ~\ref{o.tcorrelation}), and the entire citation dataset (Table ~\ref{a.e.o.t.n.tcorrelation})
+Table~\ref{a.tcorrelation} displays the correlation coefficients and summary statistics of our primary variables in the dataset of applicant  citations. Table~\ref{e.tcorrelation} displays the correlation coefficients and summary statistics of our primary variables in the dataset of examiner  citations. The appendix provides similar statistics for the dataset of other citations (Table~\ref{o.tcorrelation}), and the entire citation dataset (Table~\ref{a.e.o.t.n.tcorrelation})
 
 \input{sms2017full/a.tcorrelation.tex}
 
@@ -283,7 +264,7 @@ Table ~\ref{a.tcorrelation} displays the correlation coefficients and summary st
 
 
 \section{Results}
-The  results from our analysis for the dataset of applicant  cited patents are presented in Table~\ref{a.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. Since the share of each of the four quadrants of our framework cumulatively add up to one, we report results by using share of citations made to same region, same assignee as the reference. All models include year dummies, region fixed effects, and controls for technology subcategories based on \cite*{Hall2001a}. \par
+The  results from our analysis for the dataset of applicant  cited patents are presented in Table~\ref{a.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. Since the share of each of the four quadrants of our framework cumulatively add up to one, we report results by using share of citations made to same region, same assignee as the reference category. All models include year dummies, region fixed effects, and controls for technology subcategories based on \cite*{Hall2001a}. \par
 
 %The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n.model123192021} on the dataset with applicant and examiner citations. \par
 
@@ -307,7 +288,7 @@ The results from our analysis for the dataset of examiner cited patents are pres
 
 
 \section*{Discussion}
-Knowledge flows are hard to measure, and knowledge is characterized by by opposing qualities of being tacit and coded, and of behaving like a public or a private good. The central challenge therefore seems to be to find a way to disentangle the opposing natures of knowledge. It is possibly this that is behind the different results we observe between the two dependent variable measures of total citations received and non-self citations received. In fact, the 2005 debate in the American Economic Review highlights how minor changes in measures can dramatically alter results when measuring knowledge and its effects \citep*{Henderson2005, Thompson2005}. The question then is if there is an alternative means to measure knowledge flows more reliably, or if the problem lies with the research methodology used herein. \cite{Maurseth2002} have suggested a regional compatibility index for capturing technological linkages. An alternate approach of understanding knowledge flows relies on the movement of people with the assumption that knowledge is embedded within an individual. While patent citations arguably mapped codified knowledge, mobility captures a measure of tacit knowledge \citep{Polanyi1958}. However even in this tradition, scholars have suggested opposite effects of knowledge flows. While \cite{Almeida1997} show that mobility patterns of star inventors directly the geographic patterns of knowledge spillovers, \cite{Song2003} illustrate that mobile engineers who join a firm with stronger path dependence are unlikely to build on the knowledge of their previous firms. While geography may be seen as providing a platform to organize these interactions amongst inventors, it seems that we may need to consider other dimensions of geography so as to fully understand the effect on invention outcomes \citep{Bunnell2001}. Universities, research consortia, and other institutions may play a significant role in affecting invention outcomes.
+Knowledge flows are hard to measure, and knowledge is characterized by conflicting qualities of being tacit and coded. Additionally, knowledge flows demonstrate characteristics of a public good some of the time and that of a private good at other times. The central challenge therefore seems to be to find a way to disentangle the opposing qualities of knowledge. This may perhaps be able to explain the different results we observe between the two dependent variable measures of total citations received and non-self citations received. In fact, the 2005 debate in the American Economic Review highlights how minor changes in measures can dramatically alter results when measuring knowledge and its effects \citep*{Henderson2005, Thompson2005}. The question then is if there is an alternative means to measure knowledge flows more reliably, or if the problem lies with the research methodology used herein. \cite{Maurseth2002} have suggested a regional compatibility index for capturing technological linkages. An alternate approach of understanding knowledge flows relies on the movement of people with the assumption that knowledge is embedded within an individual. While patent citations arguably mapped codified knowledge, mobility captures a measure of tacit knowledge \citep{Polanyi1958}. However even in this tradition, scholars have suggested opposite effects of knowledge flows. While \cite{Almeida1997} show that mobility patterns of star inventors directly affect the geographic patterns of knowledge spillovers, \cite{Song2003} illustrate that mobile engineers who join a firm with stronger path dependence are unlikely to build on the knowledge of their previous firms. While geography may be seen as providing a platform to organize these interactions amongst inventors, it seems that we may need to consider other dimensions of geography so as to fully understand the effect on invention outcomes \citep{Bunnell2001}. Universities, research consortia, and other institutions may play a significant role in affecting invention outcomes.
 
 It would seem appropriate to raise two measurement related issues here. First, despite well known issues in the use of patents \citep{Griliches1990, Scherer1984} and in the use of patent citations to demonstrate localization of knowledge spillovers \citep*{Thompson2005, Arora2017a}, much work in understanding knowledge spillovers has continued to rely on patent citations. While our analysis in this paper is singularly dependent on data of United States patents, we are careful to not make strong assumptions about patent citations reflecting underlying knowledge flows. Wherever possible, we consider competing hypotheses built on opposing assumptions about what patent citations may capture. Second, innovations are clearly not the same as inventions. The measure of an innovation lies in its acceptance in the marketplace. An invention may therefore only represent an early event in the innovation process. While we recognize that managers and policy makers are interested in innovation outcomes, we continue to be limited by data availability that allows us to only make claims about invention quality. Despite those caveats, pursuing the questions posed above can provide not just interesting trade-offs to explore, but indeed create opportunities for a larger research agenda on actionable strategies for firms seeking to improve their innovation outcomes.\par
 
@@ -316,7 +297,7 @@ It would seem appropriate to raise two measurement related issues here. First, d
 In addition to the customary disclaimers about using patent citations as measures of knowledge flows, we would like to highlight a couple of limitations that may stem from the methodology we adopted. While the use of patent citations as a measure of knowledge flows has been popular in the literature, this may nevertheless be subject to error \citep*{Arora2017a}. Our definition of regions is dependent on the latitude/longitude assignment in the patentsview.org data and on the urban centers definition in the \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data}. Any systematic biases in the definition of regions can create biases in measures of within region and across region knowledge flows. \par
 
 \section*{Conclusion}
-While still at a preliminary stage, our analysis seem to suggest that knowledge flows are extremely sensitive to the nature of measurement deployed. This casts a doubt on the widely accepted idea that local knowledge spillovers are an important source of agglomeration economies. On the other, it also brings us to bear on the important issue of measuring knowledge flows. A potential extension of the study could be to conduct empirical analysis at the level of firm-year rather than at the region-year. We could additionally look at the additional dimension of technology (within and outside technological domain, \cite{Rosenkopf2001}) in addition to those of within/outside region and within/outside firm. This may provide us with a more nuanced understanding of the factors affecting invention quality. Future studies could potentially examine other measures of invention outcomes such as breakthrough inventions. Finally, while our work suggests multiple effects of knowledge flows on invention quality, it is not quite as clear why this may be the case. We have attempted to provide some direction by building from the theory on both streams economic geography, and international business, but there is clearly a lot to be done. We hope that our current work spurs further research in this direction.  
+While still at a preliminary stage, our analysis seem to suggest that knowledge flows are extremely sensitive to the nature of measurement deployed. This casts a doubt on the widely accepted idea that local knowledge spillovers are an important source of agglomeration economies. On the other, it also brings us to bear on the important issue of measuring knowledge flows. A potential extension of the study could be to conduct empirical analysis at the level of firm-year rather than at the region-year. We could additionally look at the additional dimension of technology (within and outside technological domain, \cite{Rosenkopf2001}) in addition to those of within/outside region and within/outside firm. This may provide us with a more nuanced understanding of the factors affecting invention quality. Future studies could potentially examine other measures of invention outcomes such as breakthrough inventions. Finally, while our work suggests multiple effects of knowledge flows on invention quality, it is not quite as clear why this may be the case. We have attempted to provide some direction by building from the theory on both economic geography and international business, but there is clearly much more to be done. We hope that our current work spurs further research in this direction.  
 
 %\onehalfspacing
 %\singlespacing
@@ -325,8 +306,8 @@ While still at a preliminary stage, our analysis seem to suggest that knowledge 
 \bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
 \bibliographystyle{ai-amjlike}
 \newpage
-%\normalsize
-
+\normalsize
+\doublespacing
 \appendix
 %\counterwithin{table}{section}
 %\setcounter{table}{0}
@@ -341,11 +322,11 @@ While still at a preliminary stage, our analysis seem to suggest that knowledge 
 %\input{sms2017full/o.ncorrelation.tex}
 %\input{sms2017full/o.nsummary.tex}
 
-The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{o.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n..model123192021} on the dataset of all citations. \par
+The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{o.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n.model123192021} on the dataset of all citations. \par
 
 \input{sms2017full/o.model123192021.tex}
 
-Table ~\ref{a.e.o.t.n.tcorrelation} displays the correlation of our primary variables in the dataset of  all citations. Summary statistics for the variables in the dataset of all citations is provided in Table ~\ref{a.e.o.t.n.tcorrelation}. Similar statistics for the applicant only citations dataset and the examiner only citations dataset have been provided in the section on additional results.
+Table~\ref{a.e.o.t.n.tcorrelation} displays the correlation of our primary variables in the dataset of  all citations. Summary statistics for the variables in the dataset of all citations is provided in Table~\ref{a.e.o.t.n.tcorrelation}. Similar statistics for the applicant only citations dataset and the examiner only citations dataset have been provided in the section on additional results.
 
 \input{sms2017full/a.e.o.t.n.tcorrelation.tex}
 %\input{sms2017full/a.e.o.t.n.tsummary.tex}
