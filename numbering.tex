@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[demo]{graphicx}
+\usepackage[nofiglist,notablist]{endfloat}
+\usepackage{etoolbox}
+
+\begin{document}
+
+\section{Section one}
+
+The main figure is Figure~\ref{Figure-1}, and the main table is Table~\ref{Table-1}. Supplemental material 
+includes Figure~\ref{Figure-A1} and Table~\ref{Table-A1} in the first appendix, and Figure~\ref{Figure-B1} 
+and Figure~\ref{Figure-B2} in the second appendix.
+
+\begin{figure}
+    \includegraphics{fig1}
+\caption{Figure one} \label{Figure-1}
+\end{figure}
+
+\begin{table}
+    \begin{tabular}{ll}
+        Row 1 & 1\\
+        Row 2 & 2\\
+        Row 3 & 3\\
+        Row 4 & 4\\
+    \end{tabular}
+\caption{Table one}\label{Table-1}
+\end{table}
+
+\appendix
+
+\makeatletter
+\renewcommand{\thepostfigure}{\Alph{section}.\arabic{postfigure}}
+\setcounter{postfigure}{0}
+\renewcommand{\theposttable}{\Alph{section}.\arabic{posttable}}
+\setcounter{posttable}{0}
+\efloat@iwrite{fff}{%
+  \unexpanded{%
+    \setcounter{section}{0}^^J%
+    \renewcommand{\thefigure}{\Alph{section}.\arabic{figure}}^^J%
+    \setcounter{figure}{0}^^J%
+  }%
+}
+\efloat@iwrite{ttt}{%
+  \unexpanded{%
+    \setcounter{section}{0}^^J%
+    \renewcommand{\thetable}{\Alph{section}.\arabic{table}}^^J%
+    \setcounter{table}{0}^^J%
+  }%
+}
+\preto{\section}{%
+  \efloat@iwrite{fff}{%
+    \unexpanded{%
+      \stepcounter{section}^^J%
+      \renewcommand{\thefigure}{\Alph{section}.\arabic{figure}}^^J%
+      \setcounter{figure}{0}^^J%
+    }%
+  }%
+  \efloat@iwrite{ttt}{%
+    \unexpanded{%
+      \stepcounter{section}^^J%
+      \renewcommand{\thetable}{\Alph{section}.\arabic{table}}^^J%
+      \setcounter{table}{0}^^J%
+    }%
+  }%
+  \setcounter{posttable}{0}\setcounter{postfigure}{0}%
+}
+\makeatother
+
+\section{Appendix one}
+
+\begin{table}
+    \begin{tabular}{ll}
+        Row 1 & 1\\
+        Row 2 & 2\\
+        Row 3 & 3\\
+        Row 4 & 4\\
+    \end{tabular}
+\caption{Table one in appendix A}\label{Table-A1}
+\end{table}
+
+\begin{figure}
+    \includegraphics{fig1}
+\caption{Figure one in appendix A} \label{Figure-A1}
+\end{figure}
+
+\section{Appendix two}
+
+\begin{figure}
+    \includegraphics{fig1}
+\caption{Figure one in appendix B} \label{Figure-B1}
+\end{figure}
+
+\begin{figure}
+    \includegraphics{fig2}
+\caption{Figure two in appendix B} \label{Figure-B2}
+\end{figure}
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+\end{document}

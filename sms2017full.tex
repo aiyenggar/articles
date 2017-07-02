@@ -4,6 +4,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[titletoc,title]{appendix}
 \usepackage{tabularx, longtable, pdflscape, rotating, adjustbox}  % for 'tabularx' environment and 'X' column type
+
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
 \usepackage{booktabs}  % for \toprule, \midrule, and \bottomrule macros 
@@ -31,7 +32,27 @@
 \setcounter{secnumdepth}{0} 
 
 \usepackage{titling}
-
+\usepackage[nolists]{endfloat}
+\DeclareDelayedFloatFlavor{sidewaystable}{table}
+\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+  % Places all tables at end of document and creates AOM-style table-here placeholders
+  \usepackage[nolists]{endfloat} % Places all figures and charts at end of manuscript and adds 'insert table x about here' lines.
+  \renewcommand{\figureplace}{
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \figurename \ \thepostfig\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+  \renewcommand{\tableplace}{%
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \tablename \ \theposttbl\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
   \usepackage{titlesec}
    \titleformat{\title}
        {\filcenter\normalfont\bfseries\uppercase}{\thetitle}{1em}{}
@@ -100,6 +121,7 @@ breaklines=true
 
 \begin{document}
 %\SetWatermarkText{Draft}
+
 \setlength{\droptitle}{-5em}
 \title{\textbf{\large Heterogeneity in Knowledge Flows of Regions: Impact on Invention Quality}}
 \date{\vspace{-12ex}}
@@ -308,13 +330,67 @@ While still at a preliminary stage, our analysis seem to suggest that knowledge 
 \newpage
 \normalsize
 \doublespacing
+
 \appendix
+
+\makeatletter
+\renewcommand{\thepostfigure}{\Alph{section}\arabic{postfigure}}
+\setcounter{postfigure}{0}
+\renewcommand{\theposttable}{\Alph{section}\arabic{posttable}}
+\setcounter{posttable}{0}
+\efloat@iwrite{fff}{%
+  \unexpanded{%
+    \setcounter{section}{0}^^J%
+    \renewcommand{\thefigure}{\Alph{section}\arabic{figure}}^^J%
+    \setcounter{figure}{0}^^J%
+  }%
+}
+\efloat@iwrite{ttt}{%
+  \unexpanded{%
+    \setcounter{section}{0}^^J%
+    \renewcommand{\thetable}{\Alph{section}\arabic{table}}^^J%
+    \setcounter{table}{0}^^J%
+  }%
+}
+\preto{\section}{%
+  \efloat@iwrite{fff}{%
+    \unexpanded{%
+      \stepcounter{section}^^J%
+      \renewcommand{\thefigure}{\Alph{section}\arabic{figure}}^^J%
+      \setcounter{figure}{0}^^J%
+    }%
+  }%
+  \efloat@iwrite{ttt}{%
+    \unexpanded{%
+      \stepcounter{section}^^J%
+      \renewcommand{\thetable}{\Alph{section}\arabic{table}}^^J%
+      \setcounter{table}{0}^^J%
+    }%
+  }%
+  \setcounter{posttable}{0}\setcounter{postfigure}{0}%
+}
+  \renewcommand{\figureplace}{
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \figurename \ A\thepostfigure\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+  \renewcommand{\tableplace}{%
+    \begin{center}
+    \begin{singlespace}
+    ------------------------------------\\
+    Insert \tablename \ A\theposttable\ about here.\\
+    ------------------------------------
+    \end{singlespace}
+    \end{center}}
+\makeatother
+
+\section{APPENDIX: ADDITIONAL RESULTS}
 %\counterwithin{table}{section}
 %\setcounter{table}{0}
 %\renewcommand\thetable{A\arabic{table}}
-
-\section{APPENDIX: ADDITIONAL RESULTS}
-
 \input{sms2017full/o.tcorrelation.tex}
 %\input{sms2017full/o.tsummary.tex}
 
@@ -337,5 +413,8 @@ Table~\ref{a.e.o.t.n.tcorrelation} displays the correlation of our primary varia
 
 
 \input{sms2017full/a.e.o.t.n.model123192021.tex}
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
 
 \end{document}
