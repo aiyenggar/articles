@@ -1,0 +1,135 @@
+%ftc2017.tex
+\documentclass[12pt,letterpaper]{article}
+\usepackage{mathptmx}
+\usepackage[margin=0.85in]{geometry}
+
+\usepackage{tabularx, longtable}  % for 'tabularx' environment and 'X' column type
+\usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
+\usepackage{booktabs}  % for \toprule, \midrule, and \bottomrule macros 
+
+\usepackage{setspace}
+\singlespacing
+%\doublespacing
+  
+\usepackage{amssymb,latexsym}
+\usepackage[round,sort]{natbib}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx,multirow}
+\graphicspath{ {ftc2017/} }
+
+% Bold Table and Figure captions
+\usepackage{caption}
+\captionsetup{figurename=FIGURE}
+\captionsetup{tablename=TABLE}
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+  
+% Turns off all section numbering
+\setcounter{secnumdepth}{0} 
+
+
+       
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tabu}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=cyan,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+\usepackage{etoolbox}
+
+\makeatletter
+
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+  {}{}
+
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\newenvironment{hypothesis}{
+  	\itshape
+  	\leftskip=\parindent \rightskip=\parindent
+  	\noindent\ignorespaces}
+
+\fancypagestyle{plain}{
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhf{}
+}	
+
+
+\begin{document}
+\textbf{\large{Embedded Agency in Institutional Fields: Developing Theory from a Matching Game}}\par
+\begin{flushright}\normalsize{Ashwin Iyenggar  (ashwin.iyenggar15@iimb.ac.in)} \end{flushright}\par
+
+Research in institutional theory is plagued with the problem of organizations being presented either as \textquotesingle hypermuscular supermen\textquotesingle \ or as  \textquotesingle passive cultural dopes\textquotesingle \  \citep{Suddaby2010a}. The literature on embedded agency addresses this polarity by suggesting how organizations operating in their respective institutional fields straddle this continuum. I attempt to contribute to this conversation by generating hypotheses developed from a formal model of agent-field learning through repeated interaction. \par
+
+I propose to apply a simple matching game model to  understand the dynamics of the interaction between embedded agents and the institutional field. This study will assume two players to be the institutional field (F), and the embedded agent (A). In each time period each of the players can make one of two decision choices 0 or 1. At the start of the game, the institutional field F choses choice 0 with probability $p_{0,F}^0$ and choice 1 with probability $1 - p_{0,F}^0$. Similarly, at the start of the game, the embedded agent A choses choice 0 with probability $p_{0,A}^0$ and choice 1 with probability $1 - p_{0,A}^0$. When the choices of the institutional field F and embedded agent A match in a time period, they each get a payoff of 1 in that period. Otherwise they each get a payoff of 0. The payoffs are captured by the matrix in Table ~\ref{payoffmatrix}
+
+\begin{table}[h]
+\begin{centering}
+\caption {Payoff Matrix}
+\label{payoffmatrix}
+{\tabulinesep=1.4mm
+\begin{tabu}{|c|c|c|}
+\hline
+&$choice_F(t) = 0$&$choice_F(t) = 1$\\\hline
+$choice_A(t) = 0$&$[payoff_F(t),payoff_A(t)]=[1,1]$&$[payoff_F(t),payoff_A(t)]=[0,0]$\\\hline
+$choice_A(t) = 1$&$[payoff_F(t),payoff_A(t)]=[0,0]$&$[payoff_F(t),payoff_A(t)]=[1,1]$\\\hline
+\end{tabu}}
+
+\end{centering}
+\end{table} 
+
+At the end of round t, both the institutional field F and the embedded agent A update their respective probabilities $p_{t+1,F}^0$ and $p_{t+1,A}^0$ based on their prior probabilities ($p_{t,F}^0$ and $p_{t,A}^0$) and their respective learning rates $\phi_F$ and $\phi_A$. I expect the institutional field F and embedded agent A to update their prior probabilities along the lines of the theory on reinforcement learning. I define $\phi$ as the learning rate function that may take any value between 0 and 1. A $\phi$ value of 0 indicates no learning, while a $\phi$ value of 1 indicates perfect learning.  The   institutional field F and the embedded agent A both update their prior probabilities based on their respective learning rates $\phi_F$ and $\phi_A$ respectively. The rules used to update prior probabilities are laid out in the matrix in Table ~\ref{priorsupdation}. The intuition here is that both players win when they are aligned on the decision. The specific configuration of the alignment does not impact the payoffs beyond their being the same.
+\begin{table}[h]
+\begin{centering}
+\caption {Matrix of Rules for Updating Prior Probabilities}
+\label{priorsupdation}
+\medskip
+{\tabulinesep=1.4mm
+\begin{tabu}{|c|c|c|}
+\hline
+&$payoff(t) = 1$&$payoff(t) = 0$\\\hline
+$choice(t) = 0$&$p_{t+1}^0=p_t^0+\phi(1-p_t^0)$&$p_{t+1}^0=p_t^0-\phi(p_t^0)$\\\hline
+$choice(t) = 1$&$p_{t+1}^0=p_t^0-\phi(p_t^0)$&$p_{t+1}^0=p_t^0+\phi(1-p_t^0)$\\\hline
+\end{tabu}}
+\medskip
+
+\end{centering}
+\end{table}
+
+\singlespacing
+%\renewcommand{\refname}{REFERENCES}
+\bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
+\bibliographystyle{ai-amjlike}
+
+
+\end{document}
