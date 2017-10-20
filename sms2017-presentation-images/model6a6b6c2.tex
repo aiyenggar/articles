@@ -1,0 +1,39 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{2}{c}}
+\caption{Inventor - Technology Class Controls in Mobility of Inventors on Invention Complexity \label{model6a6b6c}}\\
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+                &\multicolumn{1}{c}{log(complexity)}&\multicolumn{1}{c}{log(complexity)}\\
+\hline
+moved region    &    0.172\sym{***}&    0.135\sym{***}\\
+                &  (0.000)         &  (0.000)         \\
+moved country   &    1.213\sym{***}&    1.167\sym{***}\\
+                &  (0.000)         &  (0.000)         \\
+strong IPR      &    0.408\sym{***}&    0.382\sym{***}\\
+                &  (0.000)         &  (0.000)         \\
+moved region * strong IPR&   0.0192         &   0.0150         \\
+                &  (0.590)         &  (0.669)         \\
+moved country * strong IPR&   -0.813\sym{***}&   -0.773\sym{***}\\
+                &  (0.000)         &  (0.000)         \\
+moved region * tech complexity&    0.149\sym{***}&    0.149\sym{***}\\
+                &  (0.000)         &  (0.000)         \\
+moved country * tech complexity&  0.00195         & 0.000912         \\
+                &  (0.927)         &  (0.966)         \\
+inventor-tech class&                  &-5.72e-08\sym{***}\\
+                &                  &  (0.000)         \\
+\hline
+Observations    &  5245466         &  5245466         \\
+$R^2$              &    0.169         &    0.169         \\
+Clusters         &  575,441         &  575,441         \\
+Clustered SE       &Region Assignee         &Region Assignee         \\
+Year Dummies            &      Yes         &      Yes         \\
+Technology Controls            &      Yes         &      Yes         \\
+InventorClass   &       No         &      Yes         \\
+Sample          &  All Obs         &  All Obs         \\
+\hline\hline
+\multicolumn{3}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{3}{l}{\footnotesize Unable to add inventor-technology class dummies since there are 4,617,880 unique inventor-technology class tuples}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{longtable}
+}
