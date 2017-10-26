@@ -136,6 +136,8 @@
 \end{figure}
 \end{frame}
 
+\section{Theory}
+
 \begin{frame}{Underlying effects across region and firm boundaries}
 \begin{figure}[h!]
 \begin{centering}
@@ -144,25 +146,6 @@
    \label{fig:2x2effects}
 \end{centering}
 \end{figure}
-\end{frame}
-
-\begin{frame}{Summary of Preliminary Findings}{}
-\begin{itemize}
-\item{Localized knowledge flows do not seem to improve invention quality}
-\item{Geographical diversification is seen to improve invention quality}
-\item{Results differ between applicant only citations data and applicant and examiner citations dataset echoing concerns raised by \cite{Alcacer2006a}}
-\item{Much additional research required to distill any stylized facts on the impact of geography and firm boundaries on invention quality}
-\end{itemize}
-\end{frame}
-
-\section{Theory}
-\begin{frame}{On the Nature of Knowledge Spillovers}{}
-\begin{itemize}
-\item{Rent Spillovers vs. Pure Spillovers \citep{Griliches1979}}
-\item{Knowledge as a private good and a public good \citep{Arrow1962}}
-\item{Knowledge flows are invisible \citep{Krugman1991a}}
-\item{Knowledge flows sometimes leave a paper trail in the form of patent citations \citep{Jaffe1993}}
-\end{itemize}
 \end{frame}
 
 \begin{frame}{On the Localization of Knowledge Spillovers}{}
@@ -174,6 +157,29 @@
 \end{itemize}
 \end{frame}
 
+
+\begin{comment}
+
+
+\begin{frame}{Summary of Preliminary Findings}{}
+\begin{itemize}
+\item{Localized knowledge flows do not seem to improve invention quality}
+\item{Geographical diversification is seen to improve invention quality}
+\item{Results differ between applicant only citations data and applicant and examiner citations dataset echoing concerns raised by \cite{Alcacer2006a}}
+\item{Much additional research required to distill any stylized facts on the impact of geography and firm boundaries on invention quality}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{On the Nature of Knowledge Spillovers}{}
+\begin{itemize}
+\item{Rent Spillovers vs. Pure Spillovers \citep{Griliches1979}}
+\item{Knowledge as a private good and a public good \citep{Arrow1962}}
+\item{Knowledge flows are invisible \citep{Krugman1991a}}
+\item{Knowledge flows sometimes leave a paper trail in the form of patent citations \citep{Jaffe1993}}
+\end{itemize}
+\end{frame}
+
 \begin{frame}{On Knowledge Flows across Countries}{}
 \begin{itemize}
 \item{Political borders may constrain flows of knowledge \citep{Singh2013}}
@@ -182,7 +188,6 @@
 \end{itemize}
 \end{frame}
 
-\begin{comment}
 \section{Theory and Hypotheses}
 \begin{frame}{Invention quality at the independent research center}{}
 \begin{figure}[h]
@@ -271,7 +276,8 @@ force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, tex
 \end{comment}
 
 
-\section{Data and Method}
+
+\section{Methods}
 \begin{frame}{Geographic Mapping}{San Jose}
 \begin{figure}[h!]
 \begin{centering}
@@ -282,31 +288,28 @@ force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, tex
 \end{figure}
 \end{frame}
 
-\begin{frame}{Summary Statistics}{Applicant only citations}
-\centering
-\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
-           max width=\textwidth}{
-\begin{tabular}{l c c  c}\hline\hline
-\multicolumn{1}{c}{\textbf{Variable}} & \textbf{Mean}
- & \textbf{Std. Dev.} & \textbf{N}\\ \hline
-Citations Received & 1630.527 & 8200.133  & 9358\\
-Non-Self Citations Received & 917.342 & 4958.117  & 9358\\
-Self Citations Received & 248.898 & 1312.542  & 9358\\
-Share Citations Made[Same Region, Same Assignee] & 0.013 & 0.034  & 9358\\
-Share Citations Made[Same Region, Different Assignee] & 0.013 & 0.039  & 9358\\
-Share Citations Made[Different Region, Same Assignee] & 0.038 & 0.076  & 9358\\
-Share Citations Made[Different Region, Different Assignee] & 0.509 & 0.2  & 9358\\
-Share Citations Made[Other] & 0.428 & 0.202  & 9358\\
-Share Citations Made[Same Region] & 0.026 & 0.054  & 9358\\
-Share Citations Made[Same Assignee] & 0.051 & 0.087  & 9358\\
-Log (Total Citations Made) & 4.92 & 2.411  & 9358\\
-Log (Num Patents) & 3.719 & 1.954  & 9358\\
-Log (Patent Pool Size) & 6.496 & 2.048  & 9358\\
-\hline\end{tabular}
-}
+\begin{frame}{Geographic Mapping}{Bangalore}
+\begin{figure}[h!]
+\begin{centering}
+  \includegraphics[width=0.7\textwidth]{Bangalore}
+  \caption{Geographic Definition of Bangalore}
+   \label{fig:Bangalore}
+\end{centering}
+\end{figure}
 \end{frame}
 
-\begin{frame}{Methodology}{}
+\begin{frame}{Geographic Mapping}{Tel Aviv-Yafo}
+\begin{figure}[h!]
+\begin{centering}
+  \includegraphics[width=0.4\textwidth]{TelAviv}
+  \caption{Geographic Definition of Tel Aviv-Yafo}
+   \label{fig:TelAviv}
+\end{centering}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Data sources and estimation}{}
 \begin{itemize}
 \item{Data Source: Patents from USPTO, source: patentsview.org}
 \item{Data Source: Regions using Remote Sensing Data, source: naturalearthdata.com}
@@ -319,7 +322,7 @@ Log (Patent Pool Size) & 6.496 & 2.048  & 9358\\
 \end{frame}
 
 
-\begin{frame}{Results}{Applicant only citations}
+\begin{frame}{Results}{Applicant citations}
 \centering
 \adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
            max width=\textwidth}{
@@ -356,7 +359,8 @@ Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
 }
 \end{frame}
 
-\section{Future Work}
+\section{Summary}
+\begin{comment}
 \begin{frame}{Addressing Potential Issues}{Applicant and Examiner Citations}
 \centering
 \adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
@@ -400,8 +404,9 @@ Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
 \item{Any systematic biases in our definition of regions (Urban Centers from Natural Earth Data) can create biases in measures of knowledge flows}
 \end{itemize}
 \end{frame}
+\end{comment}
 
-\begin{frame}{Future Work}{}
+\begin{frame}{Contributions}{}
 \begin{itemize}
 \item{Examine the effects of search on technology domain \citep{Rosenkopf2001}}
 \item{Investigate the effect on alternate outcomes, e.g., breakthrough inventions}
@@ -415,24 +420,4 @@ Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
 \end{document}
 
 \begin{comment}
-
-\begin{frame}{Geographic Mapping}{Bangalore}
-\begin{figure}[h!]
-\begin{centering}
-  \includegraphics[width=0.7\textwidth]{Bangalore}
-  \caption{Geographic Definition of Bangalore}
-   \label{fig:Bangalore}
-\end{centering}
-\end{figure}
-\end{frame}
-
-
-\begin{figure}[h]
-\begin{centering}
-  \includegraphics[width=\textwidth]{TelAviv}
-  \caption{Geographic Definition of Tel Aviv-Yafo}
-   \label{fig:TelAviv}
-\end{centering}
-\end{figure}
 \end{comment}
-
