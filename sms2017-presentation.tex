@@ -7,6 +7,8 @@
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{setspace, multirow}
+
 \usepackage{caption}
 \captionsetup[figure]{labelformat=empty}%
 
@@ -334,43 +336,83 @@ force/.style={rectangle, draw, fill=black!10, inner sep=5pt, text width=4cm, tex
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Results}{Applicant citations}
+\begin{frame}{Preliminary Results}{Applicant citations}
+%\input{sms2017-presentation-images/a.model123192021.tex}
 \centering
 \adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
            max width=\textwidth}{
-\begin{tabular}{l*{6}{c}} \hline\hline
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                &\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}&\multicolumn{1}{c}{Non-Self}\\
-                &\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}&\multicolumn{1}{c}{Citations}\\
-                 &\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}&\multicolumn{1}{c}{Received}\\
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+ Dependent Variable&\multicolumn{3}{c}{Total Citations Received}&\multicolumn{3}{c}{Non-Self Citations Received}\\
+                Model&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                 \hline
+ \multirow{2}{*}{Sample}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}\\       
+  &\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}\\       
 \hline
-Share Citations Made[Same Region, Same Assignee]&   -0.125&   -0.156&  -0.0437&  -0.0698&  -0.0575&   -0.113\\
-                &  (0.372)&  (0.468)&  (0.809)&  (0.613)&  (0.782)&  (0.560)\\
-Share Citations Made[Same Region, Different Assignee]&  -0.0501&   -0.250&   0.0494&    0.214&   0.0341&    0.267\\
-                &  (0.677)&  (0.305)&  (0.704)&  (0.052)&  (0.889)&  (0.035)\\
-Share Citations Made[Different Region, Same Assignee]&    0.260&    0.316&    0.326&    0.215&    0.209&    0.247\\
-                &  (0.002)&  (0.015)&  (0.003)&  (0.013)&  (0.105)&  (0.040)\\
-Share Citations Made[Different Region, Different Assignee]&  0.00251&   0.0382&   0.0123&   0.0426&   0.0336&   0.0615\\
-                &  (0.933)&  (0.383)&  (0.760)&  (0.160)&  (0.447)&  (0.143)\\
-Log (Total Citations Made)&   0.0194&   0.0126&   0.0220&   0.0131&  0.00662&   0.0152\\
-                &  (0.000)&  (0.031)&  (0.000)&  (0.002)&  (0.258)&  (0.012)\\
-Log (Num Patents)&    0.788&    0.860&    0.830&    0.799&    0.826&    0.849\\
+Share Citations Made[Same Region, Different Assignee]&    0.150&    0.113&    0.148&    0.261&    0.238&    0.274\\
+                &  (0.405)&  (0.713)&  (0.506)&  (0.114)&  (0.413)&  (0.206)\\
+Share Citations Made[Different Region, Same Assignee]&    0.365&    0.568&    0.284&    0.175&    0.312&    0.143\\
+                &  (0.020)&  (0.018)&  (0.168)&  (0.248)&  (0.174)&  (0.493)\\
+Share Citations Made[Different Region, Different Assignee]&    0.178&    0.316&   0.0835&   0.0835&    0.183&   0.0659\\
+                &  (0.170)&  (0.102)&  (0.631)&  (0.497)&  (0.317)&  (0.704)\\
+Log (Total Citations Made)&   0.0198&   0.0132&   0.0252&   0.0144&  0.00658&   0.0184\\
+                &  (0.000)&  (0.025)&  (0.000)&  (0.000)&  (0.233)&  (0.002)\\
+Log (Number of Patents)&    0.783&    0.848&    0.830&    0.780&    0.824&    0.843\\
                 &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
-Log (Patent Pool Size)&   -0.124&   -0.303&   -0.110&  -0.0871&   -0.157&   -0.108\\
+Log (Patent Pool Size)&   -0.117&   -0.285&   -0.113&  -0.0903&   -0.213&   -0.116\\
                 &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
-Constant        &   -0.911&    0.510&   -1.368&   -1.296&   -0.557&   -1.677\\
-                &  (0.000)&  (0.002)&  (0.000)&  (0.000)&  (0.002)&  (0.000)\\
+Constant        &   -1.192&    0.102&   -1.553&   -1.071&   0.0237&   -1.522\\
+                &  (0.000)&  (0.688)&  (0.000)&  (0.000)&  (0.924)&  (0.000)\\
 \hline
-Observations    &     9358&     3974&     5384&     9037&     3868&     5169\\
-Groups          &     1359&      539&      820&     1255&      503&      752\\
-Sample&All &U.S. &Non-U.S.&All &U.S. &Non-U.S. \\
-          &Locations &Locations&Locations&Locations &Locations&Locations \\\hline\hline
+Observations    &     8947&     3798&     5149&     8860&     3782&     5078\\
+Groups          &     1309&      518&      791&     1281&      512&      769\\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Reference category is Share Citations Made[Same Region, Same Assignee]}\\
 \multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
 \multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
 \end{tabular}
 }
 \end{frame}
+
+\begin{comment}
+\begin{frame}{Results}{All citations}
+%\input{sms2017-presentation-images/a.e.o.t.n.model123192021.tex}
+\centering
+\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
+           max width=\textwidth}{
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+ Dependent Variable&\multicolumn{3}{c}{Total Citations Received}&\multicolumn{3}{c}{Non-Self Citations Received}\\
+                Model&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                 \hline
+ \multirow{2}{*}{Sample}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{U.S.}&\multicolumn{1}{c}{Non-U.S.}\\       
+  &\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}&\multicolumn{1}{c}{Locations}\\           
+\hline
+Share Citations Made[Same Region, Different Assignee]&   -0.516&   0.0657&   -1.308&   -0.604&    0.189&   -1.419\\
+                &  (0.054)&  (0.859)&  (0.001)&  (0.028)&  (0.617)&  (0.000)\\
+Share Citations Made[Different Region, Same Assignee]&   -0.220&  -0.0596&   -0.563&   -0.559&   -0.166&   -0.920\\
+                &  (0.273)&  (0.837)&  (0.036)&  (0.008)&  (0.584)&  (0.001)\\
+Share Citations Made[Different Region, Different Assignee]&   -0.588&   -0.149&   -1.065&   -0.579&   0.0762&   -1.049\\
+                &  (0.001)&  (0.545)&  (0.000)&  (0.001)&  (0.766)&  (0.000)\\
+Log (Total Citations Made)&    0.168&    0.162&    0.174&    0.120&    0.105&    0.138\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Number of Patents)&    0.615&    0.673&    0.668&    0.650&    0.714&    0.696\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Log (Patent Pool Size)&   -0.104&   -0.287&   -0.113&  -0.0703&   -0.219&   -0.101\\
+                &  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)&  (0.000)\\
+Constant        &    0.470&    1.314&    0.568&    0.501&    1.002&    0.588\\
+                &  (0.009)&  (0.000)&  (0.019)&  (0.007)&  (0.000)&  (0.023)\\
+\hline
+Observations    &    17166&     6373&    10793&    17120&     6371&    10749\\
+Groups          &     1929&      601&     1328&     1914&      600&     1314\\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Reference category is Share Citations Made[Same Region, Same Assignee]}\\
+\multicolumn{7}{l}{\footnotesize \textit{p}-values in parentheses}\\
+\multicolumn{7}{l}{\footnotesize All models include region fixed effects, year dummies and technology subcategory controls}\\
+\end{tabular}
+}
+\end{frame}
+\end{comment}
 
 \section{Summary}
 \begin{comment}
