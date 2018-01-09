@@ -4,6 +4,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[titletoc,title]{appendix}
 \usepackage{tabularx, longtable, pdflscape, rotating, adjustbox}  % for 'tabularx' environment and 'X' column type
+\usepackage{colortbl}
 
 \usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X} 
@@ -73,7 +74,7 @@
     colorlinks=true,
     linkcolor=blue,
     filecolor=cyan,      
-    urlcolor=cyan,
+    urlcolor=blue,
     citecolor=blue,
 }
 
@@ -157,7 +158,7 @@ breaklines=true
 \end{center}
 
 
-
+\section*{Introduction}
 \noindent Empirical studies in the literature on economic geography have used patent citations to suggest that knowledge spillovers are geographically localized \citep*{Jaffe1993, Almeida1999, Branstetter2001, Sonn2008}, and that innovation is more spatially concentrated that production \citep{Feldman1994a}. Patent citations have also been used in the international business literature to demonstrate that multi-national firms (MNCs) gain from the cross-border flow of knowledge and the globalization of R\&D \citep{Singh2007, Zhao2006, Singh2013}. This leads to the question of what indeed is the net effect of geography on innovation outcomes of firms and regions. Firms seek to improve innovation outcomes as a way of building a sustainable competitive advantage. Understanding how prior knowledge flows (across firms and geographies) affect innovation outcomes would therefore be valuable to managers in their quest for superior performance. \par
 
 In this study, we examine how the nature of knowledge spillovers or flows in a region affect the quality of the inventions generated in the region. Specifically, we look at knowledge flows spanning region boundaries and firm boundaries, and ask if and to what extent prior knowledge flows between and within regions and firms affects innovation quality of patents originating in a region. In this study we use citation data of patents applied for between 2001 and 2012 (and citations received till March 2017) to empirically estimate the relationship between the relative share of knowledge flows of a region and the quality of inventions from that region. We are aware of no prior studies that have examined the effects of the geographical characteristics of knowledge flows on invention outcomes of regions. Our work therefore seeks to contribute to the innovation literatures in both economic geography and international business, as well as to the debate on the use of patent citations as measures of knowledge flows. \par 
@@ -188,9 +189,9 @@ Our classification allows us to analyze knowledge flows in four mutually exclusi
 
 \begin{figure}[h!]
 \begin{centering}
-  \caption{Categories of knowledge flows}
+  \caption{Categories of Knowledge Flows}
   \label{fig:2x2}
-  \includegraphics[width=0.7\textwidth]{2x2}
+  \includegraphics{2x2}
 \end{centering}
 \end{figure}
 
@@ -198,7 +199,7 @@ The top left quadrant, labelled an ``Independent Research Center" captures those
 
 \begin{figure}[h]
 \begin{centering}
-  \caption{Knowledge flows within regions and within assignees}
+  \caption{Knowledge Flows Within Regions and Within Assignees}
   \label{fig:SMSSameRegionSameAssigneeFlows}
   \includegraphics[width=0.90\textwidth]{SMSSameRegionSameAssigneeFlows}
 \end{centering}
@@ -209,7 +210,7 @@ The quadrant on the bottom left, labelled ``Cluster" captures knowledge spillove
 
 \begin{figure}[h!]
 \begin{centering}
-  \caption{Knowledge flows within regions and across assignees}
+  \caption{Knowledge Flows Within Regions and Across Assignees}
   \label{fig:SMSSameRegionDiffAssigneeFlows}
   \includegraphics[width=0.90\textwidth]{SMSSameRegionDiffAssigneeFlows}
 \end{centering}
@@ -219,7 +220,7 @@ The quadrant on the top right, labelled as ``Geographic Diversification" capture
 
 \begin{figure}[h!]
 \begin{centering}
-  \caption{Knowledge flows across regions and within assignees}
+  \caption{Knowledge Flows Across Regions and Within Assignees}
   \label{fig:SMSDiffRegionSameAssigneeFlows}
   \includegraphics[width=0.90\textwidth]{SMSDiffRegionSameAssigneeFlows}
 \end{centering}
@@ -229,7 +230,7 @@ Finally, the bottom right quadrant labelled ``Diffusion" captures high explorati
 
 \begin{figure}[h!]
 \begin{centering}
-  \caption{Knowledge flows across regions and across assignees}
+  \caption{Knowledge Flows Across Regions and Across Assignees}
   \label{fig:SMSDiffRegionDiffAssigneeFlows}
   \includegraphics[width=0.90\textwidth]{SMSDiffRegionDiffAssigneeFlows}
 \end{centering}
@@ -240,7 +241,7 @@ As can be seen from the preceding discussion, prior theory suggests both positiv
 
 \begin{table}
 \begin{centering}
-\caption {Effects of knowledge flows on quality of inventions}
+\caption {Effects of Knowledge Flows on Quality of Inventions}
 \label{2x2forces}
 {\tabulinesep=1.4mm
 \begin{tabu}{|p{0.20\textwidth}|p{0.40\textwidth}|p{0.40\textwidth}|}
@@ -258,6 +259,9 @@ As can be seen from the preceding discussion, prior theory suggests both positiv
 
 \section*{Data and Methods}
 We use patent citations data from the U.S. Patent Office (USPTO) as provided by patentsview.org. The USPTO provides information on assignee, the location of inventors, and year of patent application. We use this information to identify which patents belong to which region in a given year. Since there can be more than one inventor on a patent, a patent can belong to more than one region. We compare the assignee id and inventor location of each patent with each assignee id and inventor of each backward citation  to identify the category of knowledge flow (e.g., same assignee, different location) indicated by the backward citation. Additionally, to map location data of inventors from USPTO to regions, we use urban centers data for worldwide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} that uses remote sensing data to determine urban agglomerations (a process developed in \citet*{Schneider2003}).  While it has been common practice to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the U.S., an equivalent measure is unavailable for the rest of the world. For comparability and consistency, we choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions both within U.S. and outside U.S. \par
+
+
+\input{aom2018/DataFlow.tex}
 
 Our unit of analysis is the region-year. We do this so as to be able to understand the relationship between the nature of knowledge flows in a region and the invention quality of the region. An analysis at this level allows for a firm-invariant, inventor-invariant, time-invariant and technology-subcategory invariant assessment of the  inventive performance of regions.\par
 

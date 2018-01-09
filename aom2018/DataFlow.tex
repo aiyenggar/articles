@@ -1,0 +1,39 @@
+\begin{sidewaystable}[htbp]\centering
+\caption{Steps Followed in Constructing Region-Year Level Dataset}
+\small
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\toprule
+\textbf{Step} & \multicolumn{6}{c|}{\cellcolor[rgb]{ .988,  .894,  .839}\textbf{Properties of Citing Patent}} & \textbf{Flow} & \multicolumn{6}{c|}{\cellcolor[rgb]{ .741,  .843,  .933}\textbf{Properties of Cited Patent}} \\
+\midrule
+\textbf{1} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+\textbf{2} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+& \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{In the above, when more than one assignee is defined for any patent, all assignees are retained for both citing patent and cited patent}} \\
+\midrule
+\textbf{3} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Inventor & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933}Inventor & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+& \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{In the above step, all inventors are retained for both citing patent and cited patent}} \\
+\midrule
+\textbf{4} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Inventor Region} & \cellcolor[rgb]{ .988,  .894,  .839}Inventor & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933}Inventor & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .741,  .843,  .933}Inventor Region} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+\textbf{5} & \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{Drop Citing Inventor and Cited Inventor}} \\
+\midrule
+\textbf{6} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Inventor Region} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .741,  .843,  .933}Inventor Region} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+\textbf{7} & \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{Drop duplicate observations of $<$Citing Inventor Region, Cited Inventor Region$>$ for the same Patent Citation}} \\
+\midrule
+\textbf{8} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Inventor Region} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .741,  .843,  .933}Inventor Region} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+\textbf{9} & \cellcolor[rgb]{ .988,  .894,  .839} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Application Year} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Inventor Region} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839}Patent-ID & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933}Patent-ID & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .741,  .843,  .933}Inventor Region} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+\textbf{10} & \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{Drop Citing Patent-ID and Cited Patent-ID}} \\
+\midrule
+\textbf{11} & \cellcolor[rgb]{ .988,  .894,  .839} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Application Year} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .988,  .894,  .839}Inventor Region} & \cellcolor[rgb]{ .988,  .894,  .839} & \cellcolor[rgb]{ .988,  .894,  .839}Assignee & \cellcolor[rgb]{ .988,  .894,  .839} & \textbf{$\leftarrow$} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933}Assignee & \cellcolor[rgb]{ .741,  .843,  .933} & \multicolumn{1}{p{5em}|}{\cellcolor[rgb]{ .741,  .843,  .933}Inventor Region} & \cellcolor[rgb]{ .741,  .843,  .933} & \cellcolor[rgb]{ .741,  .843,  .933} \\
+\midrule
+\textbf{12} & \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{Agglomerate at $<$Citing Application Year, Citing Inventor Region$>$ to compute Independent Variables}} \\
+\midrule
+\textbf{13} & \multicolumn{13}{c|}{\cellcolor[rgb]{ .886,  .937,  .855}\textbf{Agglomerate at $<$Citing Application Year, Cited Inventor Region$>$ to compute Dependent Variables}} \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}
