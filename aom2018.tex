@@ -285,9 +285,9 @@ For any given region-year, we would therefore have the sum of each of the four i
 
 \subsection{Control Variables}
 We control for the total number of citations made in the region-year, the total number of patents in the region-year, the size of the patent pool in the region-year, as well as the percentage of patents in region-year in each technology subcategory as defined by \cite*{Hall2001a}. The patent pool is the total number of patents that belong to a region from 1976 (which is where we have data from) up to the previous year. It is important to control for the size of the patent pool as  regions that have a larger patent pool (such as San Jose) will have more patents that can be cited and can therefore have larger within region spillovers as compared to a region that has only a small patent pool. We include region fixed effects and year dummies in all regression models so as to control for region level and year specific effects, if any. Since our dependent variable is a count variable, we use negative binomial regression analysis with fixed effects. \par
-\input{sms2017full/a.tcorrelation.tex}
+\input{aom2018/a.tcorrelation.tex}
 Table~\ref{a.tcorrelation} displays the correlation coefficients and summary statistics of our primary variables in the dataset of applicant  citations. Table~\ref{e.tcorrelation} displays the correlation coefficients and summary statistics of our primary variables in the dataset of examiner  citations. The appendix provides similar statistics for the dataset of other citations (Table~\ref{o.tcorrelation}), and the entire citation dataset (Table~\ref{a.e.o.t.n.tcorrelation})
-\input{sms2017full/e.tcorrelation.tex}
+\input{aom2018/e.tcorrelation.tex}
 
 
 \section{Results}
@@ -297,11 +297,11 @@ The  results from our analysis for the dataset of applicant  cited patents are p
 
 The results in Table~\ref{a.model123192021} suggest that applicant citations do not indicate a significant effect of ``cluster'' flows on invention quality of regions. This seems to hold for both total citations received as well as for non-self citations received. However the effect of ``geographic diversification'' is more mixed. Table~\ref{a.model123192021} suggests that the overall positive and significant effect of ``geographic diversification'' is driven by the effect from U.S. Locations, while Non-U.S. locations do not suggest a significant effect. This maybe because U.S. multinationals may be able to leverage their global network of subsidiaries to drive a higher number of citations for their own patents, something that non-U.S. locations may not be able to emulate. We also note no significant effect for ``diffusion'' as may have been expected.
 
-\input{sms2017full/a.model123192021.tex}
+\input{aom2018/a.model123192021.tex}
 
 The results from our analysis for the dataset of examiner cited patents are presented in Table~\ref{e.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. Examiner citations seem to suggest very different effects for the nature of knowledge flows on invention quality. First, we note that the signs of the coefficients for each of the three categories of flows is reversed as compared to the dataset of applicant citations. Second, we find that the effects from U.S. Locations dominate for both dependent variable measures. This seems to suggest that examiner citations may apply differently than applicant citations.
 
-\input{sms2017full/e.model123192021.tex}
+\input{aom2018/e.model123192021.tex}
 
 In comparing the results form applicant citations with those from examiner citations, we note a few interesting patterns. First, the number of observations in the applicant citations set is approximately half (8947 observations for dv as total citations received and sample as all locations) as compared to examiner citations (16464 observations for dv as total citations received and sample as all locations). This is so because many patents do not make any citation at all, and these observations drop off since the denominator of the independent variables go to zero in this case. An interesting artifact of this effect is the much larger means in citations received for applicant citations as compared with examiner citations. This factor also seems to be driving some of the regression results.\par
 
@@ -322,10 +322,11 @@ Methodologically, there may be mechanisms operating at multiple levels that we a
 \section*{Further Work}
 While still at a preliminary stage, our analysis seem to suggest that knowledge flows are extremely sensitive to the nature of measurement deployed. This casts a doubt on the widely accepted idea that local knowledge spillovers are an important source of agglomeration economies. On the other, it also brings us to bear on the important issue of measuring knowledge flows. A potential extension of the study could be to conduct empirical analysis at the level of firm-year rather than at the region-year. We could additionally look at the additional dimension of technology (within and outside technological domain, \cite{Rosenkopf2001}) in addition to those of within/outside region and within/outside firm. This may provide us with a more nuanced understanding of the factors affecting invention quality. Future studies could potentially examine other measures of invention outcomes such as breakthrough inventions. Finally, while our work suggests multiple effects of knowledge flows on invention quality, it is not quite as clear why this may be the case. We have attempted to provide some direction by building from the theory on both economic geography and international business, but there is clearly much more to be done. We hope that our current work spurs further research in this direction.  
 
-%\onehalfspacing
-%\singlespacing
+
+\newpage
 \renewcommand{\refname}{REFERENCES}
 \singlespacing
+%\onehalfspacing
 \bibliography{/Users/aiyenggar/code/bibliography/aiyenggar} 
 \bibliographystyle{ai-amjlike}
 \newpage
@@ -392,28 +393,28 @@ While still at a preliminary stage, our analysis seem to suggest that knowledge 
 %\counterwithin{table}{section}
 %\setcounter{table}{0}
 %\renewcommand\thetable{A\arabic{table}}
-\input{sms2017full/o.tcorrelation.tex}
-%\input{sms2017full/o.tsummary.tex}
+\input{aom2018/o.tcorrelation.tex}
+%\input{aom2018/o.tsummary.tex}
 
 
-%\input{sms2017full/o.ncorrelation.tex}
-%\input{sms2017full/o.nsummary.tex}
+%\input{aom2018/o.ncorrelation.tex}
+%\input{aom2018/o.nsummary.tex}
 
 The additional results from our analysis for the dataset of applicant only cited patents are presented in Table~\ref{o.model123192021}. Models 1-3 report results with the dependent variable as the total number of citations received for all regions worldwide, U.S. locations and non-U.S. locations respectively. Models 4-6 report results with the dependent variable as the number of non-self citations received. The divergence between results for the two outcome measures of total citations received and non-self citations received are similar to that observed in Table~\ref{a.e.o.t.n.model123192021} on the dataset of all citations. \par
 
-\input{sms2017full/o.model123192021.tex}
+\input{aom2018/o.model123192021.tex}
 
 Table~\ref{a.e.o.t.n.tcorrelation} displays the correlation of our primary variables in the dataset of  all citations. Summary statistics for the variables in the dataset of all citations is provided in Table~\ref{a.e.o.t.n.tcorrelation}. Similar statistics for the applicant only citations dataset and the examiner only citations dataset have been provided in the section on additional results.
 
-\input{sms2017full/a.e.o.t.n.tcorrelation.tex}
-%\input{sms2017full/a.e.o.t.n.tsummary.tex}
+\input{aom2018/a.e.o.t.n.tcorrelation.tex}
+%\input{aom2018/a.e.o.t.n.tsummary.tex}
 
 
-%\input{sms2017full/a.e.o.t.n.ncorrelation.tex}
-%\input{sms2017full/a.e.o.t.n.nsummary.tex}
+%\input{aom2018/a.e.o.t.n.ncorrelation.tex}
+%\input{aom2018/a.e.o.t.n.nsummary.tex}
 
 
-\input{sms2017full/a.e.o.t.n.model123192021.tex}
+\input{aom2018/a.e.o.t.n.model123192021.tex}
 
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thetable}{\arabic{table}}
