@@ -263,7 +263,15 @@ As can be seen from the preceding discussion, prior theory suggests both positiv
 \section*{Data and Methods}
 We use patent citations data from the U.S. Patent Office (USPTO) as provided by patentsview.org. The USPTO provides information on assignee, the location of inventors, and year of patent application. We use this information to identify which patents belong to which region in a given year. Since there can be more than one inventor on a patent, a patent can belong to more than one region. We compare the assignee id and inventor location of each patent with each assignee id and inventor of each backward citation  to identify the category of knowledge flow (e.g., same assignee, different location) indicated by the backward citation. Additionally, to map location data of inventors from USPTO to regions, we use urban centers data for worldwide locations from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} that uses remote sensing data to determine urban agglomerations (a process developed in \citet*{Schneider2003}).  While it has been common practice to use Metropolitan Statistical Areas (MSA) for analyses related to economic geography in the U.S., an equivalent measure is unavailable for the rest of the world. For comparability and consistency, we choose to use the urban centers definitions from \href{http://www.naturalearthdata.com/downloads/10m-cultural-vectors/}{Natural Earth Data} for all regions both within U.S. and outside U.S. \par
 
-\input{aom2018/FlowsBreakup.tex}
+\begin{figure}[h!]
+\begin{centering}
+  \captionsetup{labelsep=newline}
+  \caption{\newline Two Examples of Variable Construction From the Data}
+  \label{FlowsBreakup}
+  \includegraphics[width=0.95\textwidth]{FlowsBreakup2}
+\end{centering}
+\end{figure}
+
 \input{aom2018/DataFlow.tex}
 
 Our unit of analysis is the region-year. We do this so as to be able to understand the relationship between the nature of knowledge flows in a region and the invention quality of the region. An analysis at this level allows for a firm-invariant, inventor-invariant, time-invariant and technology-subcategory invariant assessment of the  inventive performance of regions.\par
